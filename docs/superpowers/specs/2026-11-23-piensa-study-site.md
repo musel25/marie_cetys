@@ -13,8 +13,8 @@ The site supports one tutor and one learner. The tutor opens or pins the lesson 
 ## Ready for use
 
 - Each lesson has a goal, prerequisites, a short explanation, a worked example and original four-option questions with hints and solutions. Teach a method in steps. Use new values, contexts or passages in later attempts. Keep the official practice PDF available for a final mock exam.
-- Lesson practice gives feedback after submission. The optional review queue starts with a reserved or fresh question, schedules the skill and links back to the lesson. Reward independent correct answers with a longer interval than supported or guessed answers.
+- Lesson practice gives feedback after submission and restores the last answer on reload. The optional review queue selects a fresh question near the learner's last difficulty and links back to the lesson. Reward independent correct answers with a longer interval than supported or guessed answers.
 - Timed mode uses 42 questions in 35 minutes for Habilidad cognoscitiva, 37 in 30 for Español, 35 in 35 for Matemáticas and 40 in 30 for Inglés. Show answers after a section ends. Allow a shorter timed set to train pace. Treat scores as practice percentages.
-- Progress shows daily, Monday–Sunday weekly and calendar-month activity. Show minutes, attempted and correct questions, and class completion. Show skills that need review and example mistakes.
+- Progress shows daily, Monday–Sunday weekly and calendar-month activity. Show minutes, attempted and correct questions, and class completion. Show skills that need review. Open the exact exercise for a saved doubt.
 - The plan accepts study days, a daily duration, a start date, a target date and exceptions. Report a shortfall when the planned hours are insufficient. Group classes and recommend study time for a shorter timeline.
 - Release requires content validation, working keyboard and touch flows, a production build, a reviewable PR, and HTTPS checks on the VPS.

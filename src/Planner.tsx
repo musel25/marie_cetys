@@ -11,7 +11,8 @@ export function Planner({ state, today, onSettings, onImport }: {
 }) {
   const [draft, setDraft] = useState(state.settings);
   const [exception, setException] = useState("");
-  const [message, setMessage] = useState("");
+  const [planMessage, setPlanMessage] = useState("");
+  const [backupMessage, setBackupMessage] = useState("");
   const [more, setMore] = useState(false);
   const [pending, setPending] = useState<StudyState>();
   const input = useRef<HTMLInputElement>(null);
@@ -25,8 +26,8 @@ export function Planner({ state, today, onSettings, onImport }: {
       if (draft.exam && draft.exam <= draft.start) throw Error("El examen debe ser posterior al inicio.");
       parseBackup(JSON.stringify({ ...state, settings: draft }));
       const saved = await onSettings(draft);
-      setMessage(saved ? "Plan guardado." : "");
-    } catch (error) { setMessage(error instanceof Error ? error.message : "Revisa las fechas del plan."); }
+      setPlanMessage(saved ? "Plan guardado." : "");
+    } catch (error) { setPlanMessage(error instanceof Error ? error.message : "Revisa las fechas del plan."); }
   }
 
   function download() {
@@ -45,8 +46,8 @@ export function Planner({ state, today, onSettings, onImport }: {
       if (file.size > 12_000_000) throw Error("El archivo es demasiado grande.");
       const parsed = parseBackup(await file.text());
       setPending(parsed);
-      setMessage("Respaldo listo para cargar.");
-    } catch { setMessage("No se pudo leer un respaldo válido. Tu progreso sigue guardado."); }
+      setBackupMessage("Respaldo listo para cargar.");
+    } catch { setBackupMessage("No se pudo leer un respaldo válido. Tu progreso sigue guardado."); }
     if (input.current) input.current.value = "";
   }
 
@@ -82,6 +83,7 @@ export function Planner({ state, today, onSettings, onImport }: {
           <li key={day}><span>{dateLabel(day, "long")}</span><button type="button" className="button quiet" onClick={() => setDraft({ ...draft, exceptions: draft.exceptions.filter(entry => entry !== day) })}>Quitar</button></li>,
         )}</ul>}
         <button className="button primary">Guardar plan</button>
+        <p role="status" className={planMessage ? "notice" : "sr-only"}>{planMessage}</p>
       </form>
       <section className="panel">
         <h2>Próximas clases</h2>
@@ -112,13 +114,13 @@ export function Planner({ state, today, onSettings, onImport }: {
         <input ref={input} type="file" accept=".json,application/json" hidden onChange={event => void readFile(event.target.files?.[0])} />
       </div>
       {pending && <div className="plan-notice">
-        <p>El respaldo incluye {pending.attempts.length} respuestas y {pending.classes.length} registros de clase. Cargarlo reemplaza el progreso de este navegador.</p>
+        <p>El respaldo incluye {pending.attempts.length} {pending.attempts.length === 1 ? "respuesta" : "respuestas"} y {pending.classes.length} {pending.classes.length === 1 ? "registro" : "registros"} de clase. Cargarlo reemplaza el progreso de este navegador.</p>
         <div className="row"><button className="button primary" onClick={async () => {
           const saved = await onImport(pending);
-          setDraft(pending.settings); setPending(undefined); setMessage(saved ? "Respaldo cargado." : "");
-        }}>Cargar y reemplazar</button><button className="button secondary" onClick={() => { setPending(undefined); setMessage(""); }}>Cancelar</button></div>
+          setDraft(pending.settings); setPending(undefined); setBackupMessage(saved ? "Respaldo cargado." : "");
+        }}>Cargar y reemplazar</button><button className="button secondary" onClick={() => { setPending(undefined); setBackupMessage(""); }}>Cancelar</button></div>
       </div>}
+      <p role="status" className={backupMessage ? "notice" : "sr-only"}>{backupMessage}</p>
     </section>
-    <p role="status" className={message ? "notice" : "sr-only"}>{message}</p>
   </>;
 }

@@ -3,7 +3,7 @@ import { areas, areaOrder, byArea, curriculum, lessonById, resourceLinks } from 
 import { Exam } from "./Exam";
 import { Planner } from "./Planner";
 import { Progress } from "./Progress";
-import { addDays, classPlan, dateLabel, isStudyDay, loadState, nextQuestion, periodStart, reviewCards, saveState, studyDay, summary } from "./study";
+import { addDays, classPlan, dateLabel, isStudyDay, loadState, periodStart, reviewCards, reviewQuestion, saveState, studyDay, summary } from "./study";
 import type { Area, Attempt, ClassRecord, Lesson, Question, StudyState } from "./types";
 import { AreaTag, duration, Icon, lessonHref, PageHeading, type IconName } from "./ui";
 import { OrderDiagram, QuestionCard, Workbook } from "./Workbook";
@@ -16,7 +16,7 @@ const navigation: { id: string; label: string; icon: IconName }[] = [
   { id: "progreso", label: "Progreso", icon: "graph" },
   { id: "plan", label: "Plan", icon: "calendar" },
 ];
-function readRoute() { return location.hash.replace(/^#\/?/, "").split("/").slice(0, 2); }
+function readRoute() { return location.hash.replace(/^#\/?/, "").split("/").slice(0, 3); }
 
 function Home({ state, today, dueCount }: { state: StudyState; today: string; dueCount: number }) {
   const plan = classPlan(curriculum, state, today);
@@ -59,7 +59,7 @@ function Home({ state, today, dueCount }: { state: StudyState; today: string; du
         </section>
         <section className="panel week-summary">
           <h2>Esta semana</h2>
-          <strong>{duration(usedMinutes)}</strong>
+          <strong>{duration(usedMinutes, week.seconds > 0)}</strong>
           {weeklyGoal > 0 ? <>
             <span> de {duration(weeklyGoal)}</span>
             <progress aria-label="Tiempo de estudio esta semana" value={Math.min(usedMinutes, weeklyGoal)} max={weeklyGoal} />
@@ -75,7 +75,7 @@ function Home({ state, today, dueCount }: { state: StudyState; today: string; du
         const done = byArea[area].filter(item => completed.has(item.id)).length;
         return <a className={`area-card area-${area}`} href={`#/temario/${area}`} key={area}>
           <span className="area-mark" aria-hidden="true">{area === "hc" ? "◇" : area === "mat" ? "÷" : area === "es" ? "ñ" : "Aa"}</span>
-          <h3>{areas[area].title}</h3><span>{done} de {total} clases completas</span>
+          <h3>{areas[area].title}</h3>{area === "hc" && <p className="area-description">Lógica, patrones y relaciones</p>}<span>{done} de {total} clases completas</span>
           <progress value={done} max={total || 1} aria-label={`Clases completas de ${areas[area].title}`} />
         </a>;
       })}</div>
@@ -120,7 +120,7 @@ function Review({ due, state, onAttempt, onFlag }: {
   const lesson = question && lessonById.get(question.skill);
   function start() {
     setBatch(due.slice(0, 8).flatMap(item => {
-      const fresh = nextQuestion(item, state.attempts);
+      const fresh = reviewQuestion(item, state.attempts);
       return fresh ? [fresh] : [];
     }));
     setIndex(0); setAnswered(false); setStarted(true);
@@ -158,16 +158,17 @@ export function App() {
   const [message, announce] = useState(initial.recovered ? "No se encontró un progreso válido en este navegador." : "");
   const [today, setToday] = useState(studyDay);
   const main = useRef<HTMLElement>(null);
-  const [page = "", id] = route;
+  const [page = "", id, target] = route;
   const cards = useMemo(() => reviewCards(state.attempts), [state.attempts]);
   const due = useMemo(() => curriculum.filter(item => (cards.get(item.id)?.due ?? "9999") <= today)
     .sort((a, b) => (cards.get(a.id)?.due ?? "").localeCompare(cards.get(b.id)?.due ?? "")), [cards, today]);
 
   useEffect(() => {
     function navigate() {
-      setRoute(readRoute());
+      const next = readRoute();
+      setRoute(next);
       window.scrollTo(0, 0);
-      requestAnimationFrame(() => main.current?.focus());
+      if (!next[2]) requestAnimationFrame(() => main.current?.focus({ preventScroll: true }));
     }
     function updateDate() { setToday(studyDay()); }
     function readOtherTab() {
@@ -229,7 +230,7 @@ export function App() {
   const active = page === "clase" ? "temario" : page;
   const content = page === "" ? <Home state={state} today={today} dueCount={due.length}/>
     : page === "temario" ? <Curriculum state={state} filter={areaOrder.find(area => area === id)}/>
-    : page === "clase" && lesson ? <Workbook key={lesson.id} lesson={lesson} state={state} onAttempt={item => addAttempts([item])} onClass={recordClass}
+    : page === "clase" && lesson ? <Workbook key={lesson.id + (target ?? "")} lesson={lesson} target={target} state={state} onAttempt={item => addAttempts([item])} onClass={recordClass}
       onFlag={toggleFlag} announce={announce} onPin={pinned => { update(before => ({ ...before, pinned }), pinned ? "Clase fijada en el inicio." : "Clase quitada del inicio."); }}/>
     : page === "repaso" ? <Review due={due} state={state} onAttempt={item => addAttempts([item])} onFlag={toggleFlag}/>
     : page === "simulacro" ? <Exam state={state} onAttempts={addAttempts}/>

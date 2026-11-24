@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { areas, areaOrder, byArea, lessonById } from "./content";
 import { questions, studyDay } from "./study";
 import { AreaTag, Icon, PageHeading, lessonHref } from "./ui";
+import { QuestionVisual, questionText } from "./Workbook";
 import type { Area, Attempt, Question, StudyState } from "./types";
 
 interface ExamRun {
@@ -28,6 +29,11 @@ function selectQuestions(area: Area, count: number, state: StudyState) {
   const pool: Question[] = [];
   for (let round = 0; pool.length < count && groups.some(group => group[round]); round++) {
     for (const group of groups) if (group[round] && pool.length < count) pool.push(group[round]);
+  }
+  if (area === "es" || area === "en") {
+    const inOrder = new Map(byArea[area].map((lesson, index) => [lesson.id, index]));
+    const passage = (question: Question) => question.prompt.split("\n\n")[0];
+    pool.sort((a, b) => inOrder.get(a.skill)! - inOrder.get(b.skill)! || passage(a).localeCompare(passage(b)));
   }
   return pool;
 }
@@ -120,7 +126,8 @@ export function Exam({ state, onAttempts }: { state: StudyState; onAttempts: (it
         {review.map(question => <details className="question-details" key={question.id}>
           <summary>{run.answers[question.id] === question.answer ? "Correcta" : run.answers[question.id] === undefined ? "Sin responder" : "Incorrecta"} · {lessonById.get(question.skill)?.title}</summary>
           <div className="exercise">
-            <p className="exercise-prompt" lang={run.area === "en" ? "en" : undefined}>{question.prompt}</p>
+            <p className="exercise-prompt" lang={run.area === "en" ? "en" : undefined}>{questionText(question.prompt)}</p>
+            <QuestionVisual prompt={question.prompt} />
             {run.answers[question.id] !== undefined && <p>Tu respuesta: {question.options[run.answers[question.id]]}</p>}
             <p><strong>Respuesta correcta</strong> · {question.options[question.answer]}</p><p>{question.explanation}</p>
             <a href={lessonHref(question.skill)}>Abrir lección</a>
@@ -141,7 +148,8 @@ export function Exam({ state, onAttempts }: { state: StudyState; onAttempts: (it
       <section className="worksheet">
         <div className="section-title"><h2>Pregunta {run.index + 1} de {run.items.length}</h2><span className="timer" aria-label={`Tiempo restante ${Math.floor(seconds / 60)} minutos y ${seconds % 60} segundos`}><Icon name="clock"/>{timer}</span></div>
         <fieldset>
-          <legend className="exercise-prompt" lang={run.area === "en" ? "en" : undefined}>{item.prompt}</legend>
+          <legend className="exercise-prompt" lang={run.area === "en" ? "en" : undefined}>{questionText(item.prompt)}</legend>
+          <QuestionVisual prompt={item.prompt} />
           <div className="answers">{item.options.map((option, index) => <label className="answer" key={option}>
             <input type="radio" name="exam-answer" checked={run.answers[item.id] === index} onChange={() => {
               if (Date.now() < run.end) update({ ...run, answers: { ...run.answers, [item.id]: index } });

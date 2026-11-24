@@ -29,6 +29,8 @@ A standard class has 5 minutes of diagnosis, 10 minutes for the explanation, 10 
 
 For self-study, open the published examples and practice at any time. Select optional review for due skills. Finish a timed section to see answers and links back to the lessons.
 
+After a missed or assisted answer, select a fresh question near the previous level. After an independent correct answer to a base question, prefer an exam-level variant. Keep the challenge questions available to the tutor and the simulator.
+
 ## Implementation steps
 
 ### 1. Curriculum and integrity

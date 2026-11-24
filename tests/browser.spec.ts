@@ -7,7 +7,7 @@ test("gives feedback and keeps the attempt in all progress periods after a reloa
 
   const example = page.getByRole("button", { name: "Ver el primer paso" });
   await example.click();
-  await expect(page.getByText("Dibuja cuatro casillas. Las dos primeras pistas dan el orden T–M–R.")).toBeVisible();
+  await expect(page.getByText("T va a la izquierda de M. R va a la derecha de M. Anota el orden T–M–R. Deja las cuatro casillas vacías.")).toBeVisible();
 
   const checkAnswer = page.getByRole("button", { name: "Comprobar", exact: true });
   await expect(checkAnswer).toBeDisabled();
@@ -132,6 +132,7 @@ test("brings back a missed skill with a fresh question on the following day", as
   await page.getByRole("link", { name: /^Repaso/ }).click();
   await page.getByRole("button", { name: "Empezar repaso", exact: true }).click();
   await expect(page.getByRole("heading", { name: "Ordenar con pistas" })).toBeVisible();
+  await expect(page.getByText(/7 va después de 4/)).toBeVisible();
   await expect(page.getByRole("radio", { name: "A, B, C", exact: true })).toHaveCount(0);
   await page.getByRole("button", { name: "Ver pista", exact: true }).click();
   await expect(page.locator(".hint")).toBeVisible();
@@ -139,4 +140,72 @@ test("brings back a missed skill with a fresh question on the following day", as
   await page.getByRole("button", { name: "Comprobar", exact: true }).click();
   await page.getByRole("button", { name: "Terminar repaso", exact: true }).click();
   await expect(page.getByRole("heading", { name: "Ronda terminada" })).toBeVisible();
+});
+
+test("lets the student try first and shows the provisional order before assigning slots", async ({ page }) => {
+  await page.goto("/#/clase/hc-orden");
+  await page.getByRole("button", { name: "Probar el primer ejercicio" }).click();
+  await expect(page.locator("#ejercicios")).toBeFocused();
+  await page.getByRole("button", { name: "Ver el primer paso" }).click();
+  await expect(page.getByText("Orden provisional: T–M–R", { exact: true })).toBeVisible();
+  await expect(page.locator(".worked-example .diagram-tile")).toHaveText(["·", "·", "·", "·"]);
+  await page.getByRole("button", { name: "Ver el siguiente paso" }).click();
+  await expect(page.locator(".worked-example .diagram-tile")).toHaveText(["T", "P", "M", "R"]);
+});
+
+test("exports progress and imports it only after confirmation", async ({ page, browser }) => {
+  await page.goto("/#/clase/hc-orden");
+  await page.getByRole("radio", { name: "A, C, B", exact: true }).check();
+  await page.getByRole("button", { name: "Comprobar", exact: true }).click();
+  await page.getByText("Correcto", { exact: true }).waitFor();
+
+  await page.getByRole("link", { name: "Plan", exact: true }).click();
+  const [download] = await Promise.all([
+    page.waitForEvent("download"),
+    page.getByRole("button", { name: "Descargar respaldo" }).click(),
+  ]);
+  const filename = await download.path();
+  if (!filename) throw Error("Missing backup file");
+  const clean = await browser.newPage();
+  try {
+    const url = new URL(page.url());
+    url.hash = "/plan";
+    await clean.goto(url.href);
+    await clean.locator('input[type="file"]').setInputFiles({
+      name: "progreso.json", mimeType: "application/json", buffer: await (await import("node:fs/promises")).readFile(filename),
+    });
+    await expect(clean.getByText(/El respaldo incluye 1 respuesta/)).toBeVisible();
+    await clean.getByRole("button", { name: "Cargar y reemplazar" }).click();
+    await expect(clean.getByText("Respaldo cargado.")).toBeVisible();
+    await clean.getByRole("link", { name: "Progreso", exact: true }).click();
+    await expect(clean.getByText("100%", { exact: true })).toBeVisible();
+  } finally {
+    await clean.close();
+  }
+});
+
+test("restores a submitted question and opens its saved doubt directly", async ({ page }) => {
+  await page.goto("/#/clase/hc-orden");
+  const exercise = page.locator(".question-details").first();
+  await exercise.getByRole("radio", { name: "A, C, B", exact: true }).check();
+  await exercise.getByRole("button", { name: "Comprobar", exact: true }).click();
+  await exercise.getByRole("button", { name: "Guardar duda", exact: true }).click();
+  await expect(exercise.getByRole("button", { name: "Duda guardada", exact: true })).toBeVisible();
+  await page.reload();
+  await expect(exercise.getByText("Correcto", { exact: true })).toBeVisible();
+
+  await page.getByRole("link", { name: "Progreso", exact: true }).click();
+  await page.getByRole("link", { name: "Ordenar con pistas · Ejercicio 1", exact: true }).click();
+  await expect(page).toHaveURL(/#\/clase\/hc-orden\/0$/);
+  await expect(page.locator("#pregunta-marcada")).toBeFocused();
+  await expect(page.locator("#pregunta-marcada")).toHaveAttribute("open", "");
+  await page.getByRole("button", { name: "Volver a intentar", exact: true }).click();
+  await expect(exercise.getByRole("button", { name: "Comprobar", exact: true })).toBeDisabled();
+});
+
+test("shows the diagram with equivalent labels in diagram exercises", async ({ page }) => {
+  await page.goto("/#/clase/hc-diagramas");
+  const diagram = page.locator(".exercise").first().getByRole("img", { name: /Sectores del diagrama/ });
+  await expect(diagram).toBeVisible();
+  await expect(diagram.locator("[data-venn-label]")).toHaveText(["A", "B", "C", "1", "2", "3", "4", "5", "6", "7"]);
 });

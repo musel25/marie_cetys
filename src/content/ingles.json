@@ -73,7 +73,7 @@
         "difficulty": "exam"
       },
       {
-        "prompt": "Choose the sentence in which the adjective describes the subject.",
+        "prompt": "Choose the sentence in which the adjective comes after the verb and describes the subject.",
         "options": [
           "We bought fresh vegetables.",
           "The soup smells fresh.",
@@ -81,7 +81,7 @@
           "Fresh bread filled the basket."
         ],
         "answer": 1,
-        "explanation": "Fresh aparece después de smells y describe al sujeto the soup. En las otras opciones, fresh va antes de un sustantivo.",
+        "explanation": "Fresh va después de smells y describe al sujeto de la oración, the soup.",
         "hint": "Ubica un adjetivo después de un verbo que describa un estado o una impresión.",
         "difficulty": "exam"
       },
@@ -99,7 +99,7 @@
         "difficulty": "challenge"
       },
       {
-        "prompt": "Which sentence shows that the coach gave Maya a schedule?",
+        "prompt": "In which sentence does Maya receive a schedule from the coach?",
         "options": [
           "Maya gave the coach a schedule.",
           "The coach gave a schedule to himself.",
@@ -472,11 +472,11 @@
       "Para el sentido de una palabra, prueba cada opción en su oración. Para un título, busca uno que represente el tema y el enfoque. Un hecho se puede verificar y una opinión expresa un juicio."
     ],
     "example": {
-      "prompt": "The school library added a return slot that families could reach from the sidewalk. It was beside the side entrance, which staff locked every evening. After one month, the library counted 64 books returned through the slot. Staff decided to keep it open on weekends.\n\n“What happened after the first month?”",
+      "prompt": "The school library added a return slot that families could reach from the sidewalk. It was beside the side entrance, which staff locked every evening. After one month, the library counted 64 books returned through the slot. Staff decided to keep it open on weekends.\n\nHow many books did families return through the slot in the first month?",
       "steps": [
-        "Busca la marca temporal «After one month».",
-        "Identifica la acción de la biblioteca. Contó 64 libros devueltos por la ranura.",
-        "Elige la opción que conserva el número y el lugar de devolución."
+        "Localiza «after one month». Esa frase indica cuándo se contó lo que habían devuelto.",
+        "En esa oración, busca el dato que contesta «how many books».",
+        "La respuesta es 64 libros. El texto dice «64 books returned through the slot»."
       ]
     },
     "source": "College Board, Guía de estudio PIENSE II (2019), p. 10 del PDF · Comprensión y análisis de lectura",
@@ -491,7 +491,7 @@
           "Next to a classroom door."
         ],
         "answer": 1,
-        "explanation": "La primera oración dice «by the side entrance». Es un detalle explícito.",
+        "explanation": "La segunda oración dice «It was beside the side entrance». La ranura estaba junto a la entrada lateral.",
         "hint": "Busca la primera aparición de return slot.",
         "difficulty": "base"
       },
@@ -522,7 +522,7 @@
         "difficulty": "exam"
       },
       {
-        "prompt": "The town tested two bicycle routes to the beach. The river route was shorter, but the afternoon path often flooded. The hill route was longer and stayed dry throughout the test. The town printed the hill route on its summer maps and plans to check both routes again in winter.\n\nWhat made the river route difficult to use during the test?",
+        "prompt": "The town tested two bicycle routes to the beach. The river route was shorter, but the path often flooded in the afternoon. The hill route was longer and stayed dry throughout the test. The town printed the hill route on its summer maps and plans to check both routes again in winter.\n\nWhat made the river route difficult to use during the test?",
         "options": [
           "The route was much longer.",
           "The summer maps were missing.",
@@ -530,12 +530,12 @@
           "The route stayed dry."
         ],
         "answer": 2,
-        "explanation": "La segunda oración explica la dificultad del camino junto al río. A menudo se inundaba.",
+        "explanation": "El camino junto al río se inundaba con frecuencia por la tarde. Eso dificultaba usarlo.",
         "hint": "Busca el problema asociado con river route.",
         "difficulty": "exam"
       },
       {
-        "prompt": "The town tested two bicycle routes to the beach. The river route was shorter, but the afternoon path often flooded. The hill route was longer and stayed dry throughout the test. The town printed the hill route on its summer maps and plans to check both routes again in winter.\n\nWhich is the best title?",
+        "prompt": "The town tested two bicycle routes to the beach. The river route was shorter, but the path often flooded in the afternoon. The hill route was longer and stayed dry throughout the test. The town printed the hill route on its summer maps and plans to check both routes again in winter.\n\nWhich is the best title?",
         "options": [
           "Choosing a Summer Bike Route to the Beach",
           "The Shortest Bike Routes in the World",
@@ -561,7 +561,7 @@
         "difficulty": "challenge"
       },
       {
-        "prompt": "The town tested two bicycle routes to the beach. The river route was shorter, but the afternoon path often flooded. The hill route was longer and stayed dry throughout the test. The town printed the hill route on its summer maps and plans to check both routes again in winter.\n\nWhich conclusion is supported by the passage?",
+        "prompt": "The town tested two bicycle routes to the beach. The river route was shorter, but the path often flooded in the afternoon. The hill route was longer and stayed dry throughout the test. The town printed the hill route on its summer maps and plans to check both routes again in winter.\n\nWhich conclusion is supported by the passage?",
         "options": [
           "The town showed that longer routes are always safer.",
           "The river route will never appear on a map.",
@@ -574,7 +574,7 @@
         "difficulty": "challenge"
       },
       {
-        "prompt": "The town tested two bicycle routes to the beach. The river route was shorter, but the afternoon path often flooded. The hill route was longer and stayed dry throughout the test. The town printed the hill route on its summer maps and plans to check both routes again in winter.\n\nWhich statement is an opinion?",
+        "prompt": "The town tested two bicycle routes to the beach. The river route was shorter, but the path often flooded in the afternoon. The hill route was longer and stayed dry throughout the test. The town printed the hill route on its summer maps and plans to check both routes again in winter.\n\nWhich statement is an opinion?",
         "options": [
           "The town tested two routes.",
           "The hill route stayed dry during the test.",

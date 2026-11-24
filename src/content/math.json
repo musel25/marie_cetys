@@ -118,17 +118,20 @@
     "title": "Fracciones, razones y porcentajes",
     "objective": "Resolver problemas de comparación, reparto proporcional y cambio porcentual.",
     "explanation": [
-      "Usa un denominador común para comparar, sumar o restar fracciones. El mínimo común múltiplo da el menor denominador común positivo. Para reducir una fracción, divide por un divisor común, como el máximo común divisor.",
-      "Multiplica numeradores y denominadores para hallar el producto. Para dividir, multiplica por el recíproco del divisor distinto de cero.",
-      "Una razón compara dos cantidades. La tasa unitaria expresa cuánto corresponde a una unidad. En una proporción, dos razones son iguales.",
-      "p % = p/100. Un aumento del p % multiplica el valor inicial por 1 + p/100. Una reducción del p % lo multiplica por 1 − p/100. Aplica los cambios sucesivos al resultado anterior."
+      "Para comparar fracciones, usa números que representen partes del mismo tamaño. Por ejemplo, 1/2 = 3/6, así que 1/2 es menor que 4/6.",
+      "Para simplificar una fracción, divide el número de arriba y el de abajo por el mismo número. Por ejemplo, 6/8 = 3/4.",
+      "El mínimo común múltiplo es el menor múltiplo positivo que dos números comparten. El de 4 y 6 es 12.",
+      "Para sumar o restar, iguala los denominadores y opera los numeradores. Para multiplicar, multiplica los números de arriba y los de abajo.",
+      "Para dividir entre una fracción, inviértela y multiplica. Por ejemplo, 1/2 ÷ 1/4 = 1/2 × 4 = 2.",
+      "Una razón compara dos cantidades. Si dos cuadernos cuestan $40, uno cuesta $20. Usa el precio de uno para calcular otros pedidos.",
+      "Un porcentaje indica partes de cada 100. Con 25 % de descuento, pagas el 75 % del precio. Aplica cada cambio al precio que acabas de calcular."
     ],
     "example": {
       "prompt": "Un artículo de $320 tiene 25 % de descuento. Después se agrega 10 % sobre el precio rebajado. ¿Cuál es el precio final?",
       "steps": [
-        "Aplica el descuento. 320 × 0.75 = 240.",
-        "Aplica el segundo cambio al precio rebajado. 240 × 1.10 = 264.",
-        "El costo final es $264."
+        "Pagas 100 % − 25 % = 75 % del precio. Divide 75 entre 100 para obtener 0.75. Calcula 320 × 0.75 = 240.",
+        "Con el aumento pagas 100 % + 10 % = 110 % del precio rebajado. Divide 110 entre 100 para obtener 1.10.",
+        "Calcula 240 × 1.10 = 264. El costo final es $264."
       ]
     },
     "source": "Guía oficial de College Board (2019), p. 9. Descriptores oficiales, pp. 10–11. Refuerzo CONEA, fichas 04–06.",
@@ -145,7 +148,7 @@
           "3/4"
         ],
         "answer": 1,
-        "explanation": "Con denominador 120, las fracciones son 105/120, 96/120, 100/120 y 90/120. La mayor es 7/8.",
+        "explanation": "4/5 = 96/120, 7/8 = 105/120, 5/6 = 100/120 y 3/4 = 90/120. El mayor numerador es 105. Por eso 7/8 es la mayor.",
         "hint": "Puedes usar 120 como denominador común.",
         "difficulty": "base"
       },

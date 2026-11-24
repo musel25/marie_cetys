@@ -4,6 +4,7 @@
     "title": "Mayúsculas y acentuación",
     "objective": "Distingue la escritura de nombres propios y aplica las reglas generales y especiales de acentuación.",
     "explanation": [
+      "La sílaba tónica suena con más fuerza. Cuenta desde el final. En una palabra aguda es la última. En una grave es la penúltima. En una esdrújula es la tercera.",
       "Pon mayúscula inicial en los nombres propios y en las palabras significativas del nombre oficial de una institución. Los días y los meses se escriben con minúscula, salvo si forman parte de un nombre propio.",
       "Ubica la sílaba tónica. Las agudas llevan tilde si terminan en vocal, n o s, con excepciones en algunas terminaciones. Las graves llevan tilde si terminan en consonante distinta de n o s, con excepciones. Las esdrújulas siempre llevan tilde.",
       "Si una vocal cerrada tónica (í o ú) está junto a una vocal abierta, forman un hiato y la vocal cerrada lleva tilde. También llevan tilde los interrogativos y exclamativos, aunque aparezcan en una pregunta indirecta.",
@@ -42,7 +43,7 @@
           "cámara"
         ],
         "answer": 3,
-        "explanation": "CA es la antepenúltima sílaba de cá-ma-ra. Todas las esdrújulas llevan tilde.",
+        "explanation": "Separa cá-ma-ra. Desde el final, cuenta ra, ma, cá. Cá es la tercera sílaba. Por eso cámara es esdrújula y lleva tilde.",
         "hint": "Cuenta las sílabas a partir del final.",
         "difficulty": "base"
       },
@@ -120,7 +121,8 @@
     "explanation": [
       "Separa la base de los afijos. Un prefijo se coloca antes de la base, como re- en releer. Un sufijo se coloca después, como -able en lavable.",
       "Los homófonos suenan igual y pueden escribirse distinto, como tubo y tuvo. Los homógrafos tienen la misma escritura, como banco para un asiento o una institución financiera. Los parónimos se parecen en su sonido o escritura, como actitud y aptitud.",
-      "En expresiones que se escriben juntas o separadas, reemplaza cada forma por su significado. Sino puede marcar una corrección. Si no introduce una condición negativa."
+      "En expresiones que se escriben juntas o separadas, reemplaza cada forma por su significado. Sino puede marcar una corrección. Si no introduce una condición negativa.",
+      "Algunos homónimos se escriben igual, como vino (una bebida) y vino (del verbo venir). Usa el resto de la oración para distinguirlos."
     ],
     "example": {
       "prompt": "Completa la frase. «____ alcanzas el autobús, toma el siguiente».",
@@ -175,16 +177,16 @@
         "difficulty": "exam"
       },
       {
-        "prompt": "¿Qué significa «planta» en «El taller está en la segunda planta»?",
+        "prompt": "¿En qué oración «vino» significa «llegó»?",
         "options": [
-          "Vegetal.",
-          "Parte inferior del pie.",
-          "Piso de un edificio.",
-          "Fábrica."
+          "Sirvieron vino en la cena.",
+          "La receta lleva un poco de vino.",
+          "La tutora vino al taller ayer.",
+          "El vino está en la mesa."
         ],
         "answer": 2,
-        "explanation": "Segunda indica el nivel del edificio en que se encuentra el taller. Planta tiene varios sentidos según el contexto.",
-        "hint": "Busca la palabra que ubica el taller.",
+        "explanation": "La tutora llegó al taller ayer. En esa oración, vino es una forma del verbo venir.",
+        "hint": "Prueba sustituir «vino» por «llegó» en cada oración.",
         "difficulty": "exam"
       },
       {
@@ -310,7 +312,7 @@
           "Lina ordenaba su mochila escuchando música."
         ],
         "answer": 3,
-        "explanation": "En la primera opción, Lina escucha música mientras ordena su mochila. Las otras opciones unen acciones separadas en el tiempo.",
+        "explanation": "Lina escucha música mientras ordena su mochila. Las dos acciones suceden al mismo tiempo. En las otras opciones, una acción ocurre después de la otra.",
         "hint": "Comprueba si puedes reemplazar el gerundio por una frase que empiece con mientras.",
         "difficulty": "exam"
       },

@@ -4,17 +4,18 @@
     "title": "Ordenar con pistas",
     "objective": "Ubica letras o números con pistas de posición y elige el orden que cumple todas las pistas.",
     "explanation": [
-      "Dibuja una casilla por elemento. Lee las posiciones de izquierda a derecha.",
-      "«Antes de» significa a la izquierda. «Después de» significa a la derecha. «Inmediatamente antes» y «al lado» indican casillas consecutivas.",
-      "Si B va entre A y C, puede quedar A–B–C o C–B–A. Puede haber otros elementos entre ellos.",
-      "Marca con una X las posiciones prohibidas. «R no va antes de M ni después de P» equivale a dos pistas. R va después de M y antes de P si las posiciones son distintas.",
-      "Prueba primero la pista más fácil de comprobar. Descarta las opciones que fallen. Revisa todas las pistas en la opción que quede."
+      "Dibuja una casilla por letra o número. Lee de izquierda a derecha.",
+      "En A–X–B, A va antes de B. En A–B–X, A va inmediatamente antes de B. «Inmediatamente» indica que no hay una casilla en medio.",
+      "En A–X–B, B va después de A. Si dos letras van juntas, ocupan casillas vecinas.",
+      "En A–X–B–C, B queda entre A y C. El orden inverso también sirve. B no tiene que tocar los extremos.",
+      "Tacha las casillas prohibidas. Si R no va antes de M, pon R a la derecha de M. Si tampoco va después de P, pon R a la izquierda de P.",
+      "Prueba una pista. Tacha las opciones que fallen. Repite con las otras pistas."
     ],
     "example": {
       "prompt": "Ordena R, M, T y P. T va antes de M. R va después de M. P va entre T y M. R no puede quedar junto a T.",
       "steps": [
-        "Dibuja cuatro casillas. Las dos primeras pistas dan el orden T–M–R.",
-        "Coloca P entre T y M. El orden queda T–P–M–R.",
+        "T va a la izquierda de M. R va a la derecha de M. Anota el orden T–M–R. Deja las cuatro casillas vacías.",
+        "Inserta P entre T y M. Escribe el orden completo en las casillas: T–P–M–R.",
         "Comprueba la última pista. T ocupa la primera casilla y R la cuarta."
       ]
     },
@@ -607,7 +608,7 @@
       "Los sectores donde se superponen dos círculos contienen objetos que cumplen las dos características. En el centro se cumplen las tres.",
       "Haz tres preguntas para cada objeto. ¿Cumple A? ¿Cumple B? ¿Cumple C? Busca el sector que coincida con esas tres respuestas.",
       "Si la pregunta dice «solamente A y B», excluye el centro. Si dice «A y B, con o sin C», incluye el sector de A y B y también el centro.",
-      "Lee los números en la leyenda del diagrama. El número solo indica un lugar."
+      "Busca el número en la zona que cumple tus respuestas. Por ejemplo, 2 está dentro de A y B y fuera de C."
     ],
     "example": {
       "prompt": "Sectores del diagrama. 1 solo A · 2 A y B sin C · 3 solo B · 4 A y C sin B · 5 A, B y C · 6 B y C sin A · 7 solo C.\nA = fichas redondas. B = fichas azules. C = fichas de metal. ¿En qué sector queda una ficha redonda de metal que es amarilla?",

@@ -1,5 +1,5 @@
 import { createEmptyCard, fsrs, Rating, type Card } from "ts-fsrs";
-import type { Attempt, ClassRecord, Lesson, Period, Question, Settings, StudyState } from "./types";
+import type { Attempt, ClassRecord, Difficulty, Lesson, Period, Question, Settings, StudyState } from "./types";
 
 const dayMs = 86_400_000;
 const storageKey = "marie-cetys:study:v1";
@@ -174,13 +174,23 @@ export function questions(lesson: Lesson): Question[] {
   }));
 }
 
-export function nextQuestion(lesson: Lesson, attempts: Attempt[], excluded = new Set<string>()) {
+const difficultyRank = { base: 0, exam: 1, challenge: 2 };
+
+export function nextQuestion(lesson: Lesson, attempts: Attempt[], excluded = new Set<string>(), preferred: Difficulty = "challenge") {
   const lastUsed = new Map<string, number>();
   for (const attempt of attempts) lastUsed.set(attempt.item, Math.max(attempt.at, lastUsed.get(attempt.item) ?? 0));
   return questions(lesson).filter(question => !excluded.has(question.id)).sort((a, b) => {
     const recency = (lastUsed.get(a.id) ?? -1) - (lastUsed.get(b.id) ?? -1);
-    return recency || Number(b.difficulty === "challenge") - Number(a.difficulty === "challenge");
+    const rank = difficultyRank[preferred];
+    return recency || Math.abs(difficultyRank[a.difficulty] - rank) - Math.abs(difficultyRank[b.difficulty] - rank);
   })[0];
+}
+
+export function reviewQuestion(lesson: Lesson, attempts: Attempt[]) {
+  const last = attempts.filter(item => item.skill === lesson.id && item.selection !== -1).at(-1);
+  const difficulty = questions(lesson).find(item => item.id === last?.item)?.difficulty ?? "base";
+  const preferred = last?.correct && !last.help && difficulty === "base" ? "exam" : difficulty;
+  return nextQuestion(lesson, attempts, new Set(), preferred);
 }
 
 export function reviewCards(attempts: Attempt[]) {

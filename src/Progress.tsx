@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { areaOrder, areas, curriculum, lessonById } from "./content";
 import { addDays, dateLabel, periodStart, questions, summary } from "./study";
-import { duration, Icon, PageHeading, lessonHref } from "./ui";
+import { duration, Icon, PageHeading, lessonHref, questionHref } from "./ui";
 import type { Period, StudyState } from "./types";
 
 const periods = { day: "Día", week: "Semana", month: "Mes" };
@@ -53,9 +53,9 @@ export function Progress({ state, today, onFlag }: { state: StudyState; today: s
       </div>
     </div>
     <div className="metric-grid">
-      <div className="metric"><span>Tiempo de estudio</span><strong>{duration(minutes)}</strong><span>{duration(results.classMinutes)} de clase · {results.activeDays} {results.activeDays === 1 ? "día activo" : "días activos"}</span></div>
-      <div className="metric"><span>Preguntas resueltas</span><strong>{results.attempts.length}</strong><span>{results.correct} correctas</span></div>
-      <div className="metric"><span>Exactitud</span><strong>{results.attempts.length ? Math.round(100 * results.correct / results.attempts.length) + "%" : "—"}</strong><span>En el periodo</span></div>
+      <div className="metric"><span>Tiempo de estudio</span><strong>{duration(minutes, results.seconds > 0)}</strong><span>{duration(results.classMinutes)} de clase · {results.activeDays} {results.activeDays === 1 ? "día activo" : "días activos"}</span></div>
+      <div className="metric"><span>Preguntas resueltas</span><strong>{results.attempts.length}</strong><span>{results.correct} {results.correct === 1 ? "correcta" : "correctas"}</span></div>
+      <div className="metric"><span>Porcentaje de aciertos</span><strong>{results.attempts.length ? Math.round(100 * results.correct / results.attempts.length) + "%" : "—"}</strong><span>En el periodo</span></div>
       <div className="metric"><span>Clases completadas</span><strong>{results.complete}</strong><span>{completed} de {curriculum.length} en total</span></div>
     </div>
     <div className="progress-grid">
@@ -87,7 +87,7 @@ export function Progress({ state, today, onFlag }: { state: StudyState; today: s
         <h2><Icon name="flag" size={20}/> Dudas guardadas</h2>
         {!flagged.length ? <p className="muted">Guarda un ejercicio para comentarlo durante la clase.</p> :
           <ul className="plain-list">{flagged.map(({ question, lesson }) => <li key={question.id}>
-            <div><a href={lessonHref(lesson!.id)}>{lesson!.title}</a><p className="excerpt">{question.prompt}</p></div>
+            <div><a href={questionHref(question.id)}>{lesson!.title} · Ejercicio {Number(question.id.split(":")[1]) + 1}</a><p className="excerpt">{question.prompt}</p></div>
             <button className="button quiet" onClick={() => onFlag(question.id)} aria-label={`Quitar duda de ${lesson!.title}`}>Quitar</button>
           </li>)}</ul>}
       </section>
