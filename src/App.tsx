@@ -45,7 +45,7 @@ function Home({ state, today, dueCount }: { state: StudyState; today: string; du
           {lesson.id === "hc-orden" ? <OrderDiagram preview /> : <div className="hero-symbol"><Icon name="book" size={90}/></div>}
         </> : <div className="hero-copy"><h2>{completed.size >= curriculum.length ? "Temario completado" : "Estudia a tu ritmo"}</h2><p>Abre cualquier lección o ajusta tus fechas.</p><a className="button hero-button" href="#/temario">Ver temario</a></div>}
         {lesson && <div className="hero-footer">
-          <span><Icon name="book" size={17}/> {lesson.area === "hc" ? "Práctica y miniexamen" : "Explicación y ejemplo"}</span>
+          <span><Icon name="book" size={17}/> Práctica y miniexamen</span>
           <span><Icon name="check" size={17}/> {published} ejercicios</span>
           <span><Icon name="clock" size={17}/> {duration(state.pinned ? state.settings.minutes : slot?.minutes ?? state.settings.minutes)}</span>
           {slot && slot.day > today && !state.pinned && <span>Próxima · {dateLabel(slot.day)}</span>}
@@ -142,7 +142,7 @@ function Review({ due, state, onAttempt, onFlag }: {
       <QuestionCard key={question.id} question={question} mode="review" area={lesson.area} flagged={state.flagged.includes(question.id)} onFlag={() => onFlag(question.id)} onAttempt={item => { onAttempt(item); setAnswered(true); }} />
       <div className="row review-actions">
         <a className="button secondary" href={lessonHref(lesson.id)}>Abrir explicación</a>
-        {lesson.area === "hc" && <a className="button secondary" href={miniHref(lesson.id)}>Hacer miniexamen</a>}
+        <a className="button secondary" href={miniHref(lesson.id)}>Hacer miniexamen</a>
         {answered && <button className="button primary" onClick={() => { setIndex(index + 1); setAnswered(false); }}>{index === batch.length - 1 ? "Terminar repaso" : "Siguiente pregunta"}</button>}
       </div>
     </section>}
@@ -153,7 +153,7 @@ function Review({ due, state, onAttempt, onFlag }: {
       <h2>Temas disponibles</h2>
       <ul className="plain-list">{due.map(item => <li key={item.id}>
         <a href={lessonHref(item.id)}>{item.title}</a>
-        {item.area === "hc" ? <a href={miniHref(item.id)} aria-label={`Miniexamen de ${item.title}`}>Miniexamen</a> : <AreaTag area={item.area}/>}
+        <a href={miniHref(item.id)} aria-label={`Miniexamen de ${item.title}`}>Miniexamen</a>
       </li>)}</ul>
     </section>}
     {!started && available.length > 0 && <section className="panel due-topics">
@@ -252,7 +252,7 @@ export function App() {
     : page === "temario" ? <Curriculum state={state} filter={areaOrder.find(area => area === id)}/>
     : page === "clase" && lesson ? <Workbook key={lesson.id + (target ?? "")} lesson={lesson} target={target} state={state} onAttempt={item => addAttempts([item])} onClass={recordClass}
       onFlag={toggleFlag} announce={announce} onPin={pinned => { update(before => ({ ...before, pinned }), pinned ? "Clase fijada en el inicio." : "Clase quitada del inicio."); }}/>
-    : page === "mini" && lesson?.area === "hc" ? <Suspense fallback={<p>Cargando miniexamen…</p>}>
+    : page === "mini" && lesson ? <Suspense fallback={<p>Cargando miniexamen…</p>}>
       <MiniExam key={lesson.id} lesson={lesson} results={state.miniResults} onFinish={addMini} />
     </Suspense>
     : page === "repaso" ? <Review due={due} state={state} onAttempt={item => addAttempts([item])} onFlag={toggleFlag}/>

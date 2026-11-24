@@ -83,8 +83,9 @@ export function Progress({ state, today, onFlag }: { state: StudyState; today: s
         <div className="stat-list">
           {areaOrder.map(area => {
             const matching = results.attempts.filter(attempt => lessonById.get(attempt.skill)?.area === area);
-            const count = matching.length + (area === "hc" ? miniCount : 0);
-            const right = matching.filter(attempt => attempt.correct).length + (area === "hc" ? miniCorrect : 0);
+            const matchingMinis = minis.filter(item => lessonById.get(item.skill)?.area === area);
+            const count = matching.length + matchingMinis.reduce((sum, item) => sum + item.answers.length, 0);
+            const right = matching.filter(attempt => attempt.correct).length + matchingMinis.reduce((sum, item) => sum + item.correct, 0);
             return <div key={area}><span>{areas[area].title}</span><strong>{right} de {count}</strong></div>;
           })}
         </div>
@@ -105,7 +106,7 @@ export function Progress({ state, today, onFlag }: { state: StudyState; today: s
     </div>
     <section className="panel mini-history" aria-labelledby="mini-history-title">
       <h2 id="mini-history-title">Miniexámenes</h2>
-      {minis.length === 0 ? <p className="muted">Aquí verás el tiempo y los aciertos de tus miniexámenes de Cognoscitiva.</p> :
+      {minis.length === 0 ? <p className="muted">Aquí verás el tiempo y los aciertos de tus miniexámenes.</p> :
         <ul className="plain-list">{minis.map(item => <li key={item.id}>
           <div><a href={miniHref(item.skill)}>{lessonById.get(item.skill)?.title ?? item.skill}</a><p>{dateLabel(item.day)}</p></div>
           <div className="mini-history-result"><strong>{elapsedTime(item.seconds)}</strong><span>{item.correct} de 5</span></div>

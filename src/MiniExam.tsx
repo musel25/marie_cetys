@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { cognitiveForms, miniQuestions } from "./content/cognitiveMini";
+import { miniFormCount, miniQuestions } from "./content/mini";
 import { miniHistory, nextMiniForm, studyDay } from "./study";
 import type { Lesson, MiniResult } from "./types";
 import { AreaTag, elapsedTime, Icon, lessonHref } from "./ui";
@@ -35,9 +35,10 @@ function differenceText(seconds: number) {
 export default function MiniExam({ lesson, results, onFinish }: {
   lesson: Lesson; results: MiniResult[]; onFinish: (result: MiniResult) => Promise<boolean>;
 }) {
-  const forms = cognitiveForms[lesson.id];
+  const formCount = miniFormCount(lesson.id);
+  const questionLanguage = lesson.area === "en" ? "en" : undefined;
   const key = "marie-cetys:mini:" + lesson.id;
-  const [run, setRun] = useState(() => loadRun(key, forms.length));
+  const [run, setRun] = useState(() => loadRun(key, formCount));
   const [now, setNow] = useState(Date.now);
   const [discard, setDiscard] = useState(false);
   const saving = useRef(false);
@@ -80,7 +81,7 @@ export default function MiniExam({ lesson, results, onFinish }: {
   function start() {
     const at = Date.now();
     setNow(at);
-    update({ id: crypto.randomUUID(), started: at, form: nextMiniForm(results, lesson.id, forms.length),
+    update({ id: crypto.randomUUID(), started: at, form: nextMiniForm(results, lesson.id, formCount),
       current: 0, answers: Array(5).fill(null) });
     focusHeading();
   }
@@ -130,7 +131,7 @@ export default function MiniExam({ lesson, results, onFinish }: {
         <h2 ref={heading} tabIndex={-1}>Pregunta {run.current + 1} de 5</h2>
         <span className="timer" role="timer" aria-label="Tiempo transcurrido"><Icon name="clock" size={17}/><time dateTime={`PT${spent}S`}>{elapsedTime(spent)}</time></span>
       </div>
-      <fieldset>
+      <fieldset lang={questionLanguage}>
         <legend className="exercise-prompt">{questionText(question.prompt)}</legend>
         <QuestionVisual prompt={question.prompt} />
         <div className="answers">
@@ -173,10 +174,10 @@ export default function MiniExam({ lesson, results, onFinish }: {
         {miniQuestions(lesson.id, result.form).map((item, index) => <details className="question-details" key={item.id}>
           <summary>Pregunta {index + 1} · {result.answers[index] === item.answer ? "Correcta" : "Incorrecta"}</summary>
           <div className="exercise">
-            <p className="exercise-prompt">{questionText(item.prompt)}</p>
+            <p className="exercise-prompt" lang={questionLanguage}>{questionText(item.prompt)}</p>
             <QuestionVisual prompt={item.prompt} />
-            <p>Tu respuesta: {item.options[result.answers[index]]}</p>
-            <p><strong>Respuesta correcta</strong> · {item.options[item.answer]}</p>
+            <p>Tu respuesta: <span lang={questionLanguage}>{item.options[result.answers[index]]}</span></p>
+            <p><strong>Respuesta correcta</strong> · <span lang={questionLanguage}>{item.options[item.answer]}</span></p>
             <p>{item.explanation}</p>
           </div>
         </details>)}

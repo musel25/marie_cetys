@@ -1,0 +1,554 @@
+{
+  "en-sentence-order": [
+    [
+      {
+        "prompt": "Choose the correct question about the present. “____ the train stop here on Sundays?”",
+        "options": [
+          "Do",
+          "Does",
+          "Is",
+          "Did"
+        ],
+        "answer": 1,
+        "explanation": "Con el sujeto singular the train y el presente simple, usa does y el verbo base stop.",
+        "hint": "Busca el auxiliar del presente que concuerda con un sujeto singular.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Choose the correct negative sentence about yesterday.",
+        "options": [
+          "Jules didn’t brought the map.",
+          "Jules doesn’t brought the map.",
+          "Jules wasn’t bring the map.",
+          "Jules didn’t bring the map."
+        ],
+        "answer": 3,
+        "explanation": "En pasado simple, usa didn’t y el verbo base bring.",
+        "hint": "Revisa la forma del verbo que sigue a didn’t.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Complete the question. “Where ____ the spare keys now?”",
+        "options": [
+          "are",
+          "does",
+          "is",
+          "do"
+        ],
+        "answer": 0,
+        "explanation": "Keys es plural. En una pregunta con be, coloca are antes del sujeto.",
+        "hint": "Comprueba si keys es singular o plural.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Complete the indirect question. “Do you know ____?”",
+        "options": [
+          "when does the pool close",
+          "when close the pool",
+          "when the pool closes",
+          "when is the pool close"
+        ],
+        "answer": 2,
+        "explanation": "En la pregunta indirecta, el sujeto the pool va antes del verbo closes.",
+        "hint": "Coloca primero el sujeto dentro de la pregunta indirecta.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Which sentence asks someone politely to lower the volume?",
+        "options": [
+          "Could you lower the volume?",
+          "Could you lowered the volume?",
+          "Could lower you the volume?",
+          "You could lowering the volume?"
+        ],
+        "answer": 0,
+        "explanation": "Una petición cortés puede empezar con Could you y seguir con el verbo base lower.",
+        "hint": "Empieza con Could you.",
+        "difficulty": "exam"
+      }
+    ]
+  ],
+  "en-verb-forms": [
+    [
+      {
+        "prompt": "Complete the sentence. “Every Friday, the coach ____ the team a new drill.”",
+        "options": [
+          "show",
+          "is shown",
+          "shows",
+          "showing"
+        ],
+        "answer": 2,
+        "explanation": "Every Friday indica una rutina. Coach es singular, así que en presente simple se usa shows.",
+        "hint": "Every Friday indica una rutina.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Complete the sentence. “At 8 p.m. last night, we ____ for the ferry when the announcement came.”",
+        "options": [
+          "waits",
+          "were waiting",
+          "are waiting",
+          "will wait"
+        ],
+        "answer": 1,
+        "explanation": "Were waiting indica una acción que ya estaba en curso cuando llegó el aviso.",
+        "hint": "Busca una acción que estaba en curso en el pasado.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Which sentence reports in the passive voice what happened yesterday?",
+        "options": [
+          "The crew repaired the dock.",
+          "The crew is repairing the dock.",
+          "The dock repairs the crew.",
+          "The dock was repaired by the crew."
+        ],
+        "answer": 3,
+        "explanation": "El muelle recibe la acción. La pasiva en pasado usa was y el participio repaired.",
+        "hint": "Busca la oración en que el muelle recibe la acción.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Complete the rule. “Safety glasses must ____ in this lab.”",
+        "options": [
+          "be worn",
+          "be wore",
+          "wearing",
+          "been worn"
+        ],
+        "answer": 0,
+        "explanation": "Después de must, la voz pasiva lleva be y el participio worn.",
+        "hint": "Busca una forma de be seguida de un participio.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Complete the sentence about a reservation they did not make. “If they ____ a table, they would have eaten there.”",
+        "options": [
+          "reserve",
+          "had reserved",
+          "are reserving",
+          "would reserve"
+        ],
+        "answer": 1,
+        "explanation": "Para imaginar una condición pasada que no ocurrió, usa if seguido de had y el participio reserved.",
+        "hint": "Busca el pasado perfecto después de if.",
+        "difficulty": "exam"
+      }
+    ]
+  ],
+  "en-word-forms": [
+    [
+      {
+        "prompt": "Complete the sentence. “Four ____ followed their mother across the pond.”",
+        "options": [
+          "gooses",
+          "goose",
+          "goose’s",
+          "geese"
+        ],
+        "answer": 3,
+        "explanation": "El plural irregular de goose es geese.",
+        "hint": "El plural de goose es irregular.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Which phrase refers to one lunchroom used by several teachers?",
+        "options": [
+          "the teachers’ lunchroom",
+          "the teacher’s lunchroom",
+          "the teachers lunchroom",
+          "the teachers’s lunchroom"
+        ],
+        "answer": 0,
+        "explanation": "Teachers es plural y termina en s. Añade el apóstrofo después de la s.",
+        "hint": "Pon la marca de posesión después del plural.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Choose the phrase with the usual order of adjectives.",
+        "options": [
+          "two green small bowls",
+          "small two green bowls",
+          "two small green bowls",
+          "green small two bowls"
+        ],
+        "answer": 2,
+        "explanation": "El orden usual es cantidad, tamaño y color.",
+        "hint": "Coloca el tamaño antes del color.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Complete the comparison. “Of the three bikes, Mina’s is ____.” (light)",
+        "options": [
+          "lighter than",
+          "the lightest",
+          "more light",
+          "light"
+        ],
+        "answer": 1,
+        "explanation": "Para distinguir una bicicleta de todo el grupo, usa el superlativo the lightest.",
+        "hint": "Compara una bicicleta con las otras dos.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Complete the sentence. “The long delay was ____, and the passengers felt ____.”",
+        "options": [
+          "frustrated / frustrating",
+          "frustrating / frustrating",
+          "frustrated / frustrated",
+          "frustrating / frustrated"
+        ],
+        "answer": 3,
+        "explanation": "Frustrating describe lo que causa la sensación. Frustrated describe cómo se sienten los pasajeros.",
+        "hint": "Distingue la causa de la sensación y la persona que la siente.",
+        "difficulty": "exam"
+      }
+    ]
+  ],
+  "en-function-words": [
+    [
+      {
+        "prompt": "Complete the sentence. “The art show opens ____ May 18.”",
+        "options": [
+          "in",
+          "at",
+          "on",
+          "between"
+        ],
+        "answer": 2,
+        "explanation": "Usa on con un día o una fecha específica.",
+        "hint": "Identifica si se trata de un mes o una fecha completa.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Complete the sentence. “The guide waited for Dana and ____ near the entrance.”",
+        "options": [
+          "we",
+          "us",
+          "our",
+          "ours"
+        ],
+        "answer": 1,
+        "explanation": "Después de la preposición for, usa el pronombre de objeto us.",
+        "hint": "Busca un pronombre que pueda seguir a una preposición.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Complete the sentence. “These gloves belong to you. They are ____.”",
+        "options": [
+          "yours",
+          "your",
+          "you",
+          "yourself"
+        ],
+        "answer": 0,
+        "explanation": "Yours reemplaza a your gloves. Your por sí solo necesita un sustantivo después.",
+        "hint": "La palabra ocupa el lugar de your gloves.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Complete the question. “How ____ chairs do we need for the meeting?”",
+        "options": [
+          "much",
+          "this",
+          "that",
+          "many"
+        ],
+        "answer": 3,
+        "explanation": "Chairs es un sustantivo contable plural. Usa many para preguntar cuántas sillas hacen falta.",
+        "hint": "Comprueba si las sillas se pueden contar.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Choose the connector that shows contrast. “Eli packed a raincoat, ____ he forgot his boots.”",
+        "options": [
+          "because",
+          "so",
+          "but",
+          "or"
+        ],
+        "answer": 2,
+        "explanation": "But contrasta lo que Eli empacó con lo que olvidó.",
+        "hint": "Compara lo que Eli empacó con lo que olvidó.",
+        "difficulty": "exam"
+      }
+    ]
+  ],
+  "en-reading-evidence": [
+    [
+      {
+        "prompt": "A class kept three bean plants at the same temperature. They put one by the window, one on a high shelf, and one in a dark cupboard. They gave each plant the same amount of water.\n\nWhere was the third plant?",
+        "options": [
+          "On a high shelf",
+          "In a dark cupboard",
+          "By the window",
+          "Outside the classroom"
+        ],
+        "answer": 1,
+        "explanation": "El texto coloca las tres plantas en ese orden. La tercera estaba en un armario oscuro.",
+        "hint": "Sigue el orden de los lugares que enumera el texto.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Before Jana boarded the bus, she bought a ticket. After boarding, she found a seat and then opened her book.\n\nWhat did Jana do immediately after boarding?",
+        "options": [
+          "She bought a ticket.",
+          "She opened her book.",
+          "She got off the bus.",
+          "She found a seat."
+        ],
+        "answer": 3,
+        "explanation": "Después de subir, primero encontró un asiento y luego abrió el libro.",
+        "hint": "Busca la primera acción que sigue a After boarding.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Noel saw a line at the cafeteria, checked the clock, and pulled a sandwich from his bag. The bell rang two minutes later.\n\nWhat can you reasonably infer?",
+        "options": [
+          "Noel wanted to eat without waiting in line.",
+          "Noel had already bought lunch at the cafeteria.",
+          "Noel worked at the cafeteria.",
+          "Noel wanted to miss the bell."
+        ],
+        "answer": 0,
+        "explanation": "La fila, el reloj y el sándwich que ya traía indican que optó por comer sin esperar.",
+        "hint": "Relaciona la fila con el poco tiempo antes del timbre.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "By afternoon, the puddle was shallow. Its surface barely covered the soles of Lee’s shoes.\n\nWhat does shallow mean here?",
+        "options": [
+          "Full of mud",
+          "Hard to see",
+          "Not deep",
+          "Very cold"
+        ],
+        "answer": 2,
+        "explanation": "Si el agua apenas cubría las suelas, el charco tenía poca profundidad.",
+        "hint": "Fíjate en cuánto cubría el agua.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "On Monday, the school replaced paper signs on the classroom doors with reusable boards. Teachers can erase the boards whenever room assignments change.\n\nWhich statement is an opinion?",
+        "options": [
+          "The school replaced the signs on Monday.",
+          "The reusable boards look much better than paper signs.",
+          "Teachers can erase the boards.",
+          "The signs were on classroom doors."
+        ],
+        "answer": 1,
+        "explanation": "Look much better expresa una valoración. Las otras afirmaciones se pueden verificar en el texto.",
+        "hint": "Busca un juicio sobre la apariencia.",
+        "difficulty": "exam"
+      }
+    ]
+  ],
+  "en-reading-literary": [
+    [
+      {
+        "prompt": "I watched my sister finish her lap. Then I stepped onto the track and tightened my shoelaces.\n\nWhat is the point of view?",
+        "options": [
+          "First person, told by a participant",
+          "Third person, told by someone outside the scene",
+          "Second person, told directly to the reader",
+          "First person, told by the sister"
+        ],
+        "answer": 0,
+        "explanation": "El narrador usa I para contar lo que hizo y llama my sister a la otra persona.",
+        "hint": "Busca el pronombre que usa el narrador para hablar de sí mismo.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Tariq had promised to speak up at the meeting. He knew what to say, but he was afraid the others would laugh. He took a breath and tried to decide whether to raise his hand.\n\nWhat is Tariq’s main conflict?",
+        "options": [
+          "He cannot find the meeting room.",
+          "The others prevent him from speaking.",
+          "He struggles to choose between speaking and staying quiet.",
+          "He disagrees with a rule about raising hands."
+        ],
+        "answer": 2,
+        "explanation": "El conflicto es interno. Tariq quiere hablar y debe decidir si se atreve.",
+        "hint": "Observa si el obstáculo está dentro o fuera del personaje.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Read the sentence. “The airport at dawn was a beehive of activity.”\n\nWhat kind of figurative language is used?",
+        "options": [
+          "A simile",
+          "A metaphor",
+          "A literal definition",
+          "An instruction"
+        ],
+        "answer": 1,
+        "explanation": "La oración llama colmena al aeropuerto de forma directa para presentar su actividad intensa.",
+        "hint": "Busca una comparación directa.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Read the passage. “At last, the lost puppy bounded through the gate. Elena dropped her umbrella and laughed as he splashed straight into her arms.”\n\nWhat tone does the passage convey?",
+        "options": [
+          "Suspicious",
+          "Formal and distant",
+          "Bored",
+          "Relieved and joyful"
+        ],
+        "answer": 3,
+        "explanation": "At last, la risa y el reencuentro transmiten alivio y alegría.",
+        "hint": "Fíjate en la reacción de Elena al reencontrar al cachorro.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Read the passage. “A rain gauge collects water in a marked container. To measure daily rainfall, check the level at the same time each day and empty the container after reading it.”\n\nWhat is its main purpose?",
+        "options": [
+          "To tell a story about a storm",
+          "To persuade readers to buy a rain gauge",
+          "To explain how to measure daily rainfall",
+          "To describe the sound of rain"
+        ],
+        "answer": 2,
+        "explanation": "El texto explica qué hace el instrumento y cómo usarlo para medir la lluvia del día.",
+        "hint": "Busca la acción que el texto enseña a hacer.",
+        "difficulty": "exam"
+      }
+    ]
+  ],
+  "en-writing-organization": [
+    [
+      {
+        "prompt": "Choose the best opening sentence. “____. Members mend torn pages, replace missing labels, and sort books by reading level.”",
+        "options": [
+          "Some pages have pictures.",
+          "The library has three doors.",
+          "The reading club helps care for the library’s books.",
+          "Reading before bed can be relaxing."
+        ],
+        "answer": 2,
+        "explanation": "La primera oración presenta la tarea del club. Las acciones siguientes explican cómo cuida los libros.",
+        "hint": "Busca la idea que une las tres tareas.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Choose the transition that shows a result. “The elevator was out of service. ____, we carried the boxes up the stairs.”",
+        "options": [
+          "Therefore",
+          "For example",
+          "However",
+          "Meanwhile"
+        ],
+        "answer": 0,
+        "explanation": "Therefore indica que subir por las escaleras fue consecuencia de la falla.",
+        "hint": "Busca un conector que introduzca una consecuencia.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Put the steps in the best order.\n\n(1) Once the glue dried, Ren folded the booklet. (2) Ren stacked the printed pages. (3) She glued the stacked pages along one edge. (4) Finally, she handed the booklet to the librarian.",
+        "options": [
+          "3, 2, 1, 4",
+          "2, 1, 3, 4",
+          "2, 3, 4, 1",
+          "2, 3, 1, 4"
+        ],
+        "answer": 3,
+        "explanation": "Primero se apilan las páginas, luego se pegan. Después de secarse el pegamento se dobla el cuadernillo y al final se entrega.",
+        "hint": "Las hojas deben estar apiladas antes de pegarse.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Which sentence does not belong in a paragraph about harvesting tomatoes?\n\n(1) Rosa checked the plants for ripe tomatoes. (2) She twisted each ripe tomato off the vine. (3) The garden fence was painted last spring. (4) She put the tomatoes in a shallow basket.",
+        "options": [
+          "Sentence 1",
+          "Sentence 3",
+          "Sentence 4",
+          "Sentence 2"
+        ],
+        "answer": 1,
+        "explanation": "El dato sobre la cerca no describe ningún paso de la cosecha.",
+        "hint": "Verifica si cada oración habla de recolectar los tomates.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Choose the best conclusion. “The student team moved its meeting from Friday to Tuesday. In the next month, attendance rose from six students to eleven. ____.”",
+        "options": [
+          "The change was followed by higher attendance.",
+          "Tuesday is the second school day of the week.",
+          "The team should cancel the meeting.",
+          "The students discussed a poster design."
+        ],
+        "answer": 0,
+        "explanation": "La conclusión resume la relación que muestra el párrafo. La asistencia subió después del cambio de día.",
+        "hint": "La conclusión debe recoger el cambio que muestran las cifras.",
+        "difficulty": "exam"
+      }
+    ]
+  ],
+  "en-writing-editing": [
+    [
+      {
+        "prompt": "Which sentence uses a comma correctly after the opening clause?",
+        "options": [
+          "When the timer rang Lila turned off the oven.",
+          "When, the timer rang Lila turned off the oven.",
+          "When the timer rang Lila, turned off the oven.",
+          "When the timer rang, Lila turned off the oven."
+        ],
+        "answer": 3,
+        "explanation": "La coma va después de la cláusula introductoria completa When the timer rang.",
+        "hint": "Localiza dónde acaba la cláusula que empieza con When.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Choose the correctly punctuated sentence. The fact that the bike is blue is extra information.",
+        "options": [
+          "My bike which is blue, needs a new tire.",
+          "My bike, which is blue, needs a new tire.",
+          "My bike, which is blue needs a new tire.",
+          "My bike which is blue needs, a new tire."
+        ],
+        "answer": 1,
+        "explanation": "Encierra la información adicional which is blue entre dos comas.",
+        "hint": "Marca el inicio y el final de la información adicional.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Choose the most precise replacement for “made the hole bigger.” “The carpenter made the hole bigger to fit the new pipe.”",
+        "options": [
+          "measured the hole",
+          "filled the hole",
+          "widened the hole",
+          "covered the hole"
+        ],
+        "answer": 2,
+        "explanation": "Widened the hole conserva la idea de aumentar el ancho del orificio.",
+        "hint": "Busca un verbo que signifique aumentar el ancho.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Choose the best edit to remove repetition. “The two copies are exactly identical.”",
+        "options": [
+          "The two copies are identical.",
+          "The two copies are exactly.",
+          "The copies are two exactly identical.",
+          "The two copies are identical and the same."
+        ],
+        "answer": 0,
+        "explanation": "Identical ya indica que son iguales. Quitar exactly conserva el sentido.",
+        "hint": "Encuentra el adverbio que repite una idea ya expresada.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Choose the grammatically correct edit that keeps the cause-and-effect relationship. “The freezer door stayed open. The ice cream melted.”",
+        "options": [
+          "The freezer door stayed open although the ice cream melted.",
+          "The freezer door stayed open, the ice cream melted.",
+          "The freezer door stayed open because the ice cream melted.",
+          "The freezer door stayed open, so the ice cream melted."
+        ],
+        "answer": 3,
+        "explanation": "So presenta el resultado. La puerta quedó abierta y, como consecuencia, el helado se derritió.",
+        "hint": "Busca una conjunción que presente un resultado.",
+        "difficulty": "exam"
+      }
+    ]
+  ]
+}

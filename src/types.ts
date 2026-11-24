@@ -18,6 +18,7 @@ export interface LessonDraft {
   objective: string;
   explanation: string[];
   example: { prompt: string; steps: string[] };
+  workedExamples?: { prompt: string; explanation: string }[];
   prerequisiteIds: string[];
   source: string;
   exercises: Exercise[];

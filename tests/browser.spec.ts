@@ -282,3 +282,40 @@ test("keeps class mode when returning from a miniexam and clears it after loggin
   await page.getByRole("button", { name: /Guardar sesión/ }).click();
   await expect(classMode).not.toBeChecked();
 });
+
+test("Spanish lessons show worked examples and a mini-exam after the exercises", async ({ page }) => {
+  await page.setViewportSize({ width: 360, height: 800 });
+  await page.clock.setFixedTime(new Date("2026-11-24T20:00:00Z"));
+  await page.goto("/#/clase/es-ortografia");
+  await expect(page.getByRole("heading", { name: "Ejemplos resueltos" })).toBeVisible();
+  const afterExercises = page.locator("#ejercicios + section");
+  const miniLink = afterExercises.getByRole("link", { name: "Hacer miniexamen", exact: true });
+  await expect(miniLink).toHaveAttribute("href", "#/mini/es-ortografia");
+  await miniLink.click();
+  await page.getByRole("button", { name: "Empezar miniexamen" }).click();
+  for (let index = 0; index < 5; index++) {
+    await page.getByRole("radio").first().check();
+    if (index < 4) await page.getByRole("button", { name: "Siguiente", exact: true }).click();
+  }
+  await page.getByRole("button", { name: "Entregar miniexamen" }).click();
+  await expect(page.getByRole("heading", { name: "Resultado del miniexamen" })).toBeVisible();
+  await page.getByRole("link", { name: "Ver progreso", exact: true }).click();
+  await page.reload();
+  await expect(page.getByRole("region", { name: "Miniexámenes", exact: true }).getByRole("link", { name: "Mayúsculas y acentuación", exact: true })).toHaveAttribute("href", "#/mini/es-ortografia");
+  await expect(page.getByText("Español", { exact: true }).locator("..")).toContainText("1 de 5");
+
+  await page.clock.setFixedTime(new Date("2026-11-25T20:00:00Z"));
+  await page.goto("/#/repaso");
+  await page.reload();
+  await expect(page.getByRole("link", { name: "Miniexamen de Mayúsculas y acentuación" })).toHaveAttribute("href", "#/mini/es-ortografia");
+});
+
+for (const skill of ["mat-enteros", "en-sentence-order"]) {
+  test(`opens the mini-exam from the class guide for ${skill}`, async ({ page }) => {
+    await page.goto(`/#/clase/${skill}`);
+    await page.getByRole("link", { name: "Ir al miniexamen", exact: true }).click();
+    await page.getByRole("button", { name: "Empezar miniexamen" }).click();
+    await expect(page.getByRole("heading", { name: "Pregunta 1 de 5" })).toBeVisible();
+    await expect(page.getByRole("radio")).toHaveCount(4);
+  });
+}
