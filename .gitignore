@@ -1,0 +1,8 @@
+node_modules/
+dist/
+playwright-report/
+test-results/
+*.tsbuildinfo
+.env*
+/Material PIENSE II/
+/Prueba de práctica PIENSE II.pdf
