@@ -10,7 +10,8 @@
     "dev": "vite --host 127.0.0.1",
     "build": "tsc --noEmit && vite build",
     "test": "tsx --test tests/*.test.ts",
-    "check": "npm test && npm run build"
+    "check": "npm test && npm run build",
+    "test:browser": "playwright test"
   },
   "dependencies": {
     "react": "^19.3.1",

@@ -1,0 +1,949 @@
+[
+  {
+    "id": "hc-orden",
+    "title": "Ordenar con pistas",
+    "objective": "Ubica letras o números con pistas de posición y elige el orden que cumple todas las pistas.",
+    "explanation": [
+      "Dibuja una casilla por letra o número. Lee de izquierda a derecha.",
+      "En A–X–B, A va antes de B. En A–B–X, A va inmediatamente antes de B. «Inmediatamente» indica que no hay una casilla en medio.",
+      "En A–X–B, B va después de A. Si dos letras van juntas, ocupan casillas vecinas.",
+      "En A–X–B–C, B queda entre A y C. El orden inverso también sirve. B no tiene que tocar los extremos.",
+      "Tacha las casillas prohibidas. Si R no va antes de M, pon R a la derecha de M. Si tampoco va después de P, pon R a la izquierda de P.",
+      "Prueba una pista. Tacha las opciones que fallen. Repite con las otras pistas."
+    ],
+    "example": {
+      "prompt": "Ordena R, M, T y P. T va antes de M. R va después de M. P va entre T y M. R no puede quedar junto a T.",
+      "steps": [
+        "T va a la izquierda de M. R va a la derecha de M. Anota el orden T–M–R. Deja las cuatro casillas vacías.",
+        "Inserta P entre T y M. Escribe el orden completo en las casillas: T–P–M–R.",
+        "Comprueba la última pista. T ocupa la primera casilla y R la cuarta."
+      ]
+    },
+    "source": "Guía de College Board 2019, pp. 7 y 13 del PDF. Temario de CETYS, pp. 4–5. Prueba de práctica PIENSE II, pp. 2–3, ejercicios 1–6.",
+    "prerequisiteIds": [],
+    "exercises": [
+      {
+        "prompt": "A va antes de C. B va después de C. ¿Qué orden cumple las dos pistas?",
+        "options": [
+          "A, B, C",
+          "A, C, B",
+          "C, A, B",
+          "B, C, A"
+        ],
+        "answer": 1,
+        "explanation": "C queda después de A y antes de B. El orden es A, C, B.",
+        "hint": "Pon C en el centro de tres casillas.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "7 va después de 4. 2 va entre 4 y 7. ¿Qué orden cumple las dos pistas?",
+        "options": [
+          "4, 7, 2",
+          "7, 2, 4",
+          "2, 4, 7",
+          "4, 2, 7"
+        ],
+        "answer": 3,
+        "explanation": "La segunda pista pone a 2 en el centro. La primera pone a 4 a la izquierda de 7.",
+        "hint": "Busca primero los órdenes que tienen a 2 en la segunda casilla.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Q va inmediatamente antes de S. R va después de S. P va antes de Q. ¿Qué orden cumple todas las pistas?",
+        "options": [
+          "P, Q, S, R",
+          "Q, P, S, R",
+          "P, S, Q, R",
+          "P, Q, R, S"
+        ],
+        "answer": 0,
+        "explanation": "Q y S forman un bloque en ese orden. P queda antes del bloque y R queda después.",
+        "hint": "Trata Q y S como un bloque de dos casillas.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "M va entre L y P. P va antes de K. L no va antes de M. ¿Qué orden cumple todas las pistas?",
+        "options": [
+          "L, M, P, K",
+          "K, P, M, L",
+          "P, M, L, K",
+          "P, L, M, K"
+        ],
+        "answer": 2,
+        "explanation": "L queda después de M. Como M está entre L y P, P queda antes de M. P también queda antes de K.",
+        "hint": "Cambia «L no va antes de M» por una pista que diga «después de».",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "9 va antes de 6. 3 no va antes de 9 ni después de 6. 1 va inmediatamente después de 3. ¿Qué orden cumple todas las pistas?",
+        "options": [
+          "9, 3, 1, 6",
+          "3, 1, 9, 6",
+          "9, 1, 3, 6",
+          "9, 3, 6, 1"
+        ],
+        "answer": 0,
+        "explanation": "Las dos prohibiciones ponen 3 entre 9 y 6. La siguiente casilla es para 1.",
+        "hint": "Escribe por separado las dos posiciones que 3 tiene prohibidas.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "F va entre D y H. E va inmediatamente después de D. H no va después de F. ¿Qué orden cumple todas las pistas?",
+        "options": [
+          "D, E, F, H",
+          "H, F, D, E",
+          "H, D, E, F",
+          "F, H, D, E"
+        ],
+        "answer": 1,
+        "explanation": "H queda antes de F, así que la pista «entre» fija H–F–D. Coloca E justo después de D.",
+        "hint": "Determina cuál de los extremos, D o H, queda antes de F.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "T va antes de V. U va entre S y V. S va inmediatamente después de T. W no va junto a V. ¿Qué orden cumple todas las pistas?",
+        "options": [
+          "T, S, V, U, W",
+          "S, T, W, U, V",
+          "T, S, U, V, W",
+          "W, T, S, U, V"
+        ],
+        "answer": 3,
+        "explanation": "El orden T–S–U–V cumple las tres primeras pistas. Con W al principio, W queda separado de V.",
+        "hint": "Busca primero el bloque T–S. Revisa al final los vecinos de V.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "B va antes de A. E va entre A y C. D va antes de B, pero no junto a B. C va inmediatamente antes de D. F va después de D. ¿Qué orden cumple todas las pistas?",
+        "options": [
+          "C, D, F, B, A, E",
+          "E, C, D, B, F, A",
+          "E, F, C, D, B, A",
+          "C, D, F, B, E, A"
+        ],
+        "answer": 3,
+        "explanation": "C y D forman un bloque. F separa a D de B. E queda después de C y antes de A, y B va antes de A.",
+        "hint": "La pista «no junto a B» exige una casilla entre D y B.",
+        "difficulty": "challenge"
+      },
+      {
+        "prompt": "4 va entre 8 y 2. 2 va antes de 7. 8 no va antes de 4. 6 va inmediatamente después de 7. ¿Qué debe ser cierto en cualquier orden que cumpla las pistas?",
+        "options": [
+          "8 va antes de 7.",
+          "4 va antes de 6.",
+          "2 va antes de 8.",
+          "7 va antes de 4."
+        ],
+        "answer": 2,
+        "explanation": "Como 8 va después de 4 y 4 va entre 8 y 2, queda 2–4–8. Las pistas también fijan 2–7–6. La posición de 4 y 8 frente al bloque 7–6 puede cambiar.",
+        "hint": "Escribe dos órdenes válidos. Busca la afirmación que se cumple en ambos.",
+        "difficulty": "challenge"
+      }
+    ]
+  },
+  {
+    "id": "hc-metaforas",
+    "title": "Encontrar el sentido de una metáfora",
+    "objective": "Relaciona una descripción figurada con la opción que mejor comparte sus características.",
+    "explanation": [
+      "Una metáfora describe algo con palabras que normalmente se usan para otra cosa. «Manto de nieve» compara la nieve que cubre el suelo con una manta.",
+      "Identifica las pistas de la frase. En «manto de nieve», manto indica que cubre y nieve indica de qué está hecha la capa.",
+      "Traduce cada pista a una característica que puedas buscar en las opciones. Puede ser forma, color, función, sonido o movimiento.",
+      "Compara las cuatro opciones. Elige la que reúna las características más importantes de la frase."
+    ],
+    "example": {
+      "prompt": "¿Qué sugiere la frase «Lágrimas de la vela»? Considera estas opciones. Humo, mecha, cera derretida o chispa.",
+      "steps": [
+        "Una lágrima es una gota que baja por una superficie.",
+        "Busca algo de la vela que forme gotas y caiga por su costado.",
+        "La cera derretida forma esas gotas. El humo sube y la mecha permanece en su sitio."
+      ]
+    },
+    "source": "Guía de College Board 2019, pp. 7 y 13–14 del PDF. Temario de CETYS, pp. 6–7. Prueba de práctica PIENSE II, p. 3, ejercicios 7–11.",
+    "prerequisiteIds": [],
+    "exercises": [
+      {
+        "prompt": "¿Qué representa mejor «Alfombra de hojas»?",
+        "options": [
+          "Una rama con brotes",
+          "Un tronco hueco",
+          "Un camino cubierto de hojas",
+          "Un árbol sin hojas"
+        ],
+        "answer": 2,
+        "explanation": "La alfombra cubre una superficie. Las hojas cubren el suelo del camino.",
+        "hint": "Piensa dónde se coloca una alfombra.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Qué representa mejor «Dientes del peine»?",
+        "options": [
+          "Las puntas alineadas",
+          "El mango del peine",
+          "El cabello recogido",
+          "La caja del peine"
+        ],
+        "answer": 0,
+        "explanation": "Las puntas del peine se alinean como los dientes de una boca.",
+        "hint": "Busca varias partes pequeñas en fila.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Qué representa mejor «Un espejo en el lago»?",
+        "options": [
+          "La espuma de la orilla",
+          "Los peces cerca del fondo",
+          "El lodo bajo el agua",
+          "La superficie tranquila que refleja el cielo"
+        ],
+        "answer": 3,
+        "explanation": "El espejo refleja imágenes. El agua tranquila refleja el cielo en su superficie.",
+        "hint": "Piensa qué hace un espejo con la luz.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Qué representa mejor «Soldados de cera» en un pastel de cumpleaños?",
+        "options": [
+          "Las velas colocadas en fila",
+          "Los platos apilados",
+          "Las chispas de colores",
+          "Los trozos de fruta"
+        ],
+        "answer": 0,
+        "explanation": "Las velas son de cera y se mantienen firmes en fila, como soldados.",
+        "hint": "Busca algo que sea de cera y pueda quedar de pie.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Qué representa mejor «Un río de luces» visto desde un puente sobre la avenida?",
+        "options": [
+          "Un letrero luminoso",
+          "Una fila de autos en movimiento",
+          "Las luces fijas de los edificios",
+          "El reflejo de la Luna sobre un charco"
+        ],
+        "answer": 1,
+        "explanation": "Los autos llevan luces y avanzan por la avenida en un flujo continuo, como el agua de un río.",
+        "hint": "Busca luces que se desplacen juntas por un recorrido.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Qué representa mejor «La memoria del bosque escrita en círculos»?",
+        "options": [
+          "Los hongos que crecen cerca de un tronco",
+          "Los círculos que deja la lluvia en un charco",
+          "Los anillos de crecimiento de un árbol",
+          "Las marcas en espiral de una concha"
+        ],
+        "answer": 2,
+        "explanation": "Los anillos del tronco forman círculos y conservan información sobre el crecimiento del árbol a lo largo del tiempo.",
+        "hint": "Busca círculos que guarden información del pasado.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "En una azotea, los vecinos siembran hortalizas. ¿Qué destaca la frase «Un pequeño oasis sobre el cemento»?",
+        "options": [
+          "El calor que acumula el edificio",
+          "La dificultad de instalar una manguera",
+          "La altura del edificio sobre la calle",
+          "Un lugar con vegetación en medio de construcciones"
+        ],
+        "answer": 3,
+        "explanation": "Un oasis reúne agua y vegetación en una zona seca. La frase resalta que el huerto crea una zona verde entre superficies de cemento.",
+        "hint": "Un oasis tiene agua y vegetación. Busca qué parte de la azotea se parece a un oasis.",
+        "difficulty": "challenge"
+      }
+    ]
+  },
+  {
+    "id": "hc-analogias",
+    "title": "Completar analogías",
+    "objective": "Explica la relación entre dos palabras y encuentra otra pareja con la misma relación y el mismo orden.",
+    "explanation": [
+      "Una analogía compara dos relaciones. Lee «A es a B como C es a ___» como una comparación entre parejas.",
+      "Escribe la relación de la primera pareja en una frase. Por ejemplo, «El hilo es el material con el que se hace una tela».",
+      "Sustituye los términos de tu frase con la segunda pareja. Conserva la dirección de la relación. En el ejemplo va primero el material y luego el producto.",
+      "Si dos opciones se relacionan con C, comprueba cuál repite la relación específica. Busca función, parte y conjunto, material y producto, lugar, cualidad u oposición."
+    ],
+    "example": {
+      "prompt": "Cincel es a tallar como aguja es a ___. Considera coser, tela, dedal e hilo.",
+      "steps": [
+        "Expresa la primera relación. Un cincel es una herramienta que sirve para tallar.",
+        "Conserva el orden «herramienta → acción». Una aguja sirve para coser.",
+        "Comprueba «tela» e «hilo». Son materiales que se usan al coser. La acción es coser."
+      ]
+    },
+    "source": "Guía de College Board 2019, pp. 7 y 14 del PDF. Temario de CETYS, pp. 6–7. Prueba de práctica PIENSE II, p. 4, ejercicios 12–16.",
+    "prerequisiteIds": [],
+    "exercises": [
+      {
+        "prompt": "Escoba es a barrer como martillo es a ___.",
+        "options": [
+          "Clavo",
+          "Golpear",
+          "Madera",
+          "Mango"
+        ],
+        "answer": 1,
+        "explanation": "La escoba sirve para barrer. El martillo sirve para golpear.",
+        "hint": "Busca una acción, como «barrer».",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Página es a cuaderno como rueda es a ___.",
+        "options": [
+          "Goma",
+          "Redonda",
+          "Girar",
+          "Bicicleta"
+        ],
+        "answer": 3,
+        "explanation": "La página es una parte del cuaderno. La rueda es una parte de la bicicleta.",
+        "hint": "Escribe «es parte de» entre los dos primeros términos.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Ladrido es a perro como maullido es a ___.",
+        "options": [
+          "Gato",
+          "Pez",
+          "Caballo",
+          "Pato"
+        ],
+        "answer": 0,
+        "explanation": "El perro hace el sonido llamado ladrido. El gato hace el sonido llamado maullido.",
+        "hint": "La primera palabra de cada pareja es un sonido.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Barro es a vasija como lana es a ___.",
+        "options": [
+          "Aguja",
+          "Oveja",
+          "Bufanda",
+          "Tejedor"
+        ],
+        "answer": 2,
+        "explanation": "El barro puede ser el material de una vasija. La lana puede ser el material de una bufanda.",
+        "hint": "Empieza con «Con barro se fabrica una…».",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Abundante es a escaso como temporal es a ___.",
+        "options": [
+          "Breve",
+          "Permanente",
+          "Reciente",
+          "Frecuente"
+        ],
+        "answer": 1,
+        "explanation": "«Abundante» y «escaso» expresan cantidades opuestas. «Temporal» y «permanente» expresan duraciones opuestas.",
+        "hint": "Identifica si las dos primeras palabras son sinónimos o antónimos.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Termómetro es a temperatura como cronómetro es a ___.",
+        "options": [
+          "Alarma",
+          "Velocidad",
+          "Batería",
+          "Duración"
+        ],
+        "answer": 3,
+        "explanation": "Un termómetro mide la temperatura. Un cronómetro mide la duración de un intervalo.",
+        "hint": "Completa la frase «Este instrumento mide…».",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Catálogo es a localizar libros como índice es a ___.",
+        "options": [
+          "Localizar temas en un libro",
+          "Escribir notas en un margen",
+          "Ordenar estantes por tamaño",
+          "Añadir dibujos a un libro"
+        ],
+        "answer": 0,
+        "explanation": "El catálogo permite localizar libros en una colección. El índice permite localizar temas en un libro.",
+        "hint": "Identifica qué ayuda a encontrar cada lista.",
+        "difficulty": "challenge"
+      }
+    ]
+  },
+  {
+    "id": "hc-secuencias",
+    "title": "Completar secuencias",
+    "objective": "Identifica una regla que se repite en números o letras y úsala para completar los espacios.",
+    "explanation": [
+      "Compara varios pares de términos. Comprueba si la secuencia suma, resta o multiplica siempre por el mismo valor.",
+      "Si los cambios alternan, separa las posiciones impares y pares. Busca una regla en cada grupo.",
+      "Si cada término contiene una letra y un número, sigue las letras y los números por separado. Revisa si alternan mayúsculas y minúsculas.",
+      "Elige una regla que explique todos los términos visibles. Si falta un dato en medio, comprueba también el término que viene después."
+    ],
+    "example": {
+      "prompt": "Completa la secuencia b4, d7, f10, h13, ___.",
+      "steps": [
+        "Separa las letras b, d, f, h. Cada paso avanza dos posiciones del alfabeto. Después de h viene j en este patrón.",
+        "Separa los números 4, 7, 10, 13. Cada paso suma 3. El siguiente número es 16.",
+        "Junta la letra y el número. El término que falta es j16."
+      ]
+    },
+    "source": "Guía de College Board 2019, pp. 7 y 15 del PDF. Temario de CETYS, pp. 8–9. Prueba de práctica PIENSE II, p. 5, ejercicios 17–21.",
+    "prerequisiteIds": [],
+    "exercises": [
+      {
+        "prompt": "Completa la secuencia 11, 15, 19, ___, 27.",
+        "options": [
+          "21",
+          "22",
+          "23",
+          "25"
+        ],
+        "answer": 2,
+        "explanation": "Cada paso suma 4. Entre 19 y 27 queda 23.",
+        "hint": "Resta el primer número al segundo y compara con el siguiente salto.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Completa la secuencia 3, 6, 12, 24, ___.",
+        "options": [
+          "48",
+          "36",
+          "42",
+          "27"
+        ],
+        "answer": 0,
+        "explanation": "Cada término es el doble del anterior. El doble de 24 es 48.",
+        "hint": "Comprueba si cada número es el doble del anterior.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Completa la secuencia a, d, g, ___, m.",
+        "options": [
+          "h",
+          "i",
+          "k",
+          "j"
+        ],
+        "answer": 3,
+        "explanation": "Cada letra avanza tres lugares. Desde g cuentas h, i y j. Desde j cuentas k, l y m.",
+        "hint": "Escribe las letras que quedan entre a y d.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Completa la secuencia c2, e5, ___, i11.",
+        "options": [
+          "f8",
+          "g8",
+          "g7",
+          "h9"
+        ],
+        "answer": 1,
+        "explanation": "Las letras avanzan dos posiciones de c a e, de e a g y de g a i. Los números suman 3 en cada paso.",
+        "hint": "Resuelve primero c, e, ___, i. Después resuelve 2, 5, ___, 11.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Completa la secuencia 2, 20, 5, 18, 8, 16, ___, ___.",
+        "options": [
+          "11, 14",
+          "10, 14",
+          "11, 15",
+          "14, 11"
+        ],
+        "answer": 0,
+        "explanation": "En los lugares impares aparecen 2, 5, 8 y 11. Suma 3 en cada paso. En los pares aparecen 20, 18, 16 y 14. Resta 2 en cada paso.",
+        "hint": "Escribe una fila para los lugares impares y otra para los pares.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Completa la secuencia (2, 7), (4, 9), (8, 11), (___, 13), (32, ___).",
+        "options": [
+          "12, 15",
+          "16, 14",
+          "16, 15",
+          "24, 17"
+        ],
+        "answer": 2,
+        "explanation": "El primer número de cada pareja se duplica. Después de 8 viene 16. El segundo número aumenta 2, así que después de 13 viene 15.",
+        "hint": "Sigue por separado el número de la izquierda y el de la derecha de cada pareja.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Completa la secuencia a2, H18, c4, G15, e8, F12, ___, ___.",
+        "options": [
+          "g10, E9",
+          "g16, E9",
+          "g16, D9",
+          "f16, E9"
+        ],
+        "answer": 1,
+        "explanation": "En los lugares impares, la letra avanza dos posiciones y el número se duplica. Sigue g16. En los pares, la letra retrocede una posición y el número resta 3. Sigue E9.",
+        "hint": "Lee primero solo los términos en minúscula. Luego lee solo los términos en mayúscula.",
+        "difficulty": "challenge"
+      }
+    ]
+  },
+  {
+    "id": "hc-matrices",
+    "title": "Encontrar patrones en matrices",
+    "objective": "Compara filas y columnas de un cuadro para encontrar los datos que faltan.",
+    "explanation": [
+      "Una matriz es un cuadro. Las filas van de izquierda a derecha y las columnas van de arriba abajo.",
+      "Busca una regla en las filas completas. A veces cada fila aumenta por pasos iguales. Otras veces las primeras dos casillas determinan la tercera.",
+      "Compara también las columnas completas. Comprueba si la regla funciona de arriba abajo. Si aparecen letras, revisa su orden y el uso de mayúsculas.",
+      "Coloca cada respuesta en su casilla. Comprueba la regla con los datos que ya aparecen."
+    ],
+    "example": {
+      "prompt": "Completa la última casilla.\n3 | 6 | 9\n5 | 8 | 11\n7 | 10 | ___",
+      "steps": [
+        "Lee de izquierda a derecha. Cada fila suma 3 por casilla.",
+        "Avanza desde 10. Al sumar 3 obtienes 13.",
+        "Comprueba la última columna. 9, 11 y 13 aumentan de 2 en 2."
+      ]
+    },
+    "source": "Guía de College Board 2019, pp. 7 y 15–16 del PDF. Temario de CETYS, pp. 8–9. Prueba de práctica PIENSE II, p. 6, ejercicios 22–26.",
+    "prerequisiteIds": [
+      "hc-secuencias"
+    ],
+    "exercises": [
+      {
+        "prompt": "¿Qué número completa el cuadro?\n4 | 8 | 12\n7 | 11 | 15\n10 | 14 | ___",
+        "options": [
+          "16",
+          "17",
+          "19",
+          "18"
+        ],
+        "answer": 3,
+        "explanation": "Cada fila aumenta de 4 en 4. La última casilla es 14 + 4 = 18. En la última columna, 12, 15 y 18 aumentan de 3 en 3.",
+        "hint": "Mide el salto entre 4 y 8. Comprueba que se repita entre 8 y 12.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Qué número completa el cuadro?\n2 | 4 | 8\n3 | 6 | 18\n4 | 7 | ___",
+        "options": [
+          "24",
+          "28",
+          "11",
+          "21"
+        ],
+        "answer": 1,
+        "explanation": "En cada fila, la tercera casilla es el producto de las dos primeras. 4 × 7 = 28.",
+        "hint": "Busca una operación que convierta 2 y 4 en 8, y también 3 y 6 en 18.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Qué letra completa el cuadro?\nb | c | d\nD | E | F\nf | g | ___",
+        "options": [
+          "h",
+          "H",
+          "i",
+          "e"
+        ],
+        "answer": 0,
+        "explanation": "Cada fila avanza una letra por casilla. La tercera fila usa minúsculas. Después de f y g viene h.",
+        "hint": "Comprueba el orden y el uso de mayúsculas en la fila incompleta.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Qué dos números completan el cuadro?\n5 | 10 | 15 | 20\n7 | 13 | 19 | 25\n9 | 16 | ___ | ___",
+        "options": [
+          "22 y 28",
+          "23 y 29",
+          "23 y 30",
+          "22 y 30"
+        ],
+        "answer": 2,
+        "explanation": "La tercera fila aumenta de 7 en 7. Desde 16 sigue 23 y luego 30. Las columnas también aumentan de 4 en 4 y de 5 en 5, respectivamente.",
+        "hint": "Compara los saltos de las dos primeras filas y el salto entre 9 y 16.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Qué número completa el cuadro?\n2 | 4 | 3\n5 | 1 | 9\n7 | 5 | ___",
+        "options": [
+          "13",
+          "9",
+          "6",
+          "12"
+        ],
+        "answer": 3,
+        "explanation": "El número inferior de cada columna es la suma de los dos que están encima. En la última columna, 3 + 9 = 12.",
+        "hint": "Lee el cuadro de arriba abajo. Comprueba cómo se forma 7.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Qué dos términos completan la última fila, de izquierda a derecha?\na1 | B3 | c5\nb4 | C6 | d8\nc7 | ___ | ___",
+        "options": [
+          "D9 y e11",
+          "d9 y E11",
+          "D8 y e10",
+          "E9 y f11"
+        ],
+        "answer": 0,
+        "explanation": "Dentro de cada fila, las letras avanzan una posición y los números suman 2. La columna central usa mayúscula. A partir de c7 siguen D9 y e11.",
+        "hint": "Revisa por separado el orden alfabético, los números y las mayúsculas.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Qué dos números completan la última fila, de izquierda a derecha?\n3 | 5 | 4 | 19\n2 | 7 | 3 | 17\n4 | 6 | ___ | 29\n5 | 6 | 4 | ___",
+        "options": [
+          "4 y 34",
+          "5 y 25",
+          "5 y 34",
+          "4 y 30"
+        ],
+        "answer": 2,
+        "explanation": "Cada fila multiplica las dos primeras casillas y suma la tercera. Así, 4 × 6 + 5 = 29, y 5 × 6 + 4 = 34.",
+        "hint": "Multiplica las dos primeras casillas. Para pasar de 15 a 19 en la primera fila, ¿qué número necesitas sumar?",
+        "difficulty": "challenge"
+      }
+    ]
+  },
+  {
+    "id": "hc-diagramas",
+    "title": "Leer diagramas de tres conjuntos",
+    "objective": "Identifica el sector que corresponde a lo que un objeto cumple y a lo que queda fuera.",
+    "explanation": [
+      "Cada círculo representa un conjunto. Un conjunto agrupa objetos que cumplen una característica.",
+      "Los sectores donde se superponen dos círculos contienen objetos que cumplen las dos características. En el centro se cumplen las tres.",
+      "Haz tres preguntas para cada objeto. ¿Cumple A? ¿Cumple B? ¿Cumple C? Busca el sector que coincida con esas tres respuestas.",
+      "Si la pregunta dice «solamente A y B», excluye el centro. Si dice «A y B, con o sin C», incluye el sector de A y B y también el centro.",
+      "Busca el número en la zona que cumple tus respuestas. Por ejemplo, 2 está dentro de A y B y fuera de C."
+    ],
+    "example": {
+      "prompt": "Sectores del diagrama. 1 solo A · 2 A y B sin C · 3 solo B · 4 A y C sin B · 5 A, B y C · 6 B y C sin A · 7 solo C.\nA = fichas redondas. B = fichas azules. C = fichas de metal. ¿En qué sector queda una ficha redonda de metal que es amarilla?",
+      "steps": [
+        "Redonda cumple A. De metal cumple C.",
+        "Amarilla queda fuera de B, que solo contiene fichas azules.",
+        "Busca A y C sin B. Es el sector 4."
+      ]
+    },
+    "source": "Guía de College Board 2019, pp. 7 y 16–17 del PDF. Temario de CETYS, pp. 10–11. Prueba de práctica PIENSE II, pp. 7–8, ejercicios 27–32.",
+    "prerequisiteIds": [],
+    "exercises": [
+      {
+        "prompt": "Sectores del diagrama. 1 solo A · 2 A y B sin C · 3 solo B · 4 A y C sin B · 5 A, B y C · 6 B y C sin A · 7 solo C.\nA = libros ilustrados. B = libros en español. C = libros de tapa dura. ¿Dónde queda un libro en español con tapa blanda y sin ilustraciones?",
+        "options": [
+          "Sector 2",
+          "Sector 3",
+          "Sector 5",
+          "Sector 7"
+        ],
+        "answer": 1,
+        "explanation": "El libro cumple B. La tapa blanda lo deja fuera de C y la falta de ilustraciones lo deja fuera de A.",
+        "hint": "Identifica la única característica que el libro cumple.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Sectores del diagrama. 1 solo A · 2 A y B sin C · 3 solo B · 4 A y C sin B · 5 A, B y C · 6 B y C sin A · 7 solo C.\nA = fichas cuadradas. B = fichas azules. C = fichas con número. ¿Dónde queda una ficha cuadrada, azul y sin número?",
+        "options": [
+          "Sector 1",
+          "Sector 3",
+          "Sector 5",
+          "Sector 2"
+        ],
+        "answer": 3,
+        "explanation": "La ficha cumple A y B. Como no tiene número, queda fuera de C. A y B sin C es el sector 2.",
+        "hint": "Emplea «sin número» para decidir si la ficha pertenece a C.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Sectores del diagrama. 1 solo A · 2 A y B sin C · 3 solo B · 4 A y C sin B · 5 A, B y C · 6 B y C sin A · 7 solo C.\nA = bolsas reutilizables. B = bolsas de tela. C = bolsas con cierre. ¿Dónde queda una bolsa reutilizable, de tela y con cierre?",
+        "options": [
+          "Sector 5",
+          "Sector 4",
+          "Sector 6",
+          "Sector 2"
+        ],
+        "answer": 0,
+        "explanation": "La bolsa cumple las tres características. El sector 5 reúne A, B y C.",
+        "hint": "Comprueba si alguna de las tres características falta.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Sectores del diagrama. 1 solo A · 2 A y B sin C · 3 solo B · 4 A y C sin B · 5 A, B y C · 6 B y C sin A · 7 solo C.\nA = etiquetas verdes. B = etiquetas redondas. C = etiquetas con letras. ¿Qué etiqueta queda en el sector 6?",
+        "options": [
+          "Verde, cuadrada y con letras",
+          "No verde, redonda y sin letras",
+          "No verde, redonda y con letras",
+          "Verde, redonda y con letras"
+        ],
+        "answer": 2,
+        "explanation": "El sector 6 incluye B y C sin A. La etiqueta es redonda y tiene letras, pero no es verde.",
+        "hint": "Lee la leyenda del sector 6 y comprueba cada característica.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Sectores del diagrama. 1 solo A · 2 A y B sin C · 3 solo B · 4 A y C sin B · 5 A, B y C · 6 B y C sin A · 7 solo C.\nA = actividades gratuitas. B = actividades al aire libre. C = actividades con inscripción. ¿Qué sectores reúnen las actividades gratuitas con inscripción, al aire libre o bajo techo?",
+        "options": [
+          "1 y 4",
+          "4 y 5",
+          "5 y 6",
+          "2 y 5"
+        ],
+        "answer": 1,
+        "explanation": "Todas deben cumplir A y C. Bajo techo quedan en el sector 4. Al aire libre también cumplen B y quedan en el 5.",
+        "hint": "Fija primero las dos características obligatorias. Deja que B cambie.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Sectores del diagrama. 1 solo A · 2 A y B sin C · 3 solo B · 4 A y C sin B · 5 A, B y C · 6 B y C sin A · 7 solo C.\nA = lápices negros. B = lápices largos. C = lápices con borrador. Hay un lápiz negro, corto y con borrador. También hay uno rojo, largo y con borrador. ¿Qué sectores ocupan esos lápices, en ese orden?",
+        "options": [
+          "2 y 6",
+          "5 y 3",
+          "6 y 4",
+          "4 y 6"
+        ],
+        "answer": 3,
+        "explanation": "El negro cumple A y C sin B, así que queda en el 4. El rojo cumple B y C sin A, así que queda en el 6.",
+        "hint": "Haz una lista aparte de A, B y C para cada lápiz.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Sectores del diagrama. 1 solo A · 2 A y B sin C · 3 solo B · 4 A y C sin B · 5 A, B y C · 6 B y C sin A · 7 solo C.\nA = equipos con cámara. B = equipos con micrófono. C = equipos con batería recargable. ¿Qué sectores reúnen los equipos con exactamente dos de esas características?",
+        "options": [
+          "2, 4 y 6",
+          "1, 3 y 7",
+          "2, 5 y 6",
+          "4, 5 y 7"
+        ],
+        "answer": 0,
+        "explanation": "Los sectores 2, 4 y 6 corresponden a las tres parejas de círculos. El sector 5 contiene las tres características.",
+        "hint": "Prueba A y B, A y C, y B y C. Excluye la tercera característica en cada pareja.",
+        "difficulty": "challenge"
+      }
+    ]
+  },
+  {
+    "id": "hc-condicional",
+    "title": "Sacar conclusiones de reglas",
+    "objective": "Distingue las conclusiones obligatorias de las que solo podrían ser ciertas.",
+    "explanation": [
+      "Una premisa es un dato o una regla que el problema da por cierta. Basa tu conclusión en esas premisas.",
+      "Escribe «si A, entonces B» como A → B. Si ocurre A, puedes concluir B. Si B no ocurre, A tampoco puede ocurrir. Si B ocurre, puede haber otra causa.",
+      "Lee «solamente si» como un requisito. «Ana entra solamente si tiene boleto» significa que, si Ana entra, tiene boleto.",
+      "Para trabajar con grupos, dibuja círculos. «Todos los A son B» pone a A dentro de B. «Ningún A es B» separa los dos grupos. «Algunos» indica uno o más casos.",
+      "Una conclusión necesaria se cumple en todos los casos que permiten las premisas. Si encuentras un caso que cumple las premisas pero contradice la conclusión, descarta esa opción."
+    ],
+    "example": {
+      "prompt": "Si Sara inscribe a su equipo, recibe un correo. Si recibe un correo, aparece en la lista. Sara no aparece en la lista. ¿Qué puedes concluir?",
+      "steps": [
+        "Escribe la cadena «inscripción → correo → lista».",
+        "Como Sara no aparece en la lista, no recibió el correo. Si lo hubiera recibido, aparecería.",
+        "Como no recibió el correo, tampoco inscribió a su equipo. Si lo hubiera inscrito, habría recibido el correo."
+      ]
+    },
+    "source": "Guía de College Board 2019, pp. 7 y 18 del PDF. Temario de CETYS, pp. 10–11. Prueba de práctica PIENSE II, p. 10, ejercicios 38–42.",
+    "prerequisiteIds": [
+      "hc-diagramas"
+    ],
+    "exercises": [
+      {
+        "prompt": "Si la biblioteca abre, el letrero se enciende. Hoy la biblioteca abre. ¿Qué debes concluir?",
+        "options": [
+          "El letrero se enciende.",
+          "Hoy la biblioteca abre por la tarde.",
+          "Siempre hay visitantes cuando se enciende el letrero.",
+          "El letrero se apaga al mediodía."
+        ],
+        "answer": 0,
+        "explanation": "Abrir es la condición de la regla. Como se cumple, el letrero se enciende.",
+        "hint": "En la regla, ¿qué ocurre después de que se cumple la condición?",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Cada cuaderno del lote está en una de las cajas de ese lote. Todas esas cajas tienen etiqueta. ¿Qué debes concluir?",
+        "options": [
+          "Todos los objetos etiquetados son del lote.",
+          "Todas las cajas etiquetadas contienen cuadernos.",
+          "Todos los cuadernos del lote vienen en cajas con etiqueta.",
+          "Solo el lote tiene cajas."
+        ],
+        "answer": 2,
+        "explanation": "Cada cuaderno del lote viene en una caja de ese lote. Todas esas cajas tienen etiqueta.",
+        "hint": "Sigue la cadena «cuaderno del lote → caja del lote → caja etiquetada».",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Todos los ciclistas del grupo llevan casco. Algunos participantes son ciclistas del grupo. ¿Qué debes concluir?",
+        "options": [
+          "Todos los participantes llevan casco.",
+          "Algunos participantes llevan casco.",
+          "Ningún participante lleva casco.",
+          "Solo los ciclistas pueden llevar casco."
+        ],
+        "answer": 1,
+        "explanation": "Los participantes que son ciclistas del grupo llevan casco. Las premisas aseguran que existen participantes de ese tipo.",
+        "hint": "Sigue al menos a uno de los participantes que pertenece al grupo de ciclistas.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Ningún ensayo anónimo incluye el nombre de su autor. Todos los textos de la carpeta verde son ensayos anónimos. ¿Qué debes concluir?",
+        "options": [
+          "Los textos sin el nombre del autor están en la carpeta verde.",
+          "Todos los ensayos anónimos están en la carpeta verde.",
+          "Algún texto de la carpeta verde incluye el nombre de su autor.",
+          "Ningún texto de la carpeta verde incluye el nombre de su autor."
+        ],
+        "answer": 3,
+        "explanation": "Cada texto en la carpeta verde pertenece al grupo de ensayos anónimos. Ningún miembro de ese grupo incluye el nombre del autor.",
+        "hint": "Mira si toda la carpeta verde queda dentro del grupo de ensayos anónimos.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Si Omar corre hoy, usa tenis. Si usa tenis, guarda sus botas en el clóset. Sus botas no están en el clóset. ¿Qué debes concluir?",
+        "options": [
+          "Omar no corre hoy.",
+          "Omar corre hoy.",
+          "Omar presta sus botas.",
+          "Omar usa tenis hoy."
+        ],
+        "answer": 0,
+        "explanation": "Si Omar usara tenis, las botas estarían en el clóset. Como no están ahí, no usa tenis. Si corriera, los usaría. Por eso no corre hoy.",
+        "hint": "Empieza por la última regla y recorre la cadena hacia atrás.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Si Leo usa la impresora A, sale una hoja azul. Si Leo usa la impresora B, también sale una hoja azul. Leo usa exactamente una de las dos impresoras. Sale una hoja azul. ¿Qué debes concluir?",
+        "options": [
+          "Usó la impresora A.",
+          "Usó la impresora B.",
+          "Usó las dos impresoras.",
+          "Usó una impresora, pero el color no permite saber cuál."
+        ],
+        "answer": 3,
+        "explanation": "Las dos impresoras producen una hoja azul. La regla de exactamente una excluye que usara las dos. El color no distingue entre A y B.",
+        "hint": "Imagina un caso con A y otro con B. Comprueba si el color cambia.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Lina presenta su proyecto solamente si ha entregado el formulario. Si entrega el formulario, recibe un sello. Lina no recibió un sello. ¿Qué debes concluir?",
+        "options": [
+          "Lina presentó su proyecto.",
+          "Lina recibió el sello después de presentar.",
+          "Lina no presentó su proyecto.",
+          "Lina presentó su proyecto sin el formulario."
+        ],
+        "answer": 2,
+        "explanation": "Presentar exige entregar el formulario. Como la entrega siempre produce un sello y Lina no recibió uno, no entregó el formulario y no presentó.",
+        "hint": "Reescribe «solamente si» como un requisito para presentar. Empieza por comprobar el sello.",
+        "difficulty": "challenge"
+      }
+    ]
+  },
+  {
+    "id": "hc-practico",
+    "title": "Resolver situaciones con los datos",
+    "objective": "Elige la solución que cumple las condiciones o la explicación con mayor apoyo en los datos.",
+    "explanation": [
+      "Identifica qué pide la pregunta. Puede pedir una solución, una explicación probable o una relación entre varios datos.",
+      "Señala los hechos y los requisitos. Anota qué opciones chocan con ellos.",
+      "Si la pregunta pide la causa más probable, busca qué dato apoya cada explicación. Da prioridad a la que tiene apoyo directo.",
+      "Si hay medidas o cantidades, compara situaciones equivalentes. Haz la cuenta que pide el problema.",
+      "Una relación observada describe estos casos. Para afirmar que siempre ocurre, hacen falta más datos."
+    ],
+    "example": {
+      "prompt": "El club busca una sala para 18 personas. Necesita un proyector y tiene $300. La sala Norte tiene 20 lugares y proyector por $280. La sala Sur tiene 25 lugares sin proyector por $240. La sala Este tiene 15 lugares y proyector por $200. ¿Cuál cumple todos los requisitos?",
+      "steps": [
+        "Escribe los requisitos. Debe haber al menos 18 lugares, un proyector y un costo de $300 o menos.",
+        "Descarta la sala Sur porque carece de proyector. Descarta la sala Este porque faltan tres lugares.",
+        "Comprueba la sala Norte. Tiene 20 lugares, proyector y un costo dentro del presupuesto."
+      ]
+    },
+    "source": "Guía de College Board 2019, pp. 7 y 18–19 del PDF. Temario de CETYS, pp. 12–13. Prueba de práctica PIENSE II, pp. 8–9, ejercicios 33–37.",
+    "prerequisiteIds": [],
+    "exercises": [
+      {
+        "prompt": "En un taller caben 12 personas. Hay 10 inscritas y llegan 4 personas que quieren entrar juntas. ¿Qué acción permite atender a las cuatro sin rebasar el cupo del taller?",
+        "options": [
+          "Añadir a las cuatro al taller actual.",
+          "Asignar un segundo horario con cuatro lugares libres.",
+          "Prestar sillas y añadir a las cuatro al taller actual.",
+          "Mover a una persona inscrita y añadir a las cuatro."
+        ],
+        "answer": 1,
+        "explanation": "Quedan dos lugares. Si mueves una persona, quedan tres. En un segundo horario con cuatro lugares, las cuatro pueden entrar juntas.",
+        "hint": "Resta las personas inscritas del cupo. Revisa cuántos lugares libres exige el grupo.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "En la mañana, una llave del patio quedó abierta. Horas después, el suelo bajo esa llave estaba mojado y el resto del patio seguía seco. No llovió. ¿Cuál es la explicación con más apoyo?",
+        "options": [
+          "Llovió en toda la zona.",
+          "El patio entero se lavó justo antes de la revisión.",
+          "El agua vino de una tubería en otro piso.",
+          "Salió agua de la llave del patio."
+        ],
+        "answer": 3,
+        "explanation": "El suelo mojado está debajo de la llave abierta y el resto del patio está seco. Esos datos apoyan la explicación de la llave.",
+        "hint": "Compara la posición de la mancha con el lugar donde podía salir el agua.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "El puesto de jugos vendió 16 vasos el lunes a $20, 22 vasos el martes a $15 y 30 vasos el miércoles a $10. ¿Qué relación describen esos datos?",
+        "options": [
+          "En esos tres días, se vendieron más vasos cuanto menor fue el precio.",
+          "En esos tres días, se vendieron menos vasos cuanto menor fue el precio.",
+          "La venta produjo el mismo ingreso los tres días.",
+          "El precio fue el mismo los tres días."
+        ],
+        "answer": 0,
+        "explanation": "Al bajar el precio de $20 a $15 y luego a $10, la venta subió de 16 a 22 y luego a 30 vasos.",
+        "hint": "Ordena los precios de mayor a menor y lee cuántos vasos se vendieron en cada caso.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Para llegar al taller a tiempo, Maya debe salir de la escuela a partir de las 15:10 y llegar antes de las 16:00. El autobús R sale a las 15:15 y tarda 50 minutos. S sale a las 15:05 y tarda 30 minutos. T sale a las 15:25 y tarda 30 minutos. U sale a las 15:40 y tarda 20 minutos. ¿Qué autobús cumple las dos condiciones?",
+        "options": [
+          "R",
+          "S",
+          "T",
+          "U"
+        ],
+        "answer": 2,
+        "explanation": "T sale a las 15:25 y llega a las 15:55. R llega a las 16:05, S sale antes de las 15:10 y U llega a las 16:00 exactas.",
+        "hint": "Suma el tiempo de viaje a cada hora de salida. «Antes de» excluye las 16:00 exactas.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "El grupo A leyó 12 libros con 4 estudiantes. El grupo B leyó 15 libros con 5 estudiantes. El grupo C leyó 16 libros con 8 estudiantes. El grupo D leyó 14 libros con 4 estudiantes. ¿Qué grupo leyó más libros por estudiante?",
+        "options": [
+          "A",
+          "D",
+          "B",
+          "C"
+        ],
+        "answer": 1,
+        "explanation": "Divide los libros entre los estudiantes de cada grupo. A y B leyeron 3 por persona, C leyó 2 y D leyó 3.5.",
+        "hint": "Compara el número de libros por estudiante en vez del total de libros.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "En la biblioteca, una lámpara se apagaba al moverla. El bibliotecario la conectó en otro contacto y la falla se repitió. Conectó otra lámpara al primer contacto y funcionó. ¿Qué explicación tiene más apoyo?",
+        "options": [
+          "El interruptor general de la biblioteca apagó todas las luces.",
+          "El primer contacto impide que funcione cualquier lámpara.",
+          "La segunda lámpara también se apaga al moverla.",
+          "La falla está en la primera lámpara o en su cable."
+        ],
+        "answer": 3,
+        "explanation": "La falla acompañó a la primera lámpara en los dos contactos. En el primer contacto, la otra lámpara funcionó.",
+        "hint": "Identifica qué cambió en cada prueba y cuál de los equipos siguió fallando.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Un equipo puso dos plantas iguales en recipientes iguales. Les dio la misma cantidad de agua. Una planta quedó cerca de una ventana y la otra quedó en un rincón oscuro. La primera creció más. ¿Qué acción ayuda a comprobar si la luz explica la diferencia?",
+        "options": [
+          "Repetir con varias plantas en condiciones iguales y usar dos niveles de luz.",
+          "Dar más agua a las plantas de la ventana y menos a las del rincón.",
+          "Cambiar la tierra y el tamaño del recipiente solo en el rincón.",
+          "Medir solo la planta que más creció."
+        ],
+        "answer": 0,
+        "explanation": "Al usar varias plantas y mantener iguales las demás condiciones, el equipo puede comparar el crecimiento con dos niveles de luz.",
+        "hint": "Busca una opción que mantenga iguales las demás condiciones y cambie solo la luz.",
+        "difficulty": "challenge"
+      }
+    ]
+  }
+]

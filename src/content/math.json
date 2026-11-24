@@ -1,0 +1,1897 @@
+[
+  {
+    "id": "mat-enteros",
+    "title": "Números reales y operaciones",
+    "objective": "Ordenar números reales y calcular con enteros con signo.",
+    "explanation": [
+      "En la recta numérica, el número de la izquierda es menor. El valor absoluto mide la distancia a cero. Por eso ∣−7∣ = 7.",
+      "Un racional se puede escribir como a/b con a y b enteros y b ≠ 0. Los decimales finitos y periódicos son racionales. √2 y π son irracionales. Todos ellos son reales.",
+      "Restar un número equivale a sumar su opuesto. En multiplicaciones y divisiones, dos signos iguales dan positivo. Dos signos distintos dan negativo.",
+      "Resuelve primero los paréntesis y después las potencias. Sigue con multiplicación y división de izquierda a derecha. Termina con suma y resta de izquierda a derecha."
+    ],
+    "example": {
+      "prompt": "Calcula 10 − 3 × (2 − 6).",
+      "steps": [
+        "El paréntesis vale −4.",
+        "Multiplica 3 × (−4) = −12.",
+        "Resta el negativo. 10 − (−12) = 22."
+      ]
+    },
+    "source": "Guía oficial de College Board (2019), p. 9. Refuerzo CONEA, fichas 01–03.",
+    "prerequisiteIds": [],
+    "exercises": [
+      {
+        "prompt": "¿Cuál es el menor número?",
+        "options": [
+          "−3",
+          "0",
+          "−8",
+          "5"
+        ],
+        "answer": 2,
+        "explanation": "−8 queda más a la izquierda en la recta numérica.",
+        "hint": "Imagina los cuatro números de izquierda a derecha.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Cuánto vale ∣−9∣ − ∣4∣?",
+        "options": [
+          "5",
+          "−13",
+          "−5",
+          "13"
+        ],
+        "answer": 0,
+        "explanation": "Las distancias a cero son 9 y 4. Entonces 9 − 4 = 5.",
+        "hint": "Convierte cada valor absoluto en una distancia a cero.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Un elevador está en el piso −2. Sube 7 pisos y baja 9. ¿En qué piso termina?",
+        "options": [
+          "−18",
+          "0",
+          "4",
+          "−4"
+        ],
+        "answer": 3,
+        "explanation": "La posición final es −2 + 7 − 9 = −4.",
+        "hint": "Representa la subida con un número positivo y la bajada con uno negativo.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Cuánto vale −14 ÷ 2 × (−3)?",
+        "options": [
+          "−21",
+          "21",
+          "7/3",
+          "−7/3"
+        ],
+        "answer": 1,
+        "explanation": "División y multiplicación tienen la misma prioridad. Primero −14 ÷ 2 = −7. Después (−7)(−3) = 21.",
+        "hint": "Empieza con la división que aparece a la izquierda.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Cuál número es irracional?",
+        "options": [
+          "√7",
+          "−12",
+          "0.125",
+          "√81"
+        ],
+        "answer": 0,
+        "explanation": "7 no es un cuadrado perfecto. √7 es irracional. Los otros tres valores son enteros o decimales finitos.",
+        "hint": "Comprueba si cada raíz tiene un resultado entero.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Cuánto vale 8 − [3 − 2(−4)]?",
+        "options": [
+          "3",
+          "13",
+          "19",
+          "−3"
+        ],
+        "answer": 3,
+        "explanation": "Dentro de los corchetes, 2(−4) = −8 y 3 − (−8) = 11. El resultado es 8 − 11 = −3.",
+        "hint": "Haz la multiplicación dentro de los corchetes antes de restar.",
+        "difficulty": "challenge"
+      },
+      {
+        "prompt": "¿Qué lista está en orden creciente?",
+        "options": [
+          "−0.4, −2, 0, 1/3",
+          "−2, 0, −0.4, 1/3",
+          "−2, −0.4, 0, 1/3",
+          "−2, −0.4, 1/3, 0"
+        ],
+        "answer": 2,
+        "explanation": "−2 < −0.4 < 0 y 1/3 es positivo.",
+        "hint": "Ubica primero los negativos, luego cero y luego los positivos.",
+        "difficulty": "challenge"
+      }
+    ]
+  },
+  {
+    "id": "mat-fracciones",
+    "title": "Fracciones, razones y porcentajes",
+    "objective": "Resolver problemas de comparación, reparto proporcional y cambio porcentual.",
+    "explanation": [
+      "Para comparar fracciones, usa números que representen partes del mismo tamaño. Por ejemplo, 1/2 = 3/6, así que 1/2 es menor que 4/6.",
+      "Para simplificar una fracción, divide el número de arriba y el de abajo por el mismo número. Por ejemplo, 6/8 = 3/4.",
+      "El mínimo común múltiplo es el menor múltiplo positivo que dos números comparten. El de 4 y 6 es 12.",
+      "Para sumar o restar, iguala los denominadores y opera los numeradores. Para multiplicar, multiplica los números de arriba y los de abajo.",
+      "Para dividir entre una fracción, inviértela y multiplica. Por ejemplo, 1/2 ÷ 1/4 = 1/2 × 4 = 2.",
+      "Una razón compara dos cantidades. Si dos cuadernos cuestan $40, uno cuesta $20. Usa el precio de uno para calcular otros pedidos.",
+      "Un porcentaje indica partes de cada 100. Con 25 % de descuento, pagas el 75 % del precio. Aplica cada cambio al precio que acabas de calcular."
+    ],
+    "example": {
+      "prompt": "Un artículo de $320 tiene 25 % de descuento. Después se agrega 10 % sobre el precio rebajado. ¿Cuál es el precio final?",
+      "steps": [
+        "Pagas 100 % − 25 % = 75 % del precio. Divide 75 entre 100 para obtener 0.75. Calcula 320 × 0.75 = 240.",
+        "Con el aumento pagas 100 % + 10 % = 110 % del precio rebajado. Divide 110 entre 100 para obtener 1.10.",
+        "Calcula 240 × 1.10 = 264. El costo final es $264."
+      ]
+    },
+    "source": "Guía oficial de College Board (2019), p. 9. Descriptores oficiales, pp. 10–11. Refuerzo CONEA, fichas 04–06.",
+    "prerequisiteIds": [
+      "mat-enteros"
+    ],
+    "exercises": [
+      {
+        "prompt": "¿Qué fracción es mayor?",
+        "options": [
+          "4/5",
+          "7/8",
+          "5/6",
+          "3/4"
+        ],
+        "answer": 1,
+        "explanation": "4/5 = 96/120, 7/8 = 105/120, 5/6 = 100/120 y 3/4 = 90/120. El mayor numerador es 105. Por eso 7/8 es la mayor.",
+        "hint": "Puedes usar 120 como denominador común.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Cuál es la forma irreducible de 42/56?",
+        "options": [
+          "2/3",
+          "4/7",
+          "3/4",
+          "6/8"
+        ],
+        "answer": 2,
+        "explanation": "El máximo común divisor es 14. Al dividir ambos términos por 14 resulta 3/4.",
+        "hint": "Simplifica hasta que numerador y denominador tengan solo el 1 como divisor común positivo.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Cuánto vale 5/6 − 3/8?",
+        "options": [
+          "11/24",
+          "2/24",
+          "2/3",
+          "7/24"
+        ],
+        "answer": 0,
+        "explanation": "Con denominador 24, la resta es 20/24 − 9/24 = 11/24.",
+        "hint": "Halla el mínimo común múltiplo de 6 y 8.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Una botella contiene 3/4 L. Se sirve en vasos de 1/8 L. ¿Cuántos vasos completos se llenan?",
+        "options": [
+          "4",
+          "6",
+          "8",
+          "12"
+        ],
+        "answer": 1,
+        "explanation": "Divide 3/4 entre 1/8. Multiplicar 3/4 por 8 da 6.",
+        "hint": "Averigua cuántas veces cabe el volumen de un vaso en la botella.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Tres paquetes cuestan $126. Al mismo precio por paquete, ¿cuánto cuestan cinco?",
+        "options": [
+          "$189",
+          "$202",
+          "$630",
+          "$210"
+        ],
+        "answer": 3,
+        "explanation": "Cada paquete cuesta 126 ÷ 3 = $42. Cinco cuestan 5 × 42 = $210.",
+        "hint": "Encuentra el precio de un solo paquete.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Cuál de estos números cumple 4/7 < x < 3/5?",
+        "options": [
+          "0.58",
+          "0.57",
+          "0.60",
+          "0.61"
+        ],
+        "answer": 0,
+        "explanation": "4/7 es aproximadamente 0.5714 y 3/5 es 0.60. Solo 0.58 queda estrictamente entre esos valores.",
+        "hint": "Expresa los dos límites como decimales y revisa si se admiten los extremos.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Una mochila de $500 baja 20 % y luego sube 20 % sobre el nuevo precio. ¿Cuánto cuesta al final?",
+        "options": [
+          "$400",
+          "$500",
+          "$480",
+          "$520"
+        ],
+        "answer": 2,
+        "explanation": "El descuento da 500 × 0.80 = 400. El aumento da 400 × 1.20 = 480.",
+        "hint": "Usa dos multiplicadores y aplica cada uno al precio del momento.",
+        "difficulty": "challenge"
+      },
+      {
+        "prompt": "Una receta usa 2/3 de taza de avena por porción. Se preparan 3/4 de porción. ¿Cuánta avena se usa?",
+        "options": [
+          "5/7 de taza",
+          "1/2 taza",
+          "8/9 de taza",
+          "17/12 de taza"
+        ],
+        "answer": 1,
+        "explanation": "Calcula 3/4 de 2/3 mediante (3/4)(2/3) = 6/12 = 1/2.",
+        "hint": "Tomar una fracción de otra cantidad corresponde a multiplicar.",
+        "difficulty": "challenge"
+      },
+      {
+        "prompt": "Una luz parpadea cada 12 segundos y otra cada 18 segundos. Si ambas parpadean ahora, ¿cuántos segundos pasarán hasta que vuelvan a parpadear a la vez?",
+        "options": [
+          "6",
+          "30",
+          "72",
+          "36"
+        ],
+        "answer": 3,
+        "explanation": "36 es el primer múltiplo positivo de 12 que también es múltiplo de 18.",
+        "hint": "Busca el mínimo común múltiplo. Un divisor común no indica cuándo se repite un evento.",
+        "difficulty": "challenge"
+      }
+    ]
+  },
+  {
+    "id": "mat-potencias",
+    "title": "Potencias y raíces cuadradas",
+    "objective": "Aplicar leyes de exponentes, estimar raíces y evaluar fórmulas.",
+    "explanation": [
+      "En aⁿ, multiplica la base a por sí misma n veces. Los paréntesis determinan si un signo negativo forma parte de la base.",
+      "Para potencias de la misma base, aᵐ × aⁿ = aᵐ⁺ⁿ y aᵐ ÷ aⁿ = aᵐ⁻ⁿ si a ≠ 0 y m ≥ n. En (aᵐ)ⁿ, multiplica los exponentes. Un exponente cero da 1 si a ≠ 0.",
+      "La raíz cuadrada √n es el número no negativo cuyo cuadrado es n. Usa cuadrados perfectos para estimarla y extraer factores. Por ejemplo, √20 = √(4 × 5) = 2√5.",
+      "Si una cantidad se triplica en cada periodo, tras k periodos su valor es el inicial multiplicado por 3ᵏ."
+    ],
+    "example": {
+      "prompt": "Simplifica √72 y ubícala entre dos enteros consecutivos.",
+      "steps": [
+        "Separa el factor cuadrado mayor. √72 = √(36 × 2) = 6√2.",
+        "Compara 72 con 64 y 81. Como 8² = 64 y 9² = 81, se cumple 8 < √72 < 9."
+      ]
+    },
+    "source": "Guía oficial de College Board (2019), p. 9. Descriptores oficiales, pp. 10–11. Refuerzo CONEA, ficha 03.",
+    "prerequisiteIds": [
+      "mat-enteros"
+    ],
+    "exercises": [
+      {
+        "prompt": "¿Cuánto vale (−6)²?",
+        "options": [
+          "−36",
+          "12",
+          "36",
+          "−12"
+        ],
+        "answer": 2,
+        "explanation": "(−6) × (−6) = 36. Los paréntesis incluyen el signo en la base.",
+        "hint": "Escribe la potencia como multiplicación.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Cuánto vale 2.7 × 10³?",
+        "options": [
+          "2700",
+          "27",
+          "270",
+          "27000"
+        ],
+        "answer": 0,
+        "explanation": "10³ = 1000. Multiplicar 2.7 por 1000 da 2700.",
+        "hint": "Calcula primero la potencia de 10.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Qué expresión equivale a (5²)³ ÷ 5⁴?",
+        "options": [
+          "5⁴",
+          "5⁵",
+          "5⁶",
+          "5²"
+        ],
+        "answer": 3,
+        "explanation": "Elevar una potencia a otra da 5⁶. Al dividir por 5⁴, queda 5².",
+        "hint": "Aplica una ley a los paréntesis y otra a la división.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Entre qué enteros consecutivos está √60?",
+        "options": [
+          "6 y 7",
+          "7 y 8",
+          "8 y 9",
+          "29 y 30"
+        ],
+        "answer": 1,
+        "explanation": "7² = 49 y 8² = 64. Como 49 < 60 < 64, √60 está entre 7 y 8.",
+        "hint": "Busca un cuadrado perfecto menor que 60 y uno mayor.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Una población comienza con 6 células y se triplica cada hora. ¿Cuántas hay al cabo de cuatro horas?",
+        "options": [
+          "486",
+          "72",
+          "162",
+          "324"
+        ],
+        "answer": 0,
+        "explanation": "Hay cuatro multiplicaciones por 3. El resultado es 6 × 3⁴ = 486.",
+        "hint": "La cantidad inicial corresponde a la hora cero.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Cuál es la forma simplificada de √108?",
+        "options": [
+          "3√12",
+          "9√2",
+          "36√3",
+          "6√3"
+        ],
+        "answer": 3,
+        "explanation": "108 = 36 × 3. Como √36 = 6, queda 6√3. El 3 no contiene factores cuadrados mayores que 1.",
+        "hint": "Extrae el cuadrado perfecto más grande que divide a 108.",
+        "difficulty": "challenge"
+      },
+      {
+        "prompt": "Un sensor usa la fórmula t = √(s + 9)/2. Si s = 40, ¿cuál es t?",
+        "options": [
+          "7",
+          "12.5",
+          "3.5",
+          "24.5"
+        ],
+        "answer": 2,
+        "explanation": "Sustituye s por 40. Entonces t = √49 ÷ 2 = 7 ÷ 2 = 3.5.",
+        "hint": "Resuelve lo que está dentro de la raíz antes de dividir.",
+        "difficulty": "challenge"
+      }
+    ]
+  },
+  {
+    "id": "mat-ecuaciones",
+    "title": "Ecuaciones e inecuaciones lineales",
+    "objective": "Traducir enunciados a expresiones y despejar una incógnita.",
+    "explanation": [
+      "Define la letra con su unidad. «Tres más que el doble de n» se escribe 2n + 3. «Como máximo» indica ≤. «Al menos» indica ≥.",
+      "Una ecuación pide igualdad. Distribuye, agrupa términos semejantes y realiza la misma operación en ambos miembros hasta aislar la letra.",
+      "En una inecuación, invertir el signo es obligatorio al multiplicar o dividir ambos miembros por un número negativo. Por ejemplo, −2x < 6 lleva a x > −3.",
+      "En la recta, usa un punto cerrado si incluyes el extremo y uno abierto si lo excluyes. Una solución se puede comprobar en el enunciado original."
+    ],
+    "example": {
+      "prompt": "Una visita cuesta $35 de entrada y $22 por cada actividad. ¿Cuántas actividades puedes pagar como máximo con $150?",
+      "steps": [
+        "Sea a el número de actividades. Plantea 35 + 22a ≤ 150.",
+        "Resta 35 y divide por 22. Obtienes a ≤ 115/22, aproximadamente 5.23.",
+        "El mayor entero permitido es 5. Cuesta $145. Seis costarían $167."
+      ]
+    },
+    "source": "Guía oficial de College Board (2019), p. 9. Descriptores oficiales, pp. 12–13. Refuerzo CONEA, fichas 02, 16 y 18.",
+    "prerequisiteIds": [
+      "mat-enteros",
+      "mat-fracciones"
+    ],
+    "exercises": [
+      {
+        "prompt": "¿Qué expresión representa «el triple de n, menos 7»?",
+        "options": [
+          "3(n − 7)",
+          "3n − 7",
+          "n − 21",
+          "7 − 3n"
+        ],
+        "answer": 1,
+        "explanation": "El triple de n es 3n. Resta 7 a ese resultado.",
+        "hint": "Identifica qué cantidad se triplica.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Si x/5 + 4 = 9, ¿cuál es x?",
+        "options": [
+          "1",
+          "5",
+          "25",
+          "65"
+        ],
+        "answer": 2,
+        "explanation": "Resta 4 a ambos miembros. Obtienes x/5 = 5. Multiplica ambos miembros por 5.",
+        "hint": "Deshaz la suma antes de deshacer la división.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Qué valor satisface 4(x + 2) = 2x + 18?",
+        "options": [
+          "5",
+          "2",
+          "9",
+          "13"
+        ],
+        "answer": 0,
+        "explanation": "Distribuye para obtener 4x + 8 = 2x + 18. Después 2x = 10 y x = 5.",
+        "hint": "Multiplica cada término del paréntesis por 4.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Cuál es el conjunto solución de 7 − 3x ≥ 19?",
+        "options": [
+          "x ≥ −4",
+          "x ≤ −4",
+          "x ≤ 4",
+          "x ≥ 4"
+        ],
+        "answer": 1,
+        "explanation": "Resta 7 para obtener −3x ≥ 12. Divide por −3 e invierte el signo.",
+        "hint": "Presta atención al signo del número por el que divides.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Un club cobra $60 de inscripción y $35 por sesión. Si pagaste $305, ¿cuántas sesiones tomaste?",
+        "options": [
+          "5",
+          "8",
+          "10",
+          "7"
+        ],
+        "answer": 3,
+        "explanation": "Si s es el número de sesiones, 60 + 35s = 305. Entonces s = 245 ÷ 35 = 7.",
+        "hint": "Separa el costo fijo del que cambia con cada sesión.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Un almacén necesita tener al menos 95 cajas. Ya tiene 17 y recibe lotes de 12. ¿Cuál es el menor número de lotes que debe recibir?",
+        "options": [
+          "6",
+          "8",
+          "7",
+          "9"
+        ],
+        "answer": 2,
+        "explanation": "Se requieren 78 cajas más. Seis lotes dan 72 y siete dan 84, por lo que se requieren 7 lotes.",
+        "hint": "Plantea 17 + 12n ≥ 95. El número de lotes es entero.",
+        "difficulty": "challenge"
+      },
+      {
+        "prompt": "¿Qué describe en la recta numérica el conjunto −2 < x ≤ 4?",
+        "options": [
+          "Punto cerrado en −2, abierto en 4 y segmento entre ambos",
+          "Punto abierto en −2, cerrado en 4 y segmento entre ambos",
+          "Puntos cerrados en −2 y 4 y segmento entre ambos",
+          "Puntos abiertos en −2 y 4 y segmento entre ambos"
+        ],
+        "answer": 1,
+        "explanation": "El símbolo < excluye −2 y ≤ incluye 4. Los valores solución están entre los extremos.",
+        "hint": "Revisa por separado si se admite cada extremo.",
+        "difficulty": "challenge"
+      }
+    ]
+  },
+  {
+    "id": "mat-polinomios",
+    "title": "Polinomios y factorización",
+    "objective": "Sumar, restar, multiplicar y factorizar polinomios.",
+    "explanation": [
+      "Los términos semejantes tienen las mismas variables y exponentes. Para sumarlos o restarlos, opera con los coeficientes. Al restar un polinomio, cambia el signo de cada término del segundo polinomio.",
+      "Distribuye cada término de un factor entre todos los términos del otro. Por ejemplo, (x + 2)(x + 5) = x² + 7x + 10.",
+      "Al factorizar, busca primero un factor común. La diferencia de cuadrados cumple a² − b² = (a − b)(a + b).",
+      "Para x² + bx + c, busca dos números cuya suma sea b y cuyo producto sea c. Comprueba tu factorización al distribuir."
+    ],
+    "example": {
+      "prompt": "Factoriza por completo 3x³ − 27x.",
+      "steps": [
+        "Extrae el factor común 3x. Resulta 3x(x² − 9).",
+        "Reconoce x² − 3² como diferencia de cuadrados.",
+        "El resultado es 3x(x − 3)(x + 3)."
+      ]
+    },
+    "source": "Guía oficial de College Board (2019), p. 9. Descriptores oficiales, pp. 12–13. Refuerzo CONEA, fichas 12–14.",
+    "prerequisiteIds": [
+      "mat-potencias"
+    ],
+    "exercises": [
+      {
+        "prompt": "Simplifica (2x² + 3x − 5) + (x² − x + 4).",
+        "options": [
+          "3x² + 2x − 1",
+          "3x⁴ + 2x − 1",
+          "3x² + 4x + 9",
+          "2x² + 2x − 1"
+        ],
+        "answer": 0,
+        "explanation": "Suma los coeficientes de x² y x. Suma también las constantes. Obtienes (2 + 1)x² + (3 − 1)x + (−5 + 4).",
+        "hint": "Agrupa por grado.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Cuál es el resultado de −2x(3x − 4)?",
+        "options": [
+          "−6x² − 8x",
+          "6x² − 8x",
+          "−6x + 8",
+          "−6x² + 8x"
+        ],
+        "answer": 3,
+        "explanation": "Multiplica −2x por cada término. El producto de los dos factores negativos es positivo.",
+        "hint": "Distribuye sobre los dos términos.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Simplifica (5x² − 2x + 1) − (2x² + 4x − 3).",
+        "options": [
+          "3x² + 2x − 2",
+          "7x² + 2x − 2",
+          "3x² − 6x + 4",
+          "3x² − 6x − 2"
+        ],
+        "answer": 2,
+        "explanation": "El signo menos cambia los tres signos del segundo polinomio. Queda 5x² − 2x + 1 − 2x² − 4x + 3.",
+        "hint": "Escribe el segundo polinomio sin paréntesis, con los signos cambiados.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Cuál es la factorización de x² + x − 30?",
+        "options": [
+          "(x + 6)(x − 5)",
+          "(x − 6)(x + 5)",
+          "(x + 10)(x − 3)",
+          "(x + 6)(x + 5)"
+        ],
+        "answer": 0,
+        "explanation": "6 y −5 multiplican a −30 y suman 1.",
+        "hint": "El producto es negativo. Uno de los números debe ser positivo y el otro negativo.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Un rectángulo mide y + 4 de largo y y − 4 de ancho, con y > 4. ¿Cuál es su área?",
+        "options": [
+          "y² + 16",
+          "y² − 8y + 16",
+          "2y",
+          "y² − 16"
+        ],
+        "answer": 3,
+        "explanation": "Multiplica (y + 4)(y − 4). Los términos +4y y −4y se cancelan.",
+        "hint": "Identifica una diferencia de cuadrados.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Cuál es la factorización completa de 8x² − 18?",
+        "options": [
+          "2(4x − 3)(4x + 3)",
+          "2(2x − 3)(2x + 3)",
+          "2(2x − 3)²",
+          "(8x − 9)(x + 2)"
+        ],
+        "answer": 1,
+        "explanation": "Extrae 2. La expresión que queda es 4x² − 9, una diferencia de cuadrados.",
+        "hint": "Busca primero un factor común.",
+        "difficulty": "challenge"
+      },
+      {
+        "prompt": "¿Cuál es el desarrollo de (x − 4)²?",
+        "options": [
+          "x² − 8x + 16",
+          "x² + 16",
+          "x² − 16",
+          "x² − 4x + 16"
+        ],
+        "answer": 0,
+        "explanation": "Multiplica (x − 4)(x − 4). Los dos productos cruzados aportan −4x cada uno.",
+        "hint": "Escribe la potencia como producto de dos binomios iguales.",
+        "difficulty": "challenge"
+      }
+    ]
+  },
+  {
+    "id": "mat-fracciones-algebraicas",
+    "title": "Fracciones algebraicas",
+    "objective": "Simplificar y operar con fracciones algebraicas sin cambiar su dominio.",
+    "explanation": [
+      "Antes de operar, identifica los valores que hacen cero cada denominador original. Esos valores quedan excluidos.",
+      "Factoriza numerador y denominador. Cancela solo factores completos que aparezcan multiplicando. Con (x² + x)/x puedes cancelar x después de escribir x(x + 1)/x.",
+      "Para sumar o restar, usa un denominador común. Para multiplicar, multiplica por separado numeradores y denominadores. Para dividir, invierte la segunda fracción y excluye los valores que la hacen cero.",
+      "En una ecuación con fracciones, puedes multiplicar ambos miembros por el denominador común. Comprueba la solución en la ecuación original."
+    ],
+    "example": {
+      "prompt": "Simplifica (x² − 25)/(x − 5) e indica la restricción.",
+      "steps": [
+        "El denominador original vale cero si x = 5. Excluye ese valor.",
+        "Factoriza x² − 25 como (x − 5)(x + 5).",
+        "Cancela x − 5. Resulta x + 5 con x ≠ 5."
+      ]
+    },
+    "source": "Guía oficial de College Board (2019), p. 9. Descriptores oficiales, pp. 12–13. Refuerzo para factorizar en CONEA, ficha 14.",
+    "prerequisiteIds": [
+      "mat-fracciones",
+      "mat-ecuaciones",
+      "mat-polinomios"
+    ],
+    "exercises": [
+      {
+        "prompt": "¿Qué valor queda excluido del dominio de 3/(x + 7)?",
+        "options": [
+          "7",
+          "0",
+          "3",
+          "−7"
+        ],
+        "answer": 3,
+        "explanation": "El denominador x + 7 vale cero si x = −7.",
+        "hint": "Iguala el denominador a cero.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Con x ≠ 0, ¿cuánto vale (6x²)/(3x)?",
+        "options": [
+          "2x²",
+          "3x",
+          "2x",
+          "2"
+        ],
+        "answer": 2,
+        "explanation": "Divide 6 entre 3. Simplifica x²/x como x para x ≠ 0.",
+        "hint": "Escribe x² como x · x.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Cuál es la forma simplificada de (x² + 5x)/(x + 5) con su restricción original?",
+        "options": [
+          "x, para todo número real",
+          "x, con x ≠ −5",
+          "x + 5, con x ≠ 0",
+          "5, con x ≠ −5"
+        ],
+        "answer": 1,
+        "explanation": "El numerador es x(x + 5). Cancela x + 5 y conserva la restricción x ≠ −5.",
+        "hint": "Factoriza el numerador antes de cancelar.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Para x ≠ 0, calcula 2/x + 3/(2x).",
+        "options": [
+          "5/(2x)",
+          "5/(3x)",
+          "7/(2x)",
+          "7/x"
+        ],
+        "answer": 2,
+        "explanation": "Convierte 2/x en 4/(2x). Los numeradores suman 7.",
+        "hint": "Usa 2x como denominador común.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Cuál es la solución de 5/(x − 1) = 2?",
+        "options": [
+          "x = 7/2",
+          "x = 5/2",
+          "x = 3/2",
+          "x = 1"
+        ],
+        "answer": 0,
+        "explanation": "Con x ≠ 1, multiplica por x − 1. Queda 5 = 2x − 2, así que x = 7/2.",
+        "hint": "Excluye x = 1 antes de multiplicar ambos miembros.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Simplifica [x/(x − 2)] ÷ [3/(x − 2)] e indica la restricción.",
+        "options": [
+          "x/3, para todo número real",
+          "x/3, con x ≠ 2",
+          "3/x, con x ≠ 0",
+          "x/[3(x − 2)²], con x ≠ 2"
+        ],
+        "answer": 1,
+        "explanation": "Multiplica x/(x − 2) por (x − 2)/3. Conserva la restricción original x ≠ 2.",
+        "hint": "Invierte solo la segunda fracción.",
+        "difficulty": "challenge"
+      },
+      {
+        "prompt": "¿Qué se concluye de (x − 4)/(x − 4) = x − 3?",
+        "options": [
+          "Tiene solución x = 4",
+          "Tiene solución x = 3",
+          "Tiene solución para todo x distinto de 4",
+          "No tiene solución"
+        ],
+        "answer": 3,
+        "explanation": "Para x ≠ 4, el lado izquierdo vale 1. La ecuación 1 = x − 3 da x = 4, que está excluido.",
+        "hint": "Las soluciones deben pertenecer al dominio original.",
+        "difficulty": "challenge"
+      }
+    ]
+  },
+  {
+    "id": "mat-cuadraticas",
+    "title": "Ecuaciones cuadráticas",
+    "objective": "Resolver ecuaciones de segundo grado y verificar sus raíces.",
+    "explanation": [
+      "Escribe la ecuación como ax² + bx + c = 0 con a ≠ 0. Si puedes factorizar, iguala cada factor a cero.",
+      "Cuando x² = k y k > 0, hay dos raíces, √k y −√k. Si k = 0, solo hay una. Si k < 0, no hay raíces reales.",
+      "Para cualquier cuadrática, con D = b² − 4ac, la fórmula es x = (−b ± √D)/(2a) si D ≥ 0. Si D > 0, hay dos raíces reales distintas. Si D = 0, hay una. Si D < 0, ninguna.",
+      "En un problema aplicado, descarta las raíces que incumplen las condiciones, como una longitud negativa."
+    ],
+    "example": {
+      "prompt": "El ancho de un terreno rectangular es w y su largo es w + 3. Tiene un área de 54 m². ¿Cuánto mide su ancho?",
+      "steps": [
+        "Plantea w(w + 3) = 54. Pasa todo al mismo miembro para obtener w² + 3w − 54 = 0.",
+        "Factoriza (w + 9)(w − 6) = 0. Las raíces son −9 y 6.",
+        "El ancho debe ser positivo. Mide 6 m."
+      ]
+    },
+    "source": "Guía oficial de College Board (2019), p. 9. Descriptores oficiales, pp. 12–13. Refuerzo CONEA, ficha 19.",
+    "prerequisiteIds": [
+      "mat-potencias",
+      "mat-polinomios"
+    ],
+    "exercises": [
+      {
+        "prompt": "¿Cuál es el conjunto solución de x² = 49?",
+        "options": [
+          "{7}",
+          "{−49, 49}",
+          "{−7, 7}",
+          "{−7}"
+        ],
+        "answer": 2,
+        "explanation": "7² y (−7)² dan 49. Las dos raíces pertenecen al conjunto.",
+        "hint": "Un número negativo también puede tener un cuadrado positivo.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Cuántas raíces reales distintas tiene (x − 2)² = 0?",
+        "options": [
+          "Dos",
+          "Una",
+          "Ninguna",
+          "Cuatro"
+        ],
+        "answer": 1,
+        "explanation": "El cuadrado solo vale cero si la base vale cero. Entonces x = 2.",
+        "hint": "Iguala a cero la base.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Cuál es el conjunto solución de x² − 9x + 14 = 0?",
+        "options": [
+          "{2, 7}",
+          "{−2, −7}",
+          "{−2, 7}",
+          "{1, 14}"
+        ],
+        "answer": 0,
+        "explanation": "La factorización es (x − 2)(x − 7). Los factores valen cero cuando x vale 2 y 7.",
+        "hint": "Busca dos números que multipliquen a 14 y sumen −9.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Cuál es el conjunto solución real de x² + 16 = 0?",
+        "options": [
+          "{−4, 4}",
+          "{0}",
+          "{−16}",
+          "∅"
+        ],
+        "answer": 3,
+        "explanation": "Esta ecuación requiere x² = −16. Un cuadrado real es mayor o igual a cero.",
+        "hint": "Aísla x² y piensa en el signo de un cuadrado real.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Cuáles son las soluciones de x² − 4x + 1 = 0?",
+        "options": [
+          "−2 − √3 y −2 + √3",
+          "4 − √3 y 4 + √3",
+          "2 − √3 y 2 + √3",
+          "2 − √6 y 2 + √6"
+        ],
+        "answer": 2,
+        "explanation": "Con a = 1, b = −4 y c = 1, D = 12. La fórmula da (4 ± √12)/2 = 2 ± √3.",
+        "hint": "Usa la fórmula general con el signo correcto de b.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Un rectángulo tiene largo 2 m mayor que su ancho. Su área es 80 m². ¿Cuál es el ancho?",
+        "options": [
+          "8 m",
+          "10 m",
+          "−10 m",
+          "6 m"
+        ],
+        "answer": 0,
+        "explanation": "Si x es el ancho, x(x + 2) = 80. La ecuación factoriza como (x − 8)(x + 10) = 0. El ancho positivo es 8.",
+        "hint": "Plantea el producto antes de buscar las dos raíces.",
+        "difficulty": "challenge"
+      },
+      {
+        "prompt": "¿Para cuál valor de k tiene x² + 6x + k = 0 una sola raíz real distinta?",
+        "options": [
+          "−9",
+          "6",
+          "36",
+          "9"
+        ],
+        "answer": 3,
+        "explanation": "Para que D sea cero, 36 − 4k = 0. Entonces k = 9.",
+        "hint": "La raíz es única cuando el discriminante vale cero.",
+        "difficulty": "challenge"
+      }
+    ]
+  },
+  {
+    "id": "mat-funciones",
+    "title": "Plano cartesiano, rectas y funciones",
+    "objective": "Interpretar puntos, tablas y gráficas, y evaluar funciones.",
+    "explanation": [
+      "Un punto (x, y) indica primero el desplazamiento horizontal y luego el vertical. Para hallar el punto medio, promedia cada coordenada por separado.",
+      "Para hallar la distancia entre dos puntos, usa √[(Δx)² + (Δy)²]. El símbolo Δ indica la diferencia entre las coordenadas del segundo punto y las del primero.",
+      "Cada entrada de una función tiene una sola salida. Para hallar f(a), sustituye x por a, con paréntesis si a es negativo o es una expresión. En una gráfica, f(a) es la altura a la que se encuentra la curva cuando x = a.",
+      "En y = mx + b, la pendiente m es el cambio vertical dividido por el horizontal. El corte con el eje y es (0, b). Una recta vertical no tiene pendiente definida y no representa y como función de x."
+    ],
+    "example": {
+      "prompt": "La gráfica de una recta pasa por (−1, 3) y (2, 9). ¿Cuál es su ecuación?",
+      "steps": [
+        "Calcula la pendiente. m = (9 − 3)/(2 − (−1)) = 6/3 = 2.",
+        "Sustituye (2, 9) en y = 2x + b. Entonces 9 = 4 + b.",
+        "La ecuación es y = 2x + 5."
+      ]
+    },
+    "source": "Guía oficial de College Board (2019), p. 9. Descriptores oficiales, pp. 12–13. Refuerzo CONEA, fichas 30–32.",
+    "prerequisiteIds": [
+      "mat-ecuaciones",
+      "mat-polinomios"
+    ],
+    "exercises": [
+      {
+        "prompt": "¿En qué cuadrante está (−5, 4) si el cuadrante I tiene ambas coordenadas positivas?",
+        "options": [
+          "I",
+          "II",
+          "III",
+          "IV"
+        ],
+        "answer": 1,
+        "explanation": "El punto está a la izquierda del origen y arriba del eje x. Esa región es el cuadrante II.",
+        "hint": "Mueve primero cinco unidades a la izquierda.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Si f(x) = x² − 3x, ¿cuánto vale f(−2)?",
+        "options": [
+          "10",
+          "−10",
+          "−2",
+          "2"
+        ],
+        "answer": 0,
+        "explanation": "Sustituye x por (−2). Queda (−2)² − 3(−2) = 4 + 6 = 10.",
+        "hint": "Pon la entrada negativa entre paréntesis.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Cuál es el punto medio entre (−6, 2) y (4, 8)?",
+        "options": [
+          "(1, 5)",
+          "(−2, 10)",
+          "(5, 3)",
+          "(−1, 5)"
+        ],
+        "answer": 3,
+        "explanation": "Promedia las coordenadas horizontales para obtener −1 y las verticales para obtener 5.",
+        "hint": "Promedia por separado las x y las y.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Cuál es la distancia entre (1, 2) y (7, 10)?",
+        "options": [
+          "8",
+          "12",
+          "10",
+          "14"
+        ],
+        "answer": 2,
+        "explanation": "El cambio horizontal es 6 y el vertical es 8. La distancia es √(6² + 8²) = √100 = 10.",
+        "hint": "Imagina ambos cambios como los catetos de un triángulo rectángulo.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Una recta corta el eje y en (0, −3) y pasa por (4, 5). ¿Cuál es su ecuación?",
+        "options": [
+          "y = 2x + 3",
+          "y = 2x − 3",
+          "y = 4x − 3",
+          "y = −2x − 3"
+        ],
+        "answer": 1,
+        "explanation": "Al aumentar x en 4, y aumenta en 8. La pendiente es 2 y la ordenada al origen es −3.",
+        "hint": "Usa los dos puntos para hallar m y lee b en el corte con el eje y.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Una tabla registra los puntos (0, 5), (2, 1) y (4, −3) de una recta. ¿Cuál es su pendiente?",
+        "options": [
+          "−4",
+          "1/2",
+          "−2",
+          "2"
+        ],
+        "answer": 2,
+        "explanation": "En cada intervalo de 2 unidades de x, y disminuye 4. La pendiente es −4/2 = −2.",
+        "hint": "Divide un cambio vertical por el cambio horizontal que le corresponde.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "La gráfica de f cruza el eje x en (−4, 0) y (2, 0). Entre esos cortes, la curva pasa por (0, −8). ¿Cuál es f(0)?",
+        "options": [
+          "−4",
+          "0",
+          "2",
+          "−8"
+        ],
+        "answer": 3,
+        "explanation": "f(0) es la coordenada y cuando x = 0. El punto correspondiente es (0, −8).",
+        "hint": "Busca el valor de y del punto cuya coordenada horizontal es cero.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Si f(x) = 2x² + 1, ¿cuál es f(k − 2)?",
+        "options": [
+          "2k² − 8k + 9",
+          "2k² − 8k + 1",
+          "2k² − 4k + 9",
+          "2k² + 9"
+        ],
+        "answer": 0,
+        "explanation": "El cuadrado (k − 2)² es k² − 4k + 4. Multiplica por 2 y suma 1.",
+        "hint": "Sustituye con paréntesis y desarrolla el binomio al cuadrado.",
+        "difficulty": "challenge"
+      },
+      {
+        "prompt": "¿Qué conjunto de pares ordenados puede representar una función de x?",
+        "options": [
+          "{(0, 4), (0, 2), (2, 4)}",
+          "{(0, 4), (1, 4), (2, 4)}",
+          "{(1, 5), (1, 7), (2, 7)}",
+          "{(2, 1), (3, 2), (3, 5)}"
+        ],
+        "answer": 1,
+        "explanation": "Las entradas 0, 1 y 2 tienen una sola salida cada una. Las salidas pueden repetirse.",
+        "hint": "Busca una entrada que aparezca con dos salidas distintas.",
+        "difficulty": "challenge"
+      }
+    ]
+  },
+  {
+    "id": "mat-sistemas",
+    "title": "Ecuaciones con dos variables y sistemas",
+    "objective": "Representar dos relaciones a la vez y hallar un par que cumpla ambas.",
+    "explanation": [
+      "Una ecuación como 2x + y = 8 admite varios pares. Puedes escribir y = 8 − 2x para calcular y al elegir x.",
+      "Para resolver un sistema por sustitución, despeja una variable. Reemplázala en la otra ecuación. Para usar eliminación, suma o resta ecuaciones, después de multiplicarlas si hace falta, para cancelar una variable.",
+      "En una gráfica, cada solución es un punto común. Rectas que se cruzan tienen una solución. Rectas paralelas distintas no tienen solución. Rectas que coinciden tienen infinitas.",
+      "En un problema con dos cantidades, escribe qué indica cada variable. Verifica el par en ambas relaciones y con las unidades del problema."
+    ],
+    "example": {
+      "prompt": "Se vendieron 13 boletos. Los de adulto costaban $50 y los de estudiante $30. El total fue $510. ¿Cuántos boletos de adulto se vendieron?",
+      "steps": [
+        "Sea a el número de adultos y e el de estudiantes. Plantea a + e = 13 y 50a + 30e = 510.",
+        "Sustituye e por 13 − a. Queda 50a + 30(13 − a) = 510.",
+        "Resuelve 20a = 120. Se vendieron 6 boletos de adulto y 7 de estudiante."
+      ]
+    },
+    "source": "Guía oficial de College Board (2019), p. 9. Descriptores oficiales, pp. 12–13. Refuerzo CONEA, fichas 17–18.",
+    "prerequisiteIds": [
+      "mat-ecuaciones",
+      "mat-funciones"
+    ],
+    "exercises": [
+      {
+        "prompt": "Despeja y en 3x + 2y = 12.",
+        "options": [
+          "y = 12 − 3x",
+          "y = 6 − 3x",
+          "y = 6 − 3x/2",
+          "y = 6 + 3x/2"
+        ],
+        "answer": 2,
+        "explanation": "Resta 3x y divide cada término del miembro derecho entre 2.",
+        "hint": "Primero deja solo el término 2y en el lado izquierdo.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Cuál par (x, y) satisface x + 2y = 9?",
+        "options": [
+          "(2, 3)",
+          "(3, 3)",
+          "(5, 1)",
+          "(7, 2)"
+        ],
+        "answer": 1,
+        "explanation": "El par (3, 3) da 3 + 2(3) = 9.",
+        "hint": "Sustituye la primera coordenada por x y la segunda por y.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Cuál par (x, y) resuelve el sistema x + y = 11 y x − y = 3?",
+        "options": [
+          "(7, 4)",
+          "(4, 7)",
+          "(8, 3)",
+          "(6, 5)"
+        ],
+        "answer": 0,
+        "explanation": "Al sumar las ecuaciones, 2x = 14. Entonces x = 7 y y = 4.",
+        "hint": "Suma los miembros correspondientes para cancelar y.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Cuál es la solución del sistema y = 3x − 4 y y = x + 6?",
+        "options": [
+          "(11, 5)",
+          "(3, 9)",
+          "(−5, 1)",
+          "(5, 11)"
+        ],
+        "answer": 3,
+        "explanation": "Como ambos miembros derechos valen y, 3x − 4 = x + 6. Resulta x = 5 y y = 11.",
+        "hint": "Iguala las dos expresiones para y.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Cuántas soluciones tiene el sistema y = 4x − 1 y y = 4x + 2?",
+        "options": [
+          "Una",
+          "Dos",
+          "Ninguna",
+          "Infinitas"
+        ],
+        "answer": 2,
+        "explanation": "Las pendientes son iguales y los cortes con el eje y son distintos. Las rectas son paralelas.",
+        "hint": "Compara las pendientes y las ordenadas al origen.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Un corral tiene gallinas y conejos. Hay 15 animales y 42 patas en total. ¿Cuántos conejos hay?",
+        "options": [
+          "6",
+          "4",
+          "9",
+          "12"
+        ],
+        "answer": 0,
+        "explanation": "Quince gallinas tendrían 30 patas. Cada conejo en lugar de una gallina añade dos patas. Como faltan 12 patas, hay 6 conejos.",
+        "hint": "Escribe una ecuación para el total de animales y otra para el total de patas.",
+        "difficulty": "challenge"
+      },
+      {
+        "prompt": "¿Cuántas soluciones tiene el sistema 2x + y = 8 y 4x + 2y = 16?",
+        "options": [
+          "Ninguna",
+          "Una",
+          "Dos",
+          "Infinitas"
+        ],
+        "answer": 3,
+        "explanation": "La segunda ecuación es el doble de la primera. Ambas representan la misma recta.",
+        "hint": "Divide todos los términos de la segunda ecuación entre 2.",
+        "difficulty": "challenge"
+      }
+    ]
+  },
+  {
+    "id": "mat-angulos",
+    "title": "Ángulos, triángulos y rectas paralelas",
+    "objective": "Hallar ángulos con la suma de un triángulo y las relaciones de una secante.",
+    "explanation": [
+      "Una vuelta completa mide 360°. Un ángulo llano mide 180° y uno recto mide 90°. Los ángulos opuestos por el vértice son iguales. Dos ángulos adyacentes sobre la misma recta suman 180°.",
+      "Si una secante corta dos rectas paralelas, los correspondientes son iguales. Los alternos internos y los alternos externos también son iguales. Los interiores del mismo lado de la secante suman 180°.",
+      "Los ángulos interiores de un triángulo suman 180°. Un ángulo exterior de un triángulo equivale a la suma de los dos interiores que no son adyacentes a él.",
+      "Por sus lados, un triángulo puede ser equilátero, isósceles o escaleno. Por sus ángulos, puede ser acutángulo, rectángulo u obtusángulo."
+    ],
+    "example": {
+      "prompt": "Un triángulo isósceles tiene un ángulo de 44° entre sus dos lados iguales. ¿Cuánto mide cada ángulo de la base?",
+      "steps": [
+        "Los ángulos opuestos a los lados iguales tienen la misma medida.",
+        "Resta 44° de 180°. Los dos ángulos de la base suman 136°.",
+        "Divide entre 2. Cada ángulo de la base mide 68°."
+      ]
+    },
+    "source": "Guía oficial de College Board (2019), p. 9. Descriptores oficiales, pp. 14–15. Refuerzo CONEA, ficha 24.",
+    "prerequisiteIds": [
+      "mat-ecuaciones"
+    ],
+    "exercises": [
+      {
+        "prompt": "Dos ángulos adyacentes forman una línea recta. Uno mide 118°. ¿Cuánto mide el otro?",
+        "options": [
+          "28°",
+          "62°",
+          "72°",
+          "118°"
+        ],
+        "answer": 1,
+        "explanation": "Como suman 180°, el ángulo faltante mide 180° − 118° = 62°.",
+        "hint": "Identifica la medida de un ángulo llano.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Un triángulo tiene ángulos de 32° y 58°. ¿Cómo se clasifica por sus ángulos?",
+        "options": [
+          "Rectángulo",
+          "Acutángulo",
+          "Obtusángulo",
+          "Equilátero"
+        ],
+        "answer": 0,
+        "explanation": "El tercer ángulo mide 180° − 32° − 58° = 90°. El triángulo es rectángulo.",
+        "hint": "Calcula el tercer ángulo.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Dos rectas paralelas cortadas por una secante forman un par de ángulos alternos internos. Si uno mide 67°, ¿cuánto mide el otro?",
+        "options": [
+          "23°",
+          "113°",
+          "134°",
+          "67°"
+        ],
+        "answer": 3,
+        "explanation": "Los ángulos alternos internos tienen la misma medida cuando las rectas son paralelas.",
+        "hint": "Identifica si esa pareja es igual o suma 180°.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Una secante corta dos rectas paralelas y forma dos ángulos interiores del mismo lado. Si uno mide 102°, ¿cuánto mide el otro?",
+        "options": [
+          "12°",
+          "88°",
+          "78°",
+          "102°"
+        ],
+        "answer": 2,
+        "explanation": "Los dos interiores del mismo lado suman 180°. El faltante mide 180° − 102° = 78°.",
+        "hint": "Los dos ángulos están del mismo lado de la secante.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Los ángulos interiores no adyacentes a un ángulo exterior de un triángulo miden 35° y 71°. ¿Cuánto mide el ángulo exterior?",
+        "options": [
+          "74°",
+          "106°",
+          "109°",
+          "145°"
+        ],
+        "answer": 1,
+        "explanation": "El exterior es la suma de los interiores no adyacentes. Entonces mide 35° + 71° = 106°.",
+        "hint": "Usa el teorema del ángulo exterior.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Una secante atraviesa dos rectas paralelas horizontales. Un ángulo está fuera de ellas por arriba y su pareja por abajo, al otro lado de la secante. ¿Cómo se llama la pareja?",
+        "options": [
+          "Alternos internos",
+          "Alternos externos",
+          "Correspondientes",
+          "Opuestos por el vértice"
+        ],
+        "answer": 1,
+        "explanation": "Están fuera de las paralelas y en lados opuestos de la secante. Eso los hace alternos externos.",
+        "hint": "Revisa si la pareja está dentro o fuera de las paralelas y de qué lado de la secante está cada ángulo.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Los tres ángulos de un triángulo miden x, 2x y 3x grados. ¿Cuánto mide el mayor?",
+        "options": [
+          "30°",
+          "60°",
+          "90°",
+          "120°"
+        ],
+        "answer": 2,
+        "explanation": "Los ángulos suman 6x = 180°. Por eso x = 30° y 3x = 90°.",
+        "hint": "Suma las tres expresiones e iguala a 180.",
+        "difficulty": "challenge"
+      },
+      {
+        "prompt": "Dos ángulos opuestos por el vértice miden (3x + 10)° y (5x − 22)°. ¿Cuánto mide cada uno?",
+        "options": [
+          "58°",
+          "16°",
+          "42°",
+          "122°"
+        ],
+        "answer": 0,
+        "explanation": "Las medidas son iguales. De 3x + 10 = 5x − 22 resulta x = 16. Al sustituir, cada ángulo mide 58°.",
+        "hint": "Iguala las dos expresiones. Luego calcula la medida con el valor de x.",
+        "difficulty": "challenge"
+      }
+    ]
+  },
+  {
+    "id": "mat-triangulos",
+    "title": "Semejanza, congruencia y Pitágoras",
+    "objective": "Comparar triángulos y hallar longitudes por escala o por Pitágoras.",
+    "explanation": [
+      "Los triángulos congruentes tienen la misma forma y tamaño. Puedes comprobarlo con tres pares de lados iguales o con dos pares de lados y el ángulo comprendido iguales.",
+      "Los semejantes tienen ángulos correspondientes iguales y lados correspondientes en la misma proporción. Dos pares de ángulos iguales bastan para probar semejanza. En △ABC ∼ △DEF, A corresponde a D, B a E y C a F.",
+      "En un triángulo rectángulo, a² + b² = c². La hipotenusa c es el lado opuesto al ángulo recto. Si buscas un cateto, resta el cuadrado del cateto conocido del cuadrado de la hipotenusa. Toma la raíz cuadrada del resultado.",
+      "En un triángulo 45°–45°–90°, los lados tienen razón 1 : 1 : √2. En uno 30°–60°–90°, tienen razón 1 : √3 : 2, en ese orden."
+    ],
+    "example": {
+      "prompt": "Un triángulo rectángulo tiene hipotenusa de 17 m y un cateto de 8 m. ¿Cuánto mide el otro cateto?",
+      "steps": [
+        "Plantea 8² + b² = 17².",
+        "Resta 64 de 289. Resulta b² = 225.",
+        "Toma la raíz positiva. El cateto mide 15 m."
+      ]
+    },
+    "source": "Guía oficial de College Board (2019), p. 9. Descriptores oficiales, pp. 14–15. Refuerzo CONEA, ficha 28.",
+    "prerequisiteIds": [
+      "mat-angulos",
+      "mat-fracciones",
+      "mat-potencias"
+    ],
+    "exercises": [
+      {
+        "prompt": "Dos triángulos tienen lados de 4, 5 y 6 cm cada uno. ¿Qué relación se verifica?",
+        "options": [
+          "Son semejantes, pero tienen distinto tamaño",
+          "Solo tienen un ángulo igual",
+          "Tienen áreas distintas",
+          "Son congruentes"
+        ],
+        "answer": 3,
+        "explanation": "Los tres pares de lados correspondientes son iguales. Eso basta para demostrar congruencia.",
+        "hint": "Compara las tres longitudes de ambos triángulos.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "En △ABC ∼ △PQR, ¿qué lado corresponde a BC?",
+        "options": [
+          "PQ",
+          "PR",
+          "QR",
+          "AC"
+        ],
+        "answer": 2,
+        "explanation": "La segunda letra de ABC es B y corresponde a Q. La tercera, C, corresponde a R.",
+        "hint": "Empareja los vértices por el orden de sus letras.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "En dos triángulos semejantes, un lado de 6 cm corresponde a uno de 15 cm. ¿Qué longitud corresponde en el triángulo mayor a un lado de 8 cm del menor?",
+        "options": [
+          "17 cm",
+          "20 cm",
+          "24 cm",
+          "30 cm"
+        ],
+        "answer": 1,
+        "explanation": "El factor de escala es 15/6 = 2.5. Aplica 8 × 2.5 = 20.",
+        "hint": "Usa la razón de un par conocido para escalar el otro lado.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Una escalera se apoya en una pared vertical. Su pie está a 9 m de la pared y alcanza 12 m de altura. ¿Cuánto mide la escalera?",
+        "options": [
+          "15 m",
+          "13 m",
+          "17 m",
+          "21 m"
+        ],
+        "answer": 0,
+        "explanation": "Los catetos son 9 y 12. La escalera mide √(81 + 144) = √225 = 15 m.",
+        "hint": "La escalera es la hipotenusa.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Si la hipotenusa de un triángulo 30°–60°–90° mide 18 cm, ¿cuánto mide el lado opuesto a 30°?",
+        "options": [
+          "9√2 cm",
+          "9√3 cm",
+          "36 cm",
+          "9 cm"
+        ],
+        "answer": 3,
+        "explanation": "El lado opuesto a 30° mide la mitad de la hipotenusa.",
+        "hint": "Usa la razón 1 : √3 : 2.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Un triángulo rectángulo isósceles tiene un cateto de 7 cm. ¿Cuánto mide su hipotenusa?",
+        "options": [
+          "7√3 cm",
+          "14 cm",
+          "7√2 cm",
+          "49 cm"
+        ],
+        "answer": 2,
+        "explanation": "Los catetos son iguales. Por Pitágoras, la hipotenusa es √(49 + 49) = 7√2 cm.",
+        "hint": "Los ángulos agudos son de 45°. También puedes usar Pitágoras.",
+        "difficulty": "challenge"
+      },
+      {
+        "prompt": "Dos triángulos semejantes tienen una razón de lados de 2 a 3, del menor al mayor. El menor tiene perímetro 22 cm. ¿Cuánto mide el perímetro del mayor?",
+        "options": [
+          "33 cm",
+          "27 cm",
+          "44 cm",
+          "49.5 cm"
+        ],
+        "answer": 0,
+        "explanation": "Todos los lados se multiplican por 3/2. La suma también. Entonces 22 × 3/2 = 33 cm.",
+        "hint": "Un perímetro es una suma de longitudes.",
+        "difficulty": "challenge"
+      }
+    ]
+  },
+  {
+    "id": "mat-areas",
+    "title": "Perímetro, área y círculos",
+    "objective": "Calcular medidas de polígonos y círculos con unidades correctas.",
+    "explanation": [
+      "El perímetro es la longitud del contorno. Para el área de un rectángulo o paralelogramo, multiplica base por altura perpendicular. Para un triángulo, divide ese producto entre 2. Para un trapecio, usa (B + b)h/2.",
+      "El diámetro d de un círculo es 2r. La circunferencia mide 2πr = πd. El área del círculo es πr².",
+      "Para un sector de ángulo central θ, multiplica el área del círculo por θ/360. Para hallar la longitud de su arco, aplica esa misma fracción a la circunferencia.",
+      "Para una figura compuesta, suma o resta áreas según corresponda. Para el perímetro, cuenta solo los lados del contorno. El área se expresa en unidades cuadradas."
+    ],
+    "example": {
+      "prompt": "Un piso de 9 m por 7 m tiene una zona circular de radio 2 m. ¿Qué área queda fuera de esa zona?",
+      "steps": [
+        "El área del piso completo es 9 × 7 = 63 m².",
+        "El círculo ocupa π(2)² = 4π m².",
+        "El área solicitada es 63 − 4π m²."
+      ]
+    },
+    "source": "Guía oficial de College Board (2019), p. 9. Descriptores oficiales, pp. 14–15. Refuerzo CONEA, ficha 25.",
+    "prerequisiteIds": [
+      "mat-fracciones",
+      "mat-potencias",
+      "mat-triangulos"
+    ],
+    "exercises": [
+      {
+        "prompt": "Un hexágono regular tiene lados de 3.5 cm. ¿Cuál es su perímetro?",
+        "options": [
+          "10.5 cm",
+          "18 cm",
+          "24.5 cm",
+          "21 cm"
+        ],
+        "answer": 3,
+        "explanation": "Hay seis lados iguales. El perímetro es 6 × 3.5 = 21 cm.",
+        "hint": "Multiplica el número de lados por lo que mide cada uno.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Si el diámetro de un círculo mide 14 cm, ¿cuánto mide su radio?",
+        "options": [
+          "14 cm",
+          "7 cm",
+          "21 cm",
+          "28 cm"
+        ],
+        "answer": 1,
+        "explanation": "El radio es la mitad del diámetro. Entonces r = 14 ÷ 2 = 7 cm.",
+        "hint": "El diámetro cruza el centro de extremo a extremo.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Un triángulo tiene base de 14 cm y altura perpendicular de 9 cm. ¿Cuál es su área?",
+        "options": [
+          "63 cm²",
+          "23 cm²",
+          "46 cm²",
+          "126 cm²"
+        ],
+        "answer": 0,
+        "explanation": "El área es (14 × 9)/2 = 63 cm².",
+        "hint": "Usa la mitad del producto de la base por la altura.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Cuál es el área de un trapecio de bases 6 y 10 cm y altura 5 cm?",
+        "options": [
+          "30 cm²",
+          "50 cm²",
+          "80 cm²",
+          "40 cm²"
+        ],
+        "answer": 3,
+        "explanation": "El promedio de las bases es (6 + 10)/2 = 8. Multiplica 8 por 5.",
+        "hint": "Promedia las dos bases antes de multiplicar por la altura.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Un círculo tiene diámetro de 9 m. Si usas π ≈ 3.14, ¿cuánto mide su circunferencia?",
+        "options": [
+          "14.13 m",
+          "56.52 m",
+          "28.26 m",
+          "63.59 m"
+        ],
+        "answer": 2,
+        "explanation": "La circunferencia es πd. Entonces 3.14 × 9 = 28.26 m.",
+        "hint": "La fórmula con el diámetro es πd.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Un sector tiene 90° de ángulo central y radio de 8 cm. ¿Cuál es su área?",
+        "options": [
+          "4π cm²",
+          "16π cm²",
+          "8π cm²",
+          "64π cm²"
+        ],
+        "answer": 1,
+        "explanation": "El sector ocupa 90/360 = 1/4 del círculo. Su área es 64π ÷ 4 = 16π cm².",
+        "hint": "Encuentra qué fracción del círculo representa el sector.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Un arco abarca 60° en una circunferencia de radio 12 m. ¿Cuánto mide el arco?",
+        "options": [
+          "2π m",
+          "4π m",
+          "6π m",
+          "24π m"
+        ],
+        "answer": 1,
+        "explanation": "La circunferencia mide 24π m. El arco abarca 60/360 = 1/6 de ella y mide 4π m.",
+        "hint": "Usa la fracción de la circunferencia que corresponde al ángulo.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Si el largo de un rectángulo aumenta 30 % y el ancho baja 20 %, ¿cómo cambia su área?",
+        "options": [
+          "Disminuye 4 %",
+          "Aumenta 10 %",
+          "Aumenta 4 %",
+          "Disminuye 10 %"
+        ],
+        "answer": 2,
+        "explanation": "Multiplica los dos factores de cambio. 1.30 × 0.80 = 1.04, equivalente a un aumento de 4 %.",
+        "hint": "El área es un producto. Multiplica los factores de cambio.",
+        "difficulty": "challenge"
+      },
+      {
+        "prompt": "Dos cuadrados de 5 cm de lado comparten un lado completo y forman un rectángulo. ¿Cuál es el perímetro del rectángulo?",
+        "options": [
+          "30 cm",
+          "20 cm",
+          "35 cm",
+          "40 cm"
+        ],
+        "answer": 0,
+        "explanation": "El rectángulo mide 10 cm por 5 cm. Su perímetro es 2(10 + 5) = 30 cm.",
+        "hint": "El lado compartido queda dentro del contorno.",
+        "difficulty": "challenge"
+      },
+      {
+        "prompt": "Una arandela tiene radio exterior r + 2 y radio interior r, con r > 0. ¿Qué expresión simplificada representa su área?",
+        "options": [
+          "π(r + 2)²",
+          "4π",
+          "π(2r + 2)",
+          "4π(r + 1)"
+        ],
+        "answer": 3,
+        "explanation": "Resta el área del círculo interior de la del exterior. π[(r + 2)² − r²] = π(4r + 4).",
+        "hint": "Dibuja mentalmente el círculo exterior y el hueco. Resta sus áreas.",
+        "difficulty": "challenge"
+      }
+    ]
+  },
+  {
+    "id": "mat-solidos",
+    "title": "Sólidos geométricos y volumen",
+    "objective": "Reconocer sólidos y calcular su volumen con el área de la base y la altura.",
+    "explanation": [
+      "Un prisma tiene dos bases poligonales paralelas y congruentes. Una pirámide tiene una base poligonal y caras triangulares que se unen en un vértice.",
+      "Un cilindro circular tiene dos bases circulares congruentes. Un cono circular tiene una base circular y un vértice. Una esfera tiene todos los puntos de su superficie a la misma distancia del centro.",
+      "Para prismas y cilindros, V = Bh, donde B es el área de una base y h la altura perpendicular. Para pirámides y conos, V = Bh/3. Para la esfera, V = 4πr³/3.",
+      "El volumen se expresa en unidades cúbicas. Mantén la misma unidad en las longitudes antes de multiplicar. Por ejemplo, 1 m³ equivale a 1 000 000 cm³."
+    ],
+    "example": {
+      "prompt": "Una pirámide tiene base cuadrada de 6 m de lado y altura perpendicular de 5 m. ¿Cuál es su volumen?",
+      "steps": [
+        "El área de la base es 6 × 6 = 36 m².",
+        "Multiplica por la altura y divide entre 3.",
+        "V = 36 × 5 ÷ 3 = 60 m³."
+      ]
+    },
+    "source": "Guía oficial de College Board (2019), p. 9. Descriptores oficiales, pp. 14–15. Refuerzo CONEA, ficha 25.",
+    "prerequisiteIds": [
+      "mat-areas"
+    ],
+    "exercises": [
+      {
+        "prompt": "¿Qué sólido tiene dos bases triangulares paralelas y congruentes?",
+        "options": [
+          "Pirámide triangular",
+          "Cono",
+          "Prisma triangular",
+          "Cilindro"
+        ],
+        "answer": 2,
+        "explanation": "Las dos bases congruentes y paralelas caracterizan al prisma. Sus bases son triángulos.",
+        "hint": "Cuenta las bases y revisa su forma.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Cuál es el volumen de un cubo de arista 4 cm?",
+        "options": [
+          "12 cm³",
+          "64 cm³",
+          "16 cm³",
+          "48 cm³"
+        ],
+        "answer": 1,
+        "explanation": "Multiplica el área de la base, 16 cm², por la altura de 4 cm.",
+        "hint": "Hay tres dimensiones iguales.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Un prisma tiene base triangular de área 18 cm² y altura perpendicular de 7 cm. ¿Cuál es su volumen?",
+        "options": [
+          "126 cm³",
+          "42 cm³",
+          "63 cm³",
+          "252 cm³"
+        ],
+        "answer": 0,
+        "explanation": "El volumen es 18 × 7 = 126 cm³. El área dada ya corresponde al triángulo.",
+        "hint": "Toma el área de la base tal como aparece y multiplícala por la altura del prisma.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Cuál es el volumen de un cilindro de radio 3 cm y altura 5 cm?",
+        "options": [
+          "15π cm³",
+          "30π cm³",
+          "75π cm³",
+          "45π cm³"
+        ],
+        "answer": 3,
+        "explanation": "El área de la base es 9π cm². Al multiplicarla por 5, resulta 45π cm³.",
+        "hint": "Calcula primero el área circular.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Un cono y un cilindro tienen bases del mismo tamaño y la misma altura. Si el cilindro tiene volumen de 180 cm³, ¿qué volumen tiene el cono?",
+        "options": [
+          "30 cm³",
+          "90 cm³",
+          "60 cm³",
+          "180 cm³"
+        ],
+        "answer": 2,
+        "explanation": "El cono tiene un tercio del volumen del cilindro con esa base y altura. 180 ÷ 3 = 60.",
+        "hint": "Compara las dos fórmulas.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Una caja rectangular mide 0.5 m de largo, 40 cm de ancho y 20 cm de alto. ¿Cuál es su volumen en centímetros cúbicos?",
+        "options": [
+          "40000 cm³",
+          "400 cm³",
+          "4000 cm³",
+          "400000 cm³"
+        ],
+        "answer": 0,
+        "explanation": "Convierte 0.5 m en 50 cm. Multiplica 50 × 40 × 20 = 40000 cm³.",
+        "hint": "Usa centímetros para las tres longitudes.",
+        "difficulty": "challenge"
+      },
+      {
+        "prompt": "Si duplicas todas las aristas de un cubo, ¿por cuánto se multiplica el volumen?",
+        "options": [
+          "2",
+          "4",
+          "6",
+          "8"
+        ],
+        "answer": 3,
+        "explanation": "El largo, el ancho y la altura se multiplican por 2. Por eso el volumen se multiplica por 2³ = 8.",
+        "hint": "Escribe el volumen como producto de tres longitudes.",
+        "difficulty": "challenge"
+      }
+    ]
+  },
+  {
+    "id": "mat-estadistica",
+    "title": "Tablas, gráficas y tendencia central",
+    "objective": "Leer datos y hallar la media, la mediana y la moda.",
+    "explanation": [
+      "En tablas y gráficas, lee los rótulos, las unidades, la escala y la clave antes de calcular. Una barra muestra una cantidad. Un sector muestra una parte del total. En un pictograma, un símbolo puede valer varias unidades.",
+      "Para hallar la media aritmética, divide la suma de los datos entre su cantidad. Con una tabla de frecuencias, multiplica cada valor por su frecuencia antes de sumar.",
+      "Para hallar la mediana, ordena los datos. Con cantidad impar, toma el dato central. Con cantidad par, promedia los dos datos centrales.",
+      "La moda es el valor con mayor frecuencia. Puede haber más de una si varios valores comparten la frecuencia mayor. Si ningún dato se repite, es habitual decir que no hay moda."
+    ],
+    "example": {
+      "prompt": "Las calificaciones de cuatro trabajos son 72, 85, 88 y x. Las cuatro tienen el mismo peso y la media es 83. ¿Cuánto vale x?",
+      "steps": [
+        "La suma de las cuatro calificaciones es 83 × 4 = 332.",
+        "Las tres calificaciones conocidas suman 72 + 85 + 88 = 245.",
+        "La cuarta calificación es 332 − 245 = 87."
+      ]
+    },
+    "source": "Guía oficial de College Board (2019), p. 10. Descriptores oficiales, pp. 16–17. Refuerzo CONEA, ficha 20.",
+    "prerequisiteIds": [
+      "mat-fracciones",
+      "mat-ecuaciones"
+    ],
+    "exercises": [
+      {
+        "prompt": "¿Cuál es la mediana de 13, 6, 9, 3 y 2?",
+        "options": [
+          "3",
+          "6",
+          "6.6",
+          "9"
+        ],
+        "answer": 1,
+        "explanation": "Ordena 2, 3, 6, 9, 13. El tercer dato es 6.",
+        "hint": "Ordena los valores antes de buscar el central.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Encuentra la moda de 8, 6, 9, 6, 6 y 8.",
+        "options": [
+          "6",
+          "3",
+          "8",
+          "9"
+        ],
+        "answer": 0,
+        "explanation": "El 6 aparece tres veces, más que cualquier otro valor.",
+        "hint": "Cuenta cuántas veces aparece cada valor.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Cuál es la mediana de 5, 21, 14 y 8?",
+        "options": [
+          "8",
+          "12",
+          "14",
+          "11"
+        ],
+        "answer": 3,
+        "explanation": "En orden, los dos valores centrales son 8 y 14. La mediana es (8 + 14)/2 = 11.",
+        "hint": "Si hay cuatro datos, usa dos valores centrales.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "La tabla muestra cuántos libros leyeron seis personas.\n0 libros → 1 persona.\n2 libros → 3 personas.\n4 libros → 2 personas.\n¿Cuál es la media de libros por persona?",
+        "options": [
+          "2",
+          "3",
+          "7/3",
+          "14"
+        ],
+        "answer": 2,
+        "explanation": "El total de libros es 0(1) + 2(3) + 4(2) = 14. Hay seis personas, así que la media es 14/6 = 7/3.",
+        "hint": "Pondera el número de libros por la frecuencia de cada fila.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "El pictograma muestra recorridos en bicicleta. Cada ● representa 4 km y cada ◐ representa 2 km.\nSol ●●◐\nAri ●●●\nLuz ●◐\n¿Cuántos kilómetros recorrieron en total?",
+        "options": [
+          "6 km",
+          "28 km",
+          "7 km",
+          "26 km"
+        ],
+        "answer": 1,
+        "explanation": "Sol recorrió 10 km, Ari 12 km y Luz 6 km. El total es 28 km.",
+        "hint": "Multiplica cada símbolo por el valor que marca la clave.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Una gráfica de barras muestra plantas vendidas. Cada ■ representa 3 plantas.\nLun ■■■■\nMar ■■■■■■\nMié ■■■\n¿Cuántas plantas más vendieron el martes que el miércoles?",
+        "options": [
+          "3",
+          "12",
+          "9",
+          "18"
+        ],
+        "answer": 2,
+        "explanation": "La diferencia entre las barras es de 3 bloques. Cada bloque vale 3 plantas, así que la diferencia es 9.",
+        "hint": "Calcula la diferencia entre las barras con la escala indicada.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Cuatro recorridos tienen una longitud media de 18 km. Tres miden 11 km, 17 km y 19 km. ¿Cuánto mide el cuarto?",
+        "options": [
+          "25 km",
+          "18 km",
+          "23 km",
+          "29 km"
+        ],
+        "answer": 0,
+        "explanation": "La suma total es 4 × 18 = 72 km. Los recorridos conocidos suman 47 km. La diferencia es 25 km.",
+        "hint": "Reconstruye el total a partir de la media y la cantidad.",
+        "difficulty": "challenge"
+      },
+      {
+        "prompt": "Una gráfica circular representa 120 respuestas. El sector de «A pie» mide 72°. ¿Cuántas respuestas representa?",
+        "options": [
+          "18",
+          "24",
+          "30",
+          "72"
+        ],
+        "answer": 1,
+        "explanation": "La fracción del total es 72/360 = 1/5. Entonces 120 × 1/5 = 24.",
+        "hint": "Divide el ángulo del sector por el de una vuelta completa.",
+        "difficulty": "challenge"
+      },
+      {
+        "prompt": "En una encuesta, 24 personas eligieron cine. Esa opción ocupa 96° en la gráfica circular. ¿Cuántas personas respondieron en total?",
+        "options": [
+          "60",
+          "96",
+          "120",
+          "90"
+        ],
+        "answer": 3,
+        "explanation": "96° equivale a 96/360 = 4/15 del círculo. Si 4/15 del total es 24, el total es 24 × 15/4 = 90.",
+        "hint": "Relaciona las 24 personas con el sector que ocupan y despeja el total.",
+        "difficulty": "challenge"
+      }
+    ]
+  },
+  {
+    "id": "mat-probabilidad",
+    "title": "Probabilidad y espacio muestral",
+    "objective": "Enumerar resultados y calcular probabilidades simples y complementos.",
+    "explanation": [
+      "El espacio muestral incluye todos los resultados posibles. Con resultados igualmente probables, divide los favorables entre el total. Si los resultados no tienen la misma probabilidad, suma las probabilidades de los resultados favorables.",
+      "El complemento de A es el evento «no A». Su probabilidad es 1 − P(A).",
+      "Para contar quienes cumplen A o B, suma ambas cantidades y resta una vez a quienes cumplen ambas. Así evitas contarlos dos veces.",
+      "En experimentos de dos pasos, organiza resultados con una tabla o un árbol. En una extracción sin reemplazo, el total disponible baja en el segundo paso."
+    ],
+    "example": {
+      "prompt": "En un grupo de 28 personas, 13 practican voleibol, 12 practican natación y 5 practican ambos. ¿Cuál es la probabilidad de elegir al azar a alguien que no practica ninguno?",
+      "steps": [
+        "Hay 13 + 12 − 5 = 20 que practican al menos uno.",
+        "Quedan 28 − 20 = 8 que no practican ninguno.",
+        "La probabilidad es 8/28 = 2/7."
+      ]
+    },
+    "source": "Guía oficial de College Board (2019), p. 10. Prueba de práctica oficial, pp. 28–29. Refuerzo CONEA, ficha 21.",
+    "prerequisiteIds": [
+      "mat-fracciones",
+      "mat-estadistica"
+    ],
+    "exercises": [
+      {
+        "prompt": "Una bolsa tiene 4 fichas verdes y 6 fichas rojas. Si sacas una al azar, ¿cuál es la probabilidad de que sea verde?",
+        "options": [
+          "3/5",
+          "2/3",
+          "2/5",
+          "4/5"
+        ],
+        "answer": 2,
+        "explanation": "Hay 4 verdes de 10 fichas en total. 4/10 se simplifica a 2/5.",
+        "hint": "Cuenta todas las fichas en el denominador.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Lanzas dos monedas. C significa cara y S significa sello. Si importa el orden, ¿cuál es el espacio muestral?",
+        "options": [
+          "{CC, CS, SS}",
+          "{CC, CS, SC, SS}",
+          "{C, S}",
+          "{CC, SS}"
+        ],
+        "answer": 1,
+        "explanation": "Cada moneda tiene dos resultados posibles. Al combinarlos hay cuatro pares, con CS distinto de SC.",
+        "hint": "Lista las dos posibilidades de la segunda moneda para cada resultado de la primera.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Se elige al azar un entero del 1 al 12, incluidos ambos extremos. ¿Cuál es la probabilidad de que no sea múltiplo de 3?",
+        "options": [
+          "2/3",
+          "1/3",
+          "1/4",
+          "3/4"
+        ],
+        "answer": 0,
+        "explanation": "Hay cuatro múltiplos de 3. Los ocho restantes dan una probabilidad de 8/12 = 2/3.",
+        "hint": "Cuenta primero los múltiplos de 3 y usa el complemento.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Una ruleta ideal tiene tres sectores. El azul ocupa 144°. ¿Con qué probabilidad sale azul?",
+        "options": [
+          "1/3",
+          "1/2",
+          "3/5",
+          "2/5"
+        ],
+        "answer": 3,
+        "explanation": "La probabilidad de un sector es la fracción del ángulo total que ocupa. 144/360 = 2/5.",
+        "hint": "Usa la proporción de la vuelta ocupada por azul.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Se lanzan dos monedas justas de forma independiente. ¿Cuál es la probabilidad de obtener exactamente una cara?",
+        "options": [
+          "1/4",
+          "3/4",
+          "1/2",
+          "1"
+        ],
+        "answer": 2,
+        "explanation": "Cara-sello y sello-cara son dos resultados favorables de cuatro igualmente probables.",
+        "hint": "Ten en cuenta los dos órdenes posibles.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "En un salón de 30 estudiantes, 14 usan bicicleta, 11 usan autobús y 4 usan ambos. ¿Cuál es la probabilidad de elegir a alguien que usa al menos uno de esos medios?",
+        "options": [
+          "7/10",
+          "5/6",
+          "3/10",
+          "7/30"
+        ],
+        "answer": 0,
+        "explanation": "Suma 14 y 11 y resta las 4 personas que contaste dos veces. Hay 21 de 30, lo que da 7/10.",
+        "hint": "Resta una vez a los estudiantes que están en ambos grupos.",
+        "difficulty": "challenge"
+      },
+      {
+        "prompt": "Una bolsa tiene 3 fichas negras y 2 blancas. Sacas dos fichas al azar sin reemplazo. ¿Cuál es la probabilidad de sacar dos negras?",
+        "options": [
+          "9/25",
+          "2/5",
+          "3/5",
+          "3/10"
+        ],
+        "answer": 3,
+        "explanation": "La primera tiene probabilidad 3/5. Si sale negra, quedan 2 negras de 4. Multiplica (3/5)(2/4) = 3/10.",
+        "hint": "Actualiza los dos recuentos después de la primera extracción.",
+        "difficulty": "challenge"
+      },
+      {
+        "prompt": "Una ruleta con sectores de igual tamaño tiene ocho sectores numerados del 1 al 8. Ganas si sale un número par o mayor que 5. ¿Cuál es la probabilidad de ganar?",
+        "options": [
+          "3/8",
+          "5/8",
+          "3/4",
+          "7/8"
+        ],
+        "answer": 1,
+        "explanation": "Los números que cumplen al menos una condición son 2, 4, 6, 7 y 8. Hay cinco de ocho resultados posibles.",
+        "hint": "Enumera la unión de los dos grupos. Cada número se cuenta una sola vez.",
+        "difficulty": "challenge"
+      }
+    ]
+  }
+]
