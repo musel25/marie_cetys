@@ -6,25 +6,27 @@ El plan base alterna cognoscitiva, matemáticas, español e inglés. Mantiene el
 
 | Área | Lecciones | Ejercicios originales | Preguntas del modelo | Minutos |
 | --- | ---: | ---: | ---: | ---: |
-| Habilidad cognoscitiva | 8 | 58 | 42 | 35 |
+| Habilidad cognoscitiva | 8 | 65 | 42 | 35 |
 | Español | 8 | 57 | 37 | 30 |
 | Matemáticas | 15 | 116 | 35 | 35 |
 | Inglés | 8 | 58 | 40 | 30 |
 
 Cada lección publica los ejercicios de base y de tipo examen. Las variantes de reto aparecen en clase, repaso o simulacro. Los pasajes cortos practican destrezas específicas. Usa la prueba oficial completa para ensayar los cuatro bloques de corrido.
 
+En Cognoscitiva, cada lección abre con siete ejercicios guiados. Después ofrece tres miniexámenes de cinco preguntas. Sus 120 preguntas se suman al banco de la tabla. El sitio registra tiempo y aciertos por intento.
+
 ## Habilidad cognoscitiva
 
 | Lección | Meta de la clase | Banco |
 | --- | --- | ---: |
 | 1. Ordenar con pistas | Ubica letras o números con pistas de posición y elige el orden que cumple todas las pistas. | 9 |
-| 2. Encontrar el sentido de una metáfora | Relaciona una descripción figurada con la opción que mejor comparte sus características. | 7 |
-| 3. Completar analogías | Explica la relación entre dos palabras y encuentra otra pareja con la misma relación y el mismo orden. | 7 |
-| 4. Completar secuencias | Identifica una regla que se repite en números o letras y úsala para completar los espacios. | 7 |
-| 5. Encontrar patrones en matrices | Compara filas y columnas de un cuadro para encontrar los datos que faltan. | 7 |
-| 6. Leer diagramas de tres conjuntos | Identifica el sector que corresponde a lo que un objeto cumple y a lo que queda fuera. | 7 |
-| 7. Sacar conclusiones de reglas | Distingue las conclusiones obligatorias de las que solo podrían ser ciertas. | 7 |
-| 8. Resolver situaciones con los datos | Elige la solución que cumple las condiciones o la explicación con mayor apoyo en los datos. | 7 |
+| 2. Encontrar el sentido de una metáfora | Relaciona una descripción figurada con la opción que mejor comparte sus características. | 8 |
+| 3. Completar analogías | Explica la relación entre dos palabras y encuentra otra pareja con la misma relación y el mismo orden. | 8 |
+| 4. Completar secuencias | Identifica una regla que se repite en números o letras y úsala para completar los espacios. | 8 |
+| 5. Encontrar patrones en matrices | Compara filas y columnas de un cuadro para encontrar los datos que faltan. | 8 |
+| 6. Leer diagramas de tres conjuntos | Identifica el sector que corresponde a lo que un objeto cumple y a lo que queda fuera. | 8 |
+| 7. Sacar conclusiones de reglas | Distingue las conclusiones obligatorias de las que solo podrían ser ciertas. | 8 |
+| 8. Resolver situaciones con los datos | Elige la solución que cumple las condiciones o la explicación con mayor apoyo en los datos. | 8 |
 
 ## Español
 

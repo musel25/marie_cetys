@@ -252,6 +252,19 @@
         "explanation": "Un oasis reúne agua y vegetación en una zona seca. La frase resalta que el huerto crea una zona verde entre superficies de cemento.",
         "hint": "Un oasis tiene agua y vegetación. Busca qué parte de la azotea se parece a un oasis.",
         "difficulty": "challenge"
+      },
+      {
+        "prompt": "En el museo, el guía señala unas vasijas antiguas y dice «Son una puerta a otros tiempos». ¿Qué quiere decir?",
+        "options": [
+          "Las vasijas se pueden llevar a otra sala.",
+          "Las vasijas muestran cómo vivía la gente hace mucho tiempo.",
+          "Las vasijas decoraban una entrada.",
+          "Las vasijas se hicieron para medir el tiempo."
+        ],
+        "answer": 1,
+        "explanation": "Una puerta da acceso a un lugar. Las vasijas dan acceso a información sobre la vida en el pasado.",
+        "hint": "Identifica qué permite conocer el museo con ayuda de las vasijas.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -366,6 +379,19 @@
         "explanation": "El catálogo permite localizar libros en una colección. El índice permite localizar temas en un libro.",
         "hint": "Identifica qué ayuda a encontrar cada lista.",
         "difficulty": "challenge"
+      },
+      {
+        "prompt": "Retrato es a rostro como plano es a ___.",
+        "options": [
+          "Escala",
+          "Edificio",
+          "Arquitecto",
+          "Regla"
+        ],
+        "answer": 1,
+        "explanation": "Un retrato representa un rostro. Un plano puede representar un edificio. La segunda palabra indica lo que se representa.",
+        "hint": "Usa la frase «representa un» para leer cada pareja.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -480,6 +506,19 @@
         "explanation": "En los lugares impares, la letra avanza dos posiciones y el número se duplica. Sigue g16. En los pares, la letra retrocede una posición y el número resta 3. Sigue E9.",
         "hint": "Lee primero solo los términos en minúscula. Luego lee solo los términos en mayúscula.",
         "difficulty": "challenge"
+      },
+      {
+        "prompt": "Completa la secuencia 7, 9, 12, 16, ___, 27.",
+        "options": [
+          "20",
+          "22",
+          "21",
+          "23"
+        ],
+        "answer": 2,
+        "explanation": "Los primeros saltos son +2, +3 y +4. Sigue +5, que lleva de 16 a 21. El siguiente salto es +6 y lleva a 27.",
+        "hint": "Escribe cuánto aumenta cada par de números vecinos.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -596,6 +635,19 @@
         "explanation": "Cada fila multiplica las dos primeras casillas y suma la tercera. Así, 4 × 6 + 5 = 29, y 5 × 6 + 4 = 34.",
         "hint": "Multiplica las dos primeras casillas. Para pasar de 15 a 19 en la primera fila, ¿qué número necesitas sumar?",
         "difficulty": "challenge"
+      },
+      {
+        "prompt": "¿Qué número completa la matriz?\n2 | 9 | 7\n5 | 14 | 9\n8 | 17 | ___",
+        "options": [
+          "25",
+          "10",
+          "9",
+          "8"
+        ],
+        "answer": 2,
+        "explanation": "En cada fila, resta el primer número del segundo. En la última fila, 17 − 8 = 9.",
+        "hint": "Prueba 9 − 2 en la primera fila. Repite con la segunda fila.",
+        "difficulty": "base"
       }
     ]
   },
@@ -711,6 +763,19 @@
         "explanation": "Los sectores 2, 4 y 6 corresponden a las tres parejas de círculos. El sector 5 contiene las tres características.",
         "hint": "Prueba A y B, A y C, y B y C. Excluye la tercera característica en cada pareja.",
         "difficulty": "challenge"
+      },
+      {
+        "prompt": "Sectores del diagrama. 1 solo A · 2 A y B sin C · 3 solo B · 4 A y C sin B · 5 A, B y C · 6 B y C sin A · 7 solo C.\nA = sobres acolchados. B = sobres con ventana. C = sobres con sello. Hay 3 sobres en el sector 2 y 4 en el sector 5. Todos los demás sectores están vacíos. ¿Cuántos sobres tienen ventana y son acolchados?",
+        "options": [
+          "3",
+          "4",
+          "7",
+          "1"
+        ],
+        "answer": 2,
+        "explanation": "Los sectores 2 y 5 están dentro de A y B. Suma sus cantidades. Hay 3 + 4 = 7 sobres.",
+        "hint": "Comprueba si tener sello cambia el hecho de que el sobre tenga ventana y sea acolchado.",
+        "difficulty": "base"
       }
     ]
   },
@@ -828,6 +893,19 @@
         "explanation": "Presentar exige entregar el formulario. Como la entrega siempre produce un sello y Lina no recibió uno, no entregó el formulario y no presentó.",
         "hint": "Reescribe «solamente si» como un requisito para presentar. Empieza por comprobar el sello.",
         "difficulty": "challenge"
+      },
+      {
+        "prompt": "Si un paquete sale del almacén, aparece como enviado en la aplicación. El paquete de Julia aparece como enviado. ¿Qué conclusión permiten esos datos?",
+        "options": [
+          "El paquete salió hoy.",
+          "El paquete salió y llegó a su destino.",
+          "El estado de la aplicación por sí solo no confirma la salida.",
+          "El paquete sigue en el almacén."
+        ],
+        "answer": 2,
+        "explanation": "La regla dice qué sucede cuando un paquete sale. Para usarla al revés, haría falta saber que solo la salida cambia el estado.",
+        "hint": "Lee la regla en el orden en que aparece. Comprueba si también habla del orden inverso.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -943,6 +1021,19 @@
         "explanation": "Al usar varias plantas y mantener iguales las demás condiciones, el equipo puede comparar el crecimiento con dos niveles de luz.",
         "hint": "Busca una opción que mantenga iguales las demás condiciones y cambie solo la luz.",
         "difficulty": "challenge"
+      },
+      {
+        "prompt": "El equipo necesita una caja con base de al menos 30 × 20 cm, altura de al menos 12 cm y precio de $90 o menos. Las medidas de cada opción indican largo, ancho y altura, en ese orden. ¿Qué caja cumple los requisitos?",
+        "options": [
+          "32 × 22 × 10 cm por $80",
+          "29 × 20 × 12 cm por $85",
+          "30 × 20 × 12 cm por $90",
+          "33 × 23 × 14 cm por $95"
+        ],
+        "answer": 2,
+        "explanation": "La caja de 30 × 20 × 12 cm tiene las medidas mínimas y cuesta $90. Cada una de las otras cajas falla en una medida o en el precio.",
+        "hint": "Compara cada medida con su mínimo. Después revisa el precio.",
+        "difficulty": "exam"
       }
     ]
   }

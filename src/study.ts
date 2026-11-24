@@ -1,5 +1,5 @@
-import { createEmptyCard, fsrs, Rating, type Card } from "ts-fsrs";
-import type { Attempt, ClassRecord, Difficulty, Lesson, Period, Question, Settings, StudyState } from "./types";
+import { createEmptyCard, fsrs, Rating, type Card, type Grade } from "ts-fsrs";
+import type { Attempt, ClassRecord, Difficulty, Lesson, MiniResult, Period, Question, Settings, StudyState } from "./types";
 
 const dayMs = 86_400_000;
 const storageKey = "marie-cetys:study:v1";
@@ -40,6 +40,7 @@ export function blankState(day = studyDay()): StudyState {
     pinned: "",
     attempts: [],
     classes: [],
+    miniResults: [],
     flagged: [],
   };
 }
@@ -72,7 +73,9 @@ function validSettings(settings: unknown): settings is Settings {
     settings.exceptions.every(dateIsValid);
 }
 
-function validEvent(value: unknown): value is RecordValue {
+type StudyEvent = Pick<Attempt, "id" | "at" | "day" | "skill">;
+
+function validEvent(value: unknown): value is RecordValue & StudyEvent {
   return object(value) && validString(value.id) && dateIsValid(value.day) && validString(value.skill) &&
     boundedInt(value.at, 0, Number.MAX_SAFE_INTEGER);
 }
@@ -88,21 +91,30 @@ function validClass(value: unknown): value is ClassRecord {
   return validEvent(value) && typeof value.complete === "boolean" && boundedInt(value.minutes, 1, 180);
 }
 
+function validMiniResult(value: unknown): value is MiniResult {
+  return validEvent(value) && /^hc-[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value.skill) &&
+    boundedInt(value.form, 0, 2) && boundedInt(value.seconds, 1, Number.MAX_SAFE_INTEGER) &&
+    boundedInt(value.correct, 0, 5) && Array.isArray(value.answers) && value.answers.length === 5 &&
+    value.answers.every(answer => boundedInt(answer, 0, 3));
+}
+
 export function parseBackup(text: string): StudyState {
   if (text.length > 12_000_000) throw Error("El archivo es demasiado grande.");
   const value: unknown = JSON.parse(text);
+  const miniResults = object(value) && value.miniResults !== undefined ? value.miniResults : [];
   if (!object(value) || value.version !== 1 || !validSettings(value.settings) ||
       (value.pinned !== "" && !validString(value.pinned)) ||
       !Array.isArray(value.attempts) || !value.attempts.every(validAttempt) ||
       !Array.isArray(value.classes) || !value.classes.every(validClass) ||
+      !Array.isArray(miniResults) || !miniResults.every(validMiniResult) ||
       !Array.isArray(value.flagged) || !value.flagged.every(item => validString(item))) {
     throw Error("El archivo no tiene el formato de respaldo esperado.");
   }
-  const ids = [...value.attempts, ...value.classes].map(event => event.id);
+  const ids = [...value.attempts, ...value.classes, ...miniResults].map(event => event.id);
   if (new Set(ids).size !== ids.length) throw Error("El archivo contiene registros duplicados.");
   return {
     version: 1, settings: value.settings, pinned: value.pinned, attempts: value.attempts,
-    classes: value.classes, flagged: value.flagged,
+    classes: value.classes, miniResults, flagged: value.flagged,
   };
 }
 
@@ -193,36 +205,81 @@ export function reviewQuestion(lesson: Lesson, attempts: Attempt[]) {
   return nextQuestion(lesson, attempts, new Set(), preferred);
 }
 
-export function reviewCards(attempts: Attempt[]) {
+function compareEventTime(a: StudyEvent, b: StudyEvent) {
+  return a.at - b.at || a.id.localeCompare(b.id);
+}
+
+export function miniHistory(results: MiniResult[], skill: string) {
+  return results.filter(result => result.skill === skill).sort((a, b) => compareEventTime(b, a));
+}
+
+export function nextMiniForm(results: MiniResult[], skill: string, count: number) {
+  const latest = miniHistory(results, skill)[0];
+  return latest ? (latest.form + 1) % count : 0;
+}
+
+interface ReviewEvent {
+  event: StudyEvent;
+  priority: number;
+  rating: Grade;
+}
+
+export function reviewCards(attempts: Attempt[], miniResults: MiniResult[] = []) {
   const cards = new Map<string, { due: string; card: Card }>();
-  for (const attempt of [...attempts].sort((a, b) => a.day.localeCompare(b.day) || a.at - b.at || a.id.localeCompare(b.id))) {
-    if (attempt.selection === -1) continue;
-    const previous = cards.get(attempt.skill);
-    // A session may solve several variants. Only its first attempt per skill and day moves the schedule.
-    if (previous?.card.last_review?.toISOString().slice(0, 10) === attempt.day) continue;
-    const date = noon(attempt.day);
-    const rating = !attempt.correct ? Rating.Again : attempt.help ? Rating.Hard : Rating.Good;
+  const eventRatings = [
+    ...miniResults.map<ReviewEvent>(result => ({
+      event: result, priority: 0, rating: result.correct === 5 ? Rating.Good : result.correct === 4 ? Rating.Hard : Rating.Again,
+    })),
+    ...attempts.filter(attempt => attempt.selection !== -1).map<ReviewEvent>(attempt => ({
+      event: attempt, priority: 1, rating: !attempt.correct ? Rating.Again : attempt.help ? Rating.Hard : Rating.Good,
+    })),
+  ].sort((a, b) => a.event.day.localeCompare(b.event.day) || a.priority - b.priority || compareEventTime(a.event, b.event));
+  for (const { event, rating } of eventRatings) {
+    const previous = cards.get(event.skill);
+    // The first mini-test, or the first question when there is no mini-test, sets the schedule for the day.
+    if (previous?.card.last_review?.toISOString().slice(0, 10) === event.day) continue;
+    const date = noon(event.day);
     const card = engine.next(previous?.card ?? createEmptyCard(date), date, rating).card;
     const days = rating === Rating.Again ? 1 : Math.max(rating === Rating.Hard ? 1 : 2, card.scheduled_days);
-    const due = addDays(attempt.day, days);
+    const due = addDays(event.day, days);
     card.due = noon(due);
     card.scheduled_days = days;
-    cards.set(attempt.skill, { due, card });
+    cards.set(event.skill, { due, card });
   }
   return cards;
+}
+
+function miniSecondsOutsideClasses(result: MiniResult, classes: ClassRecord[]) {
+  const intervals = classes.filter(record => record.day === result.day && record.skill === result.skill)
+    .map(record => ({ start: record.at - record.minutes * 60_000, end: record.at }))
+    .sort((a, b) => a.start - b.start);
+  let coveredUntil = result.at - result.seconds * 1000;
+  let coveredMs = 0;
+  for (const interval of intervals) {
+    const start = Math.max(interval.start, coveredUntil);
+    const end = Math.min(interval.end, result.at);
+    if (end <= start) continue;
+    coveredMs += end - start;
+    coveredUntil = end;
+  }
+  return result.seconds - coveredMs / 1000;
 }
 
 export function summary(state: StudyState, first: string, last: string) {
   const items = state.attempts.filter(event => event.day >= first && event.day <= last);
   const attempts = items.filter(event => event.selection !== -1);
   const classes = state.classes.filter(event => event.day >= first && event.day <= last);
+  const miniResults = state.miniResults.filter(event => event.day >= first && event.day <= last);
+  const questionSeconds = items.reduce((sum, event) => sum + event.seconds, 0);
+  const miniSeconds = miniResults.reduce((sum, result) => sum + miniSecondsOutsideClasses(result, classes), 0);
   return {
     attempts,
     classes,
+    miniResults,
     correct: attempts.filter(event => event.correct).length,
-    seconds: items.reduce((sum, event) => sum + event.seconds, 0),
+    seconds: questionSeconds + miniSeconds,
     classMinutes: classes.reduce((sum, event) => sum + event.minutes, 0),
     complete: new Set(classes.filter(event => event.complete).map(event => event.skill)).size,
-    activeDays: new Set([...items, ...classes].map(event => event.day)).size,
+    activeDays: new Set([...items, ...miniResults, ...classes].map(event => event.day)).size,
   };
 }

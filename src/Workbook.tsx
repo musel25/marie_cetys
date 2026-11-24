@@ -1,5 +1,5 @@
 import { useEffect, useId, useRef, useState } from "react";
-import { AreaTag, duration, Icon, lessonHref } from "./ui";
+import { AreaTag, duration, Icon, lessonHref, miniHref } from "./ui";
 import { lessonById } from "./content";
 import { nextQuestion, questions, studyDay } from "./study";
 import type { Attempt, ClassRecord, Lesson, Mode, Question, StudyState } from "./types";
@@ -9,14 +9,13 @@ const classBlocks = [
   ["Ejercicios", 20], ["Corrección", 10], ["Pregunta de salida", 5],
 ] as const;
 
-const orderAgenda = [
-  "Empieza con el ejercicio 1. Pregunta si «antes» significa «justo antes». Usa cuatro casillas.",
-  "Dibuja las posiciones. Distingue «antes», «inmediatamente antes» y «entre». Tacha una posición prohibida.",
-  "Ordena T, M y R sin llenar las casillas. Pídele que ubique P. Luego resuelvan el ejercicio 3.",
-  "Pídele que haga 2 y 4–7 por su cuenta. En el 7, añade una quinta casilla.",
-  "Revisa 4, 5 y 7. Pídele que señale la pista que elimina una opción.",
-  "Abre la pregunta de salida. Pídele que justifique el descarte más difícil.",
-];
+const cognitiveAgenda = [
+  ["Primer intento", 5, "Empieza con el ejercicio 1. Pídele que diga qué revisaría primero."],
+  ["Resuelvan en equipo", 10, "Hagan el ejercicio 2. Usa la solución para mostrar un paso útil. Pídele que explique el paso siguiente."],
+  ["Práctica", 20, "Pídele que resuelva los ejercicios 3 a 7. Corrijan una respuesta si se atasca."],
+  ["Miniexamen", 10, "Abre las cinco preguntas nuevas. Deja que responda y entregue por su cuenta."],
+  ["Corrección", 15, "Revisen qué paso faltó y comparen el tiempo y los aciertos con el intento anterior."],
+] as const;
 const defaultAgenda = [
   "Empieza con una pregunta básica. Pide que explique qué haría primero.",
   "Explica el método en pasos cortos. Usa un ejemplo concreto.",
@@ -27,9 +26,10 @@ const defaultAgenda = [
 ];
 
 export function Agenda({ lesson }: { lesson: Lesson }) {
-  const notes = lesson.id === "hc-orden" ? orderAgenda : defaultAgenda;
-  return <ol className="class-agenda">{classBlocks.map(([name, time], index) =>
-    <li key={name}><span className="agenda-time">{time} min</span><div><strong>{name}</strong><p>{notes[index]}</p></div></li>,
+  const blocks = lesson.area === "hc" ? cognitiveAgenda
+    : classBlocks.map(([name, time], index) => [name, time, defaultAgenda[index]] as const);
+  return <ol className="class-agenda">{blocks.map(([name, time, note]) =>
+    <li key={name}><span className="agenda-time">{time} min</span><div><strong>{name}</strong><p>{note}</p></div></li>,
   )}</ol>;
 }
 
@@ -195,7 +195,9 @@ export function Workbook({ lesson, target, state, onAttempt, onFlag, onClass, on
   const [classMode, setClassMode] = useState(false);
   const [complete, setComplete] = useState(true);
   const [liveQuestions, setLiveQuestions] = useState<Question[]>([]);
+  const cognitive = lesson.area === "hc";
   const all = questions(lesson);
+  const published = all.filter(item => item.difficulty !== "challenge");
   const targetQuestion = all.find(item => item.id === lesson.id + ":" + target);
   const exerciseList = live ? liveQuestions : all.filter(item => item.difficulty !== "challenge" || targetQuestion?.id === item.id);
   const latestAnswers = new Map(state.attempts
@@ -237,6 +239,13 @@ export function Workbook({ lesson, target, state, onAttempt, onFlag, onClass, on
     target?.focus({ preventScroll: true });
     target?.scrollIntoView();
   }
+  const rules = <>
+    <ol className="lesson-steps">{lesson.explanation.map((step, index) => <li key={index}>{step}</li>)}</ol>
+    {lesson.prerequisiteIds.some(id => lessonById.has(id)) && <p className="muted">Temas previos: {lesson.prerequisiteIds.map(id => lessonById.get(id)).filter(Boolean).map((entry, index) =>
+      <span key={entry!.id}>{index > 0 && ", "}<a href={lessonHref(entry!.id)}>{entry!.title}</a></span>,
+    )}</p>}
+  </>;
+  const example = <section className="worksheet" id="ejemplo"><h2>{cognitive ? "Ejercicio resuelto paso a paso" : "Ejemplo guiado"}</h2><GuidedExample lesson={lesson} /></section>;
   return <>
     <header className="lesson-header">
       <a className="back-link" href="#/temario">Temario</a>
@@ -244,7 +253,7 @@ export function Workbook({ lesson, target, state, onAttempt, onFlag, onClass, on
       <h1>{lesson.title}</h1>
       <p>{lesson.objective}</p>
       <div className="row">
-        {lesson.id === "hc-orden" && <button className="button primary" onClick={() => jumpTo("ejercicios")}>Probar el primer ejercicio</button>}
+        {cognitive && <button className="button primary" onClick={() => jumpTo("ejercicios")}>Probar el primer ejercicio</button>}
         <button className="button secondary" onClick={copyLink}><Icon name="link" size={16}/> Copiar enlace</button>
         <button className="button secondary" onClick={() => onPin(state.pinned === lesson.id ? "" : lesson.id)}>
           {state.pinned === lesson.id ? "Quitar de Clase de hoy" : "Fijar como clase de hoy"}
@@ -254,29 +263,31 @@ export function Workbook({ lesson, target, state, onAttempt, onFlag, onClass, on
     </header>
     <div className="workbook-grid">
       <div className="workbook-flow">
-        <section className="worksheet" id="explicacion">
-          <h2>Explicación</h2>
-          <ol className="lesson-steps">{lesson.explanation.map((step, index) => <li key={index}>{step}</li>)}</ol>
-          {lesson.prerequisiteIds.some(id => lessonById.has(id)) && <p className="muted">Temas previos: {lesson.prerequisiteIds.map(id => lessonById.get(id)).filter(Boolean).map((entry, index) =>
-            <span key={entry!.id}>{index > 0 && ", "}<a href={lessonHref(entry!.id)}>{entry!.title}</a></span>,
-          )}</p>}
-        </section>
-        <section className="worksheet" id="ejemplo"><h2>Ejemplo guiado</h2><GuidedExample lesson={lesson} /></section>
+        {!cognitive && <><section className="worksheet" id="explicacion"><h2>Explicación</h2>{rules}</section>{example}</>}
         <section className="practice-stack" id="ejercicios" tabIndex={-1} aria-labelledby="workbook-exercises">
           <div className="section-title"><h2 id="workbook-exercises">{live ? "Variantes para la clase" : "Ejercicios"}</h2><span>{exerciseList.length} preguntas</span></div>
+          {cognitive && !live && <p>Intenta cada ejercicio. Si te atoras, abre la pista. Lee cómo se resuelve después de comprobar.</p>}
           {live && <button className="button secondary" onClick={() => setLive(false)}>Volver a ejercicios publicados</button>}
           {exerciseList.map((question, index) => (
             <details className="question-details" key={question.id + (live ? ":live" : "")}
               id={question.id === targetQuestion?.id ? "pregunta-marcada" : undefined} tabIndex={-1}
               open={question.id === targetQuestion?.id || (!targetQuestion && index === 0) || undefined}>
-              <summary><span>Ejercicio {live ? index + 1 : all.findIndex(item => item.id === question.id) + 1}</span><span className="muted">{question.difficulty === "base" ? "Base" : question.difficulty === "exam" ? "Tipo examen" : "Reto"}</span></summary>
+              <summary><span>{!live && question.difficulty === "challenge" ? "Ejercicio de reto" : `Ejercicio ${live ? index + 1 : published.findIndex(item => item.id === question.id) + 1}`}</span><span className="muted">{question.difficulty === "base" ? "Base" : question.difficulty === "exam" ? "Tipo examen" : "Reto"}</span></summary>
               <QuestionCard question={question} area={lesson.area} mode={live || classMode ? "live" : "practice"}
                 previous={latestAnswers.get(question.id)}
                 flagged={state.flagged.includes(question.id)} onFlag={() => onFlag(question.id)} onAttempt={onAttempt} />
             </details>
           ))}
-          {lesson.id === "hc-orden" && !live && <ExitQuestion />}
         </section>
+        {cognitive && <>
+          <section className="worksheet mini-sheet" aria-labelledby="mini-title">
+            <h2 id="mini-title">Miniexamen</h2>
+            <p>Resuelve cinco preguntas distintas. Al entregar, el sitio guarda tu tiempo y tus aciertos.</p>
+            <a className="button primary" href={miniHref(lesson.id)}>Hacer miniexamen</a>
+          </section>
+          {example}
+          <details className="worksheet mini-rules" id="explicacion"><summary>Consultar las reglas</summary>{rules}</details>
+        </>}
         <p className="source-note">{lesson.source}</p>
       </div>
       <aside className="lesson-rail" id="guia-clase" tabIndex={-1} aria-label="Guía de clase">
@@ -287,7 +298,7 @@ export function Workbook({ lesson, target, state, onAttempt, onFlag, onClass, on
           <label className="check-label"><input type="checkbox" checked={classMode} onChange={event => setClassMode(event.target.checked)} /> Estamos en clase</label>
           {classMode && <p className="muted">Las respuestas cuentan. Registra el tiempo total al final.</p>}
           {!live && <button className="button secondary" onClick={openLive}>Abrir 3 ejercicios para la clase</button>}
-          {lesson.id === "hc-orden" && !live && <button className="button quiet exit-link" onClick={() => jumpTo("salida")}>Ver pregunta de salida</button>}
+          {cognitive && <a className="button quiet" href={miniHref(lesson.id)}>Ir al miniexamen</a>}
         </section>
         <form className="rail-panel log-class" onSubmit={logClass}>
           <h2>Registrar clase</h2>
@@ -299,14 +310,4 @@ export function Workbook({ lesson, target, state, onAttempt, onFlag, onClass, on
       </aside>
     </div>
   </>;
-}
-
-function ExitQuestion() {
-  return <section className="worksheet exit-question" id="salida" tabIndex={-1}>
-    <h2>Pregunta de salida</h2>
-    <p>G va antes de K. H va entre G y K. J va inmediatamente antes de H.</p>
-    <p>Elige un orden. Escribe una pista que descarte otra opción.</p>
-    <ol type="A"><li>G–H–J–K</li><li>J–H–G–K</li><li>G–J–H–K</li><li>K–J–H–G</li></ol>
-    <details><summary>Ver clave docente</summary><p><strong>C.</strong> El bloque J–H va entre G y K.</p></details>
-  </section>;
 }

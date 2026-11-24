@@ -119,7 +119,7 @@ export function Planner({ state, today, onSettings, onImport }: {
         <input ref={input} type="file" accept=".json,application/json" hidden onChange={event => void readFile(event.target.files?.[0])} />
       </div>
       {pending && <div className="plan-notice">
-        <p>El respaldo incluye {pending.attempts.length} {pending.attempts.length === 1 ? "respuesta" : "respuestas"} y {pending.classes.length} {pending.classes.length === 1 ? "registro" : "registros"} de clase. Cargarlo reemplaza el progreso de este navegador.</p>
+        <p>El respaldo incluye {pending.attempts.length} {pending.attempts.length === 1 ? "respuesta" : "respuestas"}, {pending.miniResults.length} {pending.miniResults.length === 1 ? "miniexamen" : "miniexámenes"} y {pending.classes.length} {pending.classes.length === 1 ? "registro" : "registros"} de clase. Cargarlo reemplaza el progreso de este navegador.</p>
         <div className="row"><button className="button primary" onClick={async () => {
           const saved = await onImport(pending);
           setDraft(pending.settings); setPending(undefined); setBackupMessage(saved ? "Respaldo cargado." : "");

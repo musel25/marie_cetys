@@ -1,11 +1,11 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { areas, areaOrder, byArea, curriculum, lessonById, resourceLinks } from "./content";
 import { Exam } from "./Exam";
 import { Planner } from "./Planner";
 import { Progress } from "./Progress";
 import { addDays, classPlan, dateLabel, isStudyDay, loadState, periodStart, reviewCards, reviewQuestion, saveState, studyDay, summary } from "./study";
-import type { Area, Attempt, ClassRecord, Lesson, Question, StudyState } from "./types";
-import { AreaTag, duration, Icon, lessonHref, PageHeading, type IconName } from "./ui";
+import type { Area, Attempt, ClassRecord, Lesson, MiniResult, Question, StudyState } from "./types";
+import { AreaTag, duration, elapsedTime, Icon, lessonHref, miniHref, PageHeading, type IconName } from "./ui";
 import { OrderDiagram, QuestionCard, Workbook } from "./Workbook";
 
 const navigation: { id: string; label: string; icon: IconName }[] = [
@@ -16,6 +16,7 @@ const navigation: { id: string; label: string; icon: IconName }[] = [
   { id: "progreso", label: "Progreso", icon: "graph" },
   { id: "plan", label: "Plan", icon: "calendar" },
 ];
+const MiniExam = lazy(() => import("./MiniExam"));
 function readRoute() { return location.hash.replace(/^#\/?/, "").split("/").slice(0, 3); }
 
 function Home({ state, today, dueCount }: { state: StudyState; today: string; dueCount: number }) {
@@ -44,7 +45,7 @@ function Home({ state, today, dueCount }: { state: StudyState; today: string; du
           {lesson.id === "hc-orden" ? <OrderDiagram preview /> : <div className="hero-symbol"><Icon name="book" size={90}/></div>}
         </> : <div className="hero-copy"><h2>{completed.size >= curriculum.length ? "Temario completado" : "Estudia a tu ritmo"}</h2><p>Abre cualquier lección o ajusta tus fechas.</p><a className="button hero-button" href="#/temario">Ver temario</a></div>}
         {lesson && <div className="hero-footer">
-          <span><Icon name="book" size={17}/> Explicación y ejemplo</span>
+          <span><Icon name="book" size={17}/> {lesson.area === "hc" ? "Práctica y miniexamen" : "Explicación y ejemplo"}</span>
           <span><Icon name="check" size={17}/> {published} ejercicios</span>
           <span><Icon name="clock" size={17}/> {duration(state.pinned ? state.settings.minutes : slot?.minutes ?? state.settings.minutes)}</span>
           {slot && slot.day > today && !state.pinned && <span>Próxima · {dateLabel(slot.day)}</span>}
@@ -118,6 +119,8 @@ function Review({ due, state, onAttempt, onFlag }: {
   const [started, setStarted] = useState(false);
   const question = batch[index];
   const lesson = question && lessonById.get(question.skill);
+  const minis = new Map([...state.miniResults].sort((a, b) => a.at - b.at).map(entry => [entry.skill, entry]));
+  const available = curriculum.filter(item => minis.has(item.id) && !due.some(lesson => lesson.id === item.id));
   function start() {
     setBatch(due.slice(0, 8).flatMap(item => {
       const fresh = reviewQuestion(item, state.attempts);
@@ -139,13 +142,26 @@ function Review({ due, state, onAttempt, onFlag }: {
       <QuestionCard key={question.id} question={question} mode="review" area={lesson.area} flagged={state.flagged.includes(question.id)} onFlag={() => onFlag(question.id)} onAttempt={item => { onAttempt(item); setAnswered(true); }} />
       <div className="row review-actions">
         <a className="button secondary" href={lessonHref(lesson.id)}>Abrir explicación</a>
+        {lesson.area === "hc" && <a className="button secondary" href={miniHref(lesson.id)}>Hacer miniexamen</a>}
         {answered && <button className="button primary" onClick={() => { setIndex(index + 1); setAnswered(false); }}>{index === batch.length - 1 ? "Terminar repaso" : "Siguiente pregunta"}</button>}
       </div>
     </section>}
     {started && !question && <section className="panel review-state"><h2>Ronda terminada</h2><p>Repasaste {batch.length} temas.</p>
       {due.length ? <button className="button primary" onClick={start}>Repasar más temas</button> : <a className="button secondary" href="#/progreso">Ver progreso</a>}
     </section>}
-    {!started && due.length > 0 && <section className="panel due-topics"><h2>Temas disponibles</h2><ul className="plain-list">{due.map(item => <li key={item.id}><a href={lessonHref(item.id)}>{item.title}</a><AreaTag area={item.area}/></li>)}</ul></section>}
+    {!started && due.length > 0 && <section className="panel due-topics">
+      <h2>Temas disponibles</h2>
+      <ul className="plain-list">{due.map(item => <li key={item.id}>
+        <a href={lessonHref(item.id)}>{item.title}</a>
+        {item.area === "hc" ? <a href={miniHref(item.id)} aria-label={`Miniexamen de ${item.title}`}>Miniexamen</a> : <AreaTag area={item.area}/>}
+      </li>)}</ul>
+    </section>}
+    {!started && available.length > 0 && <section className="panel due-topics">
+      <h2>Miniexámenes para repetir</h2>
+      <ul className="plain-list">{available.map(item => <li key={item.id}>
+        <a href={miniHref(item.id)}>{item.title}</a><span>{elapsedTime(minis.get(item.id)!.seconds)}</span>
+      </li>)}</ul>
+    </section>}
   </>;
 }
 
@@ -159,7 +175,7 @@ export function App() {
   const [today, setToday] = useState(studyDay);
   const main = useRef<HTMLElement>(null);
   const [page = "", id, target] = route;
-  const cards = useMemo(() => reviewCards(state.attempts), [state.attempts]);
+  const cards = useMemo(() => reviewCards(state.attempts, state.miniResults), [state.attempts, state.miniResults]);
   const due = useMemo(() => curriculum.filter(item => (cards.get(item.id)?.due ?? "9999") <= today)
     .sort((a, b) => (cards.get(a.id)?.due ?? "").localeCompare(cards.get(b.id)?.due ?? "")), [cards, today]);
 
@@ -217,6 +233,10 @@ export function App() {
       return { ...before, attempts: [...before.attempts, ...items.filter(item => !ids.has(item.id))] };
     });
   }
+  function addMini(result: MiniResult) {
+    return update(before => before.miniResults.some(entry => entry.id === result.id) ? before
+      : { ...before, miniResults: [...before.miniResults, result] });
+  }
   function toggleFlag(id: string) {
     update(before => ({ ...before, flagged: before.flagged.includes(id) ? before.flagged.filter(item => item !== id) : [...before.flagged, id] }));
   }
@@ -227,11 +247,14 @@ export function App() {
     );
   }
   const lesson = id ? lessonById.get(id) : undefined;
-  const active = page === "clase" ? "temario" : page;
+  const active = page === "clase" || page === "mini" ? "temario" : page;
   const content = page === "" ? <Home state={state} today={today} dueCount={due.length}/>
     : page === "temario" ? <Curriculum state={state} filter={areaOrder.find(area => area === id)}/>
     : page === "clase" && lesson ? <Workbook key={lesson.id + (target ?? "")} lesson={lesson} target={target} state={state} onAttempt={item => addAttempts([item])} onClass={recordClass}
       onFlag={toggleFlag} announce={announce} onPin={pinned => { update(before => ({ ...before, pinned }), pinned ? "Clase fijada en el inicio." : "Clase quitada del inicio."); }}/>
+    : page === "mini" && lesson?.area === "hc" ? <Suspense fallback={<p>Cargando miniexamen…</p>}>
+      <MiniExam key={lesson.id} lesson={lesson} results={state.miniResults} onFinish={addMini} />
+    </Suspense>
     : page === "repaso" ? <Review due={due} state={state} onAttempt={item => addAttempts([item])} onFlag={toggleFlag}/>
     : page === "simulacro" ? <Exam state={state} onAttempts={addAttempts}/>
     : page === "progreso" ? <Progress state={state} today={today} onFlag={toggleFlag}/>
