@@ -92,7 +92,7 @@ export function Progress({ state, today, onFlag }: { state: StudyState; today: s
       <section className="panel">
         <h2>Temas para retomar</h2>
         {revisit.length === 0 ? <p className="muted">Aquí verás los temas con errores o respuestas con ayuda.</p> :
-          <ul className="plain-list">{revisit.map(([id, count]) => <li key={id}><a href={lessonHref(id)}>{lessonById.get(id)?.title ?? id}</a> <span className="muted">{count} {count === 1 ? "intento" : "intentos"}</span></li>)}</ul>}
+          <ul className="plain-list">{revisit.map(([id, count]) => <li key={id}><a href={lessonHref(id)}>{lessonById.get(id)?.title ?? id}</a> <span className="muted">{count} {count === 1 ? "respuesta" : "respuestas"}</span></li>)}</ul>}
       </section>
       <section className="panel">
         <h2><Icon name="flag" size={20}/> Dudas guardadas</h2>

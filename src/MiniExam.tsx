@@ -42,6 +42,8 @@ export default function MiniExam({ lesson, results, onFinish }: {
   const [discard, setDiscard] = useState(false);
   const saving = useRef(false);
   const heading = useRef<HTMLHeadingElement>(null);
+  const restartButton = useRef<HTMLButtonElement>(null);
+  const discardButton = useRef<HTMLButtonElement>(null);
   const history = miniHistory(results, lesson.id);
   const result = history.find(entry => entry.id === run?.id);
   const active = run !== null && !run.saved && !result;
@@ -68,6 +70,11 @@ export default function MiniExam({ lesson, results, onFinish }: {
     setDiscard(false);
     update(null);
     focusHeading();
+  }
+
+  function showDiscard(show: boolean) {
+    setDiscard(show);
+    requestAnimationFrame(() => (show ? discardButton.current : restartButton.current)?.focus());
   }
 
   function start() {
@@ -141,9 +148,9 @@ export default function MiniExam({ lesson, results, onFinish }: {
           onClick={() => void finish()}>Entregar miniexamen</button>
       </div>
       {discard ? <div className="row">
-        <button className="button secondary" onClick={reset}>Descartar intento</button>
-        <button className="button quiet" onClick={() => setDiscard(false)}>Seguir con la prueba</button>
-      </div> : <button className="button quiet" onClick={() => setDiscard(true)}>Reiniciar prueba</button>}
+        <button className="button secondary" ref={discardButton} onClick={reset}>Descartar intento</button>
+        <button className="button quiet" onClick={() => showDiscard(false)}>Seguir con la prueba</button>
+      </div> : <button className="button quiet" ref={restartButton} onClick={() => showDiscard(true)}>Reiniciar prueba</button>}
     </section>}
     {result && <>
       <section className="worksheet mini-sheet">

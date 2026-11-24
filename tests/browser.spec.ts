@@ -228,6 +228,10 @@ test("times five fresh cognitive questions and compares with the next form", asy
     }
   };
   const firstQuestion = await page.locator("legend").textContent();
+  await page.getByRole("button", { name: "Reiniciar prueba" }).click();
+  await expect(page.getByRole("button", { name: "Descartar intento" })).toBeFocused();
+  await page.getByRole("button", { name: "Seguir con la prueba" }).click();
+  await expect(page.getByRole("button", { name: "Reiniciar prueba" })).toBeFocused();
   await expect(page.getByRole("button", { name: "Entregar miniexamen" })).toBeDisabled();
   await expect(page.getByText("Respuesta correcta", { exact: true })).toHaveCount(0);
   await page.getByRole("radio").first().check();
