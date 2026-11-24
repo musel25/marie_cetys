@@ -6,7 +6,7 @@ import type { Attempt, ClassRecord, Lesson, Mode, Question, StudyState } from ".
 
 const classBlocks = [
   ["Diagnóstico", 5], ["Explicación", 10], ["Ejemplo guiado", 10],
-  ["Ejercicios", 20], ["Corrección", 10], ["Pregunta de salida", 5],
+  ["Ejercicios", 15], ["Miniexamen", 10], ["Corrección", 10],
 ] as const;
 
 const cognitiveAgenda = [
@@ -21,8 +21,8 @@ const defaultAgenda = [
   "Explica el método en pasos cortos. Usa un ejemplo concreto.",
   "Recorre el ejemplo. Deja que ella haga y explique el último paso.",
   "Resuelvan dos ejercicios juntos. Después, usa preguntas de examen para la práctica independiente.",
-  "Revisen dos errores. Pide que diga qué cambiaría en su procedimiento.",
-  "Pide que resuelva una variante nueva y que explique por qué funciona su método.",
+  "Deja que responda las cinco preguntas y entregue por su cuenta.",
+  "Revisen los errores del miniexamen. Pide que explique cómo corregirlos.",
 ];
 
 export function Agenda({ lesson }: { lesson: Lesson }) {
@@ -275,6 +275,12 @@ export function Workbook({ lesson, target, state, onAttempt, onFlag, onClass, on
     <div className="workbook-grid">
       <div className="workbook-flow">
         {!cognitive && <><section className="worksheet" id="explicacion"><h2>Explicación</h2>{rules}</section>{example}</>}
+        {!!lesson.workedExamples?.length && <section className="worksheet" aria-labelledby="worked-examples-title">
+          <h2 id="worked-examples-title">Ejemplos resueltos</h2>
+          <ul className="worked-steps">{lesson.workedExamples.map(item => <li key={item.prompt}>
+            <strong>{item.prompt}</strong><p>{item.explanation}</p>
+          </li>)}</ul>
+        </section>}
         <section className="practice-stack" id="ejercicios" tabIndex={-1} aria-labelledby="workbook-exercises">
           <div className="section-title"><h2 id="workbook-exercises">{live ? "Variantes para la clase" : "Ejercicios"}</h2><span>{exerciseList.length} preguntas</span></div>
           {cognitive && !live && <p>Intenta cada ejercicio. Si te atoras, abre la pista. Lee cómo se resuelve después de comprobar.</p>}
@@ -290,12 +296,12 @@ export function Workbook({ lesson, target, state, onAttempt, onFlag, onClass, on
             </details>
           ))}
         </section>
+        <section className="worksheet mini-sheet" aria-labelledby="mini-title">
+          <h2 id="mini-title">Miniexamen</h2>
+          <p>Resuelve cinco preguntas distintas. Al entregar, el sitio guarda tu tiempo y tus aciertos.</p>
+          <a className="button primary" href={miniHref(lesson.id)}>Hacer miniexamen</a>
+        </section>
         {cognitive && <>
-          <section className="worksheet mini-sheet" aria-labelledby="mini-title">
-            <h2 id="mini-title">Miniexamen</h2>
-            <p>Resuelve cinco preguntas distintas. Al entregar, el sitio guarda tu tiempo y tus aciertos.</p>
-            <a className="button primary" href={miniHref(lesson.id)}>Hacer miniexamen</a>
-          </section>
           {example}
           <details className="worksheet mini-rules" id="explicacion"><summary>Consultar las reglas</summary>{rules}</details>
         </>}
@@ -309,7 +315,7 @@ export function Workbook({ lesson, target, state, onAttempt, onFlag, onClass, on
           <label className="check-label"><input type="checkbox" checked={classMode} onChange={event => updateClassMode(event.target.checked)} /> Estamos en clase</label>
           {classMode && <p className="muted">Las respuestas cuentan. Registra el tiempo total al final.</p>}
           {!live && <button className="button secondary" onClick={openLive}>Abrir 3 ejercicios para la clase</button>}
-          {cognitive && <a className="button quiet" href={miniHref(lesson.id)}>Ir al miniexamen</a>}
+          <a className="button quiet" href={miniHref(lesson.id)}>Ir al miniexamen</a>
         </section>
         <form className="rail-panel log-class" onSubmit={logClass}>
           <h2>Registrar clase</h2>

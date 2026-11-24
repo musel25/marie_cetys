@@ -1,0 +1,554 @@
+{
+  "es-ortografia": [
+    [
+      {
+        "prompt": "Elige la oración con mayúsculas y tildes correctas.",
+        "options": [
+          "El Jueves, Félix irá a Ensenada.",
+          "El jueves, Félix irá a Ensenada.",
+          "El jueves, Felix irá a ensenada.",
+          "El jueves, Félix ira a Ensenada."
+        ],
+        "answer": 1,
+        "explanation": "Jueves va con minúscula en esta posición. Félix y Ensenada son nombres propios. Félix es grave terminada en x e irá es aguda terminada en vocal.",
+        "hint": "Revisa el día, los nombres propios y la sílaba tónica de irá.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Qué palabra grave lleva tilde porque termina en una consonante distinta de n o s?",
+        "options": [
+          "pared",
+          "limón",
+          "plástico",
+          "lápiz"
+        ],
+        "answer": 3,
+        "explanation": "Lá-piz tiene la fuerza en la penúltima sílaba. Termina en z.",
+        "hint": "Ubica la sílaba tónica y revisa la última letra.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿En qué palabra una vocal cerrada tónica forma un hiato con otra vocal?",
+        "options": [
+          "oído",
+          "cuento",
+          "nube",
+          "fuego"
+        ],
+        "answer": 0,
+        "explanation": "O-í-do tiene tres sílabas. La í tónica se separa de la o.",
+        "hint": "Busca una í o una ú tónica junto a una vocal abierta.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Completa la oración. «Ella no ____ ____ su hermano recibió el aviso».",
+        "options": [
+          "se / cómo",
+          "sé / como",
+          "sabe / cómo",
+          "sabe / como"
+        ],
+        "answer": 2,
+        "explanation": "El sujeto ella exige sabe. Cómo lleva tilde porque introduce una pregunta indirecta sobre la manera en que llegó el aviso.",
+        "hint": "Comprueba quién realiza la acción y si hay una pregunta indirecta.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Qué adverbio está escrito correctamente?",
+        "options": [
+          "rapidaménte",
+          "rápidaménte",
+          "rápidamente",
+          "rapidamente"
+        ],
+        "answer": 2,
+        "explanation": "Rápida ya lleva tilde. Al agregar -mente, conserva la tilde en la primera a.",
+        "hint": "Separa el adjetivo del sufijo -mente.",
+        "difficulty": "exam"
+      }
+    ]
+  ],
+  "es-formacion-palabras": [
+    [
+      {
+        "prompt": "¿Qué significa «desconectar» un aparato que está conectado?",
+        "options": [
+          "Conectarlo por primera vez",
+          "Quitar la conexión",
+          "Conectarlo antes que a otro aparato",
+          "Conectarlo a dos fuentes"
+        ],
+        "answer": 1,
+        "explanation": "El prefijo des- indica que se deshace la conexión.",
+        "hint": "Separa el prefijo de conectar.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Qué indica «-ista» en «guitarrista»?",
+        "options": [
+          "El tamaño de la guitarra",
+          "Un lugar donde guardan guitarras",
+          "El material de la guitarra",
+          "Una persona que toca la guitarra"
+        ],
+        "answer": 3,
+        "explanation": "El sufijo -ista ayuda a formar el nombre de la persona que practica la actividad.",
+        "hint": "Empieza por la base guitarra.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Completa con el homófono correcto. «La enfermera pidió un ____ de agua».",
+        "options": [
+          "vaso",
+          "vazo",
+          "baso",
+          "bazo"
+        ],
+        "answer": 0,
+        "explanation": "Vaso es el recipiente. Baso es una forma de basar. En el español de México, vaso y baso suenan igual.",
+        "hint": "Identifica qué puede contener agua.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Qué significa «vela» en «El viento infló la vela»?",
+        "options": [
+          "Una pieza de cera que se enciende",
+          "Una guardia nocturna",
+          "Una tela que impulsa una embarcación",
+          "Una luz eléctrica"
+        ],
+        "answer": 2,
+        "explanation": "Infló indica que el viento empujó una tela. En una embarcación, esa tela se llama vela.",
+        "hint": "Piensa qué puede inflar el viento en un barco.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Completa con «porque», «por qué», «porqué» o «por que». «Nadie sabe ____ cambiaron el horario».",
+        "options": [
+          "porque",
+          "por qué",
+          "porqué",
+          "por que"
+        ],
+        "answer": 1,
+        "explanation": "La oración contiene la pregunta indirecta «¿Por qué cambiaron el horario?». Escribe por qué separado y con tilde.",
+        "hint": "Convierte la segunda parte en una pregunta directa.",
+        "difficulty": "exam"
+      }
+    ]
+  ],
+  "es-verbos": [
+    [
+      {
+        "prompt": "Completa la oración. «Ayer los atletas ____ que descansar» (tener).",
+        "options": [
+          "tenieron",
+          "tuvimos",
+          "tuvo",
+          "tuvieron"
+        ],
+        "answer": 3,
+        "explanation": "Ayer indica pasado. Los atletas corresponde a la tercera persona plural. El pretérito irregular es tuvieron.",
+        "hint": "Busca la forma de tener para ellos en pasado.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Completa la oración. «Las corredoras han ____ el circuito» (recorrer).",
+        "options": [
+          "recorridas",
+          "recorrido",
+          "recorridos",
+          "recorrida"
+        ],
+        "answer": 1,
+        "explanation": "Con el auxiliar haber, el participio se escribe recorrido y no cambia de género ni de número.",
+        "hint": "Identifica si el participio acompaña a haber.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Completa la oración. «Las cajas quedaron ____» (romper).",
+        "options": [
+          "roto",
+          "rompidas",
+          "rotas",
+          "rotos"
+        ],
+        "answer": 2,
+        "explanation": "El participio roto funciona como adjetivo con quedaron. Cajas es femenino plural, por eso se escribe rotas.",
+        "hint": "Comprueba el género y el número de cajas.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Pasa a la voz pasiva. «El club organizó la feria».",
+        "options": [
+          "La feria fue organizada por el club.",
+          "La feria organizó al club.",
+          "El club fue organizado por la feria.",
+          "La feria será organizada por el club."
+        ],
+        "answer": 0,
+        "explanation": "La feria pasa a ser el sujeto. Fue conserva el pasado y organizada concuerda con feria.",
+        "hint": "Identifica qué recibe la acción y conserva el tiempo verbal.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿En qué oración el gerundio indica una acción simultánea?",
+        "options": [
+          "Eva mandó la carta el lunes, recibiendo una respuesta el viernes.",
+          "Leo cerró la tienda a las seis, cenando en su casa a las ocho.",
+          "Nora compró la pintura en enero, usándola por primera vez en marzo.",
+          "Luz ordenaba su escritorio escuchando música."
+        ],
+        "answer": 3,
+        "explanation": "Luz ordenaba y escuchaba al mismo tiempo. En las demás opciones, la segunda acción ocurre después.",
+        "hint": "Identifica qué dos acciones pueden ocurrir a la vez según la oración.",
+        "difficulty": "exam"
+      }
+    ]
+  ],
+  "es-oracion": [
+    [
+      {
+        "prompt": "Completa la oración. «Los cuadros del pasillo ____ torcidos».",
+        "options": [
+          "está",
+          "están",
+          "estamos",
+          "estás"
+        ],
+        "answer": 1,
+        "explanation": "Los cuadros es el sujeto. Cuadros es plural, aunque pasillo sea singular.",
+        "hint": "Encuentra el núcleo del sujeto antes de elegir el verbo.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Cuál es el complemento directo en «La cocinera cortó las manzanas en trozos»?",
+        "options": [
+          "la cocinera",
+          "cortó",
+          "en trozos",
+          "las manzanas"
+        ],
+        "answer": 3,
+        "explanation": "En «La cocinera las cortó en trozos», las sustituye a las manzanas.",
+        "hint": "Prueba qué parte se puede sustituir por las.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Cuál es el complemento indirecto en «El museo entregó diplomas a los voluntarios el jueves»?",
+        "options": [
+          "a los voluntarios",
+          "el jueves",
+          "diplomas",
+          "el museo"
+        ],
+        "answer": 0,
+        "explanation": "A los voluntarios indica quién recibe los diplomas. Puedes decir «El museo les entregó diplomas el jueves».",
+        "hint": "Busca destinatarios y prueba el pronombre les.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Completa la oración. «Se acordó ____ que mañana era día festivo».",
+        "options": [
+          "en",
+          "por",
+          "de",
+          "a"
+        ],
+        "answer": 2,
+        "explanation": "Acordarse se construye con de. La sustitución «Se acordó de eso» permite comprobarlo.",
+        "hint": "Sustituye la parte que empieza con que por eso.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Qué versión deja claro que Marcos usó la linterna para buscar?",
+        "options": [
+          "Marcos buscó la mochila con la linterna en su interior.",
+          "Con la linterna, Marcos buscó la mochila debajo de la cama.",
+          "Marcos buscó la mochila que tenía una linterna en el bolsillo.",
+          "Marcos buscó la mochila, junto a la linterna debajo de la cama."
+        ],
+        "answer": 1,
+        "explanation": "Con la linterna al inicio presenta el instrumento de la búsqueda. Las otras versiones describen la ubicación de la linterna.",
+        "hint": "Busca la versión en la que la linterna modifica la acción de buscar.",
+        "difficulty": "exam"
+      }
+    ]
+  ],
+  "es-comprension": [
+    [
+      {
+        "prompt": "Lee. «La escuela abrió un espacio de lectura en el patio. Dos semanas después, la biblioteca registró más préstamos durante el recreo. El próximo mes, la escuela añadirá bancas al espacio».\n\n¿Cuál es la idea central?",
+        "options": [
+          "La biblioteca dejará de prestar libros durante el recreo.",
+          "Las bancas son el único motivo por el que los alumnos leen.",
+          "La escuela compró libros para todas las aulas.",
+          "La apertura del espacio de lectura coincidió con un aumento de préstamos."
+        ],
+        "answer": 3,
+        "explanation": "El texto presenta el espacio de lectura y el aumento observado de préstamos. Las bancas son un detalle sobre lo que ocurrirá después.",
+        "hint": "Une el cambio realizado con el resultado que observó la biblioteca.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Lee. «El vivero abre a las ocho. Los sábados reparte plantas a partir de las diez y cierra a la una».\n\n¿A qué hora empieza el reparto de plantas?",
+        "options": [
+          "A las ocho",
+          "A las diez",
+          "A las once",
+          "A la una"
+        ],
+        "answer": 1,
+        "explanation": "La frase «reparte plantas a partir de las diez» da la hora solicitada.",
+        "hint": "Distingue la apertura del vivero del inicio del reparto.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Lee. «Cuando Nadia salió de la estación, todos llevaban paraguas y el agua corría por la banqueta».\n\n¿Qué se puede inferir?",
+        "options": [
+          "La estación cerró por la tarde.",
+          "Nadia vendía paraguas.",
+          "Estaba lloviendo o acababa de llover.",
+          "Todas las personas iban al mismo lugar."
+        ],
+        "answer": 2,
+        "explanation": "Los paraguas y el agua en la calle apoyan la posibilidad de lluvia reciente o en curso.",
+        "hint": "Combina lo que llevan las personas con el estado de la banqueta.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Lee. «Por la neblina, la montaña apenas era visible. Solo distinguíamos su silueta».\n\n¿Qué significa apenas en este contexto?",
+        "options": [
+          "Con dificultad",
+          "Con frecuencia",
+          "En seguida",
+          "Desde cerca"
+        ],
+        "answer": 0,
+        "explanation": "Solo se distingue la silueta. Apenas indica que costaba ver la montaña.",
+        "hint": "Usa la segunda oración para saber cuánto podían ver.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Qué oración expresa una opinión?",
+        "options": [
+          "El puente mide cuarenta metros.",
+          "El puente cruza el río desde 1998.",
+          "El puente tiene dos carriles.",
+          "El puente es la construcción más elegante de la zona."
+        ],
+        "answer": 3,
+        "explanation": "Más elegante expresa una valoración. Las otras afirmaciones pueden comprobarse mediante medidas, registros u observación.",
+        "hint": "Busca una valoración que pueda variar entre personas.",
+        "difficulty": "exam"
+      }
+    ]
+  ],
+  "es-literatura": [
+    [
+      {
+        "prompt": "Lee. «Elena quiso llamar a su padre, pero su celular se apagó. Le pidió prestado un teléfono a una vecina».\n\n¿Qué hecho inicia el conflicto?",
+        "options": [
+          "Elena conoce a una vecina.",
+          "El celular de Elena se apaga.",
+          "La vecina presta un teléfono.",
+          "El padre de Elena hace una llamada."
+        ],
+        "answer": 1,
+        "explanation": "El celular se apaga cuando Elena necesita llamar. Ese hecho bloquea su objetivo e inicia el conflicto.",
+        "hint": "Identifica qué impide la llamada.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Qué recurso usa «Las nubes eran islas blancas»?",
+        "options": [
+          "Hipérbole",
+          "Símil",
+          "Metáfora",
+          "Paradoja"
+        ],
+        "answer": 2,
+        "explanation": "La frase identifica las nubes con islas por su forma y su separación. La identificación crea una metáfora.",
+        "hint": "Comprueba si dice que una cosa es otra.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿En qué frase se usa una personificación?",
+        "options": [
+          "El viento se disculpó detrás de la puerta.",
+          "El río era una cinta gris.",
+          "La luz pasó por la ventana.",
+          "El polvo cubrió la mesa."
+        ],
+        "answer": 0,
+        "explanation": "Disculparse es una acción humana que la primera frase atribuye al viento.",
+        "hint": "Busca una acción humana atribuida a algo no humano.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Cuál es el género de este fragmento? «LINA. (Levanta la cortina.) Ya viene el tren.\nPEDRO. Entonces debemos apurarnos».",
+        "options": [
+          "Lírico",
+          "Narrativo",
+          "Expositivo",
+          "Dramático"
+        ],
+        "answer": 3,
+        "explanation": "Las intervenciones tienen nombres de personajes y una acotación que indica una acción para la representación.",
+        "hint": "Observa los nombres al inicio de las intervenciones y la instrucción entre paréntesis.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Qué sentido evoca principalmente «La lija áspera raspó la yema de mis dedos»?",
+        "options": [
+          "Vista",
+          "Tacto",
+          "Olfato",
+          "Gusto"
+        ],
+        "answer": 1,
+        "explanation": "Áspera y raspó describen el contacto de la lija con los dedos.",
+        "hint": "Busca una palabra que describa lo que siente la piel.",
+        "difficulty": "exam"
+      }
+    ]
+  ],
+  "es-coherencia": [
+    [
+      {
+        "prompt": "Completa con un conector de resultado. «El autobús se descompuso. ____, el grupo llegó tarde».",
+        "options": [
+          "Sin embargo",
+          "Además",
+          "Por eso",
+          "Aunque"
+        ],
+        "answer": 2,
+        "explanation": "Llegar tarde es la consecuencia de la falla. Por eso introduce ese resultado.",
+        "hint": "Identifica la relación entre la falla y la llegada.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Ordena el procedimiento. (1) Luego, agrega la leche. (2) Por último, sirve la mezcla. (3) Primero, vierte la avena en el tazón.",
+        "options": [
+          "3, 1, 2",
+          "2, 1, 3",
+          "1, 3, 2",
+          "3, 2, 1"
+        ],
+        "answer": 0,
+        "explanation": "Primero introduce el paso 3, luego señala el paso 1 y por último indica que el paso 2 cierra el procedimiento.",
+        "hint": "Usa las marcas de orden al inicio de cada paso.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Qué oración se aparta del tema? (1) El huerto escolar produce hierbas aromáticas. (2) La menta crece junto al romero. (3) El laboratorio tiene un microscopio nuevo. (4) Los alumnos riegan las plantas cada martes.",
+        "options": [
+          "(1)",
+          "(2)",
+          "(4)",
+          "(3)"
+        ],
+        "answer": 3,
+        "explanation": "La oración 3 cambia al tema del laboratorio. Las demás describen el huerto.",
+        "hint": "Resume el tema de las oraciones en unas pocas palabras.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Qué oración presenta mejor el tema? «____. Primero separa las botellas por color. Luego enjuágalas y déjalas secar».",
+        "options": [
+          "Los martes abre la biblioteca.",
+          "Prepara las botellas de vidrio para el reciclaje.",
+          "Las tapas pueden ser rojas.",
+          "El mercado queda cerca del parque."
+        ],
+        "answer": 1,
+        "explanation": "La opción presenta el propósito al que sirven los dos pasos siguientes.",
+        "hint": "Elige una idea que incluya la clasificación y la limpieza de las botellas.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Completa para expresar contraste. «El salón era pequeño, ____ cabían todos».",
+        "options": [
+          "porque",
+          "por eso",
+          "pero",
+          "así que"
+        ],
+        "answer": 2,
+        "explanation": "El tamaño pequeño hace esperar que falte espacio. Pero introduce un resultado que contrasta con esa expectativa.",
+        "hint": "Busca el conector que cambia la expectativa inicial.",
+        "difficulty": "exam"
+      }
+    ]
+  ],
+  "es-edicion": [
+    [
+      {
+        "prompt": "Elige la puntuación correcta para pedirle a Leo que espere.",
+        "options": [
+          "Leo, espera aquí.",
+          "Leo espera, aquí.",
+          "Leo, espera, aquí.",
+          "Leo espera aquí."
+        ],
+        "answer": 0,
+        "explanation": "La coma separa Leo como vocativo. La frase sin coma informa que Leo espera.",
+        "hint": "Separa con una coma el nombre de la persona a la que hablas.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿En qué opción los dos puntos introducen una lista anunciada?",
+        "options": [
+          "En la bolsa hay: hilo, botones y agujas.",
+          "En la bolsa hay tres materiales: hilo, botones y agujas.",
+          "En la bolsa: hay hilo, botones y agujas.",
+          "En: la bolsa hay hilo, botones y agujas."
+        ],
+        "answer": 1,
+        "explanation": "La frase tres materiales anuncia cuáles se enumerarán. Los dos puntos van después de ese anuncio.",
+        "hint": "Busca una expresión completa que anuncie la lista.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Qué versión elimina una redundancia y conserva todos los datos? «El grupo volvió a repetir la coreografía en el patio al mediodía».",
+        "options": [
+          "El grupo repitió la coreografía al mediodía.",
+          "El grupo repitió la coreografía en el patio.",
+          "El grupo ensayó una coreografía nueva al mediodía.",
+          "El grupo repitió la coreografía en el patio al mediodía."
+        ],
+        "answer": 3,
+        "explanation": "Repetir ya expresa que hicieron de nuevo la coreografía. La versión conserva el lugar y la hora.",
+        "hint": "Revisa si la versión conserva dónde y cuándo ocurrió.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Qué verbo describe la acción con más precisión? «La técnica quitó el polvo del filtro con un cepillo».",
+        "options": [
+          "Cambió",
+          "Preparó",
+          "Cepilló",
+          "Guardó"
+        ],
+        "answer": 2,
+        "explanation": "Cepilló nombra la acción que realizó con el cepillo.",
+        "hint": "Identifica la herramienta y su acción.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Combina las oraciones sin perder la relación de causa. «La puerta estaba atorada. Por esa razón, salimos por el patio».",
+        "options": [
+          "Aunque la puerta estaba atorada, salimos por el patio.",
+          "Salimos por el patio porque la puerta estaba atorada.",
+          "La puerta estaba atorada porque salimos por el patio.",
+          "La puerta se atoró después de que salimos por el patio."
+        ],
+        "answer": 1,
+        "explanation": "La puerta atorada explica por qué el grupo salió por el patio. Porque une el resultado con su causa.",
+        "hint": "Identifica el problema que hizo necesario usar el patio.",
+        "difficulty": "exam"
+      }
+    ]
+  ]
+}

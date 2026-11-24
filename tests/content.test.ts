@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import { areaOrder, areas, byArea, curriculum } from "../src/content";
-import { cognitiveForms, miniQuestions } from "../src/content/cognitiveMini";
+import { miniFormCount, miniQuestions } from "../src/content/mini";
 import { questions } from "../src/study";
 
 test("each exam area has enough original questions for a timed section and ordered skill prerequisites", () => {
@@ -35,15 +35,24 @@ test("each exam area has enough original questions for a timed section and order
   }
 });
 
-test("each cognitive skill has seven guided questions and three parallel, disjoint mini-exams", () => {
+test("every lesson has fresh mini-exam questions and Spanish lessons have worked examples", () => {
   const prompts = new Set(curriculum.flatMap(lesson => lesson.exercises.map(item => item.prompt)));
-  assert.equal(Object.keys(cognitiveForms).length, byArea.hc.length);
-  for (const lesson of byArea.hc) {
-    assert.equal(lesson.exercises.filter(item => item.difficulty !== "challenge").length, 7, lesson.id);
-    assert.equal(cognitiveForms[lesson.id].length, 3);
-    for (const form of [0, 1, 2]) {
+  for (const lesson of curriculum) {
+    if (lesson.area === "hc") {
+      assert.equal(lesson.exercises.filter(item => item.difficulty !== "challenge").length, 7, lesson.id);
+    }
+    if (lesson.area === "es") {
+      assert.ok((lesson.workedExamples?.length ?? 0) >= 4, lesson.id);
+      assert.ok(lesson.workedExamples?.every(item => item.prompt.trim() && item.explanation.trim()), lesson.id);
+    }
+    const formCount = miniFormCount(lesson.id);
+    assert.equal(formCount, lesson.area === "hc" ? 3 : 1, lesson.id);
+    for (let form = 0; form < formCount; form++) {
       const items = miniQuestions(lesson.id, form);
-      assert.deepEqual(items.map(item => item.difficulty), ["base", "base", "exam", "exam", "exam"]);
+      assert.equal(items.length, 5, lesson.id);
+      if (lesson.area === "hc") {
+        assert.deepEqual(items.map(item => item.difficulty), ["base", "base", "exam", "exam", "exam"]);
+      }
       for (const item of items) {
         assert.equal(item.options.length, 4, item.id);
         assert.equal(new Set(item.options.map(option => option.trim())).size, 4, item.id);
