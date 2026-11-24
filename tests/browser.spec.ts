@@ -213,3 +213,72 @@ test("shows the diagram with equivalent labels in diagram exercises", async ({ p
   await expect(diagram).toBeVisible();
   await expect(diagram.locator("[data-venn-label]")).toHaveText(["A", "B", "C", "1", "2", "3", "4", "5", "6", "7"]);
 });
+
+test("times five fresh cognitive questions and compares with the next form", async ({ page }) => {
+  const firstStart = new Date("2026-11-23T20:00:00Z");
+  await page.clock.setFixedTime(firstStart);
+  await page.goto("/#/clase/hc-orden");
+  await expect(page.locator(".question-details")).toHaveCount(7);
+  await page.getByRole("link", { name: "Hacer miniexamen", exact: true }).first().click();
+  await page.getByRole("button", { name: "Empezar miniexamen" }).click();
+  const fill = async (startAt: number) => {
+    for (let index = startAt; index < 5; index++) {
+      await page.getByRole("radio").first().check();
+      if (index < 4) await page.getByRole("button", { name: "Siguiente" }).click();
+    }
+  };
+  const firstQuestion = await page.locator("legend").textContent();
+  await page.getByRole("button", { name: "Reiniciar prueba" }).click();
+  await expect(page.getByRole("button", { name: "Descartar intento" })).toBeFocused();
+  await page.getByRole("button", { name: "Seguir con la prueba" }).click();
+  await expect(page.getByRole("button", { name: "Reiniciar prueba" })).toBeFocused();
+  await expect(page.getByRole("button", { name: "Entregar miniexamen" })).toBeDisabled();
+  await expect(page.getByText("Respuesta correcta", { exact: true })).toHaveCount(0);
+  await page.getByRole("radio").first().check();
+  await page.getByRole("button", { name: "Siguiente" }).click();
+  await page.reload();
+  await expect(page.getByRole("heading", { name: "Pregunta 2 de 5" })).toBeVisible();
+  await fill(1);
+  await page.clock.setFixedTime(new Date(firstStart.getTime() + 80_000));
+  await page.getByRole("button", { name: "Entregar miniexamen" }).click();
+  await expect(page.getByText("1 min 20 s", { exact: true })).toBeVisible();
+
+  await page.clock.setFixedTime(new Date(firstStart.getTime() + 86_400_000));
+  await page.getByRole("button", { name: "Hacer otro miniexamen" }).click();
+  await page.getByRole("button", { name: "Empezar miniexamen" }).click();
+  await expect(page.locator("legend")).not.toHaveText(firstQuestion!);
+  await fill(0);
+  await page.clock.setFixedTime(new Date(firstStart.getTime() + 86_460_000));
+  await page.getByRole("button", { name: "Entregar miniexamen" }).click();
+  await expect(page.getByText("20 s menos que la anterior", { exact: true })).toBeVisible();
+  await page.reload();
+  await expect(page.getByText("20 s menos que la anterior", { exact: true })).toBeVisible();
+
+  await page.getByRole("link", { name: "Ver progreso" }).click();
+  const history = page.getByRole("region", { name: "Miniexámenes", exact: true });
+  await expect(history.getByRole("listitem")).toHaveCount(2);
+  await expect(history.getByText("1 min 20 s", { exact: true })).toBeVisible();
+  await expect(history.getByText("1 min", { exact: true })).toBeVisible();
+
+  await page.evaluate(() => {
+    const key = "marie-cetys:study:v1";
+    const backup = JSON.parse(localStorage.getItem(key)!);
+    delete backup.miniResults;
+    localStorage.setItem(key, JSON.stringify(backup));
+  });
+  await page.reload();
+  await page.goto("/#/mini/hc-orden");
+  await expect(page.getByRole("button", { name: "Empezar miniexamen" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Entregar miniexamen" })).toHaveCount(0);
+});
+
+test("keeps class mode when returning from a miniexam and clears it after logging class", async ({ page }) => {
+  await page.goto("/#/clase/hc-orden");
+  const classMode = page.getByRole("checkbox", { name: "Estamos en clase" });
+  await classMode.check();
+  await page.getByRole("link", { name: "Hacer miniexamen", exact: true }).click();
+  await page.getByRole("link", { name: "Volver a los ejercicios" }).click();
+  await expect(classMode).toBeChecked({ timeout: 2000 });
+  await page.getByRole("button", { name: /Guardar sesión/ }).click();
+  await expect(classMode).not.toBeChecked();
+});

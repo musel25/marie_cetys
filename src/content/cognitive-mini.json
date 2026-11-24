@@ -1,0 +1,1626 @@
+{
+  "hc-orden": [
+    [
+      {
+        "prompt": "Z va antes de V. J va antes de Z. ¿Qué orden cumple las dos pistas?",
+        "options": [
+          "Z, J, V",
+          "J, Z, V",
+          "J, V, Z",
+          "V, Z, J"
+        ],
+        "answer": 1,
+        "explanation": "Pon Z antes de V. Coloca J antes de Z. Queda J, Z, V.",
+        "hint": "Busca la letra que aparece en las dos pistas.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "L va inmediatamente después de N. X va antes de N. G va después de L. ¿Qué orden cumple todas las pistas?",
+        "options": [
+          "N, X, L, G",
+          "X, N, G, L",
+          "X, N, L, G",
+          "N, L, G, X"
+        ],
+        "answer": 2,
+        "explanation": "Une N y L en ese orden. Pon X antes del bloque y G después.",
+        "hint": "Pon N y L en dos casillas vecinas.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Y va entre X y Z. Z va antes de Y. F va inmediatamente antes de X. ¿Qué orden cumple todas las pistas?",
+        "options": [
+          "F, X, Y, Z",
+          "Z, F, Y, X",
+          "Z, Y, F, X",
+          "Y, Z, F, X"
+        ],
+        "answer": 2,
+        "explanation": "Z va antes de Y. La pista «entre» coloca X después de Y. Pon F justo antes de X.",
+        "hint": "Usa la segunda pista para orientar el orden de X, Y y Z.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "B va antes de F. F va antes de C. D va inmediatamente antes de F. H no va junto a C. ¿Cuál de estos órdenes cumple todas las pistas?",
+        "options": [
+          "H, B, D, F, C",
+          "B, D, H, F, C",
+          "B, D, F, C, H",
+          "D, F, B, H, C"
+        ],
+        "answer": 0,
+        "explanation": "Arma el bloque D–F. Pon B antes del bloque y C después. En H–B–D–F–C, tres letras separan a H de C.",
+        "hint": "Tacha los órdenes que separan D y F. Luego revisa a los vecinos de C.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "L va entre T y R. R va después de L. D va inmediatamente después de C. C va después de T. ¿Qué debe ser cierto en todos los órdenes válidos?",
+        "options": [
+          "L va antes de C.",
+          "R va antes de C.",
+          "D va antes de L.",
+          "T va antes de D."
+        ],
+        "answer": 3,
+        "explanation": "Las pistas fijan T–L–R y T–C–D. Esto pone a T antes de D en todos los casos. Los órdenes T–L–R–C–D y T–C–D–L–R muestran que las otras relaciones cambian.",
+        "hint": "Escribe las dos cadenas de letras que empiezan con T.",
+        "difficulty": "exam"
+      }
+    ],
+    [
+      {
+        "prompt": "5 va después de 8. 3 va antes de 8. ¿Qué orden cumple las dos pistas?",
+        "options": [
+          "5, 8, 3",
+          "8, 3, 5",
+          "8, 5, 3",
+          "3, 8, 5"
+        ],
+        "answer": 3,
+        "explanation": "Pon 5 después de 8. Coloca 3 antes de 8. Queda 3, 8, 5.",
+        "hint": "Busca el número que aparece en las dos pistas.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "2 va inmediatamente antes de 5. 7 va después de 5. 8 va antes de 2. ¿Qué orden cumple todas las pistas?",
+        "options": [
+          "8, 2, 5, 7",
+          "2, 8, 5, 7",
+          "8, 2, 7, 5",
+          "2, 5, 7, 8"
+        ],
+        "answer": 0,
+        "explanation": "Une 2 y 5 en ese orden. Pon 8 antes del bloque y 7 después.",
+        "hint": "Pon 2 y 5 en dos casillas vecinas.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "6 va entre 4 y 9. 9 va después de 6. 1 va inmediatamente después de 4. ¿Qué orden cumple todas las pistas?",
+        "options": [
+          "4, 6, 1, 9",
+          "9, 6, 1, 4",
+          "4, 1, 9, 6",
+          "4, 1, 6, 9"
+        ],
+        "answer": 3,
+        "explanation": "9 va después de 6. La pista «entre» coloca 4 antes de 6. Pon 1 justo después de 4.",
+        "hint": "Usa la segunda pista para orientar el orden de 4, 6 y 9.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "4 va después de 3. 4 va antes de 9. 6 va inmediatamente después de 4. 8 no va junto a 3. ¿Cuál de estos órdenes cumple todas las pistas?",
+        "options": [
+          "8, 3, 4, 6, 9",
+          "3, 4, 8, 6, 9",
+          "3, 4, 6, 9, 8",
+          "4, 6, 3, 9, 8"
+        ],
+        "answer": 2,
+        "explanation": "Arma el bloque 4–6. Pon 3 antes del bloque y 9 después. En 3–4–6–9–8, tres números separan a 3 de 8.",
+        "hint": "Tacha los órdenes que separan 4 y 6. Luego revisa a los vecinos de 3.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "5 va entre 2 y 7. 2 va después de 5. 1 va inmediatamente antes de 3. 3 va antes de 2. ¿Qué debe ser cierto en todos los órdenes válidos?",
+        "options": [
+          "1 va antes de 2.",
+          "7 va antes de 1.",
+          "3 va antes de 7.",
+          "5 va antes de 3."
+        ],
+        "answer": 0,
+        "explanation": "Las pistas fijan 7–5–2 y 1–3–2. Esto pone a 1 antes de 2 en todos los casos. Los órdenes 7–5–1–3–2 y 1–3–7–5–2 muestran que las otras relaciones cambian.",
+        "hint": "Escribe las dos cadenas de números que terminan con 2.",
+        "difficulty": "exam"
+      }
+    ],
+    [
+      {
+        "prompt": "C va después de Y. W va después de C. ¿Qué orden cumple las dos pistas?",
+        "options": [
+          "Y, C, W",
+          "C, Y, W",
+          "Y, W, C",
+          "W, C, Y"
+        ],
+        "answer": 0,
+        "explanation": "Pon C después de Y. Coloca W después de C. Queda Y, C, W.",
+        "hint": "Busca la letra que aparece en las dos pistas.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "J va inmediatamente antes de K. D va después de K. Z va antes de J. ¿Qué orden cumple todas las pistas?",
+        "options": [
+          "J, Z, K, D",
+          "Z, J, D, K",
+          "J, K, Z, D",
+          "Z, J, K, D"
+        ],
+        "answer": 3,
+        "explanation": "Une J y K en ese orden. Pon Z antes del bloque y D después.",
+        "hint": "Pon J y K en dos casillas vecinas.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "N va entre K y G. G va después de N. H va inmediatamente después de N. ¿Qué orden cumple todas las pistas?",
+        "options": [
+          "K, N, H, G",
+          "K, N, G, H",
+          "G, H, N, K",
+          "N, K, H, G"
+        ],
+        "answer": 0,
+        "explanation": "G va después de N. La pista «entre» coloca K antes de N. Pon H justo después de N.",
+        "hint": "Usa la segunda pista para orientar el orden de K, N y G.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "R va antes de S. U va después de S. M va inmediatamente antes de S. D no va junto a U. ¿Cuál de estos órdenes cumple todas las pistas?",
+        "options": [
+          "R, M, S, U, D",
+          "R, D, M, S, U",
+          "R, M, D, S, U",
+          "M, S, R, D, U"
+        ],
+        "answer": 1,
+        "explanation": "Arma el bloque M–S. Pon R antes del bloque y U después. En R–D–M–S–U, dos letras separan a D de U.",
+        "hint": "Tacha los órdenes que separan M y S. Luego revisa a los vecinos de U.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "X va entre V y J. V va después de X. P va inmediatamente antes de H. P va después de J. ¿Qué debe ser cierto en todos los órdenes válidos?",
+        "options": [
+          "V va antes de P.",
+          "J va antes de H.",
+          "X va antes de H.",
+          "H va antes de V."
+        ],
+        "answer": 1,
+        "explanation": "Las pistas fijan J–X–V y J–P–H. Esto pone a J antes de H en todos los casos. Los órdenes J–X–V–P–H y J–P–H–X–V muestran que las otras relaciones cambian.",
+        "hint": "Escribe las dos cadenas de letras que empiezan con J.",
+        "difficulty": "exam"
+      }
+    ]
+  ],
+  "hc-metaforas": [
+    [
+      {
+        "prompt": "¿Qué representa mejor «Una corona de montañas» alrededor de un valle?",
+        "options": [
+          "Una fila de colinas que cruza el valle",
+          "Un río al pie de las montañas",
+          "Varias cumbres que rodean el valle",
+          "Una cima cubierta de nieve"
+        ],
+        "answer": 2,
+        "explanation": "Una corona rodea la parte alta de la cabeza. Las cumbres rodean el valle y lo enmarcan desde arriba.",
+        "hint": "Piensa en la forma de una corona.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Qué representa mejor «El tambor del cielo» durante una tormenta?",
+        "options": [
+          "El destello de un relámpago",
+          "El trueno fuerte que se oye desde arriba",
+          "El movimiento de las nubes",
+          "El reflejo del cielo en un charco"
+        ],
+        "answer": 1,
+        "explanation": "Un tambor produce un golpe sonoro. El trueno se oye en el cielo como un golpe fuerte.",
+        "hint": "Piensa qué característica destaca cuando alguien toca un tambor.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Sobre una fogata se ve «Una serpiente de humo». ¿Qué describe la frase?",
+        "options": [
+          "Las llamas rectas que suben de la leña",
+          "Una nube de humo quieta y redonda",
+          "Las brasas que brillan entre las piedras",
+          "Una columna de humo que sube y se curva"
+        ],
+        "answer": 3,
+        "explanation": "La palabra «humo» indica de qué está hecha la columna. «Serpiente» describe las curvas que traza al subir.",
+        "hint": "Busca qué opción cumple con el material y con la forma.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Dos grupos dejaron de hablarse tras una discusión. Una compañera los escuchó y organizó una conversación. ¿Qué significa que ella fue «Un puente entre los dos grupos»?",
+        "options": [
+          "Ayudó a que los grupos volvieran a comunicarse.",
+          "Pidió que los grupos se reunieran por separado.",
+          "Explicó quién había empezado la discusión.",
+          "Propuso cambiar el lugar de las reuniones."
+        ],
+        "answer": 0,
+        "explanation": "Un puente conecta dos lados separados. La compañera reunió a los dos grupos y abrió una forma de comunicarse.",
+        "hint": "Piensa qué hace un puente entre dos orillas.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Lina lee una carta vieja y se le ocurren varios personajes para un cuento. ¿Qué frase expresa mejor lo que hizo la carta?",
+        "options": [
+          "Fue un espejo de su estado de ánimo.",
+          "Fue un freno para su imaginación.",
+          "Fue la semilla de su cuento.",
+          "Fue un eco de una historia que ya había contado."
+        ],
+        "answer": 2,
+        "explanation": "Una semilla puede dar origen a una planta. La carta dio origen a los personajes y al cuento.",
+        "hint": "Busca una imagen que indique el inicio de algo nuevo.",
+        "difficulty": "exam"
+      }
+    ],
+    [
+      {
+        "prompt": "¿Qué representa mejor «Dedos de hielo» debajo de un techo?",
+        "options": [
+          "Puntas de hielo que cuelgan en fila",
+          "Nieve que cubre todo el techo",
+          "Granizo en el suelo",
+          "Agua que gotea de una canaleta"
+        ],
+        "answer": 0,
+        "explanation": "Los dedos son largos y se agrupan. Las puntas de hielo son alargadas y cuelgan juntas del techo.",
+        "hint": "Busca varias formas alargadas.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Qué representa mejor «El susurro del libro» cuando una ráfaga mueve sus hojas?",
+        "options": [
+          "Un golpe fuerte al caer el libro",
+          "Una frase escrita en una página",
+          "La sombra que proyecta la portada",
+          "El sonido suave de las páginas al moverse"
+        ],
+        "answer": 3,
+        "explanation": "Un susurro tiene poco volumen. Las páginas que se rozan al moverse producen un sonido suave.",
+        "hint": "Piensa si un susurro es fuerte o suave.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "En una fuente se ven «Medusas de plástico». ¿Qué describe la frase?",
+        "options": [
+          "Botellas rígidas alineadas en el borde",
+          "Bolsas de plástico cuyas tiras se mueven bajo el agua",
+          "Burbujas redondas que suben a la superficie",
+          "Pétalos que flotan en el centro"
+        ],
+        "answer": 1,
+        "explanation": "La frase indica que el material es plástico. Las tiras de las bolsas se mueven en el agua como los tentáculos de las medusas.",
+        "hint": "Busca plástico con partes que se muevan como tentáculos.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Durante un proyecto, el equipo tuvo muchas ideas y poco tiempo. Una lista de prioridades le ayudó a decidir qué hacer primero. ¿Qué significa que la lista fue «Una brújula para el equipo»?",
+        "options": [
+          "Indicó a qué hora terminaba el trabajo.",
+          "Mostró los nombres de todas las personas.",
+          "Orientó al equipo al tomar decisiones.",
+          "Marcó cuántos materiales quedaban."
+        ],
+        "answer": 2,
+        "explanation": "Una brújula orienta a quien necesita elegir una dirección. La lista orientó al equipo cuando tuvo que elegir una tarea.",
+        "hint": "Piensa cómo ayuda una brújula cuando tienes varias rutas.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Leo encontró un símbolo que aparecía en cuatro notas. El símbolo le permitió relacionar pistas que parecían separadas. ¿Qué frase expresa mejor lo que hizo el símbolo?",
+        "options": [
+          "Fue una cortina sobre las notas.",
+          "Fue el hilo que unió las pistas.",
+          "Fue una alarma que anunció un peligro.",
+          "Fue un sello que puso fin a la búsqueda."
+        ],
+        "answer": 1,
+        "explanation": "Un hilo puede unir piezas separadas. El símbolo conectó la información de distintas notas.",
+        "hint": "Busca una imagen que indique que varias piezas se conectan.",
+        "difficulty": "exam"
+      }
+    ],
+    [
+      {
+        "prompt": "¿Qué representa mejor «La piel de ladrillo» de un edificio?",
+        "options": [
+          "Una columna que sostiene el techo",
+          "La cubierta de ladrillo que se ve por fuera",
+          "El piso de madera de un cuarto",
+          "Un tubo que lleva agua al edificio"
+        ],
+        "answer": 1,
+        "explanation": "La piel cubre la parte externa del cuerpo. Los ladrillos cubren la parte externa del edificio.",
+        "hint": "Piensa dónde se encuentra la piel con respecto al resto del cuerpo.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Qué representa mejor «El silbato del viento» al pasar el aire por una rendija?",
+        "options": [
+          "El aire fresco que llena el cuarto",
+          "La sombra de la ventana en el piso",
+          "El tono agudo que se oye junto a la rendija",
+          "El golpe seco de una puerta al cerrarse"
+        ],
+        "answer": 2,
+        "explanation": "Un silbato produce un tono agudo. El aire que pasa por la rendija puede producir un sonido parecido.",
+        "hint": "Piensa qué tipo de sonido hace un silbato.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "En un tendedero se ven «Pájaros de tela». ¿Qué describe la frase?",
+        "options": [
+          "Las camisas que se agitan en el aire",
+          "Las pinzas que están quietas en la cuerda",
+          "Un dibujo de aves en una pared",
+          "La sombra de la cuerda en el suelo"
+        ],
+        "answer": 0,
+        "explanation": "Las camisas son de tela. Cuando se agitan en el viento, su movimiento se parece al aleteo de los pájaros.",
+        "hint": "Busca algo de tela que parezca aletear.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Durante una mudanza, casi todos los horarios de Sofía cambiaron. Ella conservó la costumbre de tocar la guitarra al final del día. ¿Qué significa que la guitarra fue «Un ancla durante la mudanza»?",
+        "options": [
+          "Hizo más lento el transporte de las cajas.",
+          "Indicó a qué hora llegaría el camión.",
+          "Le impidió hacer amistades en el nuevo lugar.",
+          "Le dio una rutina estable durante los cambios."
+        ],
+        "answer": 3,
+        "explanation": "Un ancla mantiene un barco en su sitio. Tocar la guitarra le dio a Sofía una actividad que seguía en el mismo momento del día.",
+        "hint": "Piensa qué hace un ancla cuando el agua mueve el barco.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Un mensaje falso circulaba en el grupo. Mara mostró el aviso original y las personas dejaron de compartir el mensaje falso. ¿Qué frase expresa mejor lo que hizo el aviso?",
+        "options": [
+          "Fue un freno para el rumor.",
+          "Fue el combustible del rumor.",
+          "Fue un espejo de las opiniones del grupo.",
+          "Fue una chispa que inició otra discusión."
+        ],
+        "answer": 0,
+        "explanation": "Un freno detiene el movimiento. El aviso original detuvo la difusión del mensaje falso.",
+        "hint": "Busca una imagen que indique que algo dejó de avanzar.",
+        "difficulty": "exam"
+      }
+    ]
+  ],
+  "hc-analogias": [
+    [
+      {
+        "prompt": "Sacapuntas es a afilar como balanza es a ___.",
+        "options": [
+          "Contar",
+          "Cortar",
+          "Pesar",
+          "Mezclar"
+        ],
+        "answer": 2,
+        "explanation": "El sacapuntas sirve para afilar la punta. La balanza sirve para pesar objetos.",
+        "hint": "Identifica la acción habitual de cada objeto.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Dedo es a mano como aleta es a ___.",
+        "options": [
+          "Pez",
+          "Río",
+          "Agua",
+          "Acuario"
+        ],
+        "answer": 0,
+        "explanation": "Un dedo forma parte de una mano. Una aleta forma parte del cuerpo de un pez.",
+        "hint": "Identifica a qué cuerpo pertenece la segunda parte.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Ventana es a vidrio como camiseta es a ___.",
+        "options": [
+          "Costura",
+          "Tijeras",
+          "Botón",
+          "Algodón"
+        ],
+        "answer": 3,
+        "explanation": "El vidrio es un material que se usa para fabricar ventanas. El algodón es un material que se usa para fabricar camisetas.",
+        "hint": "Di primero de qué material puede estar hecha una ventana.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Lluvia es a charco como viento es a ___.",
+        "options": [
+          "Paraguas",
+          "Oleaje",
+          "Pronóstico",
+          "Brújula"
+        ],
+        "answer": 1,
+        "explanation": "La lluvia puede formar charcos. El viento puede producir olas al mover la superficie del agua.",
+        "hint": "Pregunta qué puede producir cada fenómeno.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Molesto es a furioso como contento es a ___.",
+        "options": [
+          "Distraído",
+          "Inquieto",
+          "Eufórico",
+          "Tranquilo"
+        ],
+        "answer": 2,
+        "explanation": "La furia es una forma intensa de enojo. La euforia es una forma intensa de alegría.",
+        "hint": "Comprueba si la emoción aumenta o disminuye en la primera pareja.",
+        "difficulty": "exam"
+      }
+    ],
+    [
+      {
+        "prompt": "Regla es a medir como colador es a ___.",
+        "options": [
+          "Filtrar",
+          "Exprimir",
+          "Batir",
+          "Pelar"
+        ],
+        "answer": 0,
+        "explanation": "La regla sirve para medir longitudes. El colador sirve para filtrar al separar sólidos de líquidos.",
+        "hint": "Identifica la acción habitual de cada objeto.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Asa es a taza como tecla es a ___.",
+        "options": [
+          "Pantalla",
+          "Ratón",
+          "Cable",
+          "Teclado"
+        ],
+        "answer": 3,
+        "explanation": "El asa forma parte de una taza. La tecla forma parte de un teclado.",
+        "hint": "Identifica el objeto del que forma parte una tecla.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Cinturón es a cuero como botella es a ___.",
+        "options": [
+          "Tapón",
+          "Plástico",
+          "Etiqueta",
+          "Máquina"
+        ],
+        "answer": 1,
+        "explanation": "El cuero es un material que se usa para fabricar cinturones. El plástico es un material que se usa para fabricar botellas.",
+        "hint": "Di primero de qué material puede estar hecho un cinturón.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Helada es a hielo como calor intenso es a ___.",
+        "options": [
+          "Pronóstico",
+          "Termómetro",
+          "Evaporación",
+          "Sombra"
+        ],
+        "answer": 2,
+        "explanation": "Una helada puede hacer que el agua se vuelva hielo. El calor intenso puede hacer que el agua se evapore.",
+        "hint": "Pregunta qué cambio puede provocar cada condición en el agua.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Preocupado es a angustiado como cansado es a ___.",
+        "options": [
+          "Exhausto",
+          "Adormilado",
+          "Distraído",
+          "Aburrido"
+        ],
+        "answer": 0,
+        "explanation": "La angustia muestra una preocupación muy intensa. Una persona exhausta tiene un cansancio muy intenso.",
+        "hint": "Comprueba si la sensación aumenta o disminuye en la primera pareja.",
+        "difficulty": "exam"
+      }
+    ],
+    [
+      {
+        "prompt": "Pinza es a sujetar como batidor es a ___.",
+        "options": [
+          "Colar",
+          "Cortar",
+          "Medir",
+          "Mezclar"
+        ],
+        "answer": 3,
+        "explanation": "La pinza sirve para sujetar objetos. El batidor sirve para mezclar ingredientes.",
+        "hint": "Identifica la acción habitual de cada objeto.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Pétalo es a flor como vagón es a ___.",
+        "options": [
+          "Estación",
+          "Tren",
+          "Andén",
+          "Vía"
+        ],
+        "answer": 1,
+        "explanation": "El pétalo forma parte de una flor. El vagón forma parte de un tren.",
+        "hint": "Identifica el conjunto al que pertenece un vagón.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Taza es a porcelana como neumático es a ___.",
+        "options": [
+          "Caucho",
+          "Bomba",
+          "Parche",
+          "Auto"
+        ],
+        "answer": 0,
+        "explanation": "La porcelana es un material que se usa para fabricar tazas. El caucho es un material que se usa para fabricar neumáticos.",
+        "hint": "Di primero de qué material puede estar hecha una taza.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Chispa es a incendio como fuga de agua es a ___.",
+        "options": [
+          "Tubería",
+          "Llave",
+          "Reparación",
+          "Inundación"
+        ],
+        "answer": 3,
+        "explanation": "Una chispa puede provocar un incendio. Una fuga de agua puede provocar una inundación.",
+        "hint": "Pregunta qué daño puede causar cada situación.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Interesado es a fascinado como asustado es a ___.",
+        "options": [
+          "Sorprendido",
+          "Avergonzado",
+          "Aterrorizado",
+          "Enojado"
+        ],
+        "answer": 2,
+        "explanation": "La fascinación muestra un interés muy intenso. El terror es un miedo muy intenso.",
+        "hint": "Comprueba si la sensación aumenta o disminuye en la primera pareja.",
+        "difficulty": "exam"
+      }
+    ]
+  ],
+  "hc-secuencias": [
+    [
+      {
+        "prompt": "Completa la secuencia 13, 19, 25, ___, 37.",
+        "options": [
+          "29",
+          "30",
+          "31",
+          "32"
+        ],
+        "answer": 2,
+        "explanation": "Cada paso suma 6. Al sumar 6 a 25 obtienes 31. Al sumar 6 a 31 obtienes 37.",
+        "hint": "Compara las dos primeras diferencias.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Completa la secuencia 2, 6, 18, 54, ___.",
+        "options": [
+          "162",
+          "108",
+          "216",
+          "72"
+        ],
+        "answer": 0,
+        "explanation": "Cada número es el triple del anterior. Multiplica 54 por 3 para obtener 162.",
+        "hint": "Divide el segundo número entre el primero y repite con el siguiente par.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Completa la secuencia b24, e20, h16, ___, n8.",
+        "options": [
+          "j12",
+          "k12",
+          "k14",
+          "l12"
+        ],
+        "answer": 1,
+        "explanation": "Las letras avanzan tres lugares, de h a k y de k a n. Los números bajan 4 por paso, de 16 a 12 y de 12 a 8. Junta k y 12.",
+        "hint": "Sigue las letras y los números en dos filas.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Completa la secuencia 6, 32, 10, 29, 14, 26, ___, ___.",
+        "options": [
+          "17, 23",
+          "18, 24",
+          "23, 18",
+          "18, 23"
+        ],
+        "answer": 3,
+        "explanation": "En las posiciones impares, 6, 10 y 14 aumentan de 4 en 4. Sigue 18. En las posiciones pares, 32, 29 y 26 bajan de 3 en 3. Sigue 23.",
+        "hint": "Separa los términos en posiciones impares y pares.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Completa la secuencia 4, 7, 14, 17, ___, 37, ___, 77.",
+        "options": [
+          "34, 74",
+          "20, 40",
+          "34, 40",
+          "20, 74"
+        ],
+        "answer": 0,
+        "explanation": "Alterna la suma de 3 y la multiplicación por 2. Duplica 17 para obtener 34 y 37 para obtener 74. Sumar 3 a esos números produce 37 y 77.",
+        "hint": "Compara el salto de 4 a 7 con el salto de 14 a 17.",
+        "difficulty": "exam"
+      }
+    ],
+    [
+      {
+        "prompt": "Completa la secuencia 48, 43, 38, ___, 28.",
+        "options": [
+          "35",
+          "32",
+          "34",
+          "33"
+        ],
+        "answer": 3,
+        "explanation": "Cada paso resta 5. Al restar 5 a 38 obtienes 33. Al restar 5 a 33 obtienes 28.",
+        "hint": "Compara cuánto baja cada número al comienzo.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Completa la secuencia 405, 135, 45, 15, ___.",
+        "options": [
+          "3",
+          "5",
+          "10",
+          "12"
+        ],
+        "answer": 1,
+        "explanation": "Cada número se obtiene al dividir el anterior entre 3. Divide 15 entre 3 para obtener 5.",
+        "hint": "Divide el primer número entre el segundo y repite con el siguiente par.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Completa la secuencia m5, j9, g13, ___, a21.",
+        "options": [
+          "d17",
+          "e17",
+          "d15",
+          "c17"
+        ],
+        "answer": 0,
+        "explanation": "Las letras retroceden tres lugares, de g a d y de d a a. Los números suben 4 por paso, de 13 a 17 y de 17 a 21. Junta d y 17.",
+        "hint": "Sigue las letras y los números en dos filas.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Completa la secuencia 41, 3, 36, 9, 31, 15, ___, ___.",
+        "options": [
+          "27, 21",
+          "26, 22",
+          "26, 21",
+          "21, 26"
+        ],
+        "answer": 2,
+        "explanation": "En las posiciones impares, 41, 36 y 31 bajan de 5 en 5. Sigue 26. En las posiciones pares, 3, 9 y 15 aumentan de 6 en 6. Sigue 21.",
+        "hint": "Separa los términos en posiciones impares y pares.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Completa la secuencia 3, 6, 11, 22, ___, 54, ___, 118.",
+        "options": [
+          "44, 108",
+          "27, 108",
+          "44, 59",
+          "27, 59"
+        ],
+        "answer": 3,
+        "explanation": "Alterna la multiplicación por 2 y la suma de 5. Suma 5 a 22 para obtener 27 y a 54 para obtener 59. El doble de esos números es 54 y 118.",
+        "hint": "Compara el salto de 3 a 6 con el salto de 11 a 22.",
+        "difficulty": "exam"
+      }
+    ],
+    [
+      {
+        "prompt": "Completa la secuencia 16, 23, 30, ___, 44.",
+        "options": [
+          "35",
+          "37",
+          "36",
+          "39"
+        ],
+        "answer": 1,
+        "explanation": "Cada paso suma 7. Al sumar 7 a 30 obtienes 37. Al sumar 7 a 37 obtienes 44.",
+        "hint": "Compara las dos primeras diferencias.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Completa la secuencia 2, 8, 32, 128, ___.",
+        "options": [
+          "256",
+          "384",
+          "512",
+          "132"
+        ],
+        "answer": 2,
+        "explanation": "Cada número se obtiene al multiplicar el anterior por 4. Multiplica 128 por 4 para obtener 512.",
+        "hint": "Divide el segundo número entre el primero y repite con el siguiente par.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Completa la secuencia a30, d25, g20, ___, m10.",
+        "options": [
+          "i15",
+          "j14",
+          "k15",
+          "j15"
+        ],
+        "answer": 3,
+        "explanation": "Las letras avanzan tres lugares, de g a j y de j a m. Los números bajan 5 por paso, de 20 a 15 y de 15 a 10. Junta j y 15.",
+        "hint": "Sigue las letras y los números en dos filas.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Completa la secuencia 12, 50, 15, 44, 18, 38, ___, ___.",
+        "options": [
+          "21, 32",
+          "20, 32",
+          "21, 33",
+          "32, 21"
+        ],
+        "answer": 0,
+        "explanation": "En las posiciones impares, 12, 15 y 18 aumentan de 3 en 3. Sigue 21. En las posiciones pares, 50, 44 y 38 bajan de 6 en 6. Sigue 32.",
+        "hint": "Separa los términos en posiciones impares y pares.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Completa la secuencia 18, 14, 28, 24, ___, 44, ___, 84.",
+        "options": [
+          "20, 40",
+          "48, 88",
+          "20, 88",
+          "48, 40"
+        ],
+        "answer": 1,
+        "explanation": "Alterna la resta de 4 y la multiplicación por 2. Duplica 24 para obtener 48 y 44 para obtener 88. Resta 4 a esos resultados para obtener 44 y 84.",
+        "hint": "Compara el salto de 18 a 14 con el salto de 28 a 24.",
+        "difficulty": "exam"
+      }
+    ]
+  ],
+  "hc-matrices": [
+    [
+      {
+        "prompt": "¿Qué número completa la matriz?\n12 | 17 | 22\n16 | 21 | ___\n20 | 25 | 30",
+        "options": [
+          "24",
+          "25",
+          "27",
+          "26"
+        ],
+        "answer": 3,
+        "explanation": "Cada fila aumenta de 5 en 5. Desde 21, suma 5 para obtener 26.",
+        "hint": "Compara la diferencia entre las dos primeras casillas de la primera fila.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Qué letra completa la matriz?\nB | D | F\nC | E | G\nD | ___ | H",
+        "options": [
+          "E",
+          "F",
+          "G",
+          "I"
+        ],
+        "answer": 1,
+        "explanation": "En cada fila, deja una letra entre casillas. Después de D, pasa por E y coloca F.",
+        "hint": "Cuenta cuántas posiciones hay de B a D.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Qué número completa la matriz?\n2 | 5 | 9\n4 | 3 | 11\n6 | 7 | ___",
+        "options": [
+          "19",
+          "13",
+          "20",
+          "25"
+        ],
+        "answer": 0,
+        "explanation": "En cada fila, duplica el primer número y suma el segundo. En la última fila, 2 × 6 + 7 = 19.",
+        "hint": "En la primera fila, compara 9 con la suma de 2 y 5. ¿De dónde salen las dos unidades que faltan?",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Qué número completa la matriz?\n15 | 18 | ___\n6 | 7 | 8\n9 | 11 | 14",
+        "options": [
+          "6",
+          "20",
+          "22",
+          "24"
+        ],
+        "answer": 2,
+        "explanation": "El número inferior es la diferencia entre los dos de arriba. Para recuperar el superior de la tercera columna, suma 8 + 14 = 22.",
+        "hint": "Lee cada columna de arriba abajo. Observa cómo 15 y 6 dan 9.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Qué términos completan la matriz, de arriba abajo?\nH4 | J7 | L10\nG8 | I11 | ___\nF12 | ___ | J18",
+        "options": [
+          "J14 y H15",
+          "K14 y H15",
+          "K13 y I14",
+          "K14 y H16"
+        ],
+        "answer": 1,
+        "explanation": "Cada fila avanza dos letras y suma 3 al número. Sigue desde I11 hasta K14. Después avanza de F12 a H15.",
+        "hint": "Revisa las letras y los números por separado. Lee los huecos de arriba abajo.",
+        "difficulty": "exam"
+      }
+    ],
+    [
+      {
+        "prompt": "¿Qué número completa la matriz?\n24 | 20 | 16\n27 | ___ | 19\n30 | 26 | 22",
+        "options": [
+          "23",
+          "21",
+          "20",
+          "22"
+        ],
+        "answer": 0,
+        "explanation": "Cada fila disminuye de 4 en 4. En la segunda fila, 27 − 4 = 23.",
+        "hint": "Compara las dos primeras casillas de la primera fila.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Qué letra completa la matriz?\nK | I | G\nJ | H | F\nI | G | ___",
+        "options": [
+          "D",
+          "H",
+          "F",
+          "E"
+        ],
+        "answer": 3,
+        "explanation": "En cada fila, retrocede dos letras por casilla. Desde G retrocede por F y llega a E.",
+        "hint": "Lee las dos primeras filas de izquierda a derecha. Fíjate en la dirección.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Qué número completa la matriz?\n2 | 11 | 7\n4 | 14 | 6\n5 | 19 | ___",
+        "options": [
+          "10",
+          "14",
+          "9",
+          "7"
+        ],
+        "answer": 2,
+        "explanation": "En cada fila, resta el doble del primer número al segundo. En la última fila, 19 − 2 × 5 = 9.",
+        "hint": "Duplica 2. ¿Qué operación con 11 produce 7?",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Qué número completa la matriz?\n3 | 5 | 7\n4 | ___ | 3\n12 | 30 | 21",
+        "options": [
+          "5",
+          "6",
+          "25",
+          "35"
+        ],
+        "answer": 1,
+        "explanation": "El número inferior es el producto de los dos de arriba. Divide 30 entre 5 para recuperar el factor que falta. El resultado es 6.",
+        "hint": "Compara 3, 4 y 12 en la primera columna. Usa la operación inversa en la segunda.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Qué términos completan la matriz, de arriba abajo?\nH5 | G9 | F13\nJ7 | ___ | H15\nL9 | K13 | ___",
+        "options": [
+          "I11 y J17",
+          "K11 y J17",
+          "I12 y J17",
+          "I11 y M17"
+        ],
+        "answer": 0,
+        "explanation": "Cada fila retrocede una letra y suma 4 al número. En la segunda fila, después de J7 va I11. En la tercera, después de K13 va J17.",
+        "hint": "Aplica una regla a las letras y otra a los números. Lee los huecos de arriba abajo.",
+        "difficulty": "exam"
+      }
+    ],
+    [
+      {
+        "prompt": "¿Qué número completa la matriz?\n31 | 25 | 19\n___ | 28 | 22\n37 | 31 | 25",
+        "options": [
+          "32",
+          "33",
+          "34",
+          "35"
+        ],
+        "answer": 2,
+        "explanation": "Cada fila disminuye de 6 en 6. La casilla anterior a 28 es 28 + 6 = 34.",
+        "hint": "Calcula cuánto baja la primera fila en cada paso. Trabaja hacia atrás desde 28.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Qué letra completa la matriz?\nA | D | G\nB | E | H\n___ | F | I",
+        "options": [
+          "D",
+          "C",
+          "E",
+          "G"
+        ],
+        "answer": 1,
+        "explanation": "Cada fila avanza tres letras por casilla. Retrocede tres lugares desde F para llegar a C.",
+        "hint": "Cuenta el salto alfabético de A a D. Usa el mismo salto en sentido contrario desde F.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Qué número completa la matriz?\n2 | 4 | 10\n3 | 5 | 14\n5 | 6 | ___",
+        "options": [
+          "17",
+          "16",
+          "23",
+          "21"
+        ],
+        "answer": 3,
+        "explanation": "En cada fila, triplica el primer número y suma el segundo. En la última fila, 3 × 5 + 6 = 21.",
+        "hint": "Prueba multiplicar el primer número por 3 antes de sumar el segundo.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Qué número completa la matriz?\n8 | 10 | ___\n4 | 6 | 9\n6 | 8 | 11",
+        "options": [
+          "13",
+          "12",
+          "15",
+          "20"
+        ],
+        "answer": 0,
+        "explanation": "El número inferior es el promedio de los dos superiores. Si el promedio es 11 y un número es 9, el otro debe ser 13. Así, (13 + 9) ÷ 2 = 11.",
+        "hint": "Comprueba el promedio de 8 y 4. Para invertir la regla, duplica el número inferior y resta el que está arriba.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Qué términos completan la matriz, de arriba abajo?\nH16 | F13 | D10\nI19 | ___ | E13\n___ | H19 | F16",
+        "options": [
+          "G15 y J22",
+          "H16 y J22",
+          "G16 y J22",
+          "G16 y J21"
+        ],
+        "answer": 2,
+        "explanation": "Cada fila retrocede dos letras y resta 3 al número. Desde I19 sigue G16. Antes de H19 va J22.",
+        "hint": "Separa el patrón de la letra del patrón del número. En la tercera fila, retrocede desde H19.",
+        "difficulty": "exam"
+      }
+    ]
+  ],
+  "hc-diagramas": [
+    [
+      {
+        "prompt": "Sectores del diagrama. 1 solo A · 2 A y B sin C · 3 solo B · 4 A y C sin B · 5 A, B y C · 6 B y C sin A · 7 solo C.\nA = macetas altas. B = macetas de barro. C = macetas con plato. ¿En qué sector queda una maceta baja, de barro y con plato?",
+        "options": [
+          "Sector 3",
+          "Sector 5",
+          "Sector 6",
+          "Sector 7"
+        ],
+        "answer": 2,
+        "explanation": "La maceta pertenece a B y C. Su altura la deja fuera de A. Corresponde al sector 6.",
+        "hint": "Para cada conjunto, decide si la maceta cumple su característica.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Sectores del diagrama. 1 solo A · 2 A y B sin C · 3 solo B · 4 A y C sin B · 5 A, B y C · 6 B y C sin A · 7 solo C.\nA = boletos numerados. B = boletos pagados. C = boletos impresos. ¿Qué boleto queda en el sector 1?",
+        "options": [
+          "Numerado, pagado y sin imprimir",
+          "Sin número, pagado e impreso",
+          "Numerado, sin pagar e impreso",
+          "Numerado, sin pagar y sin imprimir"
+        ],
+        "answer": 3,
+        "explanation": "El sector 1 solo pertenece a A. El boleto tiene número. Queda fuera de B y C.",
+        "hint": "Busca un boleto que cumpla solo una de las tres características.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Sectores del diagrama. 1 solo A · 2 A y B sin C · 3 solo B · 4 A y C sin B · 5 A, B y C · 6 B y C sin A · 7 solo C.\nA = mochilas ligeras. B = mochilas impermeables. C = mochilas con ruedas. ¿Qué sectores reúnen todas las mochilas impermeables sin ruedas?",
+        "options": [
+          "2 y 3",
+          "2 y 5",
+          "3 y 6",
+          "5 y 6"
+        ],
+        "answer": 0,
+        "explanation": "Los sectores 2 y 3 pertenecen a B y quedan fuera de C. El 2 incluye las mochilas ligeras. El 3 incluye las demás.",
+        "hint": "Mantén B, elimina C y deja que A cambie.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Sectores del diagrama. 1 solo A · 2 A y B sin C · 3 solo B · 4 A y C sin B · 5 A, B y C · 6 B y C sin A · 7 solo C.\nA = revistas mensuales. B = revistas ilustradas. C = revistas digitales. Los sectores 1 a 7 tienen, en orden, 3, 2, 7, 5, 4, 6 y 8 revistas. ¿Cuántas revistas mensuales hay?",
+        "options": [
+          "10",
+          "14",
+          "15",
+          "21"
+        ],
+        "answer": 1,
+        "explanation": "A contiene los sectores 1, 2, 4 y 5. Suma 3 + 2 + 5 + 4 = 14.",
+        "hint": "Incluye todos los sectores que contienen A, incluso los que también contienen B o C.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Sectores del diagrama. 1 solo A · 2 A y B sin C · 3 solo B · 4 A y C sin B · 5 A, B y C · 6 B y C sin A · 7 solo C.\nA = juegos cooperativos. B = juegos de cartas. C = juegos con tablero. Hay 12 juegos de cartas cooperativos. De ellos, 5 tienen tablero. ¿Cuántos juegos hay en el sector 2?",
+        "options": [
+          "5",
+          "12",
+          "17",
+          "7"
+        ],
+        "answer": 3,
+        "explanation": "Los 12 juegos están en los sectores 2 y 5. Los 5 que tienen tablero están en el 5. En el sector 2 quedan 12 − 5 = 7.",
+        "hint": "Separa los juegos de A y B en dos grupos según si pertenecen a C.",
+        "difficulty": "exam"
+      }
+    ],
+    [
+      {
+        "prompt": "Sectores del diagrama. 1 solo A · 2 A y B sin C · 3 solo B · 4 A y C sin B · 5 A, B y C · 6 B y C sin A · 7 solo C.\nA = carpetas con broche. B = carpetas transparentes. C = carpetas con etiqueta. ¿En qué sector queda una carpeta opaca, con broche y con etiqueta?",
+        "options": [
+          "Sector 4",
+          "Sector 2",
+          "Sector 5",
+          "Sector 6"
+        ],
+        "answer": 0,
+        "explanation": "La carpeta pertenece a A y C. Como es opaca, queda fuera de B. Corresponde al sector 4.",
+        "hint": "Una carpeta opaca queda fuera del conjunto de carpetas transparentes.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Sectores del diagrama. 1 solo A · 2 A y B sin C · 3 solo B · 4 A y C sin B · 5 A, B y C · 6 B y C sin A · 7 solo C.\nA = vasos de vidrio. B = vasos con asa. C = vasos con tapa. ¿Qué vaso queda en el sector 2?",
+        "options": [
+          "De metal, con asa y sin tapa",
+          "De vidrio, con asa y sin tapa",
+          "De vidrio, con asa y con tapa",
+          "De vidrio, sin asa y con tapa"
+        ],
+        "answer": 1,
+        "explanation": "El sector 2 pertenece a A y B. El vaso es de vidrio y tiene asa. Como queda fuera de C, carece de tapa.",
+        "hint": "Lee la leyenda del sector 2. Busca el vaso que cumple exactamente esas condiciones.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Sectores del diagrama. 1 solo A · 2 A y B sin C · 3 solo B · 4 A y C sin B · 5 A, B y C · 6 B y C sin A · 7 solo C.\nA = cajas plegables. B = cajas de cartón. C = cajas con divisiones. ¿Qué sectores reúnen todas las cajas con divisiones que no son de cartón?",
+        "options": [
+          "4 y 5",
+          "5 y 7",
+          "6 y 7",
+          "4 y 7"
+        ],
+        "answer": 3,
+        "explanation": "Los sectores 4 y 7 pertenecen a C y quedan fuera de B. Solo el 4 pertenece también a A.",
+        "hint": "Mantén C, elimina B y deja que A cambie.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Sectores del diagrama. 1 solo A · 2 A y B sin C · 3 solo B · 4 A y C sin B · 5 A, B y C · 6 B y C sin A · 7 solo C.\nA = botellas térmicas. B = botellas con asa. C = botellas con filtro. Los sectores 1 a 7 tienen, en orden, 4, 7, 6, 3, 2, 5 y 9 botellas. ¿Cuántas botellas con asa hay?",
+        "options": [
+          "13",
+          "18",
+          "20",
+          "24"
+        ],
+        "answer": 2,
+        "explanation": "B contiene los sectores 2, 3, 5 y 6. Suma 7 + 6 + 2 + 5 = 20.",
+        "hint": "Marca los cuatro sectores que pertenecen a B y suma sus cantidades.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Sectores del diagrama. 1 solo A · 2 A y B sin C · 3 solo B · 4 A y C sin B · 5 A, B y C · 6 B y C sin A · 7 solo C.\nA = talleres de arte. B = talleres gratuitos. C = talleres en línea. Hay 15 talleres de arte en línea. De ellos, 6 son gratuitos. ¿Cuántos talleres hay en el sector 4?",
+        "options": [
+          "9",
+          "6",
+          "15",
+          "21"
+        ],
+        "answer": 0,
+        "explanation": "Los 15 talleres están en los sectores 4 y 5. Los 6 gratuitos están en el 5. En el sector 4 quedan 15 − 6 = 9.",
+        "hint": "Identifica los dos sectores que incluyen A y C. Decide cuál contiene los talleres gratuitos.",
+        "difficulty": "exam"
+      }
+    ],
+    [
+      {
+        "prompt": "Sectores del diagrama. 1 solo A · 2 A y B sin C · 3 solo B · 4 A y C sin B · 5 A, B y C · 6 B y C sin A · 7 solo C.\nA = gorras ajustables. B = gorras negras. C = gorras con logotipo. ¿En qué sector queda una gorra ajustable, negra y sin logotipo?",
+        "options": [
+          "Sector 1",
+          "Sector 2",
+          "Sector 3",
+          "Sector 5"
+        ],
+        "answer": 1,
+        "explanation": "La gorra pertenece a A y B. Como carece de logotipo, queda fuera de C. Corresponde al sector 2.",
+        "hint": "Comprueba qué conjunto excluye a una gorra sin logotipo.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Sectores del diagrama. 1 solo A · 2 A y B sin C · 3 solo B · 4 A y C sin B · 5 A, B y C · 6 B y C sin A · 7 solo C.\nA = estuches de tela. B = estuches con cierre. C = estuches con correa. ¿Qué estuche queda en el sector 5?",
+        "options": [
+          "De tela, con cierre y sin correa",
+          "De plástico, con cierre y con correa",
+          "De tela, con cierre y con correa",
+          "De tela, sin cierre y con correa"
+        ],
+        "answer": 2,
+        "explanation": "El sector 5 pertenece a los tres conjuntos. El estuche es de tela y tiene cierre y correa.",
+        "hint": "Comprueba si el sector 5 queda dentro de uno, dos o tres círculos.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Sectores del diagrama. 1 solo A · 2 A y B sin C · 3 solo B · 4 A y C sin B · 5 A, B y C · 6 B y C sin A · 7 solo C.\nA = instrumentos de cuerda. B = instrumentos eléctricos. C = instrumentos en exhibición. ¿Qué sectores reúnen todos los instrumentos de cuerda que no son eléctricos?",
+        "options": [
+          "1 y 2",
+          "2 y 5",
+          "4 y 5",
+          "1 y 4"
+        ],
+        "answer": 3,
+        "explanation": "Los sectores 1 y 4 pertenecen a A y quedan fuera de B. Solo el 4 también pertenece a C.",
+        "hint": "Mantén A, elimina B y deja que C cambie.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Sectores del diagrama. 1 solo A · 2 A y B sin C · 3 solo B · 4 A y C sin B · 5 A, B y C · 6 B y C sin A · 7 solo C.\nA = recipientes de metal. B = recipientes cuadrados. C = recipientes con tapa. Los sectores 1 a 7 tienen, en orden, 9, 3, 8, 2, 5, 4 y 6 recipientes. ¿Cuántos recipientes con tapa hay?",
+        "options": [
+          "17",
+          "14",
+          "15",
+          "21"
+        ],
+        "answer": 0,
+        "explanation": "C contiene los sectores 4, 5, 6 y 7. Suma 2 + 5 + 4 + 6 = 17.",
+        "hint": "Localiza todos los sectores de C, desde el centro hasta la parte exclusiva.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Sectores del diagrama. 1 solo A · 2 A y B sin C · 3 solo B · 4 A y C sin B · 5 A, B y C · 6 B y C sin A · 7 solo C.\nA = mapas de la ciudad. B = mapas a color. C = mapas plegables. Hay 14 mapas plegables a color. De ellos, 8 son de la ciudad. ¿Cuántos mapas hay en el sector 6?",
+        "options": [
+          "8",
+          "6",
+          "14",
+          "22"
+        ],
+        "answer": 1,
+        "explanation": "Los 14 mapas están en los sectores 5 y 6. Los 8 mapas de la ciudad están en el 5. En el sector 6 quedan 14 − 8 = 6.",
+        "hint": "Empieza con B y C. Quita el sector que también pertenece a A.",
+        "difficulty": "exam"
+      }
+    ]
+  ],
+  "hc-condicional": [
+    [
+      {
+        "prompt": "Si se completa la lista de materiales, el equipo puede iniciar el montaje. El equipo de Eva completó su lista. ¿Qué se deduce?",
+        "options": [
+          "El equipo puede iniciar el montaje.",
+          "El equipo ya terminó el montaje.",
+          "El equipo compró materiales nuevos.",
+          "El equipo guardó todos sus materiales."
+        ],
+        "answer": 0,
+        "explanation": "El equipo cumple la condición porque completó la lista. Por eso puede iniciar el montaje.",
+        "hint": "Busca en la regla lo que ocurre cuando se cumple la condición.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Si el congelador está encendido, la pantalla muestra un número. La pantalla no muestra ningún número. ¿Qué se deduce?",
+        "options": [
+          "El congelador está a cero grados.",
+          "La pantalla está averiada.",
+          "El congelador no está encendido.",
+          "El congelador tiene la puerta abierta."
+        ],
+        "answer": 2,
+        "explanation": "Con el congelador encendido, la pantalla mostraría un número. Como no muestra ninguno, el congelador no está encendido.",
+        "hint": "Imagina que el congelador está encendido. Comprueba si eso coincide con lo que muestra la pantalla.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Para participar en la final, un equipo debe entregar su registro. Cada equipo que entrega su registro recibe un folio. El equipo Sol no recibió folio. ¿Qué se deduce?",
+        "options": [
+          "El equipo Sol participó en la final.",
+          "El equipo Sol no puede participar en la final.",
+          "El equipo Sol entregó el registro.",
+          "El equipo Sol perdió su folio."
+        ],
+        "answer": 1,
+        "explanation": "Si el equipo hubiera entregado el registro, habría recibido folio. Sin registro, el equipo no puede participar.",
+        "hint": "Empieza con la falta del folio. Recorre las dos reglas hacia atrás.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Algunas piezas del cajón son de madera. Ninguna pieza de madera del cajón es transparente. ¿Qué se deduce?",
+        "options": [
+          "Ninguna pieza del cajón es transparente.",
+          "Todas las piezas del cajón son de madera.",
+          "Alguna pieza transparente del cajón es de madera.",
+          "Alguna pieza del cajón no es transparente."
+        ],
+        "answer": 3,
+        "explanation": "Hay por lo menos una pieza de madera en el cajón. La regla indica que esa pieza no es transparente.",
+        "hint": "Elige una de las piezas de madera y aplica la regla a esa pieza.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Los martes se abre el acceso norte. Cuando se abre el acceso norte, se coloca un cartel amarillo. ¿Qué situación puede ocurrir sin romper ninguna regla?",
+        "options": [
+          "Es lunes, el acceso está cerrado y hay cartel.",
+          "Es martes, el acceso está cerrado y hay cartel.",
+          "Es lunes, el acceso está abierto y no hay cartel.",
+          "Es martes, el acceso está abierto y no hay cartel."
+        ],
+        "answer": 0,
+        "explanation": "Las reglas obligan a abrir el acceso norte los martes y a poner un cartel si abre. Permiten que el lunes esté cerrado y que haya cartel.",
+        "hint": "Una regla dice cuándo se debe poner el cartel. Busca si también dice cuándo debe quitarse.",
+        "difficulty": "exam"
+      }
+    ],
+    [
+      {
+        "prompt": "Si el saldo de la tarjeta supera $100, la aplicación muestra una marca verde. El saldo de Mateo es de $125. ¿Qué se deduce?",
+        "options": [
+          "La marca verde aparece con un saldo de $100 exactos.",
+          "Mateo cargó saldo esta mañana.",
+          "La aplicación muestra una marca verde.",
+          "El saldo de Mateo aumenta cada día."
+        ],
+        "answer": 2,
+        "explanation": "Un saldo de $125 supera $100. La aplicación muestra la marca verde al cumplirse la condición.",
+        "hint": "Compara el saldo de Mateo con el límite de la regla.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Si la revisión de una bicicleta termina, el taller cambia su ficha a «Lista». La ficha de la bicicleta de Ximena sigue en «En revisión». ¿Qué se deduce?",
+        "options": [
+          "La revisión de esa bicicleta aún no termina.",
+          "La bicicleta necesita piezas nuevas.",
+          "El taller ya reparó la bicicleta.",
+          "La ficha de la bicicleta dice «Lista»."
+        ],
+        "answer": 0,
+        "explanation": "Al terminar la revisión, la ficha diría «Lista». Como todavía dice «En revisión», la revisión aún no termina.",
+        "hint": "Compara lo que dice la ficha con lo que diría al terminar la revisión.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Para reservar una cancha, Nora debe tener una cuenta activa. Con una cuenta activa, recibe un número de usuaria. Nora no recibió un número de usuaria. ¿Qué se deduce?",
+        "options": [
+          "Nora tiene una cuenta activa.",
+          "Nora reservó una cancha.",
+          "Nora recibió un número que no recuerda.",
+          "Nora no puede reservar una cancha."
+        ],
+        "answer": 3,
+        "explanation": "Una cuenta activa le habría dado un número. Como Nora carece de número, su cuenta no está activa. Sin cuenta activa, no puede reservar.",
+        "hint": "Empieza por saber qué indica la falta del número de usuaria.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Algunos proyectos de la feria son maquetas. Todas las maquetas de la feria tienen instrucciones. ¿Qué se deduce?",
+        "options": [
+          "Todos los proyectos de la feria son maquetas.",
+          "Algunos proyectos de la feria tienen instrucciones.",
+          "Ningún proyecto de la feria tiene instrucciones.",
+          "Solo las maquetas de la feria pueden tener instrucciones."
+        ],
+        "answer": 1,
+        "explanation": "Entre los proyectos hay por lo menos una maqueta. Esa maqueta tiene instrucciones.",
+        "hint": "Aplica la segunda regla a uno de los proyectos que son maquetas.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Si hay función doble, se habilita la sala 2. Si se habilita la sala 2, se publica el plano de asientos. ¿Qué situación puede ocurrir sin romper ninguna regla?",
+        "options": [
+          "Hay función doble, la sala 2 está cerrada y se publica el plano.",
+          "Hay una sola función, la sala 2 está habilitada y no se publica el plano.",
+          "Hay una sola función, la sala 2 está habilitada y se publica el plano.",
+          "Hay función doble, la sala 2 está habilitada y no se publica el plano."
+        ],
+        "answer": 2,
+        "explanation": "Puede habilitarse la sala 2 para una sola función. Al habilitarla, se debe publicar el plano. Esa situación cumple ambas reglas.",
+        "hint": "Comprueba si la primera regla prohíbe habilitar la sala 2 cuando hay una sola función.",
+        "difficulty": "exam"
+      }
+    ],
+    [
+      {
+        "prompt": "Si una solicitud está completa, el sistema muestra un acuse de recibo. La solicitud de Inés está completa. ¿Qué se deduce?",
+        "options": [
+          "El sistema borra la solicitud.",
+          "El sistema muestra un acuse de recibo.",
+          "La solicitud se aprobó el lunes.",
+          "Inés presentó dos solicitudes."
+        ],
+        "answer": 1,
+        "explanation": "La solicitud de Inés satisface la condición. El sistema debe mostrar un acuse de recibo.",
+        "hint": "Identifica el resultado que la regla da para una solicitud completa.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Si Norma lleva la credencial, el lector le muestra una luz azul. El lector no le muestra una luz azul. ¿Qué se deduce?",
+        "options": [
+          "El lector está apagado.",
+          "Norma lleva dos credenciales.",
+          "Norma llegará tarde.",
+          "Norma no lleva la credencial."
+        ],
+        "answer": 3,
+        "explanation": "Si Norma llevara la credencial, el lector le mostraría una luz azul. Como no la muestra, Norma no lleva la credencial.",
+        "hint": "Comprueba qué vería Norma si llevara la credencial.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Si se prepara una ruta larga, se carga combustible en la camioneta. Siempre que se carga combustible, se anota la carga en la bitácora. Hoy no hay una anotación de carga. ¿Qué se deduce?",
+        "options": [
+          "Hoy no se preparó una ruta larga.",
+          "Hoy se cargó combustible para una ruta larga.",
+          "Hoy la camioneta recorrió una ruta corta.",
+          "Hoy la bitácora está perdida."
+        ],
+        "answer": 0,
+        "explanation": "La falta de anotación indica que no se cargó combustible. Si se hubiera preparado una ruta larga, habría habido una carga.",
+        "hint": "Primero determina si se cargó combustible. Después revisa la primera regla.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Algunos objetos de la colección son de vidrio. Ningún objeto de vidrio de la colección es flexible. ¿Qué se deduce?",
+        "options": [
+          "No hay objetos flexibles en la colección.",
+          "Todos los objetos de la colección son de vidrio.",
+          "Algunos objetos de la colección no son flexibles.",
+          "Los objetos que no son de vidrio son flexibles."
+        ],
+        "answer": 2,
+        "explanation": "La colección contiene por lo menos un objeto de vidrio. Por la segunda regla, ese objeto no es flexible.",
+        "hint": "Sigue un objeto que pertenezca a los dos primeros grupos.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Si el gimnasio abre temprano, Luis llega en bicicleta. Si Luis llega en bicicleta, deja su casco en el casillero. ¿Qué situación puede ocurrir sin romper ninguna regla?",
+        "options": [
+          "El gimnasio abre temprano. Luis llega a pie y deja el casco en el casillero.",
+          "El gimnasio abre tarde. Luis llega en bicicleta y deja el casco en el casillero.",
+          "El gimnasio abre tarde. Luis llega en bicicleta y deja el casco en casa.",
+          "El gimnasio abre temprano. Luis llega en bicicleta y deja el casco en casa."
+        ],
+        "answer": 1,
+        "explanation": "La primera regla permite que Luis llegue en bicicleta aunque el gimnasio abra tarde. Si usa la bicicleta, cumple la segunda regla al dejar el casco en el casillero.",
+        "hint": "Comprueba si Luis puede llegar en bicicleta por otro motivo.",
+        "difficulty": "exam"
+      }
+    ]
+  ],
+  "hc-practico": [
+    [
+      {
+        "prompt": "Una camioneta admite hasta 120 kg de carga. Ya lleva 84 kg. Solo se puede añadir uno de estos paquetes. ¿Cuál es el paquete más pesado que se puede añadir?",
+        "options": [
+          "28 kg",
+          "36 kg",
+          "41 kg",
+          "45 kg"
+        ],
+        "answer": 1,
+        "explanation": "Quedan 120 − 84 = 36 kg de capacidad. El paquete de 36 kg usa toda la capacidad disponible.",
+        "hint": "Resta la carga actual de la carga máxima.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Un albergue registró los litros de agua que usó por día. Usó 48 el lunes, 41 el martes y 34 el miércoles. ¿Qué afirmación coincide con los datos?",
+        "options": [
+          "El uso subió 7 litros cada día.",
+          "El uso fue igual los tres días.",
+          "El uso bajó 14 litros cada día.",
+          "El uso bajó 7 litros de un día al siguiente."
+        ],
+        "answer": 3,
+        "explanation": "De 48 a 41 hay una baja de 7 litros. De 41 a 34 hay otra baja de 7 litros.",
+        "hint": "Calcula cuánto cambia el uso en cada par de días consecutivos.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Luz puede iniciar una impresión a partir de las 11:20. Su pedido debe estar listo a más tardar a las 12:00. R inicia a las 11:25 y tarda 40 minutos. S inicia a las 11:15 y tarda 35 minutos. T inicia a las 11:35 y tarda 25 minutos. U inicia a las 11:45 y tarda 20 minutos. ¿Qué opción cumple las dos condiciones?",
+        "options": [
+          "T",
+          "R",
+          "U",
+          "S"
+        ],
+        "answer": 0,
+        "explanation": "T inicia a las 11:35 y termina a las 12:00. S inicia demasiado temprano. R y U terminan a las 12:05.",
+        "hint": "Suma cada duración a su hora de inicio. «A más tardar» permite terminar a las 12:00.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Una cooperativa compara cuatro paquetes de focos iguales. R trae 3 por $75. S trae 4 por $92. T trae 5 por $110. U trae 6 por $102. ¿Qué paquete tiene el menor costo por foco?",
+        "options": [
+          "R",
+          "T",
+          "U",
+          "S"
+        ],
+        "answer": 2,
+        "explanation": "Divide el precio entre la cantidad de focos. Los precios por foco son $25 en R, $23 en S, $22 en T y $17 en U.",
+        "hint": "Compara el costo de un foco en cada opción.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Dos cajas iguales con cubos de hielo se colocan juntas a la sombra. Cada caja empieza con 10 cubos iguales. Solo una caja tiene tapa. A los 30 minutos, queda más hielo en la caja con tapa. ¿Qué explicación tiene mayor apoyo?",
+        "options": [
+          "La caja con tapa recibió cubos más grandes.",
+          "La tapa ayudó a conservar el hielo durante la prueba.",
+          "La caja sin tapa estuvo al sol.",
+          "Una tapa siempre conserva la misma cantidad de hielo en cualquier lugar."
+        ],
+        "answer": 1,
+        "explanation": "Ambas cajas comenzaron con la misma cantidad de hielo y estuvieron en el mismo lugar. La tapa fue la diferencia entre las cajas. El resultado apoya que ayudó a conservar el hielo.",
+        "hint": "Identifica qué característica fue distinta entre las dos cajas.",
+        "difficulty": "exam"
+      }
+    ],
+    [
+      {
+        "prompt": "Para una actividad hay $200 disponibles. El papel cuesta $137. El equipo puede añadir uno de estos materiales. ¿Cuál es el material más caro que puede añadir sin superar el presupuesto?",
+        "options": [
+          "Pegamento por $66",
+          "Cinta por $68",
+          "Pintura por $63",
+          "Marcadores por $56"
+        ],
+        "answer": 2,
+        "explanation": "Quedan $200 − $137 = $63. La pintura cuesta $63 y es la opción de mayor precio dentro del presupuesto.",
+        "hint": "Calcula lo que sobra después de pagar el papel.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Un taller empacó 18 piezas el lunes, 24 el martes y 30 el miércoles. ¿Qué afirmación coincide con los datos?",
+        "options": [
+          "El taller empacó 6 piezas más de un día al siguiente.",
+          "El taller empacó 12 piezas más de un día al siguiente.",
+          "El taller empacó 6 piezas menos de un día al siguiente.",
+          "El taller empacó el mismo número de piezas los tres días."
+        ],
+        "answer": 0,
+        "explanation": "El total subió de 18 a 24 y de 24 a 30. En cada cambio aumentó 6 piezas.",
+        "hint": "Resta la cantidad de un día de la cantidad del día siguiente.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Diego puede entrar a la piscina desde las 16:10. Debe salir antes de las 16:50. El turno R empieza a las 16:05 y dura 30 minutos. S empieza a las 16:15 y dura 25 minutos. T empieza a las 16:25 y dura 25 minutos. U empieza a las 16:35 y dura 20 minutos. ¿Qué turno cumple las dos condiciones?",
+        "options": [
+          "T",
+          "R",
+          "U",
+          "S"
+        ],
+        "answer": 3,
+        "explanation": "S empieza a las 16:15 y termina a las 16:40. R empieza demasiado temprano. T termina a las 16:50 y U a las 16:55.",
+        "hint": "Revisa la hora de entrada y calcula la de salida. «Antes de» excluye las 16:50.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Cuatro fuentes llenaron recipientes con agua. R llenó 24 litros en 8 minutos. S llenó 28 litros en 7 minutos. T llenó 30 litros en 10 minutos. U llenó 36 litros en 12 minutos. ¿Qué fuente llenó más litros por minuto?",
+        "options": [
+          "U",
+          "S",
+          "T",
+          "R"
+        ],
+        "answer": 1,
+        "explanation": "Divide los litros entre los minutos. R, T y U llenaron 3 litros por minuto. S llenó 4.",
+        "hint": "Calcula la cantidad de agua que entregó cada fuente por minuto.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Nicolás limpió dos azulejos iguales con manchas del mismo tipo y tamaño. Usó el mismo producto, la misma cantidad y el mismo número de pasadas. Solo cambió el paño. En uno usó algodón y en el otro microfibra. Quedó menos mancha con la microfibra. ¿Qué explicación tiene mayor apoyo?",
+        "options": [
+          "El paño de microfibra quitó más mancha en esta prueba.",
+          "El azulejo de algodón necesitó más producto porque su mancha era más grande.",
+          "El producto usado con microfibra era más concentrado.",
+          "La microfibra elimina por completo cualquier mancha."
+        ],
+        "answer": 0,
+        "explanation": "El producto, la cantidad, las manchas y las pasadas fueron iguales. El cambio de paño explica mejor la diferencia observada.",
+        "hint": "Compara qué condiciones se mantuvieron iguales y cuál cambió.",
+        "difficulty": "exam"
+      }
+    ],
+    [
+      {
+        "prompt": "Un grupo debe llevar por lo menos 45 hojas al taller. Ya tiene 32. Solo puede elegir uno de estos paquetes. ¿Cuál es el paquete más pequeño que le permite llegar al mínimo?",
+        "options": [
+          "9 hojas",
+          "11 hojas",
+          "16 hojas",
+          "13 hojas"
+        ],
+        "answer": 3,
+        "explanation": "Faltan 45 − 32 = 13 hojas. El paquete de 13 hojas permite alcanzar el mínimo exacto.",
+        "hint": "Calcula cuántas hojas faltan para llegar a 45.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Un equipo recogió 12 kg de cartón el martes, 16 kg el miércoles y 16 kg el jueves. ¿Qué afirmación coincide con los datos?",
+        "options": [
+          "La cantidad bajó el miércoles y luego aumentó.",
+          "La cantidad subió el miércoles y luego se mantuvo.",
+          "La cantidad subió todos los días.",
+          "La cantidad fue igual los tres días."
+        ],
+        "answer": 1,
+        "explanation": "La cantidad aumentó de 12 a 16 kg. El jueves se mantuvo en 16 kg.",
+        "hint": "Compara el martes con el miércoles. Después compara el miércoles con el jueves.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "El grupo puede iniciar un recorrido a partir de las 9:20. Debe terminarlo antes de las 10:30. R inicia a las 9:15 y dura 45 minutos. S inicia a las 9:30 y dura 60 minutos. T inicia a las 9:40 y dura 55 minutos. U inicia a las 9:45 y dura 35 minutos. ¿Qué recorrido cumple las dos condiciones?",
+        "options": [
+          "R",
+          "S",
+          "T",
+          "U"
+        ],
+        "answer": 3,
+        "explanation": "U empieza a las 9:45 y termina a las 10:20. R empieza demasiado temprano. S termina a las 10:30 y T a las 10:35.",
+        "hint": "Calcula la hora de término de cada recorrido. Comprueba el límite inicial y el límite final.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Cuatro máquinas produjeron etiquetas. R hizo 54 en 9 minutos. S hizo 42 en 7 minutos. T hizo 40 en 5 minutos. U hizo 49 en 7 minutos. ¿Qué máquina produjo más etiquetas por minuto?",
+        "options": [
+          "T",
+          "U",
+          "S",
+          "R"
+        ],
+        "answer": 0,
+        "explanation": "Divide las etiquetas entre los minutos. R y S hicieron 6 por minuto. T hizo 8 y U hizo 7.",
+        "hint": "Busca la mayor cantidad de etiquetas para un solo minuto.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Una panadería probó dos envolturas con panes iguales. Guardó un pan en papel y otro en plástico. Dejó ambos en el mismo estante durante ocho horas. El pan en plástico quedó más blando. ¿Qué explicación tiene mayor apoyo?",
+        "options": [
+          "El plástico mantiene blando cualquier pan durante cualquier tiempo.",
+          "El pan en papel se guardó en otro lugar.",
+          "La envoltura de plástico ayudó a que el pan quedara blando durante la prueba.",
+          "El pan en plástico salió más blando del horno."
+        ],
+        "answer": 2,
+        "explanation": "Los panes comenzaron iguales y pasaron el mismo tiempo en el mismo lugar. La envoltura fue la diferencia entre ellos. El resultado apoya el efecto del plástico en esa prueba.",
+        "hint": "Busca qué eligió cambiar la panadería entre los dos panes.",
+        "difficulty": "exam"
+      }
+    ]
+  ]
+}

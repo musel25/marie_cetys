@@ -148,10 +148,16 @@ progress::-webkit-progress-value { background: var(--forest); }
 .class-agenda strong { font-size: .94rem; }
 .class-agenda p { margin-block-start: .17rem; font-size: .87rem; color: var(--muted); }
 .lesson-rail .check-label { display: flex; margin-block: .4rem .65rem; }
-.exit-question { margin-block-start: .9rem; border-block-start: 1px solid var(--line); padding-block-start: .7rem; }
-.exit-question summary { cursor: pointer; font-weight: 700; font-size: .9rem; }
-.exit-question p { margin-block-start: .5rem; }
-.exit-link { margin-block-start: .4rem; }
+.mini-sheet { max-inline-size: 50rem; }
+.mini-sheet > p { margin-block: .65rem .9rem; }
+.mini-rules > summary { cursor: pointer; font-weight: 700; }
+.mini-stats { gap: .7rem 2.2rem; margin-block: 1rem; }
+.mini-stats div { display: grid; gap: .2rem; }
+.mini-stats strong { font-size: 1.45rem; font-variant-numeric: tabular-nums; }
+.mini-stats span, .mini-previous { color: var(--muted); }
+.mini-previous { margin-block-end: .9rem; }
+.mini-solutions, .mini-history { max-inline-size: 50rem; margin-block-start: 1rem; }
+.mini-history-result { display: grid; gap: .2rem; justify-items: end; text-align: end; }
 .log-class { display: grid; gap: .75rem; }
 .log-class input[type=number] { max-inline-size: 7rem; }
 .log-class > p { margin: 0; }

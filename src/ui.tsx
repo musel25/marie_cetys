@@ -29,6 +29,7 @@ export function PageHeading({ title, description }: { title: string; description
 }
 
 export function lessonHref(id: string) { return "#/clase/" + id; }
+export function miniHref(id: string) { return "#/mini/" + id; }
 export function questionHref(id: string) {
   const [lesson, index] = id.split(":");
   return lessonHref(lesson) + "/" + index;
@@ -38,4 +39,10 @@ export function duration(minutes: number, hasSeconds = false) {
   if (minutes === 0 && hasSeconds) return "Menos de 1 min";
   if (minutes < 60) return `${minutes} min`;
   return `${Math.floor(minutes / 60)} h${minutes % 60 ? ` ${minutes % 60} min` : ""}`;
+}
+
+export function elapsedTime(seconds: number) {
+  const minutes = Math.floor(seconds / 60);
+  const remainder = seconds % 60;
+  return minutes ? `${minutes} min${remainder ? ` ${remainder} s` : ""}` : `${remainder} s`;
 }

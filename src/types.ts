@@ -56,11 +56,23 @@ export interface ClassRecord {
   complete: boolean;
 }
 
+export interface MiniResult {
+  id: string;
+  at: number;
+  day: string;
+  skill: string;
+  form: number;
+  seconds: number;
+  answers: number[];
+  correct: number;
+}
+
 export interface StudyState {
   version: 1;
   settings: Settings;
   pinned: string;
   attempts: Attempt[];
   classes: ClassRecord[];
+  miniResults: MiniResult[];
   flagged: string[];
 }
