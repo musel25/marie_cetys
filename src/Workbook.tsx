@@ -1,6 +1,6 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { AreaTag, duration, Icon, lessonHref, miniHref } from "./ui";
-import { lessonById } from "./content";
+import { lessonById, miniQuestionCount } from "./content";
 import { nextQuestion, questions, studyDay } from "./study";
 import type { Attempt, ClassRecord, Lesson, Mode, Question, StudyState } from "./types";
 
@@ -21,7 +21,7 @@ const defaultAgenda = [
   "Explica el método en pasos cortos. Usa un ejemplo concreto.",
   "Recorre el ejemplo. Deja que ella haga y explique el último paso.",
   "Resuelvan dos ejercicios juntos. Después, usa preguntas de examen para la práctica independiente.",
-  "Deja que responda las cinco preguntas y entregue por su cuenta.",
+  "Deja que responda el miniexamen y entregue por su cuenta.",
   "Revisen los errores del miniexamen. Pide que explique cómo corregirlos.",
 ];
 
@@ -298,7 +298,7 @@ export function Workbook({ lesson, target, state, onAttempt, onFlag, onClass, on
         </section>
         <section className="worksheet mini-sheet" aria-labelledby="mini-title">
           <h2 id="mini-title">Miniexamen</h2>
-          <p>Resuelve cinco preguntas distintas. Al entregar, el sitio guarda tu tiempo y tus aciertos.</p>
+          <p>Resuelve {miniQuestionCount(lesson)} preguntas distintas. Al entregar, el sitio guarda tu tiempo y tus aciertos.</p>
           <a className="button primary" href={miniHref(lesson.id)}>Hacer miniexamen</a>
         </section>
         {cognitive && <>

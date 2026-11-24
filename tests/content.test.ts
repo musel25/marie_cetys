@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { areaOrder, areas, byArea, curriculum } from "../src/content";
+import { areaOrder, areas, byArea, curriculum, miniQuestionCount } from "../src/content";
 import { miniFormCount, miniQuestions } from "../src/content/mini";
 import { questions } from "../src/study";
 
@@ -49,7 +49,8 @@ test("every lesson has fresh mini-exam questions and Spanish lessons have worked
     assert.equal(formCount, lesson.area === "hc" ? 3 : 1, lesson.id);
     for (let form = 0; form < formCount; form++) {
       const items = miniQuestions(lesson.id, form);
-      assert.equal(items.length, 5, lesson.id);
+      assert.equal(items.length, miniQuestionCount(lesson), lesson.id);
+      assert.equal(items.length, lesson.id === "es-ortografia" ? 10 : 5, lesson.id);
       if (lesson.area === "hc") {
         assert.deepEqual(items.map(item => item.difficulty), ["base", "base", "exam", "exam", "exam"]);
       }

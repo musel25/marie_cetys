@@ -27,6 +27,16 @@ export const curriculum = Array.from({ length: Math.max(...areaOrder.map(area =>
 
 export const lessonById = new Map(curriculum.map(lesson => [lesson.id, lesson]));
 
+const originalMiniQuestionCount = 5;
+
+export function miniQuestionCount(lesson: Lesson) {
+  return lesson.miniQuestionCount ?? originalMiniQuestionCount;
+}
+
+export function acceptsMiniQuestionCount(lesson: Lesson, count: number) {
+  return count === originalMiniQuestionCount || count === miniQuestionCount(lesson);
+}
+
 export const resourceLinks = [
   { title: "Guía de estudio de College Board", description: "Temario, ejemplos y ejercicios de las cuatro áreas.", url: "https://latam.collegeboard.org/publicaciones/guia-de-estudio-piense-ii/" },
   { title: "Prueba de práctica oficial", description: "Guárdala para un ensayo completo de 130 minutos.", url: "https://latam.collegeboard.org/publicaciones/prueba-de-practica-piense-ii/" },

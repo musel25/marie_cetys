@@ -111,6 +111,71 @@
         "explanation": "Mayo va en minúscula. En el título del cuento, La lleva mayúscula inicial y brújula lleva tilde porque es esdrújula.",
         "hint": "Revisa el mes, la primera palabra del título y la sílaba tónica de brújula.",
         "difficulty": "challenge"
+      },
+      {
+        "prompt": "¿Qué pareja de palabras agudas lleva tilde en las dos palabras?",
+        "options": [
+          "canción y compás",
+          "reloj y pared",
+          "jardín y mantel",
+          "café y papel"
+        ],
+        "answer": 0,
+        "explanation": "La última sílaba es tónica en las dos palabras. Canción termina en n y compás termina en s.",
+        "hint": "Busca la sílaba tónica y revisa la última letra.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿En qué oración se escribe bien el nombre del día y el de la persona?",
+        "options": [
+          "El Jueves, Irene entregó el trabajo.",
+          "El jueves, irene entregó el trabajo.",
+          "El jueves, Irene entregó el trabajo.",
+          "El Jueves, irene entregó el trabajo."
+        ],
+        "answer": 2,
+        "explanation": "Jueves es el nombre común de un día. Irene es un nombre propio y lleva mayúscula inicial.",
+        "hint": "Distingue el nombre del día del nombre de la persona.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Qué opción divide correctamente en sílabas la palabra «baúl»?",
+        "options": [
+          "baúl",
+          "ba-úl",
+          "baú-l",
+          "b-a-úl"
+        ],
+        "answer": 1,
+        "explanation": "La ú es tónica y la a es abierta. Se pronuncian en sílabas separadas. La ú lleva tilde para marcar el hiato.",
+        "hint": "Pronuncia la palabra despacio y escucha la ú.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Completa con las formas correctas. «No ____ si ____ folletos están completos».",
+        "options": [
+          "se / mí",
+          "se / mis",
+          "sé / mí",
+          "sé / mis"
+        ],
+        "answer": 3,
+        "explanation": "Sé es la forma del verbo saber. Mis indica posesión y acompaña a folletos. No lleva tilde.",
+        "hint": "Identifica el verbo y la palabra que indica posesión.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Elige la oración con las tildes correctas en la pregunta y en la respuesta.",
+        "options": [
+          "¿Cuándo abre el taller? Te aviso cuando llegue.",
+          "¿Cuando abre el taller? Te aviso cuándo llegue.",
+          "¿Cuándo abre el taller? Te aviso cuándo llegue.",
+          "¿Cuando abre el taller? Te aviso cuando llegue."
+        ],
+        "answer": 0,
+        "explanation": "Cuándo lleva tilde en la pregunta directa. Cuando llegue indica el momento del aviso y no introduce una pregunta.",
+        "hint": "Decide cuál de las dos palabras pregunta por el momento.",
+        "difficulty": "exam"
       }
     ],
     "workedExamples": [
@@ -146,7 +211,8 @@
         "prompt": "Forma un adverbio con «hábil» y otro con «suave».",
         "explanation": "Escribe hábilmente y suavemente. Al añadir -mente, hábil conserva su tilde y suave sigue sin tilde."
       }
-    ]
+    ],
+    "miniQuestionCount": 10
   },
   {
     "id": "es-formacion-palabras",

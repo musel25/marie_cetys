@@ -1,5 +1,5 @@
 import { createEmptyCard, fsrs, Rating, type Card, type Grade } from "ts-fsrs";
-import { lessonById } from "./content";
+import { acceptsMiniQuestionCount, lessonById } from "./content";
 import type { Attempt, ClassRecord, Difficulty, Lesson, MiniResult, Period, Question, Settings, StudyState } from "./types";
 
 const dayMs = 86_400_000;
@@ -97,7 +97,8 @@ function validMiniResult(value: unknown): value is MiniResult {
   const lesson = lessonById.get(value.skill);
   return !!lesson && boundedInt(value.form, 0, lesson.area === "hc" ? 2 : 0) &&
     boundedInt(value.seconds, 1, Number.MAX_SAFE_INTEGER) &&
-    boundedInt(value.correct, 0, 5) && Array.isArray(value.answers) && value.answers.length === 5 &&
+    Array.isArray(value.answers) && acceptsMiniQuestionCount(lesson, value.answers.length) &&
+    boundedInt(value.correct, 0, value.answers.length) &&
     value.answers.every(answer => boundedInt(answer, 0, 3));
 }
 
@@ -227,11 +228,16 @@ interface ReviewEvent {
   rating: Grade;
 }
 
+function miniRating(result: MiniResult): Grade {
+  if (result.correct === result.answers.length) return Rating.Good;
+  return result.correct / result.answers.length >= 0.8 ? Rating.Hard : Rating.Again;
+}
+
 export function reviewCards(attempts: Attempt[], miniResults: MiniResult[] = []) {
   const cards = new Map<string, { due: string; card: Card }>();
   const eventRatings = [
     ...miniResults.map<ReviewEvent>(result => ({
-      event: result, priority: 0, rating: result.correct === 5 ? Rating.Good : result.correct === 4 ? Rating.Hard : Rating.Again,
+      event: result, priority: 0, rating: miniRating(result),
     })),
     ...attempts.filter(attempt => attempt.selection !== -1).map<ReviewEvent>(attempt => ({
       event: attempt, priority: 1, rating: !attempt.correct ? Rating.Again : attempt.help ? Rating.Hard : Rating.Good,
