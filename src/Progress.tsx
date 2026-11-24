@@ -109,7 +109,7 @@ export function Progress({ state, today, onFlag }: { state: StudyState; today: s
       {minis.length === 0 ? <p className="muted">Aquí verás el tiempo y los aciertos de tus miniexámenes.</p> :
         <ul className="plain-list">{minis.map(item => <li key={item.id}>
           <div><a href={miniHref(item.skill)}>{lessonById.get(item.skill)?.title ?? item.skill}</a><p>{dateLabel(item.day)}</p></div>
-          <div className="mini-history-result"><strong>{elapsedTime(item.seconds)}</strong><span>{item.correct} de 5</span></div>
+          <div className="mini-history-result"><strong>{elapsedTime(item.seconds)}</strong><span>{item.correct} de {item.answers.length}</span></div>
         </li>)}</ul>}
     </section>
   </>;

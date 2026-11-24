@@ -288,21 +288,32 @@ test("Spanish lessons show worked examples and a mini-exam after the exercises",
   await page.clock.setFixedTime(new Date("2026-11-24T20:00:00Z"));
   await page.goto("/#/clase/es-ortografia");
   await expect(page.getByRole("heading", { name: "Ejemplos resueltos" })).toBeVisible();
+  const exercises = page.getByRole("region", { name: "Ejercicios", exact: true });
+  await expect(exercises.getByText("10 preguntas", { exact: true })).toBeVisible();
+  await expect(exercises.locator("details.question-details")).toHaveCount(10);
   const afterExercises = page.locator("#ejercicios + section");
   const miniLink = afterExercises.getByRole("link", { name: "Hacer miniexamen", exact: true });
   await expect(miniLink).toHaveAttribute("href", "#/mini/es-ortografia");
   await miniLink.click();
+  await expect(page.getByRole("heading", { name: "10 preguntas", exact: true })).toBeVisible();
   await page.getByRole("button", { name: "Empezar miniexamen" }).click();
-  for (let index = 0; index < 5; index++) {
+  for (let index = 0; index < 10; index++) {
+    await expect(page.getByRole("heading", { name: `Pregunta ${index + 1} de 10` })).toBeVisible();
     await page.getByRole("radio").first().check();
-    if (index < 4) await page.getByRole("button", { name: "Siguiente", exact: true }).click();
+    if (index === 5) {
+      await page.reload();
+      await expect(page.getByRole("radio").first()).toBeChecked();
+      await expect(page.getByRole("button", { name: "Entregar miniexamen" })).toBeDisabled();
+    }
+    if (index < 9) await page.getByRole("button", { name: "Siguiente", exact: true }).click();
   }
   await page.getByRole("button", { name: "Entregar miniexamen" }).click();
   await expect(page.getByRole("heading", { name: "Resultado del miniexamen" })).toBeVisible();
+  await expect(page.getByRole("region", { name: "Soluciones" }).locator("details")).toHaveCount(10);
   await page.getByRole("link", { name: "Ver progreso", exact: true }).click();
   await page.reload();
   await expect(page.getByRole("region", { name: "Miniexámenes", exact: true }).getByRole("link", { name: "Mayúsculas y acentuación", exact: true })).toHaveAttribute("href", "#/mini/es-ortografia");
-  await expect(page.getByText("Español", { exact: true }).locator("..")).toContainText("1 de 5");
+  await expect(page.getByText("Español", { exact: true }).locator("..")).toContainText("de 10");
 
   await page.clock.setFixedTime(new Date("2026-11-25T20:00:00Z"));
   await page.goto("/#/repaso");
@@ -319,3 +330,22 @@ for (const skill of ["mat-enteros", "en-sentence-order"]) {
     await expect(page.getByRole("radio")).toHaveCount(4);
   });
 }
+
+test("finishes a five-question orthography draft and starts a ten-question retake", async ({ page }) => {
+  await page.addInitScript(() => {
+    sessionStorage.setItem("marie-cetys:mini:es-ortografia", JSON.stringify({
+      id: "legacy-orthography-draft", form: 0, current: 4,
+      started: Date.now() - 60_000, answers: [1, 3, 0, 2, 2],
+    }));
+  });
+  await page.goto("/#/mini/es-ortografia");
+  await expect(page.getByRole("heading", { name: "Pregunta 5 de 5" })).toBeVisible();
+  await page.getByRole("button", { name: "Entregar miniexamen", exact: true }).click();
+  await expect(page.getByText("5 de 5", { exact: true })).toBeVisible();
+  await expect(page.getByRole("region", { name: "Soluciones" }).locator("details")).toHaveCount(5);
+  await page.getByRole("button", { name: "Hacer otro miniexamen" }).click();
+  await expect(page.getByRole("heading", { name: "10 preguntas", exact: true })).toBeVisible();
+  await expect(page.getByText(/Último intento · 5 de 5/)).toBeVisible();
+  await page.getByRole("button", { name: "Empezar miniexamen" }).click();
+  await expect(page.getByRole("heading", { name: "Pregunta 1 de 10" })).toBeVisible();
+});

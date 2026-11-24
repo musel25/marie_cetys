@@ -86,11 +86,13 @@ test("version 1 backups made before mini-tests load with empty mini-test history
   assert.deepEqual(parseBackup(JSON.stringify(legacy)), { ...legacy, miniResults: [] });
 });
 
-test("backups keep all five answers, the score, and the exact mini-test time", () => {
+test("backups keep the answers, score, and exact time of both mini-test lengths", () => {
   const result = { ...miniResult, seconds: 10_801 };
   const spanishResult = { ...result, id: "mini-es", skill: "es-ortografia" };
-  const data = { ...blankState("2026-11-23"), miniResults: [result, spanishResult] };
-  assert.deepEqual(parseBackup(JSON.stringify(data)).miniResults, [result, spanishResult]);
+  const longResult = { ...spanishResult, id: "mini-es-10", answers: Array(10).fill(0), correct: 8 };
+  const results = [result, spanishResult, longResult];
+  const data = { ...blankState("2026-11-23"), miniResults: results };
+  assert.deepEqual(parseBackup(JSON.stringify(data)).miniResults, results);
 });
 
 test("backups reject malformed mini-test results", () => {
@@ -99,6 +101,9 @@ test("backups reject malformed mini-test results", () => {
     null, {},
     [{ ...miniResult, skill: "es-texto" }],
     [{ ...miniResult, skill: "es-ortografia", form: 1 }],
+    [{ ...miniResult, skill: "es-ortografia", answers: Array(9).fill(0) }],
+    [{ ...miniResult, skill: "es-ortografia", answers: Array(10).fill(0), correct: 11 }],
+    [{ ...miniResult, answers: Array(10).fill(0) }],
     [{ ...miniResult, form: 3 }],
     [{ ...miniResult, seconds: 0 }],
     [{ ...miniResult, seconds: 12.5 }],
@@ -193,4 +198,13 @@ test("mini-test review ratings follow the score and use each study day once", ()
   assert.equal(cards.get("hc-orden")?.due, "2026-11-27");
   assert.equal(cards.get("hc-orden")?.card.reps, 2);
   assert.equal(reviewCards([], [{ ...miniResult, correct: 4 }]).get("hc-orden")?.due, "2026-11-25");
+});
+
+test("mini-tests with five or ten answers use the same score thresholds for review", () => {
+  const skill = "es-ortografia";
+  for (const correct of [5, 4, 3]) {
+    const short = { ...miniResult, skill, correct };
+    const long = { ...short, correct: correct * 2, answers: Array(10).fill(0) };
+    assert.deepEqual(reviewCards([], [long]).get(skill), reviewCards([], [short]).get(skill));
+  }
 });

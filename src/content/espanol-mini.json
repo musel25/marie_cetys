@@ -65,6 +65,71 @@
         "explanation": "Rápida ya lleva tilde. Al agregar -mente, conserva la tilde en la primera a.",
         "hint": "Separa el adjetivo del sufijo -mente.",
         "difficulty": "exam"
+      },
+      {
+        "prompt": "Elige la palabra aguda que debe llevar tilde porque termina en vocal.",
+        "options": [
+          "mural",
+          "menu",
+          "pared",
+          "reloj"
+        ],
+        "answer": 1,
+        "explanation": "Menú tiene la última sílaba tónica y termina en vocal. Las otras palabras son agudas que terminan en l, d o j.",
+        "hint": "Pronuncia cada palabra y revisa su terminación.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Qué palabra es esdrújula y está escrita correctamente?",
+        "options": [
+          "musica",
+          "camión",
+          "árbol",
+          "página"
+        ],
+        "answer": 3,
+        "explanation": "En pá-gi-na, la sílaba tónica es la antepenúltima. Las esdrújulas siempre llevan tilde.",
+        "hint": "Cuenta las sílabas a partir de la última.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Elige la opción que escribe bien el mes y el nombre de la ciudad.",
+        "options": [
+          "Viajaremos a Mérida en Octubre.",
+          "Viajaremos a mérida en octubre.",
+          "Viajaremos a Mérida en octubre.",
+          "Viajaremos a mérida en Octubre."
+        ],
+        "answer": 2,
+        "explanation": "Mérida es un nombre propio y lleva mayúscula inicial. Octubre es el nombre común de un mes y se escribe con minúscula.",
+        "hint": "Distingue el nombre propio de la palabra que indica el mes.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Completa el texto. «____ no tengo el recibo. Necesito que la cajera me lo ____».",
+        "options": [
+          "Aun / dé",
+          "Aún / de",
+          "Aun / de",
+          "Aún / dé"
+        ],
+        "answer": 3,
+        "explanation": "Aún lleva tilde cuando equivale a todavía. Dé lleva tilde cuando es una forma del verbo dar.",
+        "hint": "Sustituye la primera palabra por todavía y busca el verbo dar.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Completa la oración. «El ____ bajó durante la noche. Al amanecer vimos un ____ entre las piedras».",
+        "options": [
+          "termómetro / ciempies",
+          "termometro / ciempiés",
+          "termómetro / ciempiés",
+          "termometro / ciempies"
+        ],
+        "answer": 2,
+        "explanation": "Termómetro es esdrújula. Ciempiés se escribe en una sola palabra y sigue las reglas generales. Es aguda y termina en s.",
+        "hint": "Ubica la sílaba tónica en cada palabra completa.",
+        "difficulty": "exam"
       }
     ]
   ],

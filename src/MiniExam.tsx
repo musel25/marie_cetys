@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { acceptsMiniQuestionCount, miniQuestionCount } from "./content";
 import { miniFormCount, miniQuestions } from "./content/mini";
 import { miniHistory, nextMiniForm, studyDay } from "./study";
 import type { Lesson, MiniResult } from "./types";
@@ -14,13 +15,13 @@ type MiniRun = {
   saved?: boolean;
 };
 
-function loadRun(key: string, count: number): MiniRun | null {
+function loadRun(key: string, lesson: Lesson, formCount: number): MiniRun | null {
   try {
     const run = JSON.parse(sessionStorage.getItem(key) ?? "null") as MiniRun | null;
     if (run && typeof run.id === "string" && (run.saved === undefined || typeof run.saved === "boolean") &&
         Number.isSafeInteger(run.started) && run.started >= 0 &&
-        Number.isInteger(run.form) && run.form >= 0 && run.form < count &&
-        Array.isArray(run.answers) && run.answers.length === 5 && run.answers.every(answer =>
+        Number.isInteger(run.form) && run.form >= 0 && run.form < formCount &&
+        Array.isArray(run.answers) && acceptsMiniQuestionCount(lesson, run.answers.length) && run.answers.every(answer =>
           answer === null || (Number.isInteger(answer) && answer >= 0 && answer < 4)) &&
         Number.isInteger(run.current) && run.current >= 0 && run.current < run.answers.length) return run;
   } catch { /* a new test can start without a saved draft */ }
@@ -36,9 +37,10 @@ export default function MiniExam({ lesson, results, onFinish }: {
   lesson: Lesson; results: MiniResult[]; onFinish: (result: MiniResult) => Promise<boolean>;
 }) {
   const formCount = miniFormCount(lesson.id);
+  const questionCount = miniQuestionCount(lesson);
   const questionLanguage = lesson.area === "en" ? "en" : undefined;
   const key = "marie-cetys:mini:" + lesson.id;
-  const [run, setRun] = useState(() => loadRun(key, formCount));
+  const [run, setRun] = useState(() => loadRun(key, lesson, formCount));
   const [now, setNow] = useState(Date.now);
   const [discard, setDiscard] = useState(false);
   const saving = useRef(false);
@@ -82,7 +84,7 @@ export default function MiniExam({ lesson, results, onFinish }: {
     const at = Date.now();
     setNow(at);
     update({ id: crypto.randomUUID(), started: at, form: nextMiniForm(results, lesson.id, formCount),
-      current: 0, answers: Array(5).fill(null) });
+      current: 0, answers: Array(questionCount).fill(null) });
     focusHeading();
   }
 
@@ -109,7 +111,8 @@ export default function MiniExam({ lesson, results, onFinish }: {
     } finally { saving.current = false; }
   }
 
-  const previous = result ? history[history.findIndex(entry => entry.id === result.id) + 1] : undefined;
+  const previous = result && history.slice(history.indexOf(result) + 1)
+    .find(entry => entry.answers.length === result.answers.length);
   const question = run && miniQuestions(lesson.id, run.form)[run.current];
   const spent = run ? Math.max(0, Math.floor((now - run.started) / 1000)) : 0;
   return <>
@@ -120,15 +123,15 @@ export default function MiniExam({ lesson, results, onFinish }: {
       <p>{lesson.title}</p>
     </header>
     {!active && !result && <section className="worksheet mini-sheet">
-      <h2 ref={heading} tabIndex={-1}>5 preguntas</h2>
+      <h2 ref={heading} tabIndex={-1}>{questionCount} preguntas</h2>
       <p>El cronómetro va desde que empiezas hasta que entregas. Puedes volver a una pregunta para cambiar tu respuesta.</p>
       <p>Al terminar verás tu tiempo, tus aciertos y las soluciones.</p>
-      {history[0] && <p className="mini-previous">Último intento · {history[0].correct} de 5 · {elapsedTime(history[0].seconds)}</p>}
+      {history[0] && <p className="mini-previous">Último intento · {history[0].correct} de {history[0].answers.length} · {elapsedTime(history[0].seconds)}</p>}
       <button className="button primary" onClick={start}>Empezar miniexamen</button>
     </section>}
     {active && run && question && <section className="worksheet mini-sheet">
       <div className="section-title">
-        <h2 ref={heading} tabIndex={-1}>Pregunta {run.current + 1} de 5</h2>
+        <h2 ref={heading} tabIndex={-1}>Pregunta {run.current + 1} de {run.answers.length}</h2>
         <span className="timer" role="timer" aria-label="Tiempo transcurrido"><Icon name="clock" size={17}/><time dateTime={`PT${spent}S`}>{elapsedTime(spent)}</time></span>
       </div>
       <fieldset lang={questionLanguage}>
@@ -144,8 +147,8 @@ export default function MiniExam({ lesson, results, onFinish }: {
       </fieldset>
       <div className="row question-actions">
         <button className="button secondary" disabled={run.current === 0} onClick={() => changeQuestion(run.current - 1)}>Anterior</button>
-        {run.current < 4 && <button className="button primary" disabled={run.answers[run.current] === null} onClick={() => changeQuestion(run.current + 1)}>Siguiente</button>}
-        <button className={`button ${run.current === 4 ? "primary" : "secondary"}`} disabled={run.answers.some(answer => answer === null)}
+        {run.current < run.answers.length - 1 && <button className="button primary" disabled={run.answers[run.current] === null} onClick={() => changeQuestion(run.current + 1)}>Siguiente</button>}
+        <button className={`button ${run.current === run.answers.length - 1 ? "primary" : "secondary"}`} disabled={run.answers.some(answer => answer === null)}
           onClick={() => void finish()}>Entregar miniexamen</button>
       </div>
       {discard ? <div className="row">
@@ -158,11 +161,11 @@ export default function MiniExam({ lesson, results, onFinish }: {
         <h2 ref={heading} tabIndex={-1}>Resultado del miniexamen</h2>
         <div className="row mini-stats">
           <div><span>Tiempo</span><strong>{elapsedTime(result.seconds)}</strong></div>
-          <div><span>Aciertos</span><strong>{result.correct} de 5</strong></div>
+          <div><span>Aciertos</span><strong>{result.correct} de {result.answers.length}</strong></div>
         </div>
         {previous ? <div className="mini-previous">
           <p><strong>{differenceText(result.seconds - previous.seconds)}</strong></p>
-          <p>Anterior · {elapsedTime(previous.seconds)} · {previous.correct} de 5</p>
+          <p>Anterior · {elapsedTime(previous.seconds)} · {previous.correct} de {previous.answers.length}</p>
         </div> : <p>Este resultado será la referencia para el próximo intento.</p>}
         <div className="row">
           <a className="button primary" href="#/progreso">Ver progreso</a>
@@ -171,7 +174,7 @@ export default function MiniExam({ lesson, results, onFinish }: {
       </section>
       <section className="practice-stack mini-solutions" aria-labelledby="mini-solutions">
         <h2 id="mini-solutions">Soluciones</h2>
-        {miniQuestions(lesson.id, result.form).map((item, index) => <details className="question-details" key={item.id}>
+        {miniQuestions(lesson.id, result.form).slice(0, result.answers.length).map((item, index) => <details className="question-details" key={item.id}>
           <summary>Pregunta {index + 1} · {result.answers[index] === item.answer ? "Correcta" : "Incorrecta"}</summary>
           <div className="exercise">
             <p className="exercise-prompt" lang={questionLanguage}>{questionText(item.prompt)}</p>
