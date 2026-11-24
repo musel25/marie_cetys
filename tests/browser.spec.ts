@@ -116,7 +116,11 @@ test.describe("narrow mobile viewport", () => {
     await expect.poll(hasOverflow).toBe(false);
     await page.getByRole("link", { name: "Plan", exact: true }).tap();
     await expect(page.getByRole("heading", { level: 1, name: "Plan de estudio" })).toBeVisible();
+    await expect(page.getByRole("navigation", { name: "Navegación principal" })).toBeInViewport();
     await expect.poll(hasOverflow).toBe(false);
+    await page.getByLabel("Minutos al día").fill("45");
+    await page.getByRole("button", { name: "Guardar plan", exact: true }).tap();
+    await expect(page.getByText("Plan guardado.", { exact: true })).toBeInViewport({ ratio: 0.8 });
   });
 });
 

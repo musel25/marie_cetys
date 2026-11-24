@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { curriculum, lessonById } from "./content";
 import { classPlan, dateLabel, parseBackup } from "./study";
 import { duration, lessonHref, PageHeading } from "./ui";
@@ -16,8 +16,13 @@ export function Planner({ state, today, onSettings, onImport }: {
   const [more, setMore] = useState(false);
   const [pending, setPending] = useState<StudyState>();
   const input = useRef<HTMLInputElement>(null);
+  const planNotice = useRef<HTMLParagraphElement>(null);
   const forecast = classPlan(curriculum, state, today);
   const slots = more ? forecast.slots : forecast.slots.slice(0, 10);
+
+  useEffect(() => {
+    if (planMessage) planNotice.current?.scrollIntoView({ block: "nearest" });
+  }, [planMessage]);
 
   async function save(event: React.FormEvent) {
     event.preventDefault();
@@ -82,8 +87,8 @@ export function Planner({ state, today, onSettings, onImport }: {
         {draft.exceptions.length > 0 && <ul className="plain-list">{draft.exceptions.map(day =>
           <li key={day}><span>{dateLabel(day, "long")}</span><button type="button" className="button quiet" onClick={() => setDraft({ ...draft, exceptions: draft.exceptions.filter(entry => entry !== day) })}>Quitar</button></li>,
         )}</ul>}
+        <p ref={planNotice} role="status" className={planMessage ? "notice" : "sr-only"}>{planMessage}</p>
         <button className="button primary">Guardar plan</button>
-        <p role="status" className={planMessage ? "notice" : "sr-only"}>{planMessage}</p>
       </form>
       <section className="panel">
         <h2>Próximas clases</h2>
