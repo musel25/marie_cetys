@@ -192,7 +192,10 @@ export function Workbook({ lesson, target, state, onAttempt, onFlag, onClass, on
 }) {
   const [minutes, setMinutes] = useState(state.settings.minutes);
   const [live, setLive] = useState(false);
-  const [classMode, setClassMode] = useState(false);
+  const classModeKey = "marie-cetys:class:" + lesson.id;
+  const [classMode, setClassMode] = useState(() => {
+    try { return sessionStorage.getItem(classModeKey) === studyDay(); } catch { return false; }
+  });
   const [complete, setComplete] = useState(true);
   const [liveQuestions, setLiveQuestions] = useState<Question[]>([]);
   const cognitive = lesson.area === "hc";
@@ -233,6 +236,14 @@ export function Workbook({ lesson, target, state, onAttempt, onFlag, onClass, on
     if (!Number.isInteger(minutes) || minutes < 1 || minutes > 180) return;
     const at = Date.now();
     onClass({ id: crypto.randomUUID(), at, day: studyDay(new Date(at)), skill: lesson.id, minutes, complete });
+    updateClassMode(false);
+  }
+  function updateClassMode(enabled: boolean) {
+    setClassMode(enabled);
+    try {
+      if (enabled) sessionStorage.setItem(classModeKey, studyDay());
+      else sessionStorage.removeItem(classModeKey);
+    } catch { /* the current lesson still works in memory */ }
   }
   function jumpTo(id: string) {
     const target = document.getElementById(id);
@@ -295,7 +306,7 @@ export function Workbook({ lesson, target, state, onAttempt, onFlag, onClass, on
           <h2>Guía para la clase</h2>
           <p className="muted">Sesión modelo de 60 minutos.</p>
           <Agenda lesson={lesson} />
-          <label className="check-label"><input type="checkbox" checked={classMode} onChange={event => setClassMode(event.target.checked)} /> Estamos en clase</label>
+          <label className="check-label"><input type="checkbox" checked={classMode} onChange={event => updateClassMode(event.target.checked)} /> Estamos en clase</label>
           {classMode && <p className="muted">Las respuestas cuentan. Registra el tiempo total al final.</p>}
           {!live && <button className="button secondary" onClick={openLive}>Abrir 3 ejercicios para la clase</button>}
           {cognitive && <a className="button quiet" href={miniHref(lesson.id)}>Ir al miniexamen</a>}

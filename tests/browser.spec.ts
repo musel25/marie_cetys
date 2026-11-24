@@ -271,3 +271,14 @@ test("times five fresh cognitive questions and compares with the next form", asy
   await expect(page.getByRole("button", { name: "Empezar miniexamen" })).toBeVisible();
   await expect(page.getByRole("button", { name: "Entregar miniexamen" })).toHaveCount(0);
 });
+
+test("keeps class mode when returning from a miniexam and clears it after logging class", async ({ page }) => {
+  await page.goto("/#/clase/hc-orden");
+  const classMode = page.getByRole("checkbox", { name: "Estamos en clase" });
+  await classMode.check();
+  await page.getByRole("link", { name: "Hacer miniexamen", exact: true }).click();
+  await page.getByRole("link", { name: "Volver a los ejercicios" }).click();
+  await expect(classMode).toBeChecked({ timeout: 2000 });
+  await page.getByRole("button", { name: /Guardar sesión/ }).click();
+  await expect(classMode).not.toBeChecked();
+});
