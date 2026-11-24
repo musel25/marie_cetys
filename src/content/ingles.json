@@ -1,0 +1,953 @@
+[
+  {
+    "id": "en-sentence-order",
+    "title": "Oraciones, preguntas y peticiones",
+    "objective": "Identifica el orden del sujeto, el verbo y sus complementos en afirmaciones, negaciones, preguntas y peticiones.",
+    "explanation": [
+      "En una afirmación, coloca el sujeto antes del verbo. En «Mia sent Leo a message», Mia realiza la acción, Leo recibe el mensaje y a message nombra lo que se envía.",
+      "Con un verbo común en presente o pasado simple, forma preguntas y negaciones con do, does o did y el verbo base. Con el verbo be, coloca am, is, are, was o were antes del sujeto en una pregunta.",
+      "Muchas preguntas directas empiezan con what, where, when o how. En una pregunta indirecta, conserva el orden de afirmación: «Can you tell me where the office is?»",
+      "Para dar una instrucción, usa el verbo base. Para una petición cortés, usa «Could you» seguido del verbo base. Tras un verbo como be o seem, un adjetivo puede describir al sujeto."
+    ],
+    "example": {
+      "prompt": "Choose the correct question about the time. “What time ____ yesterday?”",
+      "steps": [
+        "Identifica yesterday. La pregunta se refiere al pasado.",
+        "Coloca did antes del sujeto. Después de did, usa el verbo base.",
+        "La pregunta completa puede ser «What time did the show start yesterday?»"
+      ]
+    },
+    "source": "College Board, Guía de estudio PIENSE II (2019), p. 10 del PDF · Uso del lenguaje",
+    "prerequisiteIds": [],
+    "exercises": [
+      {
+        "prompt": "Choose the correct affirmative sentence.",
+        "options": [
+          "The baker opens the shop at six.",
+          "Opens the baker at six the shop.",
+          "The baker open the shop at six.",
+          "The shop the baker opens at six it."
+        ],
+        "answer": 0,
+        "explanation": "The baker es el sujeto singular. Opens es el verbo y the shop es el complemento directo.",
+        "hint": "Busca el sujeto, el verbo y el objeto en ese orden.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Complete the sentence. “Nora ____ want milk in her tea.”",
+        "options": [
+          "do not",
+          "is not",
+          "has not",
+          "does not"
+        ],
+        "answer": 3,
+        "explanation": "Con Nora, usa does not y el verbo base want para negar la afirmación en presente simple.",
+        "hint": "Nora equivale a she. Revisa qué auxiliar sigue a she.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Choose the correct question about an event last Saturday.",
+        "options": [
+          "Where did Eli left his jacket?",
+          "Where Eli did leave his jacket?",
+          "Where did Eli leave his jacket?",
+          "Where does Eli left his jacket?"
+        ],
+        "answer": 2,
+        "explanation": "Did expresa el pasado. El sujeto Eli va después del auxiliar y leave conserva la forma base.",
+        "hint": "Busca una estructura con where, did, sujeto y verbo base.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Which sentence is a polite request?",
+        "options": [
+          "Could you move your bag, please?",
+          "You could moved your bag, please.",
+          "Could move you your bag, please?",
+          "Could you to move your bag, please?"
+        ],
+        "answer": 0,
+        "explanation": "Could va antes del sujeto you y se combina con el verbo base move. Please refuerza la cortesía.",
+        "hint": "Identifica el verbo base de la acción que se pide.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Choose the sentence in which the adjective describes the subject.",
+        "options": [
+          "We bought fresh vegetables.",
+          "The soup smells fresh.",
+          "Kai found a fresh towel.",
+          "Fresh bread filled the basket."
+        ],
+        "answer": 1,
+        "explanation": "Fresh aparece después de smells y describe al sujeto the soup. En las otras opciones, fresh va antes de un sustantivo.",
+        "hint": "Ubica un adjetivo después de un verbo que describa un estado o una impresión.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Complete the embedded question. “Can you tell me ____?”",
+        "options": [
+          "where is the meeting room",
+          "where does the meeting room is",
+          "the meeting room is where",
+          "where the meeting room is"
+        ],
+        "answer": 3,
+        "explanation": "En la pregunta indirecta, el sujeto the meeting room precede a is. Can you tell me ya establece la estructura interrogativa principal.",
+        "hint": "Dentro de la pregunta, conserva el orden de una afirmación.",
+        "difficulty": "challenge"
+      },
+      {
+        "prompt": "Which sentence shows that the coach gave Maya a schedule?",
+        "options": [
+          "Maya gave the coach a schedule.",
+          "The coach gave a schedule to himself.",
+          "The coach gave Maya a schedule.",
+          "The schedule gave Maya a coach."
+        ],
+        "answer": 2,
+        "explanation": "The coach realiza la acción. Maya es quien recibe el horario y a schedule nombra el objeto entregado.",
+        "hint": "Busca quién entrega algo, quién lo recibe y qué se entrega.",
+        "difficulty": "challenge"
+      }
+    ]
+  },
+  {
+    "id": "en-verb-forms",
+    "title": "Tiempos verbales y voz pasiva",
+    "objective": "Reconoce el tiempo, la concordancia y las formas activas y pasivas de los verbos.",
+    "explanation": [
+      "El presente simple expresa rutinas o hechos. En tercera persona singular, suele añadir -s. El pasado simple relata acciones terminadas. Will más el verbo base puede expresar una predicción sobre el futuro.",
+      "Para acciones en curso, usa una forma de be y el verbo en -ing. En «They were walking when it started to rain», were walking indica la acción en curso y started el hecho posterior que ocurre durante ella.",
+      "En voz activa, el sujeto realiza la acción. En voz pasiva, recibe la acción. Usa be en el tiempo necesario y el participio pasado: «The signs were made by students». Con un modal, usa «modal + be + participio».",
+      "En condiciones imaginarias sobre un pasado que no ocurrió, una estructura común es «if + had + participio», seguida de «would have + participio»."
+    ],
+    "example": {
+      "prompt": "Complete the sentence. “The hall ____ by volunteers yesterday.” (clean)",
+      "steps": [
+        "Identifica the hall como aquello que recibe la acción. Usa la voz pasiva.",
+        "Identifica yesterday. Pon be en pasado y hazlo concordar con the hall: was.",
+        "Añade el participio cleaned. La respuesta es was cleaned."
+      ]
+    },
+    "source": "College Board, Guía de estudio PIENSE II (2019), p. 10 del PDF · Uso del lenguaje",
+    "prerequisiteIds": [
+      "en-sentence-order"
+    ],
+    "exercises": [
+      {
+        "prompt": "Complete the sentence. “Every morning, Leo ____ the windows before class.”",
+        "options": [
+          "open",
+          "opens",
+          "opened",
+          "opening"
+        ],
+        "answer": 1,
+        "explanation": "Every morning señala una rutina. Leo equivale a he, por lo que opens lleva -s en presente simple.",
+        "hint": "Comprueba el tiempo de la rutina y el número del sujeto.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Complete the sentence. “Look! The children ____ a kite.”",
+        "options": [
+          "flies",
+          "flew",
+          "will fly",
+          "are flying"
+        ],
+        "answer": 3,
+        "explanation": "Look indica una acción que se puede ver ahora. El sujeto plural the children se combina con are flying.",
+        "hint": "Identifica la forma de be para un sujeto plural y una acción en curso.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Complete the sentence. “When the lights went out, I ____ dinner.”",
+        "options": [
+          "am cooking",
+          "will cook",
+          "was cooking",
+          "have cooked"
+        ],
+        "answer": 2,
+        "explanation": "Went out señala un hecho pasado. Was cooking describe la acción que estaba en curso en ese momento.",
+        "hint": "Busca la acción en curso y el hecho breve en pasado.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Which sentence is in the passive voice?",
+        "options": [
+          "Two students painted the mural.",
+          "Two students were painting the mural.",
+          "The mural looked bright after the art class.",
+          "The mural was painted by two students."
+        ],
+        "answer": 3,
+        "explanation": "El mural recibe la acción. Was painted combina be en pasado con el participio painted.",
+        "hint": "Busca be seguido del participio de un verbo de acción.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Complete the prediction. “I think the buses ____ on time tomorrow.”",
+        "options": [
+          "arrived",
+          "will arrive",
+          "arrives",
+          "will arriving"
+        ],
+        "answer": 1,
+        "explanation": "Tomorrow sitúa la predicción en el futuro. Después de will, el verbo toma la forma base arrive.",
+        "hint": "Si eliges will, revisa la forma del verbo que lo sigue.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Complete the notice. “These forms must ____ before the office closes.”",
+        "options": [
+          "sign",
+          "signed",
+          "be signed",
+          "be sign"
+        ],
+        "answer": 2,
+        "explanation": "Los formularios reciben la acción. Después de must, usa be y el participio signed para formar la voz pasiva.",
+        "hint": "Identifica qué recibe la acción y coloca be antes del participio.",
+        "difficulty": "challenge"
+      },
+      {
+        "prompt": "Complete the sentence about an experiment that did not happen. “If we ____ the seeds earlier, we would have seen the results by now.”",
+        "options": [
+          "had planted",
+          "plant",
+          "have planted",
+          "would plant"
+        ],
+        "answer": 0,
+        "explanation": "Had planted expresa la condición imaginaria sobre una acción pasada. Would have seen expresa el resultado imaginado.",
+        "hint": "Busca el auxiliar had y el participio para la condición anterior.",
+        "difficulty": "challenge"
+      }
+    ]
+  },
+  {
+    "id": "en-word-forms",
+    "title": "Sustantivos, adjetivos y adverbios",
+    "objective": "Distingue plurales comunes e irregulares, posesivos, orden de adjetivos, comparaciones y posición de adverbios.",
+    "explanation": [
+      "Muchos sustantivos añaden -s o -es para el plural. Algunos son irregulares, como child → children. Usa apóstrofo y s para posesión singular («the child’s bag»). Si el plural ya termina en -s, añade solo el apóstrofo («the students’ bags»).",
+      "Cuando varios adjetivos preceden a un sustantivo, el orden habitual antepone cantidad, opinión y tamaño al color y al material. En «three small blue boxes», three indica cantidad, small indica tamaño y blue indica color.",
+      "Para comparar dos referentes, usa comparativo y, si nombras el segundo, añade than. Para destacar un referente en un grupo, usa superlativo, a menudo con the. Las formas de good son better y best.",
+      "Los adjetivos en -ed suelen describir cómo se siente alguien. Los adjetivos en -ing suelen describir lo que causa esa sensación. Los adverbios aportan datos como tiempo, lugar o modo."
+    ],
+    "example": {
+      "prompt": "Complete the sentence. “At 38 meters, this is ____ of the three bridges.” (long)",
+      "steps": [
+        "Observa of the three bridges. Se destaca un puente dentro de un grupo.",
+        "Long es un adjetivo corto. Añade -est para formar el superlativo.",
+        "Escribe the longest."
+      ]
+    },
+    "source": "College Board, Guía de estudio PIENSE II (2019), p. 10 del PDF · Uso del lenguaje",
+    "prerequisiteIds": [
+      "en-sentence-order"
+    ],
+    "exercises": [
+      {
+        "prompt": "Complete the sentence. “Three ____ ran across the playground.”",
+        "options": [
+          "child",
+          "children",
+          "childs",
+          "child’s"
+        ],
+        "answer": 1,
+        "explanation": "Three exige un plural. El plural irregular de child es children.",
+        "hint": "Distingue una forma plural de una forma posesiva.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Which phrase means “the projects made by two students”?",
+        "options": [
+          "the two student’s projects",
+          "the two students projects",
+          "the two students’ projects",
+          "the two students’s projects"
+        ],
+        "answer": 2,
+        "explanation": "El plural students termina en s. Para marcar la posesión en ese caso, coloca solo un apóstrofo después de la s.",
+        "hint": "Primero forma el plural students. Luego añade el signo de posesión.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Complete the sentence. “This route is ____ than the old route.” (short)",
+        "options": [
+          "shorter",
+          "shortest",
+          "the shorter",
+          "more short"
+        ],
+        "answer": 0,
+        "explanation": "Than introduce la segunda ruta de la comparación. Para el adjetivo corto short, usa shorter.",
+        "hint": "Busca la forma en -er que se combina con than.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Choose the phrase with the usual adjective order.",
+        "options": [
+          "a green metal small box",
+          "a metal small green box",
+          "a small green metal box",
+          "a box small green metal"
+        ],
+        "answer": 2,
+        "explanation": "El orden habitual coloca el tamaño small, después el color green y al final el material metal antes del sustantivo.",
+        "hint": "Ordena los datos por tamaño, color y material.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Complete the sentence. “Of all the times today, Aria’s was ____.” (good)",
+        "options": [
+          "better than",
+          "the best",
+          "the goodest",
+          "more good"
+        ],
+        "answer": 1,
+        "explanation": "Of all the times indica un grupo completo. El superlativo irregular de good es best.",
+        "hint": "Distingue entre comparar dos tiempos y escoger el principal de todo el grupo.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Complete the sentence. “The puzzle was ____ and the students felt ____.”",
+        "options": [
+          "confused / confusing",
+          "confuse / confusion",
+          "confusing / confuse",
+          "confusing / confused"
+        ],
+        "answer": 3,
+        "explanation": "Confusing describe el efecto que produce el rompecabezas. Confused describe cómo se sentían los estudiantes.",
+        "hint": "Distingue la fuente de la sensación de las personas que la experimentan.",
+        "difficulty": "challenge"
+      },
+      {
+        "prompt": "Choose the sentence that says when Ken spoke and how he spoke.",
+        "options": [
+          "Ken spoke softly after lunch.",
+          "Ken spoke near the door.",
+          "Ken often spoke near the door.",
+          "Ken spoke after lunch in the courtyard."
+        ],
+        "answer": 0,
+        "explanation": "Softly explica cómo habló Ken. After lunch indica cuándo ocurrió.",
+        "hint": "Busca una expresión de tiempo y otra de modo en la misma oración.",
+        "difficulty": "challenge"
+      }
+    ]
+  },
+  {
+    "id": "en-function-words",
+    "title": "Preposiciones, pronombres y determinantes",
+    "objective": "Elige palabras que expresan lugar, tiempo, posesión, cantidad o relación entre ideas.",
+    "explanation": [
+      "Para el tiempo, usa at con una hora concreta, on con un día o una fecha e in con un mes o un año. Para lugar, elige según la relación: in indica interior, on contacto con una superficie y between posición entre elementos.",
+      "Un pronombre de sujeto realiza la acción (I, he, she, we, they). Una forma de objeto puede seguir al verbo o a una preposición (me, him, her, us, them). My acompaña a un nombre y mine puede reemplazar a un grupo nominal posesivo.",
+      "This y that acompañan a un sustantivo singular. These y those acompañan a un sustantivo plural. Many acompaña a sustantivos contables en plural. Much se usa con sustantivos no contables, sobre todo en preguntas y negaciones.",
+      "Un conector indica cómo se relacionan dos ideas. And suma, but contrasta y because expresa una causa."
+    ],
+    "example": {
+      "prompt": "Complete the sentence. “I left my notes at home, so Ana shared ____ with me.”",
+      "steps": [
+        "Identifica lo que Ana compartió. Son sus propios apuntes.",
+        "Después del espacio no hay un sustantivo. Necesitas un pronombre posesivo.",
+        "Usa hers. Equivale a her notes."
+      ]
+    },
+    "source": "College Board, Guía de estudio PIENSE II (2019), p. 10 del PDF · Uso del lenguaje",
+    "prerequisiteIds": [
+      "en-sentence-order"
+    ],
+    "exercises": [
+      {
+        "prompt": "Complete the sentence. “The workshop starts ____ 9:30 on Tuesday.”",
+        "options": [
+          "in",
+          "at",
+          "on",
+          "from"
+        ],
+        "answer": 1,
+        "explanation": "At introduce una hora concreta. On Tuesday, que ya aparece al final, señala el día.",
+        "hint": "Distingue la hora del día de la semana.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Complete the sentence. “____ books on this desk belong to Maya.”",
+        "options": [
+          "This",
+          "That",
+          "It",
+          "These"
+        ],
+        "answer": 3,
+        "explanation": "Books es plural. These indica que los libros están cerca, como sugiere on this desk.",
+        "hint": "Identifica el número del sustantivo books.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Complete the sentence. “The librarian gave the atlas to Luis and ____.”",
+        "options": [
+          "me",
+          "I",
+          "my",
+          "mine"
+        ],
+        "answer": 0,
+        "explanation": "La preposición to introduce a quienes reciben el atlas. Me es la forma de objeto.",
+        "hint": "Prueba la misma construcción con «to ____» y omite Luis and.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Complete the question. “How ____ information did you find about the festival?”",
+        "options": [
+          "many",
+          "few",
+          "much",
+          "several"
+        ],
+        "answer": 2,
+        "explanation": "Information es un sustantivo no contable en inglés. En la pregunta, se usa how much para consultar su cantidad.",
+        "hint": "Determina si information se usa como un sustantivo contable.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Complete the sentence. “There is one bench on each side of the lamp. The lamp stands ____ the two benches.”",
+        "options": [
+          "inside",
+          "between",
+          "along",
+          "above"
+        ],
+        "answer": 1,
+        "explanation": "Between expresa que la lámpara queda en el espacio entre los dos bancos.",
+        "hint": "Dibuja los dos bancos y coloca la lámpara según lo indica la primera frase.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Complete the sentence. “That scarf belongs to Carla. It is ____.”",
+        "options": [
+          "hers",
+          "her",
+          "she",
+          "she’s"
+        ],
+        "answer": 0,
+        "explanation": "Hers reemplaza la frase her scarf. Her debe acompañar a un sustantivo si funciona como determinante posesivo.",
+        "hint": "Busca la forma que puede funcionar sola y expresa pertenencia.",
+        "difficulty": "challenge"
+      },
+      {
+        "prompt": "Choose the word that makes the second idea the reason for the first. “We moved the class indoors ____ the wind had become too strong.”",
+        "options": [
+          "although",
+          "and",
+          "unless",
+          "because"
+        ],
+        "answer": 3,
+        "explanation": "Because presenta el viento fuerte como la causa de trasladar la clase.",
+        "hint": "Haz que la segunda parte responda a «why?».",
+        "difficulty": "challenge"
+      }
+    ]
+  },
+  {
+    "id": "en-reading-evidence",
+    "title": "Detalles, secuencia e inferencias",
+    "objective": "Localiza evidencia en inglés para reconocer detalles, ordenar hechos e inferir conclusiones.",
+    "explanation": [
+      "Lee primero la pregunta. Busca nombres, números y expresiones que la conecten con una parte del texto. Para un detalle explícito, identifica la oración que lo afirma.",
+      "Para ordenar eventos, localiza expresiones como before, after y finally. El orden de las oraciones puede ser distinto del orden de los hechos.",
+      "Para distinguir causa y efecto, pregunta qué produjo el cambio y qué ocurrió como resultado. Una inferencia une pistas. Una conclusión resume lo que esas pistas permiten sostener.",
+      "Para el sentido de una palabra, prueba cada opción en su oración. Para un título, busca uno que represente el tema y el enfoque. Un hecho se puede verificar y una opinión expresa un juicio."
+    ],
+    "example": {
+      "prompt": "The school library added a return slot that families could reach from the sidewalk. It was beside the side entrance, which staff locked every evening. After one month, the library counted 64 books returned through the slot. Staff decided to keep it open on weekends.\n\n“What happened after the first month?”",
+      "steps": [
+        "Busca la marca temporal «After one month».",
+        "Identifica la acción de la biblioteca. Contó 64 libros devueltos por la ranura.",
+        "Elige la opción que conserva el número y el lugar de devolución."
+      ]
+    },
+    "source": "College Board, Guía de estudio PIENSE II (2019), p. 10 del PDF · Comprensión y análisis de lectura",
+    "prerequisiteIds": [],
+    "exercises": [
+      {
+        "prompt": "The school library added a return slot that families could reach from the sidewalk. It was beside the side entrance, which staff locked every evening. After one month, the library counted 64 books returned through the slot. Staff decided to keep it open on weekends.\n\nWhere was the return slot installed?",
+        "options": [
+          "Behind the main desk.",
+          "By the side entrance.",
+          "Inside the reading room.",
+          "Next to a classroom door."
+        ],
+        "answer": 1,
+        "explanation": "La primera oración dice «by the side entrance». Es un detalle explícito.",
+        "hint": "Busca la primera aparición de return slot.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Read the passage. “After packing the lunches, Al took the keys from the shelf. Before he packed the lunches, he fed the cat. He left at seven.”\n\nWhat happened first?",
+        "options": [
+          "Al fed the cat.",
+          "Al took the keys.",
+          "Al packed the lunches.",
+          "Al left at seven."
+        ],
+        "answer": 0,
+        "explanation": "Before he packed the lunches coloca la comida del gato antes de preparar los almuerzos. Las llaves y la salida ocurrieron después.",
+        "hint": "Ubica qué hizo Al antes de preparar los almuerzos.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Read the passage. “The path was narrow. Two people could not walk side by side.”\n\nWhat does narrow mean here?",
+        "options": [
+          "Not smooth.",
+          "Not long.",
+          "Not safe.",
+          "Not wide."
+        ],
+        "answer": 3,
+        "explanation": "La segunda oración describe el ancho insuficiente para dos personas. Narrow significa estrecho.",
+        "hint": "Relaciona «side by side» con una dimensión del camino.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "The town tested two bicycle routes to the beach. The river route was shorter, but the afternoon path often flooded. The hill route was longer and stayed dry throughout the test. The town printed the hill route on its summer maps and plans to check both routes again in winter.\n\nWhat made the river route difficult to use during the test?",
+        "options": [
+          "The route was much longer.",
+          "The summer maps were missing.",
+          "The path often flooded.",
+          "The route stayed dry."
+        ],
+        "answer": 2,
+        "explanation": "La segunda oración explica la dificultad del camino junto al río. A menudo se inundaba.",
+        "hint": "Busca el problema asociado con river route.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "The town tested two bicycle routes to the beach. The river route was shorter, but the afternoon path often flooded. The hill route was longer and stayed dry throughout the test. The town printed the hill route on its summer maps and plans to check both routes again in winter.\n\nWhich is the best title?",
+        "options": [
+          "Choosing a Summer Bike Route to the Beach",
+          "The Shortest Bike Routes in the World",
+          "When to Buy a New Bicycle",
+          "A Winter Guide to the Town’s Rivers"
+        ],
+        "answer": 0,
+        "explanation": "El título reúne el tema, dos rutas a la playa, y el enfoque, escoger una para los mapas de verano.",
+        "hint": "Identifica tanto el destino como la decisión principal del pueblo.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "The school library added a return slot that families could reach from the sidewalk. It was beside the side entrance, which staff locked every evening. After one month, the library counted 64 books returned through the slot. Staff decided to keep it open on weekends.\n\nWhat can reasonably be inferred?",
+        "options": [
+          "The library then shortened its opening hours.",
+          "Families could return books without going into the library.",
+          "All families used the slot every weekend.",
+          "The new slot accepts only weekend returns."
+        ],
+        "answer": 1,
+        "explanation": "La ranura queda al alcance desde la acera. Las personas devolvieron 64 libros por ella. Por lo tanto, la devolución no requiere entrar a la biblioteca.",
+        "hint": "Relaciona el acceso desde la acera con el número de libros devueltos.",
+        "difficulty": "challenge"
+      },
+      {
+        "prompt": "The town tested two bicycle routes to the beach. The river route was shorter, but the afternoon path often flooded. The hill route was longer and stayed dry throughout the test. The town printed the hill route on its summer maps and plans to check both routes again in winter.\n\nWhich conclusion is supported by the passage?",
+        "options": [
+          "The town showed that longer routes are always safer.",
+          "The river route will never appear on a map.",
+          "Flooding always stops before winter.",
+          "The town chose the route that stayed dry during the test."
+        ],
+        "answer": 3,
+        "explanation": "El texto solo respalda la decisión de verano y lo observado durante el ensayo. Los planes de invierno siguen abiertos.",
+        "hint": "Elige la conclusión limitada a lo que el pueblo observó y decidió.",
+        "difficulty": "challenge"
+      },
+      {
+        "prompt": "The town tested two bicycle routes to the beach. The river route was shorter, but the afternoon path often flooded. The hill route was longer and stayed dry throughout the test. The town printed the hill route on its summer maps and plans to check both routes again in winter.\n\nWhich statement is an opinion?",
+        "options": [
+          "The town tested two routes.",
+          "The hill route stayed dry during the test.",
+          "The hill route is the most enjoyable way to reach the beach.",
+          "The town plans another check in winter."
+        ],
+        "answer": 2,
+        "explanation": "Most enjoyable expresa un juicio sobre lo que se disfruta. Las otras opciones se pueden comprobar con el relato.",
+        "hint": "Busca una valoración personal.",
+        "difficulty": "exam"
+      }
+    ]
+  },
+  {
+    "id": "en-reading-literary",
+    "title": "Personajes, propósito y lenguaje figurado",
+    "objective": "Reconoce personajes, ambiente, punto de vista, conflictos, tono y tipo de texto.",
+    "explanation": [
+      "Identifica quién cuenta la historia y qué personaje enfrenta el problema. En un relato en primera persona, el narrador usa I o we para contar su propia experiencia.",
+      "El ambiente incluye el lugar, el tiempo y las condiciones en que ocurre la acción. Un conflicto interno ocurre dentro de un personaje. Un conflicto externo enfrenta al personaje con una persona, la naturaleza u otro obstáculo exterior.",
+      "El propósito es lo que el autor busca lograr. El tono es la actitud que se percibe en sus palabras. Busca verbos, adjetivos y acciones que respalden la opción.",
+      "Un relato presenta hechos en secuencia. Una descripción resalta rasgos. Un texto informativo explica datos. Un texto argumentativo sostiene una postura con razones. Un símil usa like o as para comparar y una metáfora establece la comparación de forma directa."
+    ],
+    "example": {
+      "prompt": "“I read my name on the list and imagined the whole room laughing. During practice, I missed the first line twice. On Thursday, my brother sat in the front row with his notebook. I felt my face grow hot as I walked onstage. Then I spotted his smile and took a breath. The words came out, one by one.”\n\n“What is the narrator’s main conflict?”",
+      "steps": [
+        "Identifica al personaje central. El pronombre I muestra que cuenta su propia experiencia.",
+        "Busca el obstáculo. Le da miedo equivocarse y que el público se ría.",
+        "Clasifica el conflicto como interno. La dificultad principal es controlar ese temor."
+      ]
+    },
+    "source": "College Board, Guía de estudio PIENSE II (2019), p. 10 del PDF · Comprensión y análisis de lectura",
+    "prerequisiteIds": [
+      "en-reading-evidence"
+    ],
+    "exercises": [
+      {
+        "prompt": "“I read my name on the list and imagined the whole room laughing. During practice, I missed the first line twice. On Thursday, my brother sat in the front row with his notebook. I felt my face grow hot as I walked onstage. Then I spotted his smile and took a breath. The words came out, one by one.”\n\nWho tells the story?",
+        "options": [
+          "The person who speaks onstage.",
+          "The brother in the front row.",
+          "A member of the audience.",
+          "A narrator outside the events."
+        ],
+        "answer": 0,
+        "explanation": "El narrador usa I y cuenta que subió al escenario. El hermano aparece como otro personaje.",
+        "hint": "Identifica a quién se refiere «I» en «I walked onstage».",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "The wooden bridge was closed when Mari arrived at the trail. She could see the picnic area on the other side, but there was no safe way across the creek. She followed the signs to a stone crossing a little farther upstream.\n\nWhere do the events take place?",
+        "options": [
+          "Inside a crowded theater.",
+          "On a trail near a creek.",
+          "On a city bus.",
+          "In a house near the ocean."
+        ],
+        "answer": 1,
+        "explanation": "Trail, creek y upstream sitúan la acción en un sendero cerca de un arroyo.",
+        "hint": "Busca palabras que nombren lugares.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "The wooden bridge was closed when Mari arrived at the trail. She could see the picnic area on the other side, but there was no safe way across the creek. She followed the signs to a stone crossing a little farther upstream.\n\nWhich type of conflict does Mari face?",
+        "options": [
+          "A character against her own doubts.",
+          "A character against another person.",
+          "A character against an unfair school rule.",
+          "A character against an obstacle in the environment."
+        ],
+        "answer": 3,
+        "explanation": "El puente cerrado y el arroyo dificultan el recorrido. Son obstáculos exteriores que Mari resuelve al buscar otro cruce.",
+        "hint": "Identifica qué impide que Mari llegue directamente al área de picnic.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Read the sentence. “The old gate groaned like a tired runner.”\n\nWhat kind of figurative language appears in the comparison?",
+        "options": [
+          "A literal definition.",
+          "A paradox.",
+          "A simile.",
+          "An understatement."
+        ],
+        "answer": 2,
+        "explanation": "Like marca una comparación explícita entre el sonido de la puerta y el de un corredor cansado.",
+        "hint": "Fíjate en la función de like.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Read the lines. “The courtyard has low brick walls and a round stone fountain. Long shadows stretch across the pale tiles.”\n\nWhat type of writing is this?",
+        "options": [
+          "Argumentative.",
+          "Narrative.",
+          "Instructional.",
+          "Descriptive."
+        ],
+        "answer": 3,
+        "explanation": "El texto presenta detalles visuales del lugar, como formas, colores y sombras.",
+        "hint": "Comprueba si el texto cuenta una secuencia de hechos o describe un lugar.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Read the notice. “The city repaired the broken ramps last week. The new route lets visitors reach the playground without using stairs.”\n\nWhat is the main purpose of the notice?",
+        "options": [
+          "To persuade readers to buy playground equipment.",
+          "To inform readers about a change in access.",
+          "To entertain readers with a story about the city.",
+          "To criticize visitors who use the playground."
+        ],
+        "answer": 1,
+        "explanation": "La nota informa de la reparación y explica cómo facilita el acceso.",
+        "hint": "Busca qué cambio se menciona y qué explica la segunda oración.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "“I read my name on the list and imagined the whole room laughing. During practice, I missed the first line twice. On Thursday, my brother sat in the front row with his notebook. I felt my face grow hot as I walked onstage. Then I spotted his smile and took a breath. The words came out, one by one.”\n\nHow does the tone change from the opening to the ending?",
+        "options": [
+          "From cheerful to angry.",
+          "From bored to sarcastic.",
+          "From anxious to relieved.",
+          "From proud to jealous."
+        ],
+        "answer": 2,
+        "explanation": "La narradora teme que el público se ría. Al final respira y logra hablar. El tono cambia de inquietud a alivio.",
+        "hint": "Compara lo que imagina al inicio con lo que logra al final.",
+        "difficulty": "challenge"
+      },
+      {
+        "prompt": "Read the passage. “The bus stop needs a shelter. Riders wait in the rain, and the nearest covered area is two blocks away.”\n\nWhat feature makes this passage argumentative?",
+        "options": [
+          "It supports a proposal with reasons.",
+          "It describes a place without making a claim.",
+          "It lists events in the order they happened.",
+          "It gives a definition for a new term."
+        ],
+        "answer": 0,
+        "explanation": "El texto propone instalar un refugio y apoya la propuesta con la lluvia y la distancia al lugar cubierto más cercano.",
+        "hint": "Identifica una propuesta y las razones que la apoyan.",
+        "difficulty": "challenge"
+      }
+    ]
+  },
+  {
+    "id": "en-writing-organization",
+    "title": "Organización y transiciones",
+    "objective": "Elige oraciones de inicio y cierre, ordena un párrafo y selecciona transiciones adecuadas.",
+    "explanation": [
+      "La primera oración presenta el tema y su enfoque. Los siguientes enunciados lo desarrollan con detalles. La conclusión resume el resultado o recoge la idea principal.",
+      "Revisa qué datos necesita el lector primero. Pronombres como it y they suelen referirse a algo ya mencionado. First, next y finally indican secuencia.",
+      "Selecciona una transición según la relación. However señala contraste. Therefore presenta un resultado. For example introduce un caso que ilustra la idea anterior.",
+      "Para detectar una oración ajena, verifica si cumple el propósito del párrafo. Un tema similar puede estar fuera del enfoque concreto."
+    ],
+    "example": {
+      "prompt": "(1) Finally, she tested the lamp with a new battery. (2) Imani repaired a small reading lamp in three steps. (3) First, she opened the battery cover. (4) Next, she cleaned the metal contacts.\n\n“In what order should the sentences appear?”",
+      "steps": [
+        "Empieza por (2), que presenta a Imani y la reparación.",
+        "Sigue las marcas de secuencia first, next y finally.",
+        "El orden es 2, 3, 4, 1."
+      ]
+    },
+    "source": "College Board, Guía de estudio PIENSE II (2019), p. 10 del PDF · Destrezas de redacción · Coherencia y claridad",
+    "prerequisiteIds": [
+      "en-sentence-order",
+      "en-reading-evidence"
+    ],
+    "exercises": [
+      {
+        "prompt": "Choose the best opening sentence. “____. Before each meeting, members collect recipes. During the meeting, they try one dish and share the result.”",
+        "options": [
+          "The school kitchen has three windows.",
+          "After the meeting, the members put away the plates.",
+          "Some recipes call for lemons.",
+          "The cooking club learns by preparing a different dish at each meeting."
+        ],
+        "answer": 3,
+        "explanation": "Presenta el club y su forma de aprender. Las frases siguientes describen cómo sus miembros eligen y preparan un plato.",
+        "hint": "Busca la idea amplia que explica lo que hacen los miembros.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Choose the best transition. “The first bus was full. ____, we took the next one.”",
+        "options": [
+          "However",
+          "Therefore",
+          "For example",
+          "Meanwhile"
+        ],
+        "answer": 1,
+        "explanation": "Tomar el siguiente autobús fue consecuencia de que el primero estaba lleno. Therefore expresa ese resultado.",
+        "hint": "Pregunta si la segunda oración presenta un motivo, un resultado o un ejemplo.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Put the sentences in the best order.\n\n(1) After the pot dried, she painted the outside. (2) Maya chose an old clay pot to use for herbs. (3) She cleared out the soil and rinsed the pot. (4) She let the damp pot dry in the sun.",
+        "options": [
+          "3, 2, 4, 1",
+          "2, 4, 3, 1",
+          "2, 3, 4, 1",
+          "4, 1, 2, 3"
+        ],
+        "answer": 2,
+        "explanation": "Primero se presenta la maceta. Maya la vacía y enjuaga, la deja secar y al final la pinta.",
+        "hint": "Relaciona el agua del enjuague con el secado que requiere la pintura.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Which sentence does not belong in this paragraph?\n\n(1) Our class organized a coat drive. (2) Volunteers collected coats in the gym. (3) The gym has a new scoreboard. (4) They delivered the coats to a shelter.",
+        "options": [
+          "(3)",
+          "(1)",
+          "(2)",
+          "(4)"
+        ],
+        "answer": 0,
+        "explanation": "El marcador del gimnasio comparte el lugar, pero no explica cómo se reunieron o entregaron los abrigos.",
+        "hint": "Determina si cada oración explica la campaña de abrigos.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Choose the best conclusion. “The town placed signs near two busy crossings. During the trial, more drivers slowed down at both places. ____.”",
+        "options": [
+          "Every town in the world should ban cars.",
+          "Few people know how to read road signs.",
+          "At both crossings, more drivers slowed down after the signs went up.",
+          "Slower driving makes a road longer."
+        ],
+        "answer": 2,
+        "explanation": "Resume el cambio observado y conserva los límites de la prueba en esos dos cruces.",
+        "hint": "Busca una oración que cierre el texto dentro de los límites del ensayo.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Choose the transition that shows contrast. “The trail was steep. ____, the group finished the hike ahead of schedule.”",
+        "options": [
+          "Therefore",
+          "Nevertheless",
+          "For instance",
+          "In addition"
+        ],
+        "answer": 1,
+        "explanation": "Nevertheless indica que el grupo terminó antes de lo previsto a pesar de la dificultad del camino.",
+        "hint": "Busca la transición que equivale a «a pesar de eso».",
+        "difficulty": "challenge"
+      },
+      {
+        "prompt": "Choose the best title. “Our class counted birds near the school garden for five mornings. Sparrows appeared every day. A hawk visited once. After each count, we added the numbers to a chart.”",
+        "options": [
+          "A Week Caring for a Hawk",
+          "How to Grow a School Garden",
+          "Sparrows around the World",
+          "Five Mornings of Bird Counts at School"
+        ],
+        "answer": 3,
+        "explanation": "El título presenta la actividad principal, el lugar y la duración. Las especies de aves son detalles de la observación.",
+        "hint": "Busca un título que cubra todo el texto y conserve su duración.",
+        "difficulty": "challenge"
+      }
+    ]
+  },
+  {
+    "id": "en-writing-editing",
+    "title": "Puntuación y edición de oraciones",
+    "objective": "Reconoce la puntuación adecuada y edita frases para aplicar el vocabulario preciso y reducir repeticiones.",
+    "explanation": [
+      "Usa una coma después de una cláusula introductoria como «After the rain stopped». Aísla con dos comas la información adicional que se puede quitar sin cambiar a qué persona u objeto se refiere la frase.",
+      "Dos oraciones completas necesitan un punto, un punto y coma o una coma con una conjunción como and, but o so. Una coma sola puede producir un error llamado comma splice.",
+      "Sustituye expresiones vagas por palabras que indiquen la acción exacta. Antes de cambiar una frase, comprueba qué información debes conservar.",
+      "Si dos oraciones comparten sujeto o tema, únelas con un conector, una cláusula o una lista de acciones. Conserva el orden y la relación originales."
+    ],
+    "example": {
+      "prompt": "Combine the sentences. “Ken tested the fan. Ken replaced its batteries.”",
+      "steps": [
+        "Identifica el sujeto que se repite. Es Ken.",
+        "Conserva las dos acciones en el orden indicado.",
+        "Une los dos verbos con and. «Ken tested the fan and replaced its batteries»."
+      ]
+    },
+    "source": "College Board, Guía de estudio PIENSE II (2019), p. 11 del PDF · Destrezas de redacción · Propiedad, corrección, precisión y concisión",
+    "prerequisiteIds": [
+      "en-writing-organization"
+    ],
+    "exercises": [
+      {
+        "prompt": "Choose the correctly punctuated sentence.",
+        "options": [
+          "After the rain, stopped we opened the windows.",
+          "After, the rain stopped we opened the windows.",
+          "After the rain stopped, we opened the windows.",
+          "After the rain stopped we, opened the windows."
+        ],
+        "answer": 2,
+        "explanation": "La coma va después de toda la cláusula introductoria «After the rain stopped».",
+        "hint": "Ubica dónde termina la introducción y empieza la acción principal.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Choose the most precise replacement for “looked at.” “The mechanic looked at each brake for signs of wear.”",
+        "options": [
+          "greeted",
+          "inspected",
+          "invented",
+          "ignored"
+        ],
+        "answer": 1,
+        "explanation": "Inspected indica que revisó los frenos con cuidado para detectar desgaste.",
+        "hint": "Busca el verbo que expresa una revisión cuidadosa.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Choose the best way to combine these sentences. “The team recorded the temperatures. The team put the temperatures in a table.”",
+        "options": [
+          "The temperatures recorded the team and put it in a table.",
+          "The team made a table instead of recording the temperatures.",
+          "The team put the table in the temperatures it recorded.",
+          "The team recorded the temperatures and put them in a table."
+        ],
+        "answer": 3,
+        "explanation": "And une los dos verbos con el sujeto compartido. Them sustituye the temperatures y evita repetirlo.",
+        "hint": "Conserva quién realizó ambas acciones y qué datos se registraron.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Choose the best punctuation. The location of the printer is extra information.",
+        "options": [
+          "Our printer, which sits next to the window, needs a new cartridge.",
+          "Our printer which sits, next to the window needs a new cartridge.",
+          "Our printer, which sits next to the window needs a new cartridge.",
+          "Our printer which sits next to the window, needs, a new cartridge."
+        ],
+        "answer": 0,
+        "explanation": "La cláusula explica dónde está la impresora y aporta un dato adicional. Dos comas señalan dónde empieza y termina.",
+        "hint": "Quita el dato sobre la ventana y comprueba si la oración principal se entiende.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Choose the best edit to remove repetition. “We returned back to the classroom at noon.”",
+        "options": [
+          "We went back at noon.",
+          "We entered the classroom at noon.",
+          "We returned to the classroom at noon.",
+          "We returned back to the classroom."
+        ],
+        "answer": 2,
+        "explanation": "Returned ya indica que se volvió. La oración editada conserva el lugar y la hora.",
+        "hint": "Mantén los datos de lugar y tiempo y elimina la palabra repetitiva.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Choose the best way to combine the sentences so the first idea explains the second. “The filter was clogged. The pump moved less water.”",
+        "options": [
+          "The filter was clogged because the pump moved less water.",
+          "Because the filter was clogged, the pump moved less water.",
+          "The filter was clogged although the pump moved more water.",
+          "The pump clogged the filter before it moved less water."
+        ],
+        "answer": 1,
+        "explanation": "Because convierte el filtro obstruido en la causa. El menor flujo de agua queda como el resultado.",
+        "hint": "Comprueba qué condición produjo el cambio en el flujo.",
+        "difficulty": "challenge"
+      },
+      {
+        "prompt": "Choose the correctly punctuated compound sentence.",
+        "options": [
+          "The room was dark, so Lila switched on the lamp.",
+          "The room was dark, Lila switched on the lamp.",
+          "The room was dark so, Lila switched on the lamp.",
+          "The room, was dark so Lila switched on the lamp."
+        ],
+        "answer": 0,
+        "explanation": "La coma va antes de so, que une dos oraciones completas y expresa un resultado.",
+        "hint": "Localiza los dos sujetos y el conector que une las ideas.",
+        "difficulty": "challenge"
+      }
+    ]
+  }
+]
