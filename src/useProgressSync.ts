@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
-  endProgressSession, getProgress, mergeProgress, progressBaseline, sameProgress, setProgress, startProgressSession,
+  changeProgressPassword, endProgressSession, getProgress, mergeProgress, progressBaseline, sameProgress, setProgress, startProgressSession,
   type ProgressBaseline,
 } from "./progressSync";
 import { blankState, parseBackup } from "./study";
@@ -94,13 +94,16 @@ export function useProgressSync({ change, snapshot, apply }: {
   }, [apply, disconnectLocally, snapshot]);
 
   const syncNow = useCallback(() => enqueue(synchronize), [enqueue, synchronize]);
-  const connect = useCallback((key: string) => enqueue(async () => {
-    await startProgressSession(key);
+  const connect = useCallback((username: string, password: string) => enqueue(async () => {
+    await startProgressSession(username, password);
     enabled.current = true;
     writeLocal(activeKey, "1");
     await synchronize();
     if (!enabled.current) throw Error("Este navegador no pudo iniciar la sesión.");
   }), [enqueue, synchronize]);
+
+  const changePassword = useCallback((currentPassword: string, password: string) =>
+    enqueue(() => changeProgressPassword(currentPassword, password)), [enqueue]);
 
   const disconnect = useCallback(() => enqueue(async () => {
     await endProgressSession();
@@ -131,5 +134,5 @@ export function useProgressSync({ change, snapshot, apply }: {
     return () => window.clearTimeout(timer);
   }, [change, syncNow]);
 
-  return { status, lastSynced, connected: enabled.current, connect, disconnect, syncNow };
+  return { status, lastSynced, connected: enabled.current, connect, changePassword, disconnect, syncNow };
 }

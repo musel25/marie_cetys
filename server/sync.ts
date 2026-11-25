@@ -1,6 +1,7 @@
-import { createHash, randomBytes, timingSafeEqual } from "node:crypto";
+import { createHash, randomBytes, scrypt, timingSafeEqual } from "node:crypto";
 import { open, readFile, rename, rm } from "node:fs/promises";
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
+import { isIP } from "node:net";
 import { parseBackup } from "../src/study";
 import type { StudyState } from "../src/types";
 
@@ -13,9 +14,16 @@ const sessionSeconds = 30 * 24 * 60 * 60;
 const maxSessions = 64;
 const maxProgressBytes = 12_000_100;
 const hexKey = /^[0-9a-f]{64}$/i;
+const accountName = "marie";
+const maxCredentialBytes = 4096;
+const attemptWindow = 10 * 60 * 1000;
+const attemptLimit = 10;
+const maxAttemptBuckets = 1024;
 
 type Snapshot = { revision: number; state: StudyState | null };
 type Session = { path: string; expires: number };
+type PasswordHash = { version: 1; salt: string; hash: string };
+type AttemptBucket = { used: number; expires: number };
 
 interface SyncOptions {
   keyHashFile: string;
@@ -24,11 +32,31 @@ interface SyncOptions {
 }
 
 class RequestError extends Error {
-  constructor(readonly status: number) { super(); }
+  constructor(readonly status: number, readonly retryAfter?: number) { super(); }
 }
 
 function keyDigest(key: string) {
   return createHash("sha256").update(key).digest();
+}
+
+function passwordHash(password: string, salt: string) {
+  return new Promise<Buffer>((resolve, reject) => {
+    const parameters = { N: 32768, r: 8, p: 3, maxmem: 48 * 1024 * 1024 };
+    scrypt(password, Buffer.from(salt, "hex"), 32, parameters, (error, derivedKey) => {
+      if (error) reject(error);
+      else resolve(derivedKey);
+    });
+  });
+}
+
+function clientIp(request: IncomingMessage) {
+  const peer = request.socket.remoteAddress ?? "unknown";
+  const forwarded = request.headers["x-real-ip"];
+  // The local reverse proxy replaces X-Real-IP with the verified client address.
+  if ((peer === "127.0.0.1" || peer === "::1") && typeof forwarded === "string" && isIP(forwarded)) {
+    return forwarded;
+  }
+  return peer;
 }
 
 function object(value: unknown): value is Record<string, unknown> {
@@ -96,12 +124,26 @@ async function loadSnapshot(dataFile: string): Promise<Snapshot> {
   return { revision: record.revision, state: parseBackup(JSON.stringify(record.state)) };
 }
 
-async function saveSnapshot(dataFile: string, snapshot: Snapshot) {
+async function loadPasswordHash(path: string): Promise<PasswordHash | undefined> {
+  let contents: string;
+  try {
+    contents = await readFile(path, "utf8");
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === "ENOENT") return undefined;
+    throw error;
+  }
+  const record: unknown = JSON.parse(contents);
+  if (!object(record) || record.version !== 1 || typeof record.salt !== "string" || !/^[0-9a-f]{32}$/.test(record.salt) ||
+      typeof record.hash !== "string" || !hexKey.test(record.hash)) throw Error("Invalid sync password file");
+  return { version: 1, salt: record.salt, hash: record.hash };
+}
+
+async function savePrivateJson(dataFile: string, record: Snapshot | PasswordHash) {
   const temporary = dataFile + "." + randomBytes(12).toString("hex") + ".tmp";
   const file = await open(temporary, "wx", 0o600);
   try {
     try {
-      await file.writeFile(JSON.stringify(snapshot) + "\n");
+      await file.writeFile(JSON.stringify(record) + "\n");
       await file.sync();
     } finally {
       await file.close();
@@ -119,8 +161,62 @@ export async function createSyncServer({ keyHashFile, dataFile, allowedOrigins =
   const expectedDigest = Buffer.from(digest, "hex");
   const extraOrigins = new Set(allowedOrigins);
   const sessions = new Map<string, Session>();
+  const attempts = new Map<string, AttemptBucket>();
+  const passwordFile = dataFile + ".password";
+  let password = await loadPasswordHash(passwordFile);
+  let passwordChangePending = false;
+  let runningDerivations = 0;
   let snapshot = await loadSnapshot(dataFile);
   let writeQueue: Promise<void> = Promise.resolve();
+
+  async function derivePassword(value: string, salt: string) {
+    if (runningDerivations >= 2) throw new RequestError(429, 2);
+    runningDerivations++;
+    try {
+      return await passwordHash(value, salt);
+    } finally {
+      runningDerivations--;
+    }
+  }
+
+  async function matchesCredential(value: unknown, activationOnly = false): Promise<boolean> {
+    if (typeof value !== "string" || value.length === 0 || value.length > 256) return false;
+    if (value.length === 64 && hexKey.test(value) && timingSafeEqual(keyDigest(value.toLowerCase()), expectedDigest)) {
+      return true;
+    }
+    const current = password;
+    if (activationOnly || !current) return false;
+    const candidate = await derivePassword(value, current.salt);
+    return current === password && timingSafeEqual(candidate, Buffer.from(current.hash, "hex"));
+  }
+
+  async function checkCredentials(request: IncomingMessage, verify: () => Promise<boolean>) {
+    const address = clientIp(request);
+    const now = Date.now();
+    let bucket = attempts.get(address);
+    if (!bucket || bucket.expires <= now) {
+      if (attempts.size >= maxAttemptBuckets) {
+        for (const [ip, current] of attempts) if (current.expires <= now) attempts.delete(ip);
+        if (attempts.size >= maxAttemptBuckets) throw new RequestError(429, 600);
+      }
+      bucket = { used: 0, expires: now + attemptWindow };
+      attempts.set(address, bucket);
+    }
+    if (bucket.used >= attemptLimit) {
+      throw new RequestError(429, Math.ceil((bucket.expires - now) / 1000));
+    }
+    bucket.used++;
+    let verified: boolean | undefined;
+    try {
+      verified = await verify();
+      return verified;
+    } finally {
+      if (verified !== false) {
+        bucket.used--;
+        if (bucket.used === 0 && attempts.get(address) === bucket) attempts.delete(address);
+      }
+    }
+  }
 
   function newSession(path: string) {
     const now = Date.now();
@@ -136,12 +232,13 @@ export async function createSyncServer({ keyHashFile, dataFile, allowedOrigins =
     return token;
   }
 
-  function saveAtRevision(revision: number, state: StudyState) {
+  function saveAtRevision(revision: number, state: StudyState, token: string, session: Session) {
     // Compare the revision inside the same serialized operation as the rename.
     const operation = writeQueue.then(async () => {
+      if (sessions.get(token) !== session || session.expires <= Date.now()) return { status: 401 };
       if (revision !== snapshot.revision || revision === Number.MAX_SAFE_INTEGER) return { status: 409, snapshot };
       const updated = { revision: revision + 1, state };
-      await saveSnapshot(dataFile, updated);
+      await savePrivateJson(dataFile, updated);
       snapshot = updated;
       return { status: 200, snapshot: updated };
     });
@@ -157,7 +254,7 @@ export async function createSyncServer({ keyHashFile, dataFile, allowedOrigins =
     if (!expectedOrigin) return reply(response, 404);
 
     const method = request.method;
-    const allowedMethods = isSession ? ["POST", "DELETE"] : ["GET", "PUT"];
+    const allowedMethods = isSession ? ["POST", "PUT", "DELETE"] : ["GET", "PUT"];
     if (!method || !allowedMethods.includes(method)) {
       response.setHeader("Allow", allowedMethods.join(", "));
       return reply(response, 405);
@@ -176,10 +273,16 @@ export async function createSyncServer({ keyHashFile, dataFile, allowedOrigins =
       return reply(response, 204);
     }
 
-    if (isSession) {
-      const payload = await readJson(request, 512);
-      const key = object(payload) && payload.key;
-      if (typeof key !== "string" || !hexKey.test(key) || !timingSafeEqual(keyDigest(key.toLowerCase()), expectedDigest)) {
+    if (isSession && method === "POST") {
+      const payload = await readJson(request, maxCredentialBytes);
+      const accepted = await checkCredentials(request, async () => {
+        if (!object(payload)) return false;
+        if ("username" in payload || "password" in payload) {
+          return payload.username === accountName && matchesCredential(payload.password);
+        }
+        return matchesCredential(payload.key, true);
+      });
+      if (!accepted) {
         return reply(response, 401);
       }
       if (authenticated) sessions.delete(token);
@@ -188,6 +291,27 @@ export async function createSyncServer({ keyHashFile, dataFile, allowedOrigins =
     }
 
     if (!authenticated) return reply(response, 401);
+    if (isSession && method === "PUT") {
+      const payload = await readJson(request, maxCredentialBytes);
+      if (!object(payload) || typeof payload.password !== "string" || payload.password.length < 12 ||
+          payload.password.length > 256) return reply(response, 400);
+      if (passwordChangePending) return reply(response, 409);
+
+      passwordChangePending = true;
+      try {
+        if (!await checkCredentials(request, () => matchesCredential(payload.currentPassword))) return reply(response, 401);
+        const salt = randomBytes(16).toString("hex");
+        const hash = (await derivePassword(payload.password, salt)).toString("hex");
+        if (sessions.get(token) !== session || session.expires <= Date.now()) return reply(response, 401);
+        const nextPassword: PasswordHash = { version: 1, salt, hash };
+        await savePrivateJson(passwordFile, nextPassword);
+        password = nextPassword;
+        for (const other of sessions.keys()) if (other !== token) sessions.delete(other);
+        return reply(response, 204);
+      } finally {
+        passwordChangePending = false;
+      }
+    }
     if (method === "GET") return reply(response, 200, snapshot);
     const payload = await readJson(request, maxProgressBytes);
     if (!object(payload) || !revisionIsValid(payload.revision) || !object(payload.state)) {
@@ -201,7 +325,7 @@ export async function createSyncServer({ keyHashFile, dataFile, allowedOrigins =
       return reply(response, 400);
     }
 
-    const result = await saveAtRevision(payload.revision, state);
+    const result = await saveAtRevision(payload.revision, state, token, session);
     return reply(response, result.status, result.snapshot);
   }
 
@@ -209,7 +333,9 @@ export async function createSyncServer({ keyHashFile, dataFile, allowedOrigins =
     response.setHeader("Cache-Control", "no-store");
     void handle(request, response).catch(error => {
       request.resume();
-      if (!response.headersSent) reply(response, error instanceof RequestError ? error.status : 500);
+      if (response.headersSent) return;
+      if (error instanceof RequestError && error.retryAfter) response.setHeader("Retry-After", String(error.retryAfter));
+      reply(response, error instanceof RequestError ? error.status : 500);
     });
   });
 }

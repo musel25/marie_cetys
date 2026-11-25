@@ -480,6 +480,7 @@ for (const lesson of ["mat-areas", "en-verb-forms", "es-comprension"]) {
 
 test("syncs local history between two devices and uploads work after a connection failure", async ({ page, browser }) => {
   const key = "a".repeat(64);
+  let password = key;
   const progressKey = "marie-cetys:study:v1";
   const second = await browser.newPage();
   const start = new Date("2026-11-24T20:00:00Z");
@@ -500,7 +501,13 @@ test("syncs local history between two devices and uploads work after a connectio
           connected = false;
           return route.fulfill({ status: 204 });
         }
-        connected = request.postDataJSON().key === key;
+        const body = request.postDataJSON();
+        if (method === "PUT") {
+          if (!connected || body.currentPassword !== password) return route.fulfill({ status: 401 });
+          password = body.password;
+          return route.fulfill({ status: 204 });
+        }
+        connected = body.username === "marie" && body.password === password;
         return route.fulfill({ status: connected ? 204 : 401 });
       }
       if (!connected) return route.fulfill({ status: 401 });
@@ -516,11 +523,15 @@ test("syncs local history between two devices and uploads work after a connectio
   }
 
   const panel = (device: typeof page) => device.getByRole("region", { name: "Sincronizar progreso", exact: true });
-  async function connect(device: typeof page) {
-    await device.getByRole("link", { name: "Plan", exact: true }).click();
+  async function connect(device: typeof page, credential: string) {
+    await device.getByRole("link", { name: "Iniciar sesión", exact: true }).click();
     const sync = panel(device);
-    await sync.getByLabel("Clave privada", { exact: true }).fill(key);
-    await sync.getByRole("button", { name: "Conectar este dispositivo", exact: true }).click();
+    await expect(device.getByRole("heading", { name: "Iniciar sesión", exact: true })).toBeVisible();
+    await expect(sync.getByLabel("Usuario", { exact: true })).toHaveAttribute("autocomplete", "username");
+    const field = sync.getByLabel("Contraseña", { exact: true });
+    await expect(field).toHaveAttribute("autocomplete", "current-password");
+    await field.fill(credential);
+    await sync.getByRole("button", { name: "Iniciar sesión", exact: true }).click();
     await expect(sync.getByText("Este dispositivo está sincronizado.", { exact: true })).toBeVisible();
   }
 
@@ -532,14 +543,22 @@ test("syncs local history between two devices and uploads work after a connectio
     await firstPractice.getByRole("radio", { name: "A, C, B", exact: true }).check();
     await firstPractice.getByRole("button", { name: "Comprobar", exact: true }).click();
     await expect(firstPractice.getByText("Correcto", { exact: true })).toBeVisible();
-    await connect(page);
+    await connect(page, key);
     await expect.poll(() => remote.state?.attempts.length).toBe(1);
+    const chosen = "mi contraseña de prueba";
+    await panel(page).getByText("Cambiar contraseña", { exact: true }).click();
+    await panel(page).getByLabel("Contraseña actual", { exact: true }).fill(key);
+    await panel(page).getByLabel("Nueva contraseña", { exact: true }).fill(chosen);
+    await panel(page).getByRole("button", { name: "Guardar contraseña", exact: true }).click();
+    await expect(panel(page).getByText("Contraseña guardada.", { exact: true })).toBeVisible();
+    await page.getByRole("link", { name: "Plan", exact: true }).click();
     await page.getByLabel("Minutos al día", { exact: true }).fill("75");
     await page.getByRole("button", { name: "Guardar plan", exact: true }).click();
     await expect.poll(() => remote.state?.settings.minutes).toBe(75);
 
     await second.goto("/#/");
-    await connect(second);
+    await connect(second, chosen);
+    await second.getByRole("link", { name: "Plan", exact: true }).click();
     await expect(second.getByLabel("Minutos al día", { exact: true })).toHaveValue("75");
     await second.getByRole("link", { name: "Progreso", exact: true }).click();
     await expect(second.getByText("100%", { exact: true })).toBeVisible();
@@ -559,8 +578,8 @@ test("syncs local history between two devices and uploads work after a connectio
     await expect.poll(() => remote.state?.attempts.length).toBe(2);
     await panel(page).getByRole("button", { name: "Sincronizar ahora", exact: true }).click();
     await expect.poll(() => page.evaluate(storageKey => JSON.parse(localStorage.getItem(storageKey)!).attempts.length, progressKey)).toBe(2);
-    await panel(page).getByRole("button", { name: "Desconectar este dispositivo", exact: true }).click();
-    await expect(panel(page).getByLabel("Clave privada", { exact: true })).toBeVisible();
+    await panel(page).getByRole("button", { name: "Cerrar sesión", exact: true }).click();
+    await expect(page.getByRole("link", { name: "Iniciar sesión", exact: true })).toBeVisible();
     await expect.poll(() => page.evaluate(storageKey => JSON.parse(localStorage.getItem(storageKey)!).attempts.length, progressKey)).toBe(2);
   } finally {
     await second.close();

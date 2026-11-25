@@ -7,6 +7,7 @@ import { AreaTag, duration, elapsedTime, Icon, lessonHref, miniHref, PageHeading
 import { OrderDiagram, QuestionCard } from "./QuestionCard";
 import { mergeImportedProgress, mergePlanSettings, mergeProgress, sameProgress, type ProgressBaseline } from "./progressSync";
 import { isPreviousProgressPage, PreviousProgressPage, primaryOrigin, requestPreviousProgress } from "./previousProgress";
+import SyncPanel from "./SyncPanel";
 import { useProgressSync } from "./useProgressSync";
 
 const navigation: { id: string; label: string; icon: IconName }[] = [
@@ -274,6 +275,7 @@ function StudyApp() {
       record.complete ? "Clase registrada como completa." : "Tiempo de clase guardado.",
     );
   }
+  const syncPanel = { ...sync, importPrevious: location.origin === primaryOrigin ? importPrevious : undefined };
   const lesson = id ? lessonById.get(id) : undefined;
   const active = page === "clase" || page === "mini" ? "temario" : page;
   const content = page === "" ? <Home state={state} today={today} dueCount={due.length}/>
@@ -290,12 +292,16 @@ function StudyApp() {
     : page === "progreso" ? <Suspense fallback={<p>Cargando el progreso…</p>}>
       <Progress state={state} today={today} onFlag={toggleFlag}/>
     </Suspense>
+    : page === "sesion" ? <>
+      <PageHeading title={connected ? "Mi sesión" : "Iniciar sesión"} />
+      <SyncPanel {...syncPanel} accountPage />
+    </>
     : page === "plan" ? <Suspense fallback={<p>Cargando el plan…</p>}>
       <Planner state={state} today={today} onSettings={(settings, base) => update(before => ({
           ...before, settings: mergePlanSettings(settings, before.settings, base),
         }))}
         onImport={importBackup} mergeBackup={connected}
-        sync={{ ...sync, importPrevious: location.origin === primaryOrigin ? importPrevious : undefined }} />
+        sync={syncPanel} />
     </Suspense>
     : <><PageHeading title="No encontramos esa página" /><a href="#/">Volver a Clase de hoy</a></>;
 
@@ -307,10 +313,19 @@ function StudyApp() {
         {navigation.map(item => <a href={`#/${item.id}`} aria-current={active === item.id ? "page" : undefined} key={item.id}>
           <Icon name={item.icon} size={20}/><span>{item.label}</span>{item.id === "repaso" && due.length > 0 && <span className="nav-count">{due.length}</span>}
         </a>)}
+        {connected && <a href="#/sesion" aria-current={page === "sesion" ? "page" : undefined}>
+          <Icon name="user" size={20}/><span>Mi sesión</span>
+        </a>}
       </nav>
       <div className="sidebar-note"><Icon name="calendar" size={17}/><span>{state.settings.weekdays.length} días por semana<br/><strong>{duration(state.settings.minutes)} por sesión</strong></span></div>
     </header>
-    <main id="main-content" ref={main} tabIndex={-1} className="main-content">{content}</main>
+    <main id="main-content" ref={main} tabIndex={-1} className="main-content">
+      {page !== "sesion" && sync.status === "disconnected" && <aside className="panel sign-in-prompt" aria-label="Acceso al progreso">
+        <p>Inicia sesión para ver tu avance y seguir estudiando desde cualquier dispositivo.</p>
+        <a className="button primary" href="#/sesion">Iniciar sesión</a>
+      </aside>}
+      {content}
+    </main>
     <div role="status" className={message ? "announcement" : "sr-only"} onClick={() => announce("")}>{message}{message && <button onClick={() => announce("")} aria-label="Cerrar aviso">×</button>}</div>
   </div>;
 }

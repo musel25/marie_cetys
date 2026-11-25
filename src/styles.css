@@ -257,11 +257,14 @@ progress::-webkit-progress-value { background: var(--forest); }
 .exception-row { display: flex; align-items: end; gap: .55rem; flex-wrap: wrap; }
 .date-minutes > .button { margin-block-start: .55rem; }
 .field-grid input, .exception-row input, .log-class input[type=number] { padding: .5rem; min-block-size: 2.65rem; inline-size: 100%; min-inline-size: 0; border: 1px solid #aabdad; border-radius: .45rem; background: #fdfefb; color: var(--ink); }
+.sign-in-prompt { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem; padding-block: .85rem; margin-block-end: 1.1rem; }
+.sign-in-prompt p { margin: 0; }
 .sync-panel { margin-block-start: 1.1rem; }
+.sync-panel > .button, .sync-panel > .row, .sync-password-settings { margin-block-start: .75rem; }
+.sync-password-settings > summary { font-weight: 650; cursor: pointer; }
 .sync-form { display: grid; gap: .5rem; max-inline-size: 29rem; margin-block-start: .9rem; }
 .sync-form label { font-size: .9rem; font-weight: 650; }
 .sync-form input { min-inline-size: 0; inline-size: 100%; min-block-size: 2.65rem; padding: .5rem; border: 1px solid #aabdad; border-radius: .45rem; background: #fdfefb; color: var(--ink); }
-.sync-form input[aria-invalid=true] { border-color: #a15330; }
 .sync-form > .button { justify-self: start; }
 .plan-notice { color: #5a431d; background: #fff1cf; border-radius: .6rem; padding: .75rem; margin-block: .75rem; }
 .plan-notice > p { margin-block-end: .55rem; }

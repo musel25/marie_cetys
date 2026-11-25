@@ -29,9 +29,11 @@ The script checks the nginx configuration before activation. It checks the publi
 
 The first deployment generates a 64-character key at `~/.config/marie-cetys/sync.key` with permissions `0600`. Keep the key in a password manager. Subsequent deployments reuse it. The VPS receives its SHA-256 digest in `/etc/marie-cetys-sync/key.hash`.
 
-The systemd service listens on IPv4 loopback at port 8417. Nginx routes `/api/progress` and `/api/progress/session` on the canonical host. It routes `/piensa/api/progress` and `/piensa/api/progress/session` on the alternate host. The service writes private progress data to `/var/lib/marie-cetys-sync/progress.json`. The service keeps the same data and key across releases.
+The systemd service listens on IPv4 loopback at port 8417. Nginx routes `/api/progress` and `/api/progress/session` on the canonical host. It routes `/piensa/api/progress` and `/piensa/api/progress/session` on the alternate host. The service writes private progress data to `/var/lib/marie-cetys-sync/progress.json`. The service keeps the progress and activation key across releases. A password chosen in the app is stored as a salted scrypt hash in the same private state directory.
 
-Open **Plan** on the canonical host and use the progress sync controls to connect with the key. To bring progress from the alternate URL, use the one-time import popup from the canonical host while the original browser profile still has the data. Allow the popup if the browser blocks it. Progress from a normal backup merges with existing progress while connected.
+Open **Iniciar sesión** on the canonical host and sign in as `marie`. Use the activation key as the initial password. Under **Mi sesión → Cambiar contraseña**, choose a password of at least 12 characters. The activation key remains available for recovery. A password change signs out other devices.
+
+To bring progress from the alternate URL, use **Importar de math.musel.dev** from the main address in the browser that has the old data. Allow the popup if the browser blocks it. Progress from a normal backup merges with existing progress while connected.
 
 ## Restore a release
 
