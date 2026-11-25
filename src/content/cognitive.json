@@ -3,22 +3,6 @@
     "id": "hc-orden",
     "title": "Ordenar con pistas",
     "objective": "Ubica letras o números con pistas de posición y elige el orden que cumple todas las pistas.",
-    "explanation": [
-      "Dibuja una casilla por letra o número. Lee de izquierda a derecha.",
-      "En A–X–B, A va antes de B. En A–B–X, A va inmediatamente antes de B. «Inmediatamente» indica que no hay una casilla en medio.",
-      "En A–X–B, B va después de A. Si dos letras van juntas, ocupan casillas vecinas.",
-      "En A–X–B–C, B queda entre A y C. El orden inverso también sirve. B no tiene que tocar los extremos.",
-      "Tacha las casillas prohibidas. Si R no va antes de M, pon R a la derecha de M. Si tampoco va después de P, pon R a la izquierda de P.",
-      "Prueba una pista. Tacha las opciones que fallen. Repite con las otras pistas."
-    ],
-    "example": {
-      "prompt": "Ordena R, M, T y P. T va antes de M. R va después de M. P va entre T y M. R no puede quedar junto a T.",
-      "steps": [
-        "T va a la izquierda de M. R va a la derecha de M. Anota el orden T–M–R. Deja las cuatro casillas vacías.",
-        "Inserta P entre T y M. Escribe el orden completo en las casillas: T–P–M–R.",
-        "Comprueba la última pista. T ocupa la primera casilla y R la cuarta."
-      ]
-    },
     "source": "Guía de College Board 2019, pp. 7 y 13 del PDF. Temario de CETYS, pp. 4–5. Prueba de práctica PIENSE II, pp. 2–3, ejercicios 1–6.",
     "prerequisiteIds": [],
     "exercises": [
@@ -145,20 +129,6 @@
     "id": "hc-metaforas",
     "title": "Encontrar el sentido de una metáfora",
     "objective": "Relaciona una descripción figurada con la opción que mejor comparte sus características.",
-    "explanation": [
-      "Una metáfora describe algo con palabras que normalmente se usan para otra cosa. «Manto de nieve» compara la nieve que cubre el suelo con una manta.",
-      "Identifica las pistas de la frase. En «manto de nieve», manto indica que cubre y nieve indica de qué está hecha la capa.",
-      "Traduce cada pista a una característica que puedas buscar en las opciones. Puede ser forma, color, función, sonido o movimiento.",
-      "Compara las cuatro opciones. Elige la que reúna las características más importantes de la frase."
-    ],
-    "example": {
-      "prompt": "¿Qué sugiere la frase «Lágrimas de la vela»? Considera estas opciones. Humo, mecha, cera derretida o chispa.",
-      "steps": [
-        "Una lágrima es una gota que baja por una superficie.",
-        "Busca algo de la vela que forme gotas y caiga por su costado.",
-        "La cera derretida forma esas gotas. El humo sube y la mecha permanece en su sitio."
-      ]
-    },
     "source": "Guía de College Board 2019, pp. 7 y 13–14 del PDF. Temario de CETYS, pp. 6–7. Prueba de práctica PIENSE II, p. 3, ejercicios 7–11.",
     "prerequisiteIds": [],
     "exercises": [
@@ -272,20 +242,6 @@
     "id": "hc-analogias",
     "title": "Completar analogías",
     "objective": "Explica la relación entre dos palabras y encuentra otra pareja con la misma relación y el mismo orden.",
-    "explanation": [
-      "Una analogía compara dos relaciones. Lee «A es a B como C es a ___» como una comparación entre parejas.",
-      "Escribe la relación de la primera pareja en una frase. Por ejemplo, «El hilo es el material con el que se hace una tela».",
-      "Sustituye los términos de tu frase con la segunda pareja. Conserva la dirección de la relación. En el ejemplo va primero el material y luego el producto.",
-      "Si dos opciones se relacionan con C, comprueba cuál repite la relación específica. Busca función, parte y conjunto, material y producto, lugar, cualidad u oposición."
-    ],
-    "example": {
-      "prompt": "Cincel es a tallar como aguja es a ___. Considera coser, tela, dedal e hilo.",
-      "steps": [
-        "Expresa la primera relación. Un cincel es una herramienta que sirve para tallar.",
-        "Conserva el orden «herramienta → acción». Una aguja sirve para coser.",
-        "Comprueba «tela» e «hilo». Son materiales que se usan al coser. La acción es coser."
-      ]
-    },
     "source": "Guía de College Board 2019, pp. 7 y 14 del PDF. Temario de CETYS, pp. 6–7. Prueba de práctica PIENSE II, p. 4, ejercicios 12–16.",
     "prerequisiteIds": [],
     "exercises": [
@@ -399,20 +355,6 @@
     "id": "hc-secuencias",
     "title": "Completar secuencias",
     "objective": "Identifica una regla que se repite en números o letras y úsala para completar los espacios.",
-    "explanation": [
-      "Compara varios pares de términos. Comprueba si la secuencia suma, resta o multiplica siempre por el mismo valor.",
-      "Si los cambios alternan, separa las posiciones impares y pares. Busca una regla en cada grupo.",
-      "Si cada término contiene una letra y un número, sigue las letras y los números por separado. Revisa si alternan mayúsculas y minúsculas.",
-      "Elige una regla que explique todos los términos visibles. Si falta un dato en medio, comprueba también el término que viene después."
-    ],
-    "example": {
-      "prompt": "Completa la secuencia b4, d7, f10, h13, ___.",
-      "steps": [
-        "Separa las letras b, d, f, h. Cada paso avanza dos posiciones del alfabeto. Después de h viene j en este patrón.",
-        "Separa los números 4, 7, 10, 13. Cada paso suma 3. El siguiente número es 16.",
-        "Junta la letra y el número. El término que falta es j16."
-      ]
-    },
     "source": "Guía de College Board 2019, pp. 7 y 15 del PDF. Temario de CETYS, pp. 8–9. Prueba de práctica PIENSE II, p. 5, ejercicios 17–21.",
     "prerequisiteIds": [],
     "exercises": [
@@ -526,20 +468,6 @@
     "id": "hc-matrices",
     "title": "Encontrar patrones en matrices",
     "objective": "Compara filas y columnas de un cuadro para encontrar los datos que faltan.",
-    "explanation": [
-      "Una matriz es un cuadro. Las filas van de izquierda a derecha y las columnas van de arriba abajo.",
-      "Busca una regla en las filas completas. A veces cada fila aumenta por pasos iguales. Otras veces las primeras dos casillas determinan la tercera.",
-      "Compara también las columnas completas. Comprueba si la regla funciona de arriba abajo. Si aparecen letras, revisa su orden y el uso de mayúsculas.",
-      "Coloca cada respuesta en su casilla. Comprueba la regla con los datos que ya aparecen."
-    ],
-    "example": {
-      "prompt": "Completa la última casilla.\n3 | 6 | 9\n5 | 8 | 11\n7 | 10 | ___",
-      "steps": [
-        "Lee de izquierda a derecha. Cada fila suma 3 por casilla.",
-        "Avanza desde 10. Al sumar 3 obtienes 13.",
-        "Comprueba la última columna. 9, 11 y 13 aumentan de 2 en 2."
-      ]
-    },
     "source": "Guía de College Board 2019, pp. 7 y 15–16 del PDF. Temario de CETYS, pp. 8–9. Prueba de práctica PIENSE II, p. 6, ejercicios 22–26.",
     "prerequisiteIds": [
       "hc-secuencias"
@@ -655,21 +583,6 @@
     "id": "hc-diagramas",
     "title": "Leer diagramas de tres conjuntos",
     "objective": "Identifica el sector que corresponde a lo que un objeto cumple y a lo que queda fuera.",
-    "explanation": [
-      "Cada círculo representa un conjunto. Un conjunto agrupa objetos que cumplen una característica.",
-      "Los sectores donde se superponen dos círculos contienen objetos que cumplen las dos características. En el centro se cumplen las tres.",
-      "Haz tres preguntas para cada objeto. ¿Cumple A? ¿Cumple B? ¿Cumple C? Busca el sector que coincida con esas tres respuestas.",
-      "Si la pregunta dice «solamente A y B», excluye el centro. Si dice «A y B, con o sin C», incluye el sector de A y B y también el centro.",
-      "Busca el número en la zona que cumple tus respuestas. Por ejemplo, 2 está dentro de A y B y fuera de C."
-    ],
-    "example": {
-      "prompt": "Sectores del diagrama. 1 solo A · 2 A y B sin C · 3 solo B · 4 A y C sin B · 5 A, B y C · 6 B y C sin A · 7 solo C.\nA = fichas redondas. B = fichas azules. C = fichas de metal. ¿En qué sector queda una ficha redonda de metal que es amarilla?",
-      "steps": [
-        "Redonda cumple A. De metal cumple C.",
-        "Amarilla queda fuera de B, que solo contiene fichas azules.",
-        "Busca A y C sin B. Es el sector 4."
-      ]
-    },
     "source": "Guía de College Board 2019, pp. 7 y 16–17 del PDF. Temario de CETYS, pp. 10–11. Prueba de práctica PIENSE II, pp. 7–8, ejercicios 27–32.",
     "prerequisiteIds": [],
     "exercises": [
@@ -783,21 +696,6 @@
     "id": "hc-condicional",
     "title": "Sacar conclusiones de reglas",
     "objective": "Distingue las conclusiones obligatorias de las que solo podrían ser ciertas.",
-    "explanation": [
-      "Una premisa es un dato o una regla que el problema da por cierta. Basa tu conclusión en esas premisas.",
-      "Escribe «si A, entonces B» como A → B. Si ocurre A, puedes concluir B. Si B no ocurre, A tampoco puede ocurrir. Si B ocurre, puede haber otra causa.",
-      "Lee «solamente si» como un requisito. «Ana entra solamente si tiene boleto» significa que, si Ana entra, tiene boleto.",
-      "Para trabajar con grupos, dibuja círculos. «Todos los A son B» pone a A dentro de B. «Ningún A es B» separa los dos grupos. «Algunos» indica uno o más casos.",
-      "Una conclusión necesaria se cumple en todos los casos que permiten las premisas. Si encuentras un caso que cumple las premisas pero contradice la conclusión, descarta esa opción."
-    ],
-    "example": {
-      "prompt": "Si Sara inscribe a su equipo, recibe un correo. Si recibe un correo, aparece en la lista. Sara no aparece en la lista. ¿Qué puedes concluir?",
-      "steps": [
-        "Escribe la cadena «inscripción → correo → lista».",
-        "Como Sara no aparece en la lista, no recibió el correo. Si lo hubiera recibido, aparecería.",
-        "Como no recibió el correo, tampoco inscribió a su equipo. Si lo hubiera inscrito, habría recibido el correo."
-      ]
-    },
     "source": "Guía de College Board 2019, pp. 7 y 18 del PDF. Temario de CETYS, pp. 10–11. Prueba de práctica PIENSE II, p. 10, ejercicios 38–42.",
     "prerequisiteIds": [
       "hc-diagramas"
@@ -913,21 +811,6 @@
     "id": "hc-practico",
     "title": "Resolver situaciones con los datos",
     "objective": "Elige la solución que cumple las condiciones o la explicación con mayor apoyo en los datos.",
-    "explanation": [
-      "Identifica qué pide la pregunta. Puede pedir una solución, una explicación probable o una relación entre varios datos.",
-      "Señala los hechos y los requisitos. Anota qué opciones chocan con ellos.",
-      "Si la pregunta pide la causa más probable, busca qué dato apoya cada explicación. Da prioridad a la que tiene apoyo directo.",
-      "Si hay medidas o cantidades, compara situaciones equivalentes. Haz la cuenta que pide el problema.",
-      "Una relación observada describe estos casos. Para afirmar que siempre ocurre, hacen falta más datos."
-    ],
-    "example": {
-      "prompt": "El club busca una sala para 18 personas. Necesita un proyector y tiene $300. La sala Norte tiene 20 lugares y proyector por $280. La sala Sur tiene 25 lugares sin proyector por $240. La sala Este tiene 15 lugares y proyector por $200. ¿Cuál cumple todos los requisitos?",
-      "steps": [
-        "Escribe los requisitos. Debe haber al menos 18 lugares, un proyector y un costo de $300 o menos.",
-        "Descarta la sala Sur porque carece de proyector. Descarta la sala Este porque faltan tres lugares.",
-        "Comprueba la sala Norte. Tiene 20 lugares, proyector y un costo dentro del presupuesto."
-      ]
-    },
     "source": "Guía de College Board 2019, pp. 7 y 18–19 del PDF. Temario de CETYS, pp. 12–13. Prueba de práctica PIENSE II, pp. 8–9, ejercicios 33–37.",
     "prerequisiteIds": [],
     "exercises": [

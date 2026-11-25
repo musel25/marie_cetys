@@ -4,7 +4,7 @@ import { miniFormCount, miniQuestions } from "./content/mini";
 import { miniHistory, nextMiniForm, studyDay } from "./study";
 import type { Lesson, MiniResult } from "./types";
 import { AreaTag, elapsedTime, Icon, lessonHref } from "./ui";
-import { QuestionVisual, questionText } from "./Workbook";
+import { QuestionVisual, questionText } from "./QuestionCard";
 
 type MiniRun = {
   id: string;

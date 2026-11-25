@@ -3,20 +3,6 @@
     "id": "en-sentence-order",
     "title": "Oraciones, preguntas y peticiones",
     "objective": "Identifica el orden del sujeto, el verbo y sus complementos en afirmaciones, negaciones, preguntas y peticiones.",
-    "explanation": [
-      "En una afirmación, coloca el sujeto antes del verbo. En «Mia sent Leo a message», Mia realiza la acción, Leo recibe el mensaje y a message nombra lo que se envía.",
-      "Con un verbo común en presente o pasado simple, forma preguntas y negaciones con do, does o did y el verbo base. Con el verbo be, coloca am, is, are, was o were antes del sujeto en una pregunta.",
-      "Muchas preguntas directas empiezan con what, where, when o how. En una pregunta indirecta, conserva el orden de afirmación: «Can you tell me where the office is?»",
-      "Para dar una instrucción, usa el verbo base. Para una petición cortés, usa «Could you» seguido del verbo base. Tras un verbo como be o seem, un adjetivo puede describir al sujeto."
-    ],
-    "example": {
-      "prompt": "Choose the correct question about the time. “What time ____ yesterday?”",
-      "steps": [
-        "Identifica yesterday. La pregunta se refiere al pasado.",
-        "Coloca did antes del sujeto. Después de did, usa el verbo base.",
-        "La pregunta completa puede ser «What time did the show start yesterday?»"
-      ]
-    },
     "source": "College Board, Guía de estudio PIENSE II (2019), p. 10 del PDF · Uso del lenguaje",
     "prerequisiteIds": [],
     "exercises": [
@@ -117,20 +103,6 @@
     "id": "en-verb-forms",
     "title": "Tiempos verbales y voz pasiva",
     "objective": "Reconoce el tiempo, la concordancia y las formas activas y pasivas de los verbos.",
-    "explanation": [
-      "El presente simple expresa rutinas o hechos. En tercera persona singular, suele añadir -s. El pasado simple relata acciones terminadas. Will más el verbo base puede expresar una predicción sobre el futuro.",
-      "Para acciones en curso, usa una forma de be y el verbo en -ing. En «They were walking when it started to rain», were walking indica la acción en curso y started el hecho posterior que ocurre durante ella.",
-      "En voz activa, el sujeto realiza la acción. En voz pasiva, recibe la acción. Usa be en el tiempo necesario y el participio pasado: «The signs were made by students». Con un modal, usa «modal + be + participio».",
-      "En condiciones imaginarias sobre un pasado que no ocurrió, una estructura común es «if + had + participio», seguida de «would have + participio»."
-    ],
-    "example": {
-      "prompt": "Complete the sentence. “The hall ____ by volunteers yesterday.” (clean)",
-      "steps": [
-        "Identifica the hall como aquello que recibe la acción. Usa la voz pasiva.",
-        "Identifica yesterday. Pon be en pasado y hazlo concordar con the hall: was.",
-        "Añade el participio cleaned. La respuesta es was cleaned."
-      ]
-    },
     "source": "College Board, Guía de estudio PIENSE II (2019), p. 10 del PDF · Uso del lenguaje",
     "prerequisiteIds": [
       "en-sentence-order"
@@ -233,20 +205,6 @@
     "id": "en-word-forms",
     "title": "Sustantivos, adjetivos y adverbios",
     "objective": "Distingue plurales comunes e irregulares, posesivos, orden de adjetivos, comparaciones y posición de adverbios.",
-    "explanation": [
-      "Muchos sustantivos añaden -s o -es para el plural. Algunos son irregulares, como child → children. Usa apóstrofo y s para posesión singular («the child’s bag»). Si el plural ya termina en -s, añade solo el apóstrofo («the students’ bags»).",
-      "Cuando varios adjetivos preceden a un sustantivo, el orden habitual antepone cantidad, opinión y tamaño al color y al material. En «three small blue boxes», three indica cantidad, small indica tamaño y blue indica color.",
-      "Para comparar dos referentes, usa comparativo y, si nombras el segundo, añade than. Para destacar un referente en un grupo, usa superlativo, a menudo con the. Las formas de good son better y best.",
-      "Los adjetivos en -ed suelen describir cómo se siente alguien. Los adjetivos en -ing suelen describir lo que causa esa sensación. Los adverbios aportan datos como tiempo, lugar o modo."
-    ],
-    "example": {
-      "prompt": "Complete the sentence. “At 38 meters, this is ____ of the three bridges.” (long)",
-      "steps": [
-        "Observa of the three bridges. Se destaca un puente dentro de un grupo.",
-        "Long es un adjetivo corto. Añade -est para formar el superlativo.",
-        "Escribe the longest."
-      ]
-    },
     "source": "College Board, Guía de estudio PIENSE II (2019), p. 10 del PDF · Uso del lenguaje",
     "prerequisiteIds": [
       "en-sentence-order"
@@ -349,20 +307,6 @@
     "id": "en-function-words",
     "title": "Preposiciones, pronombres y determinantes",
     "objective": "Elige palabras que expresan lugar, tiempo, posesión, cantidad o relación entre ideas.",
-    "explanation": [
-      "Para el tiempo, usa at con una hora concreta, on con un día o una fecha e in con un mes o un año. Para lugar, elige según la relación: in indica interior, on contacto con una superficie y between posición entre elementos.",
-      "Un pronombre de sujeto realiza la acción (I, he, she, we, they). Una forma de objeto puede seguir al verbo o a una preposición (me, him, her, us, them). My acompaña a un nombre y mine puede reemplazar a un grupo nominal posesivo.",
-      "This y that acompañan a un sustantivo singular. These y those acompañan a un sustantivo plural. Many acompaña a sustantivos contables en plural. Much se usa con sustantivos no contables, sobre todo en preguntas y negaciones.",
-      "Un conector indica cómo se relacionan dos ideas. And suma, but contrasta y because expresa una causa."
-    ],
-    "example": {
-      "prompt": "Complete the sentence. “I left my notes at home, so Ana shared ____ with me.”",
-      "steps": [
-        "Identifica lo que Ana compartió. Son sus propios apuntes.",
-        "Después del espacio no hay un sustantivo. Necesitas un pronombre posesivo.",
-        "Usa hers. Equivale a her notes."
-      ]
-    },
     "source": "College Board, Guía de estudio PIENSE II (2019), p. 10 del PDF · Uso del lenguaje",
     "prerequisiteIds": [
       "en-sentence-order"
@@ -465,20 +409,6 @@
     "id": "en-reading-evidence",
     "title": "Detalles, secuencia e inferencias",
     "objective": "Localiza evidencia en inglés para reconocer detalles, ordenar hechos e inferir conclusiones.",
-    "explanation": [
-      "Lee primero la pregunta. Busca nombres, números y expresiones que la conecten con una parte del texto. Para un detalle explícito, identifica la oración que lo afirma.",
-      "Para ordenar eventos, localiza expresiones como before, after y finally. El orden de las oraciones puede ser distinto del orden de los hechos.",
-      "Para distinguir causa y efecto, pregunta qué produjo el cambio y qué ocurrió como resultado. Una inferencia une pistas. Una conclusión resume lo que esas pistas permiten sostener.",
-      "Para el sentido de una palabra, prueba cada opción en su oración. Para un título, busca uno que represente el tema y el enfoque. Un hecho se puede verificar y una opinión expresa un juicio."
-    ],
-    "example": {
-      "prompt": "The school library added a return slot that families could reach from the sidewalk. It was beside the side entrance, which staff locked every evening. After one month, the library counted 64 books returned through the slot. Staff decided to keep it open on weekends.\n\nHow many books did families return through the slot in the first month?",
-      "steps": [
-        "Localiza «after one month». Esa frase indica cuándo se contó lo que habían devuelto.",
-        "En esa oración, busca el dato que contesta «how many books».",
-        "La respuesta es 64 libros. El texto dice «64 books returned through the slot»."
-      ]
-    },
     "source": "College Board, Guía de estudio PIENSE II (2019), p. 10 del PDF · Comprensión y análisis de lectura",
     "prerequisiteIds": [],
     "exercises": [
@@ -592,20 +522,6 @@
     "id": "en-reading-literary",
     "title": "Personajes, propósito y lenguaje figurado",
     "objective": "Reconoce personajes, ambiente, punto de vista, conflictos, tono y tipo de texto.",
-    "explanation": [
-      "Identifica quién cuenta la historia y qué personaje enfrenta el problema. En un relato en primera persona, el narrador usa I o we para contar su propia experiencia.",
-      "El ambiente incluye el lugar, el tiempo y las condiciones en que ocurre la acción. Un conflicto interno ocurre dentro de un personaje. Un conflicto externo enfrenta al personaje con una persona, la naturaleza u otro obstáculo exterior.",
-      "El propósito es lo que el autor busca lograr. El tono es la actitud que se percibe en sus palabras. Busca verbos, adjetivos y acciones que respalden la opción.",
-      "Un relato presenta hechos en secuencia. Una descripción resalta rasgos. Un texto informativo explica datos. Un texto argumentativo sostiene una postura con razones. Un símil usa like o as para comparar y una metáfora establece la comparación de forma directa."
-    ],
-    "example": {
-      "prompt": "“I read my name on the list and imagined the whole room laughing. During practice, I missed the first line twice. On Thursday, my brother sat in the front row with his notebook. I felt my face grow hot as I walked onstage. Then I spotted his smile and took a breath. The words came out, one by one.”\n\n“What is the narrator’s main conflict?”",
-      "steps": [
-        "Identifica al personaje central. El pronombre I muestra que cuenta su propia experiencia.",
-        "Busca el obstáculo. Le da miedo equivocarse y que el público se ría.",
-        "Clasifica el conflicto como interno. La dificultad principal es controlar ese temor."
-      ]
-    },
     "source": "College Board, Guía de estudio PIENSE II (2019), p. 10 del PDF · Comprensión y análisis de lectura",
     "prerequisiteIds": [
       "en-reading-evidence"
@@ -721,20 +637,6 @@
     "id": "en-writing-organization",
     "title": "Organización y transiciones",
     "objective": "Elige oraciones de inicio y cierre, ordena un párrafo y selecciona transiciones adecuadas.",
-    "explanation": [
-      "La primera oración presenta el tema y su enfoque. Los siguientes enunciados lo desarrollan con detalles. La conclusión resume el resultado o recoge la idea principal.",
-      "Revisa qué datos necesita el lector primero. Pronombres como it y they suelen referirse a algo ya mencionado. First, next y finally indican secuencia.",
-      "Selecciona una transición según la relación. However señala contraste. Therefore presenta un resultado. For example introduce un caso que ilustra la idea anterior.",
-      "Para detectar una oración ajena, verifica si cumple el propósito del párrafo. Un tema similar puede estar fuera del enfoque concreto."
-    ],
-    "example": {
-      "prompt": "(1) Finally, she tested the lamp with a new battery. (2) Imani repaired a small reading lamp in three steps. (3) First, she opened the battery cover. (4) Next, she cleaned the metal contacts.\n\n“In what order should the sentences appear?”",
-      "steps": [
-        "Empieza por (2), que presenta a Imani y la reparación.",
-        "Sigue las marcas de secuencia first, next y finally.",
-        "El orden es 2, 3, 4, 1."
-      ]
-    },
     "source": "College Board, Guía de estudio PIENSE II (2019), p. 10 del PDF · Destrezas de redacción · Coherencia y claridad",
     "prerequisiteIds": [
       "en-sentence-order",
@@ -838,20 +740,6 @@
     "id": "en-writing-editing",
     "title": "Puntuación y edición de oraciones",
     "objective": "Reconoce la puntuación adecuada y edita frases para aplicar el vocabulario preciso y reducir repeticiones.",
-    "explanation": [
-      "Usa una coma después de una cláusula introductoria como «After the rain stopped». Aísla con dos comas la información adicional que se puede quitar sin cambiar a qué persona u objeto se refiere la frase.",
-      "Dos oraciones completas necesitan un punto, un punto y coma o una coma con una conjunción como and, but o so. Una coma sola puede producir un error llamado comma splice.",
-      "Sustituye expresiones vagas por palabras que indiquen la acción exacta. Antes de cambiar una frase, comprueba qué información debes conservar.",
-      "Si dos oraciones comparten sujeto o tema, únelas con un conector, una cláusula o una lista de acciones. Conserva el orden y la relación originales."
-    ],
-    "example": {
-      "prompt": "Combine the sentences. “Ken tested the fan. Ken replaced its batteries.”",
-      "steps": [
-        "Identifica el sujeto que se repite. Es Ken.",
-        "Conserva las dos acciones en el orden indicado.",
-        "Une los dos verbos con and. «Ken tested the fan and replaced its batteries»."
-      ]
-    },
     "source": "College Board, Guía de estudio PIENSE II (2019), p. 11 del PDF · Destrezas de redacción · Propiedad, corrección, precisión y concisión",
     "prerequisiteIds": [
       "en-writing-organization"

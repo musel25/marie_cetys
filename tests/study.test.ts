@@ -3,8 +3,8 @@ import { test } from "node:test";
 import { blankState, classPlan, miniHistory, nextMiniForm, nextQuestion, parseBackup, periodStart, reviewCards, studyMinutes, summary } from "../src/study";
 import type { Attempt, Lesson, MiniResult } from "../src/types";
 const lesson = (id: string): Lesson => ({
-  id, area: "hc", title: id, objective: "goal", source: "source", explanation: ["step"],
-  prerequisiteIds: [], example: { prompt: "p", steps: ["s"] },
+  id, area: "hc", title: id, objective: "goal", source: "source",
+  prerequisiteIds: [],
   exercises: [
     { prompt: "open", options: ["a", "b", "c", "d"], answer: 1, explanation: "why", hint: "hint", difficulty: "base" },
     { prompt: "reserved", options: ["a", "b", "c", "d"], answer: 1, explanation: "why", hint: "hint", difficulty: "challenge" },

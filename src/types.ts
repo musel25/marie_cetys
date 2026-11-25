@@ -12,13 +12,10 @@ export interface Exercise {
   difficulty: Difficulty;
 }
 
-export interface WorkedExample {
-  prompt: string;
-  explanation: string;
-}
-
 export interface InteractiveExample {
   prompt: string;
+  lang?: "en";
+  visual?: "order-slots";
   steps: Pick<Exercise, "prompt" | "options" | "answer" | "explanation">[];
 }
 
@@ -34,11 +31,8 @@ export interface LessonDraft {
   id: string;
   title: string;
   objective: string;
-  explanation: string[] | { sections: GuidedSection[] };
-  example?: { prompt: string; steps: string[] };
   miniQuestionCount?: number;
   miniFormCount?: number;
-  workedExamples?: WorkedExample[];
   prerequisiteIds: string[];
   source: string;
   exercises: Exercise[];

@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { areaOrder, areas, curriculum, guidedSections, lessonById } from "./content";
+import { areaOrder, areas, curriculum, lessonById } from "./content";
+import { guidedSections } from "./content/guides";
 import { addDays, dateLabel, periodStart, questions, summary } from "./study";
 import { duration, elapsedTime, Icon, miniHref, PageHeading, lessonHref, questionHref } from "./ui";
 import type { Period, StudyState } from "./types";
@@ -14,7 +15,7 @@ function shiftPeriod(day: string, period: Period, delta: number) {
   return value.toISOString().slice(0, 10);
 }
 
-export function Progress({ state, today, onFlag }: { state: StudyState; today: string; onFlag: (id: string) => void }) {
+export default function Progress({ state, today, onFlag }: { state: StudyState; today: string; onFlag: (id: string) => void }) {
   const [period, setPeriod] = useState<Period>("week");
   const [selected, setSelected] = useState(today);
   const first = periodStart(selected, period);

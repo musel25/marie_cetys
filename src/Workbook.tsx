@@ -1,29 +1,10 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { AreaTag, duration, Icon, lessonHref, miniHref } from "./ui";
-import { guidedSections, lessonById, miniQuestionCount } from "./content";
+import { lessonById, miniQuestionCount } from "./content";
+import { guidedSections } from "./content/guides";
+import { AnswerOptions, OrderDiagram, QuestionCard, QuestionVisual, questionText } from "./QuestionCard";
 import { nextQuestion, questions, studyDay } from "./study";
-import type { Attempt, ClassRecord, InteractiveExample, Lesson, Mode, Question, StudyState } from "./types";
-
-const classBlocks = [
-  ["Diagnóstico", 5], ["Explicación", 10], ["Ejemplo guiado", 10],
-  ["Ejercicios", 15], ["Miniexamen", 10], ["Corrección", 10],
-] as const;
-
-const cognitiveAgenda = [
-  ["Primer intento", 5, "Empieza con el ejercicio 1. Pídele que diga qué revisaría primero."],
-  ["Resuelvan en equipo", 10, "Hagan el ejercicio 2. Usa la solución para mostrar un paso útil. Pídele que explique el paso siguiente."],
-  ["Práctica", 20, "Pídele que resuelva los ejercicios 3 a 7. Corrijan una respuesta si se atasca."],
-  ["Miniexamen", 10, "Abre las cinco preguntas nuevas. Deja que responda y entregue por su cuenta."],
-  ["Corrección", 15, "Revisen qué paso faltó y comparen el tiempo y los aciertos con el intento anterior."],
-] as const;
-const defaultAgenda = [
-  "Empieza con una pregunta básica. Pide que explique qué haría primero.",
-  "Explica el método en pasos cortos. Usa un ejemplo concreto.",
-  "Recorre el ejemplo. Deja que ella haga y explique el último paso.",
-  "Resuelvan dos ejercicios juntos. Después, usa preguntas de examen para la práctica independiente.",
-  "Deja que responda el miniexamen y entregue por su cuenta.",
-  "Revisen los errores del miniexamen. Pide que explique cómo corregirlos.",
-];
+import type { Attempt, ClassRecord, InteractiveExample, Lesson, Question, StudyState } from "./types";
 
 const interleavedAgenda = [
   ["Diagnóstico", 5, "Elige un ejercicio guiado. Pídele que diga qué diferencia tendría que identificar."],
@@ -33,88 +14,20 @@ const interleavedAgenda = [
   ["Corrección", 10, "Revisen las respuestas. Vuelvan al bloque que explica cada error."],
 ] as const;
 
-export function Agenda({ lesson }: { lesson: Lesson }) {
-  const blocks = lesson.area === "hc" ? cognitiveAgenda
-    : !Array.isArray(lesson.explanation) ? interleavedAgenda
-    : classBlocks.map(([name, time], index) => [name, time, defaultAgenda[index]] as const);
-  return <ol className="class-agenda">{blocks.map(([name, time, note]) =>
+function Agenda() {
+  return <ol className="class-agenda">{interleavedAgenda.map(([name, time, note]) =>
     <li key={name}><span className="agenda-time">{time} min</span><div><strong>{name}</strong><p>{note}</p></div></li>,
   )}</ol>;
 }
 
-export function OrderDiagram({ step = 0, preview = false }: { step?: number; preview?: boolean }) {
-  const symbols = preview ? ["A", "", "C", "D"] : step < 2 ? ["", "", "", ""] : ["T", "P", "M", "R"];
-  return <figure className="order-diagram" aria-label={symbols.map(s => s || "casilla vacía").join(", ")}>
-    <div className="diagram-tiles" aria-hidden="true">{symbols.map((symbol, index) =>
-      <span key={index} className={`diagram-tile ${symbol === "P" || (preview && !symbol) ? "tile-highlight" : ""}`}>{symbol || "·"}</span>,
-    )}</div>
-    <figcaption>{preview ? "Una casilla por letra" : step === 0 ? "Dibuja cuatro casillas" : step === 1 ? "Orden provisional: T–M–R" : "P queda entre T y M"}</figcaption>
-  </figure>;
-}
-
-const vennPrefix = "Sectores del diagrama.";
-
-export function questionText(prompt: string) {
-  return prompt.startsWith(vennPrefix) ? prompt.slice(prompt.indexOf("\n") + 1) : prompt;
-}
-
-export function QuestionVisual({ prompt }: { prompt: string }) {
-  if (!prompt.startsWith(vennPrefix)) return null;
-  const alt = prompt.slice(0, prompt.indexOf("\n"));
-  return <div className="venn-diagram" role="img" aria-label={alt}>
-    <div aria-hidden="true" className="venn-circle venn-a" />
-    <div aria-hidden="true" className="venn-circle venn-b" />
-    <div aria-hidden="true" className="venn-circle venn-c" />
-    {["A", "B", "C", "1", "2", "3", "4", "5", "6", "7"].map(label =>
-      <span aria-hidden="true" key={label} data-venn-label={label}>{label}</span>,
-    )}
-  </div>;
-}
-
-function GuidedExample({ lesson, example }: { lesson: Lesson; example: NonNullable<Lesson["example"]> }) {
-  const total = example.steps.length;
-  const key = "marie-cetys:example:" + lesson.id;
-  const [step, setStep] = useState(() => {
-    try { return Math.max(0, Math.min(total, Number(sessionStorage.getItem(key)) || 0)); } catch { return 0; }
-  });
-  function showStep(index: number) {
-    setStep(index);
-    try { sessionStorage.setItem(key, String(index)); } catch { /* continue without session storage */ }
-  }
-  return <div className="worked-example">
-    <p className="exercise-prompt" lang={lesson.area === "en" ? "en" : undefined}>{questionText(example.prompt)}</p>
-    <QuestionVisual prompt={example.prompt} />
-    {lesson.id === "hc-orden" && <OrderDiagram step={step} />}
-    <ol className="worked-steps" aria-live="polite">{example.steps.slice(0, step).map((line, index) => <li key={index}>{line}</li>)}</ol>
-    <div className="row">
-      {step < total && <button className="button primary" onClick={() => showStep(step + 1)}>{step ? "Ver el siguiente paso" : "Ver el primer paso"}</button>}
-      {step > 0 && <button className="button quiet" onClick={() => showStep(0)}>Reiniciar ejemplo</button>}
-    </div>
-  </div>;
-}
-
-function AnswerOptions({ options, selection, answer, revealed, lang, onSelect }: {
-  options: string[]; selection: number | null; answer: number; revealed: boolean;
-  lang?: string; onSelect: (index: number) => void;
-}) {
-  const group = useId();
-  return <div className="answers">{options.map((option, index) => (
-    <label className="answer" key={option} data-correct={revealed && index === answer}
-      data-wrong={revealed && selection === index && index !== answer}>
-      <input type="radio" name={group} required checked={selection === index} onChange={() => onSelect(index)} />
-      <span className="answer-letter" aria-hidden="true">{String.fromCharCode(65 + index)}</span>
-      <span lang={lang}>{option}</span>
-    </label>
-  ))}</div>;
-}
-
-function WorkedExampleSteps({ example }: { example: InteractiveExample }) {
+function WorkedExampleSteps({ example, area }: { example: InteractiveExample; area: Lesson["area"] }) {
   const headingId = useId();
   const [index, setIndex] = useState(0);
   const [responses, setResponses] = useState<Record<number, { selection: number; revealed: boolean }>>({});
   const prompt = useRef<HTMLLegendElement>(null);
   const feedback = useRef<HTMLDivElement>(null);
   const step = example.steps[index];
+  const language = area === "en" ? "en" : undefined;
   const response = responses[index];
   const revealed = response?.revealed ?? false;
   const correct = response?.selection === step.answer;
@@ -138,13 +51,14 @@ function WorkedExampleSteps({ example }: { example: InteractiveExample }) {
 
   return <div className="worked-example">
     <h4 id={headingId}>Ejemplo resuelto</h4>
-    <p>{example.prompt}</p>
+    <p lang={example.lang}>{questionText(example.prompt)}</p>
+    {example.visual === "order-slots" ? <OrderDiagram step={index + Number(revealed)} /> : <QuestionVisual prompt={example.prompt} />}
     <form className="exercise example-steps" aria-labelledby={headingId} onSubmit={check}>
       <p className="muted">Paso {index + 1} de {example.steps.length}</p>
       <fieldset disabled={revealed}>
-        <legend className="exercise-prompt" ref={prompt} tabIndex={-1}>{step.prompt}</legend>
+        <legend className="exercise-prompt" ref={prompt} tabIndex={-1} lang={language}>{step.prompt}</legend>
         <AnswerOptions options={step.options} answer={step.answer} selection={response?.selection ?? null}
-          revealed={revealed} onSelect={selection => setResponses({ ...responses, [index]: { selection, revealed: false } })} />
+          revealed={revealed} lang={language} onSelect={selection => setResponses({ ...responses, [index]: { selection, revealed: false } })} />
       </fieldset>
       {revealed && <div className={`feedback ${correct ? "correct" : "wrong"}`} ref={feedback} tabIndex={-1}>
         <strong>{correct ? "Correcto" : `Respuesta correcta: ${String.fromCharCode(65 + step.answer)}`}</strong>
@@ -161,103 +75,7 @@ function WorkedExampleSteps({ example }: { example: InteractiveExample }) {
   </div>;
 }
 
-export function QuestionCard({ question, mode, area, flagged, previous, onFlag, onAttempt }: {
-  question: Question; mode: Exclude<Mode, "exam">; area: Lesson["area"]; flagged: boolean;
-  previous?: Attempt;
-  onFlag: () => void; onAttempt: (attempt: Attempt) => void;
-}) {
-  const [selection, setSelection] = useState<number | null>(previous?.selection ?? null);
-  const [hinted, setHinted] = useState(false);
-  const [guessed, setGuessed] = useState(false);
-  const [submitted, setSubmitted] = useState(previous?.selection !== undefined);
-  const prompt = useRef<HTMLLegendElement>(null);
-  const time = useRef({ activeSince: 0, elapsed: 0, visible: false });
-  const answered = useRef(previous?.selection !== undefined);
-  const focusOnFeedback = useRef(false);
-  const nextFeedback = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    if (submitted && focusOnFeedback.current) {
-      nextFeedback.current?.focus();
-      focusOnFeedback.current = false;
-    }
-  }, [submitted]);
-  useEffect(() => {
-    if (!prompt.current || mode === "live" || submitted) return;
-    const tracker = time.current;
-    function updateClock() {
-      const now = performance.now();
-      if (tracker.visible && document.visibilityState === "visible") {
-        if (!tracker.activeSince) tracker.activeSince = now;
-      } else if (tracker.activeSince) {
-        tracker.elapsed += now - tracker.activeSince;
-        tracker.activeSince = 0;
-      }
-    }
-    const observer = new IntersectionObserver(([entry]) => {
-      tracker.visible = entry.isIntersecting;
-      updateClock();
-    }, { threshold: 0.25 });
-    observer.observe(prompt.current);
-    document.addEventListener("visibilitychange", updateClock);
-    return () => {
-      observer.disconnect();
-      document.removeEventListener("visibilitychange", updateClock);
-      tracker.visible = false;
-      updateClock();
-    };
-  }, [mode, submitted]);
-  function submit(event: React.FormEvent) {
-    event.preventDefault();
-    if (selection === null || answered.current) return;
-    answered.current = true;
-    focusOnFeedback.current = true;
-    const at = Date.now();
-    const tracker = time.current;
-    const elapsed = tracker.elapsed + (tracker.activeSince ? performance.now() - tracker.activeSince : 0);
-    onAttempt({
-      id: crypto.randomUUID(), at, day: studyDay(new Date(at)), item: question.id, skill: question.skill,
-      correct: selection === question.answer, help: hinted || guessed, selection,
-      seconds: mode === "live" ? 0 : Math.max(1, Math.min(300, Math.round(elapsed / 1000))),
-      mode,
-    });
-    setSubmitted(true);
-  }
-  function retry() {
-    answered.current = false;
-    time.current = { activeSince: 0, elapsed: 0, visible: false };
-    setSelection(null);
-    setHinted(false);
-    setGuessed(false);
-    setSubmitted(false);
-    requestAnimationFrame(() => prompt.current?.focus());
-  }
-  return <form className="exercise" onSubmit={submit}>
-    <fieldset disabled={submitted}>
-      <legend ref={prompt} tabIndex={-1} className="exercise-prompt" lang={area === "en" ? "en" : undefined}>{questionText(question.prompt)}</legend>
-      <QuestionVisual prompt={question.prompt} />
-      <AnswerOptions options={question.options} answer={question.answer} selection={selection} revealed={submitted}
-        lang={area === "en" ? "en" : undefined} onSelect={setSelection} />
-    </fieldset>
-    <div className="feedback-region" aria-live="polite">
-      {submitted && <div tabIndex={-1} ref={nextFeedback} className={`feedback ${selection === question.answer ? "correct" : "wrong"}`}>
-        <strong>{selection === question.answer ? "Correcto" : `Respuesta correcta: ${String.fromCharCode(65 + question.answer)}`}</strong>
-        <p>{question.explanation}</p>
-      </div>}
-    </div>
-    {!submitted && <>
-      {hinted && <p className="hint">{question.hint}</p>}
-      <div className="row question-actions">
-        <button className="button primary" disabled={selection === null}>Comprobar</button>
-        {!hinted && <button type="button" className="button secondary" onClick={() => setHinted(true)}>Ver pista</button>}
-        <label className="check-label"><input type="checkbox" checked={guessed} onChange={event => setGuessed(event.target.checked)} /> Estoy adivinando</label>
-      </div>
-    </>}
-    {submitted && mode !== "review" && <button type="button" className="button secondary retry-question" onClick={retry}>Volver a intentar</button>}
-    <button type="button" className="flag-button" aria-pressed={flagged} onClick={onFlag}><Icon name="flag" size={15} />{flagged ? "Duda guardada" : "Guardar duda"}</button>
-  </form>;
-}
-
-export function Workbook({ lesson, target, state, onAttempt, onFlag, onClass, onPin, announce }: {
+export default function Workbook({ lesson, target, state, onAttempt, onFlag, onClass, onPin, announce }: {
   lesson: Lesson; target?: string; state: StudyState; onAttempt: (attempt: Attempt) => void; onFlag: (id: string) => void;
   onClass: (record: ClassRecord) => void; onPin: (id: string) => void; announce: (message: string) => void;
 }) {
@@ -328,13 +146,11 @@ export function Workbook({ lesson, target, state, onAttempt, onFlag, onClass, on
       onFlag={() => onFlag(question.id)} onAttempt={onAttempt} />;
   }
   const rules = <>
-    {Array.isArray(lesson.explanation)
-      ? <ol className="lesson-steps">{lesson.explanation.map((step, index) => <li key={index}>{step}</li>)}</ol>
-      : guided.map(({ id, title, points, example, question }) => <section className="lesson-rule" key={id}
+    {guided.map(({ id, title, points, example, question }) => <section className="lesson-rule" key={id}
         aria-labelledby={`regla-${id}`} id={question.id === targetQuestion?.id ? "pregunta-marcada" : undefined} tabIndex={-1}>
         <h3 id={`regla-${id}`}>{title}</h3>
         <ul className="lesson-steps">{points.map(point => <li key={point}>{point}</li>)}</ul>
-        <WorkedExampleSteps example={example} />
+        <WorkedExampleSteps example={example} area={lesson.area} />
         <div className="lesson-guided-practice">
           <h4>Ejercicio guiado</h4>
           {exerciseCard(question, classMode)}
@@ -344,10 +160,6 @@ export function Workbook({ lesson, target, state, onAttempt, onFlag, onClass, on
       <span key={entry!.id}>{index > 0 && ", "}<a href={lessonHref(entry!.id)}>{entry!.title}</a></span>,
     )}</p>}
   </>;
-  const example = lesson.example && <section className="worksheet" id="ejemplo">
-    <h2>{cognitive ? "Ejercicio resuelto paso a paso" : "Ejemplo guiado"}</h2>
-    <GuidedExample lesson={lesson} example={lesson.example} />
-  </section>;
   return <>
     <header className="lesson-header">
       <a className="back-link" href="#/temario">Temario</a>
@@ -365,15 +177,12 @@ export function Workbook({ lesson, target, state, onAttempt, onFlag, onClass, on
     </header>
     <div className="workbook-grid">
       <div className="workbook-flow">
-        {!cognitive && <><section className="worksheet" id="explicacion" aria-labelledby="workbook-explanation"><h2 id="workbook-explanation">Explicación</h2>{rules}</section>{example}</>}
-        {!!lesson.workedExamples?.length && <section className="worksheet" aria-labelledby="worked-examples-title">
-          <h2 id="worked-examples-title">Ejemplos resueltos</h2>
-          <ul className="worked-steps">{lesson.workedExamples.map(item => <li key={item.prompt}>
-            <strong>{item.prompt}</strong><p>{item.explanation}</p>
-          </li>)}</ul>
-        </section>}
+        <section className="worksheet" id="explicacion" aria-labelledby="workbook-explanation">
+          <h2 id="workbook-explanation">Explicación</h2>
+          {rules}
+        </section>
         <section className="practice-stack" id="ejercicios" tabIndex={-1} aria-labelledby="workbook-exercises">
-          <div className="section-title"><h2 id="workbook-exercises">{live ? "Variantes para la clase" : guided.length ? "Ejercicios de prueba" : "Ejercicios"}</h2><span>{exerciseList.length} preguntas</span></div>
+          <div className="section-title"><h2 id="workbook-exercises">{live ? "Variantes para la clase" : "Ejercicios de prueba"}</h2><span>{exerciseList.length} preguntas</span></div>
           {cognitive && !live && <p>Intenta cada ejercicio. Si te atoras, abre la pista. Lee cómo se resuelve después de comprobar.</p>}
           {live && <button className="button secondary" onClick={() => setLive(false)}>Volver a ejercicios publicados</button>}
           {exerciseList.map((question, index) => (
@@ -390,17 +199,13 @@ export function Workbook({ lesson, target, state, onAttempt, onFlag, onClass, on
           <p>Resuelve {miniQuestionCount(lesson)} preguntas distintas. Al entregar, el sitio guarda tu tiempo y tus aciertos.</p>
           <a className="button primary" href={miniHref(lesson.id)}>Hacer miniexamen</a>
         </section>
-        {cognitive && <>
-          {example}
-          <details className="worksheet mini-rules" id="explicacion"><summary>Consultar las reglas</summary>{rules}</details>
-        </>}
         <p className="source-note">{lesson.source}</p>
       </div>
       <aside className="lesson-rail" id="guia-clase" tabIndex={-1} aria-label="Guía de clase">
         <section className="rail-panel">
           <h2>Guía para la clase</h2>
           <p className="muted">Sesión modelo de 60 minutos.</p>
-          <Agenda lesson={lesson} />
+          <Agenda />
           <label className="check-label"><input type="checkbox" checked={classMode} onChange={event => updateClassMode(event.target.checked)} /> Estamos en clase</label>
           {classMode && <p className="muted">Las respuestas cuentan. Registra el tiempo total al final.</p>}
           {!live && <button className="button secondary" onClick={openLive}>Abrir 3 ejercicios para la clase</button>}
