@@ -37,7 +37,7 @@ export function dateLabel(day: string, kind: "short" | "long" = "short") {
 export function blankState(day = studyDay()): StudyState {
   return {
     version: 1,
-    settings: { start: day, exam: "", weekdays: [1, 2, 3, 4, 5], minutes: 60, exceptions: [] },
+    settings: { start: day, exam: "", weekdays: [1, 2, 3, 4, 5], minutes: 60, exceptions: [], minutesByDate: {} },
     pinned: "",
     attempts: [],
     classes: [],
@@ -64,14 +64,16 @@ function validString(value: unknown, length = 100): value is string {
   return typeof value === "string" && value.length > 0 && value.length <= length;
 }
 
-function validSettings(settings: unknown): settings is Settings {
+function validSettings(settings: unknown): settings is Omit<Settings, "minutesByDate"> & Partial<Pick<Settings, "minutesByDate">> {
   return object(settings) && dateIsValid(settings.start) &&
     (settings.exam === "" || (dateIsValid(settings.exam) && settings.exam > settings.start)) &&
     Array.isArray(settings.weekdays) && settings.weekdays.length > 0 &&
     new Set(settings.weekdays).size === settings.weekdays.length &&
     settings.weekdays.every(day => boundedInt(day, 0, 6)) && boundedInt(settings.minutes, 15, 180) &&
     Array.isArray(settings.exceptions) && settings.exceptions.length <= 365 &&
-    settings.exceptions.every(dateIsValid);
+    settings.exceptions.every(dateIsValid) &&
+    (settings.minutesByDate === undefined || (object(settings.minutesByDate) &&
+      Object.entries(settings.minutesByDate).every(([day, minutes]) => dateIsValid(day) && boundedInt(minutes, 15, 180))));
 }
 
 type StudyEvent = Pick<Attempt, "id" | "at" | "day" | "skill">;
@@ -117,7 +119,8 @@ export function parseBackup(text: string): StudyState {
   const ids = [...value.attempts, ...value.classes, ...miniResults].map(event => event.id);
   if (new Set(ids).size !== ids.length) throw Error("El archivo contiene registros duplicados.");
   return {
-    version: 1, settings: value.settings, pinned: value.pinned, attempts: value.attempts,
+    version: 1, settings: { ...value.settings, minutesByDate: value.settings.minutesByDate ?? {} },
+    pinned: value.pinned, attempts: value.attempts,
     classes: value.classes, miniResults, flagged: value.flagged,
   };
 }
@@ -135,8 +138,9 @@ export function saveState(state: StudyState) {
   localStorage.setItem(storageKey, JSON.stringify(state));
 }
 
-export function isStudyDay(day: string, settings: Settings) {
-  return settings.weekdays.includes(dayOfWeek(day)) && !settings.exceptions.includes(day);
+export function studyMinutes(day: string, settings: Settings) {
+  if (settings.exceptions.includes(day)) return 0;
+  return settings.minutesByDate[day] ?? (settings.weekdays.includes(dayOfWeek(day)) ? settings.minutes : 0);
 }
 
 export function classPlan(lessons: Lesson[], state: StudyState, today = studyDay()) {
@@ -148,26 +152,32 @@ export function classPlan(lessons: Lesson[], state: StudyState, today = studyDay
     return { id: lesson.id, left: Math.max(10, 60 - done) };
   });
   const required = remaining.reduce((sum, lesson) => sum + lesson.left, 0);
-  const dates: string[] = [];
+  const dates: { day: string; minutes: number; adjusted: boolean }[] = [];
   const stop = settings.exam || addDays(start, 1000);
   for (let day = start; day < stop; day = addDays(day, 1)) {
-    if (isStudyDay(day, settings)) dates.push(day);
+    const minutes = studyMinutes(day, settings);
+    if (minutes) dates.push({ day, minutes, adjusted: settings.minutesByDate[day] !== undefined });
   }
-  const loggedToday = dates[0] === today
+  const loggedToday = dates[0]?.day === today
     ? state.classes.filter(record => record.day === today).reduce((total, record) => total + record.minutes, 0)
     : 0;
+  const regularDays = dates.filter(date => !date.adjusted).length;
+  const regularLogged = dates[0]?.adjusted ? 0 : loggedToday;
+  const adjustedAvailable = dates.reduce((total, date) =>
+    total + (date.adjusted ? Math.max(0, date.minutes - (date.day === today ? loggedToday : 0)) : 0), 0);
   const available = settings.exam
-    ? dates.length * settings.minutes - Math.min(settings.minutes, loggedToday)
+    ? regularDays * settings.minutes - Math.min(settings.minutes, regularLogged) + adjustedAvailable
     : required;
-  const usingToday = dates.length ? Math.ceil((required + loggedToday) / dates.length) : required;
-  const skippingToday = loggedToday && dates.length > 1 ? Math.ceil(required / (dates.length - 1)) : usingToday;
-  const requiredPerDay = required ? Math.min(usingToday, skippingToday) : 0;
+  const requiredOnRegularDays = Math.max(0, required - adjustedAvailable);
+  const usingToday = regularDays ? Math.ceil((requiredOnRegularDays + regularLogged) / regularDays) : 0;
+  const skippingToday = regularLogged && regularDays > 1 ? Math.ceil(requiredOnRegularDays / (regularDays - 1)) : usingToday;
+  const requiredPerDay = requiredOnRegularDays ? Math.min(usingToday, skippingToday) : 0;
   const plannedPerDay = Math.max(settings.minutes, requiredPerDay);
   let lessonIndex = 0;
   const slots: { day: string; lessons: string[]; minutes: number }[] = [];
-  for (const day of dates) {
+  for (const { day, minutes: dailyMinutes, adjusted } of dates) {
     if (lessonIndex >= remaining.length) break;
-    const capacity = plannedPerDay - (day === today ? loggedToday : 0);
+    const capacity = (adjusted ? dailyMinutes : plannedPerDay) - (day === today ? loggedToday : 0);
     if (capacity <= 0) continue;
     const ids: string[] = [];
     let minutes = 0;

@@ -6,11 +6,13 @@ import type { Settings, StudyState } from "./types";
 
 const weekdays = [[1, "Lun"], [2, "Mar"], [3, "Mié"], [4, "Jue"], [5, "Vie"], [6, "Sáb"], [0, "Dom"]] as const;
 
-export function Planner({ state, today, onSettings, onImport }: {
+export default function Planner({ state, today, onSettings, onImport }: {
   state: StudyState; today: string; onSettings: (settings: Settings) => Promise<boolean>; onImport: (state: StudyState) => Promise<boolean>;
 }) {
   const [draft, setDraft] = useState(state.settings);
   const [exception, setException] = useState("");
+  const [studyDate, setStudyDate] = useState("");
+  const [dateMinutes, setDateMinutes] = useState("");
   const [planMessage, setPlanMessage] = useState("");
   const [backupMessage, setBackupMessage] = useState("");
   const [more, setMore] = useState(false);
@@ -19,6 +21,9 @@ export function Planner({ state, today, onSettings, onImport }: {
   const planNotice = useRef<HTMLParagraphElement>(null);
   const forecast = classPlan(curriculum, state, today);
   const slots = more ? forecast.slots : forecast.slots.slice(0, 10);
+  const scheduledMinutes = Number(dateMinutes);
+  const canAddTime = studyDate >= "2000-01-01" && studyDate <= "2099-12-31" &&
+    Number.isInteger(scheduledMinutes) && scheduledMinutes >= 15 && scheduledMinutes <= 180;
 
   useEffect(() => {
     if (planMessage) planNotice.current?.scrollIntoView({ block: "nearest" });
@@ -33,6 +38,23 @@ export function Planner({ state, today, onSettings, onImport }: {
       const saved = await onSettings(draft);
       setPlanMessage(saved ? "Plan guardado." : "");
     } catch (error) { setPlanMessage(error instanceof Error ? error.message : "Revisa las fechas del plan."); }
+  }
+
+  function withoutDateMinutes(day: string) {
+    const adjusted = { ...draft.minutesByDate };
+    delete adjusted[day];
+    return adjusted;
+  }
+
+  function addDateMinutes() {
+    setDraft({
+      ...draft,
+      minutesByDate: { ...draft.minutesByDate, [studyDate]: scheduledMinutes },
+      exceptions: draft.exceptions.filter(day => day !== studyDate),
+    });
+    setStudyDate("");
+    setDateMinutes("");
+    setPlanMessage("");
   }
 
   function download() {
@@ -80,13 +102,45 @@ export function Planner({ state, today, onSettings, onImport }: {
         <div className="exception-row">
           <label>Día libre <input type="date" min="2000-01-01" max="2099-12-31" value={exception} onChange={event => setException(event.target.value)} /></label>
           <button type="button" className="button secondary" disabled={!exception || draft.exceptions.includes(exception)} onClick={() => {
-            setDraft({ ...draft, exceptions: [...draft.exceptions, exception].sort() });
+            setDraft({
+              ...draft,
+              exceptions: [...draft.exceptions, exception].sort(),
+              minutesByDate: withoutDateMinutes(exception),
+            });
             setException("");
           }}>Añadir día libre</button>
         </div>
         {draft.exceptions.length > 0 && <ul className="plain-list">{draft.exceptions.map(day =>
           <li key={day}><span>{dateLabel(day, "long")}</span><button type="button" className="button quiet" onClick={() => setDraft({ ...draft, exceptions: draft.exceptions.filter(entry => entry !== day) })}>Quitar</button></li>,
         )}</ul>}
+        <fieldset className="date-minutes">
+          <legend>Tiempo por fecha</legend>
+          <div className="field-grid">
+            <label>Fecha de estudio
+              <input name="study-date" type="date" min="2000-01-01" max="2099-12-31" value={studyDate}
+                onChange={event => setStudyDate(event.target.value)} />
+            </label>
+            <label>Minutos para esa fecha
+              <input name="date-minutes" type="number" min="15" max="180" inputMode="numeric" value={dateMinutes}
+                onChange={event => setDateMinutes(event.target.value)} />
+            </label>
+          </div>
+          <button type="button" className="button secondary" disabled={!canAddTime} onClick={addDateMinutes}>
+            {draft.minutesByDate[studyDate] === undefined ? "Añadir tiempo" : "Actualizar tiempo"}
+          </button>
+          {Object.keys(draft.minutesByDate).length > 0 && <ul className="plain-list">
+            {Object.entries(draft.minutesByDate).sort(([first], [second]) => first.localeCompare(second)).map(([day, minutes]) =>
+              <li key={day}>
+                <span><time dateTime={day}>{dateLabel(day, "long")}</time> · {minutes} min</span>
+                <button type="button" className="button quiet" aria-label={`Quitar tiempo del ${dateLabel(day, "long")}`}
+                  onClick={() => {
+                    setDraft({ ...draft, minutesByDate: withoutDateMinutes(day) });
+                    setPlanMessage("");
+                  }}>Quitar</button>
+              </li>,
+            )}
+          </ul>}
+        </fieldset>
         <p ref={planNotice} role="status" className={planMessage ? "notice" : "sr-only"}>{planMessage}</p>
         <button className="button primary">Guardar plan</button>
       </form>
@@ -97,7 +151,8 @@ export function Planner({ state, today, onSettings, onImport }: {
           {forecast.required === 0 ? "Ya completaste todas las clases." : forecast.dates === 0
             ? "No quedan días de estudio antes del examen. Ajusta las fechas o los días disponibles."
             : forecast.shortfall
-              ? `Faltan ${duration(forecast.shortfall)} con tu horario actual. La propuesta agrupa temas y requiere ${duration(forecast.requiredPerDay)} al día.`
+              ? `Faltan ${duration(forecast.shortfall)} con tu horario actual.` + (forecast.requiredPerDay
+                ? ` La propuesta agrupa temas y requiere ${duration(forecast.requiredPerDay)} por día habitual.` : "")
               : `Hay ${duration(forecast.available)} disponibles para ${duration(forecast.required)} de clase pendiente.`}
         </p>}
         {slots.length ? <ol className="calendar-list">{slots.map(slot =>

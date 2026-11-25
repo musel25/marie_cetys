@@ -53,6 +53,7 @@ export interface Settings {
   weekdays: number[];
   minutes: number;
   exceptions: string[];
+  minutesByDate: Record<string, number>;
 }
 
 export interface Attempt {

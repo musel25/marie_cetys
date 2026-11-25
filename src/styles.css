@@ -258,6 +258,7 @@ progress::-webkit-progress-value { background: var(--forest); }
 .field-grid { display: grid; gap: .75rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .field-grid label, .exception-row label, .log-class > label:not(.check-label) { display: grid; align-content: start; gap: .35rem; font-size: .9rem; font-weight: 650; }
 .exception-row { display: flex; align-items: end; gap: .55rem; flex-wrap: wrap; }
+.date-minutes > .button { margin-block-start: .55rem; }
 .field-grid input, .exception-row input, .log-class input[type=number] { padding: .5rem; min-block-size: 2.65rem; inline-size: 100%; min-inline-size: 0; border: 1px solid #aabdad; border-radius: .45rem; background: #fdfefb; color: var(--ink); }
 .plan-notice { color: #5a431d; background: #fff1cf; border-radius: .6rem; padding: .75rem; margin-block: .75rem; }
 .plan-notice > p { margin-block-end: .55rem; }

@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { blankState, classPlan, miniHistory, nextMiniForm, nextQuestion, parseBackup, periodStart, reviewCards, summary } from "../src/study";
+import { blankState, classPlan, miniHistory, nextMiniForm, nextQuestion, parseBackup, periodStart, reviewCards, studyMinutes, summary } from "../src/study";
 import type { Attempt, Lesson, MiniResult } from "../src/types";
 const lesson = (id: string): Lesson => ({
   id, area: "hc", title: id, objective: "goal", source: "source", explanation: ["step"],
@@ -39,6 +39,35 @@ test("logged class minutes use today's capacity before scheduling a new class", 
   assert.deepEqual(plan.slots, [{ day: "2026-11-24", lessons: ["hc-1"], minutes: 60 }]);
 });
 
+test("one longer date adds its own capacity without changing the normal schedule", () => {
+  const state = blankState("2026-11-27");
+  state.settings.minutesByDate = { "2026-11-28": 90 };
+  assert.equal(studyMinutes("2026-11-27", state.settings), 60);
+  assert.equal(studyMinutes("2026-11-28", state.settings), 90);
+  assert.equal(studyMinutes("2026-11-29", state.settings), 0);
+  assert.equal(studyMinutes("2026-11-30", state.settings), 60);
+  assert.deepEqual(classPlan([lesson("hc-0"), lesson("hc-1"), lesson("hc-2")], state, "2026-11-27").slots, [
+    { day: "2026-11-27", lessons: ["hc-0"], minutes: 60 },
+    { day: "2026-11-28", lessons: ["hc-1", "hc-2"], minutes: 90 },
+    { day: "2026-11-30", lessons: ["hc-2"], minutes: 30 },
+  ]);
+});
+
+test("an adjusted date contributes to a deadline and uses its remaining minutes today", () => {
+  const state = blankState("2026-11-28");
+  state.settings.exam = "2026-12-01";
+  state.settings.minutesByDate = { "2026-11-28": 90 };
+  state.classes.push({ id: "one", day: "2026-11-28", skill: "hc-0", minutes: 60, complete: true, at: 1 });
+  const plan = classPlan([lesson("hc-0"), lesson("hc-1"), lesson("hc-2")], state, "2026-11-28");
+  assert.equal(plan.available, 90);
+  assert.equal(plan.shortfall, 30);
+  assert.equal(plan.requiredPerDay, 90);
+  assert.deepEqual(plan.slots, [
+    { day: "2026-11-28", lessons: ["hc-1"], minutes: 30 },
+    { day: "2026-11-30", lessons: ["hc-1", "hc-2"], minutes: 90 },
+  ]);
+});
+
 test("a missed skill returns next day and the review prefers an unseen variant", () => {
   const attempt: Attempt = { id: "a", at: 1, day: "2026-11-27", skill: "hc-order", item: "hc-order:0", correct: false, help: false, seconds: 20, mode: "practice" };
   const cards = reviewCards([attempt]);
@@ -68,6 +97,17 @@ test("backup validation preserves valid data and rejects malformed dates and dup
   state.settings.start = "2026-11-23";
   state.classes = Array(2).fill({ id: "one", at: 1, day: "2026-11-23", skill: "hc-0", minutes: 60, complete: true });
   assert.throws(() => parseBackup(JSON.stringify(state)));
+});
+
+test("backups restore study minutes for a date and accept older settings", () => {
+  const state = blankState("2026-11-23");
+  const { minutesByDate, ...legacySettings } = state.settings;
+  assert.deepEqual(parseBackup(JSON.stringify({ ...state, settings: legacySettings })), state);
+  state.settings.minutesByDate = { "2026-11-28": 90 };
+  assert.deepEqual(parseBackup(JSON.stringify(state)), state);
+  for (const invalid of [null, [], { "2026-11-31": 90 }, { "2026-11-28": 181 }, { "2026-11-28": 90.5 }]) {
+    assert.throws(() => parseBackup(JSON.stringify({ ...state, settings: { ...state.settings, minutesByDate: invalid } })));
+  }
 });
 
 const miniResult: MiniResult = {
