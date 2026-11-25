@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { areaOrder, areas, curriculum, lessonById } from "./content";
+import { areaOrder, areas, curriculum, guidedSections, lessonById } from "./content";
 import { addDays, dateLabel, periodStart, questions, summary } from "./study";
 import { duration, elapsedTime, Icon, miniHref, PageHeading, lessonHref, questionHref } from "./ui";
 import type { Period, StudyState } from "./types";
@@ -37,9 +37,13 @@ export function Progress({ state, today, onFlag }: { state: StudyState; today: s
   const revisit = Array.from(mistakeCounts).sort((a, b) => b[1] - a[1]).slice(0, 5);
   const flagged = state.flagged.flatMap(id => {
     const lesson = lessonById.get(id.split(":")[0]);
-    const question = lesson && questions(lesson).find(item => item.id === id);
-    const number = lesson ? questions(lesson).filter(item => item.difficulty !== "challenge").findIndex(item => item.id === id) + 1 : 0;
-    return question ? [{ question, lesson, number }] : [];
+    if (!lesson) return [];
+    const guided = guidedSections(lesson).find(section => section.question.id === id);
+    if (guided) return [{ question: guided.question, lesson, label: guided.title }];
+    const practice = questions(lesson);
+    const question = practice.find(item => item.id === id);
+    const number = practice.filter(item => item.difficulty !== "challenge").findIndex(item => item.id === id) + 1;
+    return question ? [{ question, lesson, label: number ? `Ejercicio ${number}` : "Ejercicio de reto" }] : [];
   });
 
   const bars = period === "day" ? [] : Array.from({ length: period === "week" ? 7 : 5 }, (_, index) => {
@@ -98,9 +102,9 @@ export function Progress({ state, today, onFlag }: { state: StudyState; today: s
       <section className="panel">
         <h2><Icon name="flag" size={20}/> Dudas guardadas</h2>
         {!flagged.length ? <p className="muted">Guarda un ejercicio para comentarlo durante la clase.</p> :
-          <ul className="plain-list">{flagged.map(({ question, lesson, number }) => <li key={question.id}>
-            <div><a href={questionHref(question.id)}>{lesson!.title} · {number ? `Ejercicio ${number}` : "Ejercicio de reto"}</a><p className="excerpt">{question.prompt}</p></div>
-            <button className="button quiet" onClick={() => onFlag(question.id)} aria-label={`Quitar duda de ${lesson!.title}`}>Quitar</button>
+          <ul className="plain-list">{flagged.map(({ question, lesson, label }) => <li key={question.id}>
+            <div><a href={questionHref(question.id)}>{lesson.title} · {label}</a><p className="excerpt">{question.prompt}</p></div>
+            <button className="button quiet" onClick={() => onFlag(question.id)} aria-label={`Quitar duda de ${lesson.title}`}>Quitar</button>
           </li>)}</ul>}
       </section>
     </div>

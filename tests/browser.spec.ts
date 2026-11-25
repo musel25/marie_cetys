@@ -283,17 +283,23 @@ test("keeps class mode when returning from a miniexam and clears it after loggin
   await expect(classMode).not.toBeChecked();
 });
 
-test("Spanish lessons show worked examples and a mini-exam after the exercises", async ({ page }) => {
+test("the orthography lesson interleaves examples and exercises before the trial questions and mini-exam", async ({ page }) => {
   await page.setViewportSize({ width: 360, height: 800 });
   await page.clock.setFixedTime(new Date("2026-11-24T20:00:00Z"));
   await page.goto("/#/clase/es-ortografia");
-  await expect(page.getByRole("heading", { name: "Ejemplos resueltos" })).toBeVisible();
-  const exercises = page.getByRole("region", { name: "Ejercicios", exact: true });
+  const exercises = page.getByRole("region", { name: "Ejercicios de prueba", exact: true });
   await expect(exercises.getByText("14 preguntas", { exact: true })).toBeVisible();
   await expect(exercises.locator("details.question-details")).toHaveCount(14);
-  for (const title of ["Nombre común y nombre propio", "Hiato y diptongo", "Por qué, porque, porqué y por que"]) {
-    await expect(page.getByRole("heading", { name: title, level: 3, exact: true })).toBeVisible();
+  const rules = page.getByRole("region", { name: "Explicación", exact: true });
+  const titles = ["Nombre común y nombre propio", "Hiato y diptongo", "Por qué, porque, porqué y por que",
+    "Agudas, graves y esdrújulas", "Tildes que distinguen funciones"];
+  for (const title of titles) {
+    const rule = rules.getByRole("region", { name: title, exact: true });
+    await expect(rule.getByRole("list").first()).toBeVisible();
+    await expect(rule.getByRole("heading", { level: 4 })).toHaveText(["Ejemplo resuelto", "Ejercicio guiado"]);
+    await expect(rule.getByRole("radio")).toHaveCount(4);
   }
+  await expect(page.locator("#explicacion + #ejercicios")).toHaveCount(1);
   const afterExercises = page.locator("#ejercicios + section");
   const miniLink = afterExercises.getByRole("link", { name: "Hacer miniexamen", exact: true });
   await expect(miniLink).toHaveAttribute("href", "#/mini/es-ortografia");
@@ -368,4 +374,20 @@ test("finishes a legacy orthography draft and rotates through two fresh ten-ques
   await page.getByRole("button", { name: "Hacer otro miniexamen" }).click();
   await page.getByRole("button", { name: "Empezar miniexamen" }).click();
   await expect(page.locator("legend")).not.toHaveText(retakePrompts[0]);
+});
+
+test("remembers a guided answer and opens its saved doubt inside the explanation", async ({ page }) => {
+  await page.goto("/#/clase/es-ortografia");
+  const guided = page.getByRole("region", { name: "Hiato y diptongo", exact: true });
+  await guided.getByRole("radio", { name: "río tiene hiato y patio tiene diptongo.", exact: true }).check();
+  await guided.getByRole("button", { name: "Comprobar", exact: true }).click();
+  await expect(guided.getByText("Correcto", { exact: true })).toBeVisible();
+  await guided.getByRole("button", { name: "Guardar duda", exact: true }).click();
+  await page.getByRole("link", { name: "Progreso", exact: true }).click();
+  await page.reload();
+  const saved = page.getByRole("link", { name: "Mayúsculas y acentuación · Hiato y diptongo", exact: true });
+  await expect(saved).toHaveAttribute("href", "#/clase/es-ortografia/guiado-hiato");
+  await saved.click();
+  await expect(guided).toBeFocused();
+  await expect(guided.getByText("Correcto", { exact: true })).toBeVisible();
 });
