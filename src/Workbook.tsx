@@ -1,6 +1,6 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { AreaTag, duration, Icon, lessonHref, miniHref } from "./ui";
-import { lessonById, miniQuestionCount } from "./content";
+import { guidedSections, lessonById, miniQuestionCount } from "./content";
 import { nextQuestion, questions, studyDay } from "./study";
 import type { Attempt, ClassRecord, Lesson, Mode, Question, StudyState } from "./types";
 
@@ -25,8 +25,17 @@ const defaultAgenda = [
   "Revisen los errores del miniexamen. Pide que explique cómo corregirlos.",
 ];
 
+const interleavedAgenda = [
+  ["Diagnóstico", 5, "Elige un ejercicio guiado. Pídele que diga qué diferencia tendría que identificar."],
+  ["Explicación y ejercicios guiados", 20, "En cada bloque, lean la regla y el ejemplo. Pídele que intente el ejercicio antes de pasar al siguiente bloque."],
+  ["Ejercicios de prueba", 15, "Deja que resuelva las preguntas por su cuenta. Pídele que explique qué regla aplicó."],
+  ["Miniexamen", 10, "Deja que responda el miniexamen y entregue por su cuenta."],
+  ["Corrección", 10, "Revisen las respuestas. Vuelvan al bloque que explica cada error."],
+] as const;
+
 export function Agenda({ lesson }: { lesson: Lesson }) {
   const blocks = lesson.area === "hc" ? cognitiveAgenda
+    : !Array.isArray(lesson.explanation) ? interleavedAgenda
     : classBlocks.map(([name, time], index) => [name, time, defaultAgenda[index]] as const);
   return <ol className="class-agenda">{blocks.map(([name, time, note]) =>
     <li key={name}><span className="agenda-time">{time} min</span><div><strong>{name}</strong><p>{note}</p></div></li>,
@@ -62,8 +71,8 @@ export function QuestionVisual({ prompt }: { prompt: string }) {
   </div>;
 }
 
-function GuidedExample({ lesson }: { lesson: Lesson }) {
-  const total = lesson.example.steps.length;
+function GuidedExample({ lesson, example }: { lesson: Lesson; example: NonNullable<Lesson["example"]> }) {
+  const total = example.steps.length;
   const key = "marie-cetys:example:" + lesson.id;
   const [step, setStep] = useState(() => {
     try { return Math.max(0, Math.min(total, Number(sessionStorage.getItem(key)) || 0)); } catch { return 0; }
@@ -73,10 +82,10 @@ function GuidedExample({ lesson }: { lesson: Lesson }) {
     try { sessionStorage.setItem(key, String(index)); } catch { /* continue without session storage */ }
   }
   return <div className="worked-example">
-    <p className="exercise-prompt" lang={lesson.area === "en" ? "en" : undefined}>{questionText(lesson.example.prompt)}</p>
-    <QuestionVisual prompt={lesson.example.prompt} />
+    <p className="exercise-prompt" lang={lesson.area === "en" ? "en" : undefined}>{questionText(example.prompt)}</p>
+    <QuestionVisual prompt={example.prompt} />
     {lesson.id === "hc-orden" && <OrderDiagram step={step} />}
-    <ol className="worked-steps" aria-live="polite">{lesson.example.steps.slice(0, step).map((line, index) => <li key={index}>{line}</li>)}</ol>
+    <ol className="worked-steps" aria-live="polite">{example.steps.slice(0, step).map((line, index) => <li key={index}>{line}</li>)}</ol>
     <div className="row">
       {step < total && <button className="button primary" onClick={() => showStep(step + 1)}>{step ? "Ver el siguiente paso" : "Ver el primer paso"}</button>}
       {step > 0 && <button className="button quiet" onClick={() => showStep(0)}>Reiniciar ejemplo</button>}
@@ -201,7 +210,8 @@ export function Workbook({ lesson, target, state, onAttempt, onFlag, onClass, on
   const cognitive = lesson.area === "hc";
   const all = questions(lesson);
   const published = all.filter(item => item.difficulty !== "challenge");
-  const targetQuestion = all.find(item => item.id === lesson.id + ":" + target);
+  const guided = guidedSections(lesson);
+  const targetQuestion = [...all, ...guided.map(section => section.question)].find(item => item.id === lesson.id + ":" + target);
   const exerciseList = live ? liveQuestions : all.filter(item => item.difficulty !== "challenge" || targetQuestion?.id === item.id);
   const latestAnswers = new Map(state.attempts
     .filter(attempt => attempt.skill === lesson.id && attempt.selection !== undefined && attempt.selection >= 0 && ["live", "practice"].includes(attempt.mode))
@@ -250,18 +260,36 @@ export function Workbook({ lesson, target, state, onAttempt, onFlag, onClass, on
     target?.focus({ preventScroll: true });
     target?.scrollIntoView();
   }
+  function exerciseCard(question: Question, inClass: boolean) {
+    return <QuestionCard question={question} area={lesson.area} mode={inClass ? "live" : "practice"}
+      previous={latestAnswers.get(question.id)} flagged={state.flagged.includes(question.id)}
+      onFlag={() => onFlag(question.id)} onAttempt={onAttempt} />;
+  }
   const rules = <>
     {Array.isArray(lesson.explanation)
       ? <ol className="lesson-steps">{lesson.explanation.map((step, index) => <li key={index}>{step}</li>)}</ol>
-      : lesson.explanation.sections.map(section => <div className="lesson-rule" key={section.title}>
-        <h3>{section.title}</h3>
-        <ul className="lesson-steps">{section.points.map(point => <li key={point}>{point}</li>)}</ul>
-      </div>)}
+      : guided.map(({ id, title, points, example, question }) => <section className="lesson-rule" key={id}
+        aria-labelledby={`regla-${id}`} id={question.id === targetQuestion?.id ? "pregunta-marcada" : undefined} tabIndex={-1}>
+        <h3 id={`regla-${id}`}>{title}</h3>
+        <ul className="lesson-steps">{points.map(point => <li key={point}>{point}</li>)}</ul>
+        <div className="worked-example">
+          <h4>Ejemplo resuelto</h4>
+          <p className="exercise-prompt">{example.prompt}</p>
+          <p>{example.explanation}</p>
+        </div>
+        <div className="lesson-guided-practice">
+          <h4>Ejercicio guiado</h4>
+          {exerciseCard(question, classMode)}
+        </div>
+      </section>)}
     {lesson.prerequisiteIds.some(id => lessonById.has(id)) && <p className="muted">Temas previos: {lesson.prerequisiteIds.map(id => lessonById.get(id)).filter(Boolean).map((entry, index) =>
       <span key={entry!.id}>{index > 0 && ", "}<a href={lessonHref(entry!.id)}>{entry!.title}</a></span>,
     )}</p>}
   </>;
-  const example = <section className="worksheet" id="ejemplo"><h2>{cognitive ? "Ejercicio resuelto paso a paso" : "Ejemplo guiado"}</h2><GuidedExample lesson={lesson} /></section>;
+  const example = lesson.example && <section className="worksheet" id="ejemplo">
+    <h2>{cognitive ? "Ejercicio resuelto paso a paso" : "Ejemplo guiado"}</h2>
+    <GuidedExample lesson={lesson} example={lesson.example} />
+  </section>;
   return <>
     <header className="lesson-header">
       <a className="back-link" href="#/temario">Temario</a>
@@ -279,7 +307,7 @@ export function Workbook({ lesson, target, state, onAttempt, onFlag, onClass, on
     </header>
     <div className="workbook-grid">
       <div className="workbook-flow">
-        {!cognitive && <><section className="worksheet" id="explicacion"><h2>Explicación</h2>{rules}</section>{example}</>}
+        {!cognitive && <><section className="worksheet" id="explicacion" aria-labelledby="workbook-explanation"><h2 id="workbook-explanation">Explicación</h2>{rules}</section>{example}</>}
         {!!lesson.workedExamples?.length && <section className="worksheet" aria-labelledby="worked-examples-title">
           <h2 id="worked-examples-title">Ejemplos resueltos</h2>
           <ul className="worked-steps">{lesson.workedExamples.map(item => <li key={item.prompt}>
@@ -287,7 +315,7 @@ export function Workbook({ lesson, target, state, onAttempt, onFlag, onClass, on
           </li>)}</ul>
         </section>}
         <section className="practice-stack" id="ejercicios" tabIndex={-1} aria-labelledby="workbook-exercises">
-          <div className="section-title"><h2 id="workbook-exercises">{live ? "Variantes para la clase" : "Ejercicios"}</h2><span>{exerciseList.length} preguntas</span></div>
+          <div className="section-title"><h2 id="workbook-exercises">{live ? "Variantes para la clase" : guided.length ? "Ejercicios de prueba" : "Ejercicios"}</h2><span>{exerciseList.length} preguntas</span></div>
           {cognitive && !live && <p>Intenta cada ejercicio. Si te atoras, abre la pista. Lee cómo se resuelve después de comprobar.</p>}
           {live && <button className="button secondary" onClick={() => setLive(false)}>Volver a ejercicios publicados</button>}
           {exerciseList.map((question, index) => (
@@ -295,9 +323,7 @@ export function Workbook({ lesson, target, state, onAttempt, onFlag, onClass, on
               id={question.id === targetQuestion?.id ? "pregunta-marcada" : undefined} tabIndex={-1}
               open={question.id === targetQuestion?.id || (!targetQuestion && index === 0) || undefined}>
               <summary><span>{!live && question.difficulty === "challenge" ? "Ejercicio de reto" : `Ejercicio ${live ? index + 1 : published.findIndex(item => item.id === question.id) + 1}`}</span><span className="muted">{question.difficulty === "base" ? "Base" : question.difficulty === "exam" ? "Tipo examen" : "Reto"}</span></summary>
-              <QuestionCard question={question} area={lesson.area} mode={live || classMode ? "live" : "practice"}
-                previous={latestAnswers.get(question.id)}
-                flagged={state.flagged.includes(question.id)} onFlag={() => onFlag(question.id)} onAttempt={onAttempt} />
+              {exerciseCard(question, live || classMode)}
             </details>
           ))}
         </section>

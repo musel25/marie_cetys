@@ -6,52 +6,132 @@
     "explanation": {
       "sections": [
         {
+          "id": "nombres",
           "title": "Nombre común y nombre propio",
           "points": [
-            "Un nombre común indica una clase de personas, lugares o cosas. Escribe «una ciudad», «la biblioteca» y «el martes». Los días y los meses se escriben con minúscula en el uso habitual.",
-            "Un nombre propio identifica a una persona, un lugar o una institución por su nombre. Compara «Visitamos la ciudad de Tijuana» y «Visitamos el Museo de Historia de Tijuana». Ciudad es un nombre común. Museo e Historia forman parte del nombre oficial. La preposición de se escribe con minúscula."
-          ]
+            "Un nombre común indica un tipo de persona, lugar o cosa. Escribe con minúscula los nombres comunes, incluidos los días y los meses en el uso habitual.",
+            "Un nombre propio identifica por su nombre a alguien o algo. En el nombre oficial de una institución, pon mayúscula inicial en las palabras que aportan significado. Escribe con minúscula las preposiciones y los artículos internos."
+          ],
+          "example": {
+            "prompt": "Compara «Estudié en la biblioteca» y «Consulté un mapa en la Biblioteca Nacional de México».",
+            "explanation": "En la primera frase, biblioteca señala un tipo de lugar. En la segunda, Biblioteca y Nacional son parte del nombre oficial. De va con minúscula y México lleva mayúscula porque es un nombre propio."
+          },
+          "exercise": {
+            "prompt": "¿En qué oración se distinguen bien el tipo de lugar y su nombre oficial?",
+            "options": [
+              "Buscamos un Museo y visitamos el Museo de Historia de Tijuana.",
+              "Buscamos un museo y visitamos el Museo de Historia de Tijuana.",
+              "Buscamos un museo y visitamos el museo de historia de Tijuana.",
+              "Buscamos un Museo y visitamos el Museo De Historia De Tijuana."
+            ],
+            "answer": 1,
+            "explanation": "En «un museo», la palabra museo es común. En el nombre oficial, Museo e Historia llevan mayúscula y de va en minúscula.",
+            "hint": "Separa el tipo de lugar de las palabras que forman su nombre.",
+            "difficulty": "base"
+          }
         },
         {
+          "id": "hiato",
           "title": "Hiato y diptongo",
           "points": [
-            "En un diptongo, dos vocales quedan en la misma sílaba. En un hiato, quedan en sílabas distintas. Compara ai-re con ra-íz. En aire, ai queda unido. En raíz, la í tónica se separa de la a y lleva tilde.",
-            "A, e y o son vocales abiertas. I y u son cerradas. Para la escritura, una vocal abierta y una cerrada átona forman diptongo, como ie en pie-dra. Átona significa que la cerrada no recibe la fuerza de voz. Dos cerradas distintas también forman diptongo, como iu en ciu-dad.",
-            "Dos vocales abiertas o dos vocales iguales forman hiato. Compara te-a-tro y le-er. Estos hiatos siguen las reglas generales de tilde. Si una i o una u tónica está junto a una vocal abierta, escribe la tilde en la cerrada, como en rí-o y ba-úl."
-          ]
+            "Si dos vocales están en una sola sílaba, forman un diptongo. Para decidir cómo se escribe una palabra, una vocal abierta (a, e, o) junto a una cerrada átona (i, u) forma diptongo. Átona significa que no recibe el acento de voz. Dos cerradas distintas también forman diptongo.",
+            "Si las vocales se separan en dos sílabas, forman un hiato. Para la escritura, dos vocales abiertas o dos iguales forman hiato y siguen las reglas generales de tilde. Una vocal cerrada tónica junto a una abierta también forma hiato. Escribe la tilde sobre la cerrada."
+          ],
+          "example": {
+            "prompt": "Compara «Voy hacia la puerta» y «Hacía frío».",
+            "explanation": "Separa ha-cia y ha-cí-a. En hacia, ia queda en una sílaba y forma diptongo. En hacía, la í tónica queda en una sílaba distinta de la a. Por eso forma hiato y lleva tilde."
+          },
+          "exercise": {
+            "prompt": "Compara las vocales juntas de «río» y «patio». ¿Cómo se clasifican?",
+            "options": [
+              "río tiene diptongo y patio tiene hiato.",
+              "Las dos palabras tienen diptongo.",
+              "Las dos palabras tienen hiato.",
+              "río tiene hiato y patio tiene diptongo."
+            ],
+            "answer": 3,
+            "explanation": "En rí-o, la í tónica se separa de la o. En pa-tio, io se pronuncia en la misma sílaba.",
+            "hint": "Separa las dos palabras en sílabas y fíjate en cuál recae el acento de voz.",
+            "difficulty": "base"
+          }
         },
         {
+          "id": "porques",
           "title": "Por qué, porque, porqué y por que",
           "points": [
-            "Por qué pregunta por el motivo. Úsalo con signos en «¿Por qué cerraron?» y sin signos en la pregunta indirecta «No sé por qué cerraron».",
-            "Porque introduce la causa en «Cerraron porque se fue la luz». En este uso, puedes sustituirlo por «ya que».",
-            "El porqué significa el motivo. En «Explicó el porqué del cierre», puedes sustituir «el porqué» por «el motivo». También admite plural: «los porqués».",
-            "Por que puede ser la preposición por seguida de que. En «El formato se distingue por que cada equipo tiene dos turnos», se distingue por algo. Por también puede ir seguido de un que relativo. En «El motivo por que reclamó», puedes decir «el motivo por el que reclamó»."
-          ]
+            "Usa por qué para preguntar por un motivo. También lleva tilde en una pregunta indirecta.",
+            "Usa porque para dar una causa. En este caso, puedes sustituirlo por ya que.",
+            "Usa el porqué cuando puedas decir el motivo. Es un sustantivo y admite el plural los porqués.",
+            "Escribe por que separado cuando la preposición por pertenece a una construcción como distinguirse por algo. También se escribe separado cuando que es relativo y puedes decir por el que, por la que, por los que o por las que."
+          ],
+          "example": {
+            "prompt": "Compara estas frases sobre el cambio de una clase.",
+            "explanation": "«No sé por qué cambiaron el aula» plantea una pregunta indirecta. «Cambiaron el aula porque falló el proyector» da la causa. «El porqué del cambio quedó en el aviso» nombra el motivo. «La nueva aula se distingue por que tiene dos pizarrones» indica un rasgo con la construcción distinguirse por algo."
+          },
+          "exercise": {
+            "prompt": "Completa. «El director explicó el ____ del traslado. Cambiaron de salón ____ instalaron un proyector nuevo».",
+            "options": [
+              "por qué / por que",
+              "porque / porqué",
+              "porqué / porque",
+              "por que / por qué"
+            ],
+            "answer": 2,
+            "explanation": "El porqué significa el motivo. Porque introduce la causa del traslado.",
+            "hint": "Intenta sustituir el primer espacio por motivo y el segundo por ya que.",
+            "difficulty": "base"
+          }
         },
         {
+          "id": "silaba-tonica",
           "title": "Agudas, graves y esdrújulas",
           "points": [
-            "Localiza la sílaba tónica y cuenta desde el final. En una aguda es la última, como en re-loj. En una grave es la penúltima, como en ár-bol. En una esdrújula es la antepenúltima, como en pá-gi-na.",
-            "Como regla general, las agudas llevan tilde si terminan en vocal, n o s, como café y canción. Compara césped con casa. Césped es grave y termina en d, así que lleva tilde. Casa es grave y termina en vocal, así que se escribe sin tilde. Las esdrújulas siempre llevan tilde."
-          ]
+            "Localiza la sílaba tónica. Cuenta desde el final. En las agudas es la última, en las graves es la penúltima y en las esdrújulas es la antepenúltima.",
+            "Como regla general, una aguda lleva tilde si termina en vocal, n o s. Una grave lleva tilde si termina en una consonante distinta de n o s. Las palabras esdrújulas siempre llevan tilde."
+          ],
+          "example": {
+            "prompt": "Compara «café», «césped» y «brújula».",
+            "explanation": "En ca-fé, la última sílaba es tónica y la palabra termina en vocal. En cés-ped, la penúltima sílaba es tónica y la palabra termina en d. En brú-ju-la, la antepenúltima sílaba es tónica. Las tres llevan tilde, cada una por una regla distinta."
+          },
+          "exercise": {
+            "prompt": "¿Qué pareja contiene primero una aguda y después una grave, ambas con tilde?",
+            "options": [
+              "balcón y lápiz",
+              "balcón y casa",
+              "reloj y lápiz",
+              "cámara y lápiz"
+            ],
+            "answer": 0,
+            "explanation": "Balcón es aguda y termina en n. Lápiz es grave y termina en z.",
+            "hint": "Ubica la sílaba tónica y revisa la última letra de cada palabra.",
+            "difficulty": "base"
+          }
         },
         {
+          "id": "funciones",
           "title": "Tildes que distinguen funciones",
           "points": [
-            "Compara «Tú dejaste tu mochila». Tú identifica a la persona y tu acompaña al sustantivo. En «No sé dónde está», dónde indica una pregunta indirecta. En «Está donde la dejaste», donde indica un lugar.",
-            "Un compuesto escrito en una palabra sigue las reglas de esa palabra, como ciempiés. Un adverbio en -mente conserva la tilde del adjetivo: rápida → rápidamente, suave → suavemente."
-          ]
+            "La tilde diacrítica diferencia palabras de escritura parecida que cumplen funciones distintas, como tú y tu, o él y el.",
+            "Las palabras interrogativas llevan tilde al formular una pregunta directa o indirecta. Un adverbio en -mente conserva la tilde de su adjetivo. Un compuesto escrito como una sola palabra, como ciempiés, sigue las reglas de la palabra completa."
+          ],
+          "example": {
+            "prompt": "Compara «¿Dónde está tu mochila? Tú la guardaste donde dejamos los libros».",
+            "explanation": "Dónde pregunta por un lugar. Donde indica el lugar en que dejamos los libros. Tu acompaña a mochila. Tú identifica a la persona que la guardó."
+          },
+          "exercise": {
+            "prompt": "Completa. «____ dejaste ____ cuaderno junto a la ventana».",
+            "options": [
+              "Tu / tú",
+              "Tú / tú",
+              "Tu / tu",
+              "Tú / tu"
+            ],
+            "answer": 3,
+            "explanation": "Tú es el pronombre que identifica a la persona que dejó el cuaderno. Tu es el posesivo que acompaña al sustantivo cuaderno.",
+            "hint": "Identifica quién hizo la acción y qué palabra acompaña a cuaderno.",
+            "difficulty": "base"
+          }
         }
-      ]
-    },
-    "example": {
-      "prompt": "Inés quiere saber el motivo del cierre. Corrige el texto. «El Sabado, Inés preguntó porque cerró el museo. El museo cerró por qué una gotera provocó la caida de un panel».",
-      "steps": [
-        "Escribe sábado con minúscula porque es un día de la semana. Lleva tilde porque es esdrújula. Museo se escribe con minúscula porque aquí indica el tipo de lugar.",
-        "En «preguntó por qué cerró el museo», usa por qué para la pregunta indirecta. En «El museo cerró porque una gotera provocó la caída de un panel», usa porque para dar la causa.",
-        "En ca-í-da, la í tónica se separa de la a. Escribe caída con tilde en la í.",
-        "Lee el texto corregido. «El sábado, Inés preguntó por qué cerró el museo. El museo cerró porque una gotera provocó la caída de un panel»."
       ]
     },
     "source": "College Board, Guía de estudio PIENSE II (2019), p. 8 del PDF · Lengua",
@@ -264,52 +344,6 @@
         "explanation": "La primera oración indica un rasgo de la prueba. Se distingue por algo. La segunda explica la causa de la elección y usa porque.",
         "hint": "Prueba «se distingue por eso» en la primera oración y «ya que» en la segunda.",
         "difficulty": "exam"
-      }
-    ],
-    "workedExamples": [
-      {
-        "prompt": "Corrige las mayúsculas. «El Viernes, Julia viajó a baja california».",
-        "explanation": "Escribe «El viernes, Julia viajó a Baja California». Viernes es un día de la semana. Julia y Baja California son nombres propios."
-      },
-      {
-        "prompt": "Compara «balcon» y «papel». ¿Cuál necesita tilde?",
-        "explanation": "La fuerza cae al final en bal-CÓN y pa-PEL. Escribe balcón porque termina en n. Papel termina en l y se escribe sin tilde."
-      },
-      {
-        "prompt": "Corrige «cesped» y explica por qué «casa» se escribe sin tilde.",
-        "explanation": "Ambas palabras son graves: CÉS-ped y CA-sa. Escribe césped porque termina en d. Casa termina en vocal."
-      },
-      {
-        "prompt": "¿Dónde va la tilde en «brujula»?",
-        "explanation": "Separa BRÚ-ju-la. La sílaba tónica es la antepenúltima. Escribe brújula porque todas las esdrújulas llevan tilde."
-      },
-      {
-        "prompt": "Compara «hacia» y «hacía». «Voy hacia la puerta». «Hacía frío».",
-        "explanation": "En ha-cia, ia queda en una sílaba y forma diptongo. En ha-cí-a, la í tónica se separa de la a y forma hiato. La tilde también cambia la palabra: hacia indica dirección y hacía es una forma del verbo hacer."
-      },
-      {
-        "prompt": "Completa con «el» o «él». «____ guardó ____ boleto».",
-        "explanation": "Escribe «Él guardó el boleto». Él sustituye a la persona que guardó el boleto. El acompaña al sustantivo boleto."
-      },
-      {
-        "prompt": "Añade las tildes necesarias. «No sé donde dejé el cuaderno».",
-        "explanation": "Escribe «No sé dónde dejé el cuaderno». Dónde introduce una pregunta indirecta sobre el lugar."
-      },
-      {
-        "prompt": "Forma un adverbio con «hábil» y otro con «suave».",
-        "explanation": "Escribe hábilmente y suavemente. Al añadir -mente, hábil conserva su tilde y suave sigue sin tilde."
-      },
-      {
-        "prompt": "Compara «la biblioteca» con «la Biblioteca Nacional de México».",
-        "explanation": "En «Estudié en la biblioteca», biblioteca indica un tipo de lugar. En «Consulté un mapa en la Biblioteca Nacional de México», Biblioteca y Nacional son parte del nombre oficial. De se escribe con minúscula."
-      },
-      {
-        "prompt": "Compara «Averigüé por qué cambiaron la fecha» y «Averigüé el porqué del cambio».",
-        "explanation": "La primera oración contiene la pregunta indirecta «por qué cambiaron la fecha». En la segunda, puedes cambiar «el porqué» por «el motivo»."
-      },
-      {
-        "prompt": "Compara «El partido se retrasó porque llovía» y «La categoría se distingue por que cada equipo tiene cinco jugadores».",
-        "explanation": "Porque presenta la causa del retraso. En la segunda oración, se distingue por algo. Ese algo es «que cada equipo tiene cinco jugadores». Por y que se escriben separados en esta construcción."
       }
     ],
     "miniQuestionCount": 10,

@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { areaOrder, areas, byArea, curriculum, expectedMiniFormCount, miniQuestionCount } from "../src/content";
+import { areaOrder, areas, byArea, curriculum, expectedMiniFormCount, guidedSections, miniQuestionCount } from "../src/content";
 import { miniFormCount, miniQuestions } from "../src/content/mini";
 import { questions } from "../src/study";
 
@@ -16,15 +16,19 @@ test("each exam area has enough original questions for a timed section and order
     assert.ok(lesson.title && lesson.objective && lesson.source);
     if (Array.isArray(lesson.explanation)) {
       assert.ok(lesson.explanation.length, lesson.id);
+      assert.ok(lesson.example?.prompt && lesson.example.steps.length, lesson.id);
     } else {
       assert.ok(lesson.explanation.sections.length, lesson.id);
-      assert.ok(lesson.explanation.sections.every(section => section.title.trim() && section.points.length), lesson.id);
+      for (const section of lesson.explanation.sections) {
+        assert.match(section.id, /^[a-z-]+$/);
+        assert.ok(section.title.trim() && section.points.length, lesson.id);
+        assert.ok(section.example.prompt.trim() && section.example.explanation.trim(), section.id);
+      }
     }
-    assert.ok(lesson.example.prompt && lesson.example.steps.length);
     assert.ok(lesson.exercises.length >= 7, lesson.id);
     assert.ok(lesson.exercises.some(exercise => exercise.difficulty === "challenge"), lesson.id);
     lessons.add(lesson.id);
-    for (const item of questions(lesson)) {
+    for (const item of [...questions(lesson), ...guidedSections(lesson).map(section => section.question)]) {
       assert.ok(!itemIds.has(item.id), item.id);
       assert.ok(!prompts.has(item.prompt), item.id);
       assert.equal(item.options.length, 4, item.id);
@@ -42,12 +46,12 @@ test("each exam area has enough original questions for a timed section and order
 });
 
 test("every lesson has fresh mini-exam questions and Spanish lessons have worked examples", () => {
-  const prompts = new Set(curriculum.flatMap(lesson => lesson.exercises.map(item => item.prompt)));
+  const prompts = new Set(curriculum.flatMap(lesson => [...questions(lesson), ...guidedSections(lesson).map(section => section.question)].map(item => item.prompt)));
   for (const lesson of curriculum) {
     if (lesson.area === "hc") {
       assert.equal(lesson.exercises.filter(item => item.difficulty !== "challenge").length, 7, lesson.id);
     }
-    if (lesson.area === "es") {
+    if (lesson.area === "es" && Array.isArray(lesson.explanation)) {
       assert.ok((lesson.workedExamples?.length ?? 0) >= 4, lesson.id);
       assert.ok(lesson.workedExamples?.every(item => item.prompt.trim() && item.explanation.trim()), lesson.id);
     }

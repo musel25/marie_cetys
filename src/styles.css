@@ -137,7 +137,12 @@ progress::-webkit-progress-value { background: var(--forest); }
 .back-link { font-size: .88rem; font-weight: 700; }
 .workbook-grid, .timed-layout { display: grid; grid-template-columns: minmax(0, 2fr) minmax(14rem, 1fr); align-items: start; gap: 1rem; }
 .workbook-flow, .lesson-rail, .practice-stack { display: grid; align-content: start; gap: 1rem; min-inline-size: 0; }
-.lesson-rule h3 { margin: 1.1rem 0 0; font-size: 1rem; }
+.lesson-rule { margin-block-start: 1.1rem; }
+.lesson-rule + .lesson-rule { padding-block-start: 1rem; border-block-start: 1px solid var(--line); }
+.lesson-rule h3 { margin: 0; font-size: 1rem; }
+.lesson-rule h4 { margin: 0; font-size: .9rem; }
+.lesson-guided-practice { margin-block-start: 1rem; }
+.lesson-guided-practice .exercise { padding: .5rem 0 0; }
 .lesson-rule .lesson-steps { margin-block-start: .45rem; }
 .lesson-steps, .worked-steps { margin-block: .9rem; padding-inline-start: 1.55rem; }
 .lesson-steps li, .worked-steps li { padding-inline-start: .4rem; margin-block-end: .5rem; line-height: 1.6; }

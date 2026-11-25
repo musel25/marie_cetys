@@ -12,15 +12,28 @@ export interface Exercise {
   difficulty: Difficulty;
 }
 
+export interface WorkedExample {
+  prompt: string;
+  explanation: string;
+}
+
+export interface GuidedSection {
+  id: string;
+  title: string;
+  points: string[];
+  example: WorkedExample;
+  exercise: Exercise;
+}
+
 export interface LessonDraft {
   id: string;
   title: string;
   objective: string;
-  explanation: string[] | { sections: { title: string; points: string[] }[] };
-  example: { prompt: string; steps: string[] };
+  explanation: string[] | { sections: GuidedSection[] };
+  example?: { prompt: string; steps: string[] };
   miniQuestionCount?: number;
   miniFormCount?: number;
-  workedExamples?: { prompt: string; explanation: string }[];
+  workedExamples?: WorkedExample[];
   prerequisiteIds: string[];
   source: string;
   exercises: Exercise[];
