@@ -27,14 +27,19 @@ export const curriculum = Array.from({ length: Math.max(...areaOrder.map(area =>
 
 export const lessonById = new Map(curriculum.map(lesson => [lesson.id, lesson]));
 
+export function expectedMiniFormCount(lesson: Lesson) {
+  return lesson.miniFormCount ?? (lesson.area === "hc" ? 3 : 1);
+}
+
 const originalMiniQuestionCount = 5;
 
 export function miniQuestionCount(lesson: Lesson) {
   return lesson.miniQuestionCount ?? originalMiniQuestionCount;
 }
 
-export function acceptsMiniQuestionCount(lesson: Lesson, count: number) {
-  return count === originalMiniQuestionCount || count === miniQuestionCount(lesson);
+export function acceptsMiniQuestionCount(lesson: Lesson, form: unknown, count: number) {
+  // Expanded quizzes had five questions only in their original form.
+  return count === miniQuestionCount(lesson) || (form === 0 && count === originalMiniQuestionCount);
 }
 
 export const resourceLinks = [

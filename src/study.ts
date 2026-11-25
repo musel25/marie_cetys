@@ -1,5 +1,5 @@
 import { createEmptyCard, fsrs, Rating, type Card, type Grade } from "ts-fsrs";
-import { acceptsMiniQuestionCount, lessonById } from "./content";
+import { acceptsMiniQuestionCount, expectedMiniFormCount, lessonById } from "./content";
 import type { Attempt, ClassRecord, Difficulty, Lesson, MiniResult, Period, Question, Settings, StudyState } from "./types";
 
 const dayMs = 86_400_000;
@@ -95,9 +95,9 @@ function validClass(value: unknown): value is ClassRecord {
 function validMiniResult(value: unknown): value is MiniResult {
   if (!validEvent(value)) return false;
   const lesson = lessonById.get(value.skill);
-  return !!lesson && boundedInt(value.form, 0, lesson.area === "hc" ? 2 : 0) &&
+  return !!lesson && boundedInt(value.form, 0, expectedMiniFormCount(lesson) - 1) &&
     boundedInt(value.seconds, 1, Number.MAX_SAFE_INTEGER) &&
-    Array.isArray(value.answers) && acceptsMiniQuestionCount(lesson, value.answers.length) &&
+    Array.isArray(value.answers) && acceptsMiniQuestionCount(lesson, value.form, value.answers.length) &&
     boundedInt(value.correct, 0, value.answers.length) &&
     value.answers.every(answer => boundedInt(answer, 0, 3));
 }

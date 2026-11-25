@@ -21,7 +21,7 @@ function loadRun(key: string, lesson: Lesson, formCount: number): MiniRun | null
     if (run && typeof run.id === "string" && (run.saved === undefined || typeof run.saved === "boolean") &&
         Number.isSafeInteger(run.started) && run.started >= 0 &&
         Number.isInteger(run.form) && run.form >= 0 && run.form < formCount &&
-        Array.isArray(run.answers) && acceptsMiniQuestionCount(lesson, run.answers.length) && run.answers.every(answer =>
+        Array.isArray(run.answers) && acceptsMiniQuestionCount(lesson, run.form, run.answers.length) && run.answers.every(answer =>
           answer === null || (Number.isInteger(answer) && answer >= 0 && answer < 4)) &&
         Number.isInteger(run.current) && run.current >= 0 && run.current < run.answers.length) return run;
   } catch { /* a new test can start without a saved draft */ }

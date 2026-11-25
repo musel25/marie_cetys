@@ -131,6 +131,270 @@
         "hint": "Ubica la sílaba tónica en cada palabra completa.",
         "difficulty": "exam"
       }
+    ],
+    [
+      {
+        "prompt": "Clasifica las vocales juntas de «peine» y «poeta».",
+        "options": [
+          "Peine: hiato. Poeta: diptongo.",
+          "Las dos palabras tienen hiato.",
+          "Peine: diptongo. Poeta: hiato.",
+          "Las dos palabras tienen diptongo."
+        ],
+        "answer": 2,
+        "explanation": "En pei-ne, la e y la i quedan en la misma sílaba. En po-e-ta, las dos vocales abiertas se separan y forman un hiato.",
+        "hint": "Separa las sílabas. Fíjate en la e y la o de poeta.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿En qué opción las palabras «caída» y «causa» están separadas en sílabas correctamente?",
+        "options": [
+          "ca-í-da y cau-sa",
+          "caí-da y ca-u-sa",
+          "caí-da y cau-sa",
+          "ca-í-da y ca-u-sa"
+        ],
+        "answer": 0,
+        "explanation": "En ca-í-da, la í tónica se separa de la a y lleva tilde. En cau-sa, la a y la u quedan juntas en un diptongo.",
+        "hint": "En una palabra, la vocal cerrada i recibe el golpe de voz.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Elige las mayúsculas correctas para el nombre de una persona y el nombre de su mascota.",
+        "options": [
+          "Mi prima Inés da de comer a su Perro Coco.",
+          "Mi prima Inés da de comer a su perro coco.",
+          "Mi prima inés da de comer a su perro Coco.",
+          "Mi prima Inés da de comer a su perro Coco."
+        ],
+        "answer": 3,
+        "explanation": "Inés y Coco identifican a una persona y a un animal por su nombre. Prima y perro nombran tipos y van en minúscula.",
+        "hint": "Identifica los nombres de la prima y de su perro.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Elige la oración que distingue el cargo del nombre de la persona.",
+        "options": [
+          "La Directora Rosa leyó el aviso el lunes.",
+          "La directora Rosa leyó el aviso el lunes.",
+          "La directora rosa leyó el aviso el Lunes.",
+          "La Directora Rosa leyó el aviso el Lunes."
+        ],
+        "answer": 1,
+        "explanation": "Directora es un cargo y lunes es un día de la semana. En este contexto ambos se escriben con minúscula. Rosa es un nombre propio y lleva mayúscula.",
+        "hint": "Busca el nombre de la persona. Distingue ese nombre del cargo y del día.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Elige la pregunta y la respuesta correctas. «¿____ cambió el horario? Cambió ____ se canceló el primer turno».",
+        "options": [
+          "Por qué / porque",
+          "Porque / por qué",
+          "Porqué / por que",
+          "Por que / porqué"
+        ],
+        "answer": 0,
+        "explanation": "Por qué pregunta por el motivo del cambio. Porque introduce la causa, es decir, la cancelación del primer turno.",
+        "hint": "El primer espacio pide un motivo. El segundo introduce la causa.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Qué expresión equivale a «el motivo» en este contexto? «Al fin entendimos ____ de la demora».",
+        "options": [
+          "el por qué",
+          "el porque",
+          "el porqué",
+          "el por que"
+        ],
+        "answer": 2,
+        "explanation": "El porqué es un sustantivo que equivale a el motivo. Se escribe junto y con tilde.",
+        "hint": "Busca el sustantivo que puede llevar el artículo el.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Completa la oración con la misma estructura que «Apuesto por eso». «Apuesto ____ el equipo sí llega a la final».",
+        "options": [
+          "porqué",
+          "por que",
+          "por qué",
+          "porque"
+        ],
+        "answer": 1,
+        "explanation": "El verbo apostar se usa aquí con la preposición por. La palabra que introduce el contenido de la apuesta. Por eso se escribe por que.",
+        "hint": "En «Apuesto por eso», ¿qué palabra queda si sustituyes eso por toda la idea?",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Completa con «dónde» o «donde». «No sé ____ venden los boletos. Te esperaré ____ nos vimos ayer».",
+        "options": [
+          "donde / donde",
+          "donde / dónde",
+          "dónde / dónde",
+          "dónde / donde"
+        ],
+        "answer": 3,
+        "explanation": "Dónde introduce una pregunta indirecta sobre el lugar de venta. Donde equivale a en el lugar en que y señala el punto de encuentro.",
+        "hint": "Identifica en qué parte hay una pregunta implícita.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Completa con las formas correctas. «____ guardó ____ lápiz en el cajón».",
+        "options": [
+          "El / él",
+          "Él / el",
+          "Él / él",
+          "El / el"
+        ],
+        "answer": 1,
+        "explanation": "Él con tilde es un pronombre personal. El sin tilde es el artículo que acompaña a lápiz.",
+        "hint": "Identifica la palabra que representa a una persona y la que acompaña al sustantivo.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Qué pareja contiene una grave con tilde y una esdrújula con tilde, en ese orden?",
+        "options": [
+          "mamá y música",
+          "fácil y canción",
+          "túnel y sábado",
+          "ventana y público"
+        ],
+        "answer": 2,
+        "explanation": "Túnel es grave y termina en l. Sábado es esdrújula y lleva tilde en la antepenúltima sílaba.",
+        "hint": "Cuenta desde el final para ubicar la sílaba tónica en cada palabra.",
+        "difficulty": "exam"
+      }
+    ],
+    [
+      {
+        "prompt": "¿Qué pareja presenta primero un diptongo y después un hiato?",
+        "options": [
+          "teatro y cielo",
+          "cielo y teatro",
+          "cielo y puerta",
+          "teatro y marea"
+        ],
+        "answer": 1,
+        "explanation": "En cie-lo, la i átona y la e van juntas. En te-a-tro, la e y la a son abiertas y se separan.",
+        "hint": "Busca una palabra con i o u átona y otra con dos vocales abiertas juntas.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Elige la opción que conserva la tilde del hiato y escribe bien la palabra con diptongo.",
+        "options": [
+          "grúa y ruído",
+          "grua y ruido",
+          "grua y ruído",
+          "grúa y ruido"
+        ],
+        "answer": 3,
+        "explanation": "En grú-a, la ú tónica forma un hiato con la a y lleva tilde. En rui-do, la u y la i forman un diptongo ortográfico. Ruido es grave terminada en vocal y se escribe sin tilde.",
+        "hint": "Separa las vocales de grúa. Aplica la regla de las graves en ruido.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Completa con «rosa» y «Rosa». «La jardinera se llama ____ y acaba de plantar una ____ blanca».",
+        "options": [
+          "Rosa / rosa",
+          "rosa / Rosa",
+          "Rosa / Rosa",
+          "rosa / rosa"
+        ],
+        "answer": 0,
+        "explanation": "Rosa identifica a la jardinera por su nombre. En «una rosa blanca», rosa designa un tipo de flor y va con minúscula.",
+        "hint": "La misma palabra puede nombrar a una persona o designar un tipo de flor.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "El nombre oficial de un taller es «Casa de las Artes». ¿Cómo se escribe la oración sobre el lugar y el día de la visita?",
+        "options": [
+          "El viernes visitamos la Casa De Las Artes.",
+          "El Viernes visitamos la Casa de las Artes.",
+          "El viernes visitamos la Casa de las Artes.",
+          "El viernes visitamos la casa de las artes."
+        ],
+        "answer": 2,
+        "explanation": "Casa y Artes llevan mayúscula porque forman parte del nombre oficial. De y las van en minúscula dentro del nombre. Viernes es un día de la semana.",
+        "hint": "Conserva el nombre oficial y revisa cómo se escribe el día.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Elige las formas correctas. «Lucía preguntó ____ se apagó la pantalla. Le dije que fue ____ se agotó la batería».",
+        "options": [
+          "porque / por qué",
+          "porqué / porque",
+          "por que / porqué",
+          "por qué / porque"
+        ],
+        "answer": 3,
+        "explanation": "Por qué introduce la pregunta indirecta. Porque explica la causa del apagón de la pantalla.",
+        "hint": "La primera forma indica una pregunta. La segunda introduce su respuesta.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Completa con la expresión que equivale a «los motivos». «El informe resume ____ de los cambios».",
+        "options": [
+          "los porqués",
+          "los por qués",
+          "los porques",
+          "los por qué"
+        ],
+        "answer": 0,
+        "explanation": "Porqué es un sustantivo y significa motivo. Su plural es porqués, escrito junto y con tilde.",
+        "hint": "Busca el plural de la palabra que equivale a motivo.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Completa sin cambiar el sentido de «Desconozco los motivos por los que cerraron el taller». «Desconozco los motivos ____ cerraron el taller».",
+        "options": [
+          "por qué",
+          "porque",
+          "por que",
+          "porqué"
+        ],
+        "answer": 2,
+        "explanation": "Que se refiere a los motivos. La preposición por queda separada. Se puede escribir por que o conservar el artículo en por los que.",
+        "hint": "Comprueba qué opción permite recuperar por los que.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Completa el diálogo. «¿____ tomo nota de las medidas? Hazlo ____ te enseñé».",
+        "options": [
+          "Como / cómo",
+          "Cómo / como",
+          "Cómo / cómo",
+          "Como / como"
+        ],
+        "answer": 1,
+        "explanation": "Cómo lleva tilde al preguntar por la manera. Como indica la manera en que otra persona enseñó a tomar nota.",
+        "hint": "Identifica la palabra que pregunta y la que equivale a del modo en que.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Elige las tildes correctas. «____ llegas antes, avísame. Ana ya dijo que ____ puede venir».",
+        "options": [
+          "Sí / si",
+          "Si / si",
+          "Sí / sí",
+          "Si / sí"
+        ],
+        "answer": 3,
+        "explanation": "Si sin tilde introduce una condición. Sí con tilde indica afirmación.",
+        "hint": "Un espacio plantea una condición. El otro confirma que Ana puede venir.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Forma los adverbios de «cómoda» y «lenta». ¿Cómo se escriben?",
+        "options": [
+          "cómodamente y lentamente",
+          "comodamente y lentaménte",
+          "cómodaménte y lentamente",
+          "comodamente y lentamente"
+        ],
+        "answer": 0,
+        "explanation": "Al añadir -mente, cómoda conserva su tilde. El adjetivo lenta se escribe sin tilde y el adverbio también.",
+        "hint": "Revisa si cada adjetivo lleva tilde antes de añadir -mente.",
+        "difficulty": "exam"
+      }
     ]
   ],
   "es-formacion-palabras": [
