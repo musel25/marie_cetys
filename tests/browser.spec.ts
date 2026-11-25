@@ -421,3 +421,34 @@ test("checks each step of an example and keeps its choices when moving back", as
   await page.getByRole("link", { name: "Progreso", exact: true }).click();
   await expect(page.getByText("Español", { exact: true }).locator("..")).toContainText("0 de 0");
 });
+
+test("sets more study time for one date and keeps the normal weekday duration", async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 800 });
+  await page.clock.setFixedTime(new Date("2026-11-27T20:00:00Z"));
+  await page.goto("/#/plan");
+  const adjusted = page.getByRole("group", { name: "Tiempo por fecha" });
+  const saturday = /sábado,? 28 de noviembre/i;
+  const upcoming = page.getByRole("heading", { name: "Próximas clases" }).locator("..");
+  const saturdaySlot = upcoming.getByRole("listitem").filter({ hasText: saturday });
+  await expect(saturdaySlot).toHaveCount(0);
+
+  await adjusted.getByLabel("Fecha de estudio", { exact: true }).fill("2026-11-28");
+  await adjusted.getByLabel("Minutos para esa fecha", { exact: true }).fill("90");
+  await adjusted.getByRole("button", { name: "Añadir tiempo", exact: true }).click();
+  await page.getByRole("button", { name: "Guardar plan", exact: true }).click();
+
+  await expect(saturdaySlot).toContainText("90 min");
+  await expect(upcoming.getByRole("listitem").filter({ hasText: /viernes,? 27 de noviembre/i })).toContainText("60 min");
+  await page.reload();
+  await expect(adjusted.getByRole("listitem").filter({ hasText: saturday })).toContainText("90 min");
+  await expect(page.getByLabel("Minutos al día", { exact: true })).toHaveValue("60");
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(375);
+
+  await page.getByRole("link", { name: "Clase de hoy", exact: true }).click();
+  await expect(page.getByRole("progressbar", { name: "Tiempo de estudio esta semana" })).toHaveAttribute("max", "150");
+
+  await page.getByRole("link", { name: "Plan", exact: true }).click();
+  await adjusted.getByRole("button", { name: /Quitar tiempo del sábado/i }).click();
+  await page.getByRole("button", { name: "Guardar plan", exact: true }).click();
+  await expect(saturdaySlot).toHaveCount(0);
+});

@@ -1,9 +1,8 @@
 import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { areas, areaOrder, byArea, curriculum, lessonById, resourceLinks } from "./content";
 import { Exam } from "./Exam";
-import { Planner } from "./Planner";
 import { Progress } from "./Progress";
-import { addDays, classPlan, dateLabel, isStudyDay, loadState, periodStart, reviewCards, reviewQuestion, saveState, studyDay, summary } from "./study";
+import { addDays, classPlan, dateLabel, loadState, periodStart, reviewCards, reviewQuestion, saveState, studyDay, studyMinutes, summary } from "./study";
 import type { Area, Attempt, ClassRecord, Lesson, MiniResult, Question, StudyState } from "./types";
 import { AreaTag, duration, elapsedTime, Icon, lessonHref, miniHref, PageHeading, type IconName } from "./ui";
 import { OrderDiagram, QuestionCard, Workbook } from "./Workbook";
@@ -17,6 +16,7 @@ const navigation: { id: string; label: string; icon: IconName }[] = [
   { id: "plan", label: "Plan", icon: "calendar" },
 ];
 const MiniExam = lazy(() => import("./MiniExam"));
+const Planner = lazy(() => import("./Planner"));
 function readRoute() { return location.hash.replace(/^#\/?/, "").split("/").slice(0, 3); }
 
 function Home({ state, today, dueCount }: { state: StudyState; today: string; dueCount: number }) {
@@ -27,8 +27,8 @@ function Home({ state, today, dueCount }: { state: StudyState; today: string; du
   const first = periodStart(today, "week");
   const week = summary(state, first, addDays(first, 6));
   const weeklyGoal = Array.from({ length: 7 }, (_, index) => addDays(first, index)).filter(day =>
-    day >= state.settings.start && (!state.settings.exam || day < state.settings.exam) && isStudyDay(day, state.settings),
-  ).length * state.settings.minutes;
+    day >= state.settings.start && (!state.settings.exam || day < state.settings.exam),
+  ).reduce((total, day) => total + studyMinutes(day, state.settings), 0);
   const usedMinutes = Math.round(week.seconds / 60) + week.classMinutes;
   const published = lesson?.exercises.filter(exercise => exercise.difficulty !== "challenge").length;
   return <>
@@ -47,7 +47,7 @@ function Home({ state, today, dueCount }: { state: StudyState; today: string; du
         {lesson && <div className="hero-footer">
           <span><Icon name="book" size={17}/> Práctica y miniexamen</span>
           <span><Icon name="check" size={17}/> {published} ejercicios</span>
-          <span><Icon name="clock" size={17}/> {duration(state.pinned ? state.settings.minutes : slot?.minutes ?? state.settings.minutes)}</span>
+          <span><Icon name="clock" size={17}/> {duration(state.pinned ? studyMinutes(today, state.settings) || state.settings.minutes : slot?.minutes ?? state.settings.minutes)}</span>
           {slot && slot.day > today && !state.pinned && <span>Próxima · {dateLabel(slot.day)}</span>}
         </div>}
       </section>
@@ -258,7 +258,9 @@ export function App() {
     : page === "repaso" ? <Review due={due} state={state} onAttempt={item => addAttempts([item])} onFlag={toggleFlag}/>
     : page === "simulacro" ? <Exam state={state} onAttempts={addAttempts}/>
     : page === "progreso" ? <Progress state={state} today={today} onFlag={toggleFlag}/>
-    : page === "plan" ? <Planner state={state} today={today} onSettings={settings => update(before => ({ ...before, settings }))} onImport={data => update(() => data)}/>
+    : page === "plan" ? <Suspense fallback={<p>Cargando el plan…</p>}>
+      <Planner state={state} today={today} onSettings={settings => update(before => ({ ...before, settings }))} onImport={data => update(() => data)}/>
+    </Suspense>
     : <><PageHeading title="No encontramos esa página" /><a href="#/">Volver a Clase de hoy</a></>;
 
   return <div className="app-shell">
