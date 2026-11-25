@@ -16,9 +16,10 @@ export interface LessonDraft {
   id: string;
   title: string;
   objective: string;
-  explanation: string[];
+  explanation: string[] | { sections: { title: string; points: string[] }[] };
   example: { prompt: string; steps: string[] };
   miniQuestionCount?: number;
+  miniFormCount?: number;
   workedExamples?: { prompt: string; explanation: string }[];
   prerequisiteIds: string[];
   source: string;

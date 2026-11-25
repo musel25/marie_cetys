@@ -289,8 +289,11 @@ test("Spanish lessons show worked examples and a mini-exam after the exercises",
   await page.goto("/#/clase/es-ortografia");
   await expect(page.getByRole("heading", { name: "Ejemplos resueltos" })).toBeVisible();
   const exercises = page.getByRole("region", { name: "Ejercicios", exact: true });
-  await expect(exercises.getByText("10 preguntas", { exact: true })).toBeVisible();
-  await expect(exercises.locator("details.question-details")).toHaveCount(10);
+  await expect(exercises.getByText("14 preguntas", { exact: true })).toBeVisible();
+  await expect(exercises.locator("details.question-details")).toHaveCount(14);
+  for (const title of ["Nombre común y nombre propio", "Hiato y diptongo", "Por qué, porque, porqué y por que"]) {
+    await expect(page.getByRole("heading", { name: title, level: 3, exact: true })).toBeVisible();
+  }
   const afterExercises = page.locator("#ejercicios + section");
   const miniLink = afterExercises.getByRole("link", { name: "Hacer miniexamen", exact: true });
   await expect(miniLink).toHaveAttribute("href", "#/mini/es-ortografia");
@@ -331,15 +334,18 @@ for (const skill of ["mat-enteros", "en-sentence-order"]) {
   });
 }
 
-test("finishes a five-question orthography draft and starts a ten-question retake", async ({ page }) => {
+test("finishes a legacy orthography draft and rotates through two fresh ten-question forms", async ({ page }) => {
   await page.addInitScript(() => {
-    sessionStorage.setItem("marie-cetys:mini:es-ortografia", JSON.stringify({
+    const key = "marie-cetys:mini:es-ortografia";
+    if (sessionStorage.getItem(key)) return;
+    sessionStorage.setItem(key, JSON.stringify({
       id: "legacy-orthography-draft", form: 0, current: 4,
       started: Date.now() - 60_000, answers: [1, 3, 0, 2, 2],
     }));
   });
   await page.goto("/#/mini/es-ortografia");
   await expect(page.getByRole("heading", { name: "Pregunta 5 de 5" })).toBeVisible();
+  const previousPrompt = await page.locator("legend").innerText();
   await page.getByRole("button", { name: "Entregar miniexamen", exact: true }).click();
   await expect(page.getByText("5 de 5", { exact: true })).toBeVisible();
   await expect(page.getByRole("region", { name: "Soluciones" }).locator("details")).toHaveCount(5);
@@ -348,4 +354,18 @@ test("finishes a five-question orthography draft and starts a ten-question retak
   await expect(page.getByText(/Último intento · 5 de 5/)).toBeVisible();
   await page.getByRole("button", { name: "Empezar miniexamen" }).click();
   await expect(page.getByRole("heading", { name: "Pregunta 1 de 10" })).toBeVisible();
+  const retakePrompts: string[] = [];
+  for (let index = 0; index < 10; index++) {
+    retakePrompts.push(await page.locator("legend").innerText());
+    await page.getByRole("radio").first().check();
+    if (index < 9) await page.getByRole("button", { name: "Siguiente", exact: true }).click();
+  }
+  expect(retakePrompts).not.toContain(previousPrompt);
+  await page.getByRole("button", { name: "Entregar miniexamen", exact: true }).click();
+  await expect(page.getByRole("heading", { name: "Resultado del miniexamen" })).toBeVisible();
+  await page.reload();
+  await expect(page.getByRole("region", { name: "Soluciones" }).locator("details")).toHaveCount(10);
+  await page.getByRole("button", { name: "Hacer otro miniexamen" }).click();
+  await page.getByRole("button", { name: "Empezar miniexamen" }).click();
+  await expect(page.locator("legend")).not.toHaveText(retakePrompts[0]);
 });

@@ -251,7 +251,12 @@ export function Workbook({ lesson, target, state, onAttempt, onFlag, onClass, on
     target?.scrollIntoView();
   }
   const rules = <>
-    <ol className="lesson-steps">{lesson.explanation.map((step, index) => <li key={index}>{step}</li>)}</ol>
+    {Array.isArray(lesson.explanation)
+      ? <ol className="lesson-steps">{lesson.explanation.map((step, index) => <li key={index}>{step}</li>)}</ol>
+      : lesson.explanation.sections.map(section => <div className="lesson-rule" key={section.title}>
+        <h3>{section.title}</h3>
+        <ul className="lesson-steps">{section.points.map(point => <li key={point}>{point}</li>)}</ul>
+      </div>)}
     {lesson.prerequisiteIds.some(id => lessonById.has(id)) && <p className="muted">Temas previos: {lesson.prerequisiteIds.map(id => lessonById.get(id)).filter(Boolean).map((entry, index) =>
       <span key={entry!.id}>{index > 0 && ", "}<a href={lessonHref(entry!.id)}>{entry!.title}</a></span>,
     )}</p>}
