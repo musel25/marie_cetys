@@ -1,10 +1,13 @@
-import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react";
+import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { areas, areaOrder, byArea, curriculum, lessonById, resourceLinks } from "./content";
 import { Exam } from "./Exam";
 import { addDays, classPlan, dateLabel, loadState, periodStart, reviewCards, reviewQuestion, saveState, studyDay, studyMinutes, summary } from "./study";
 import type { Area, Attempt, ClassRecord, Lesson, MiniResult, Question, StudyState } from "./types";
 import { AreaTag, duration, elapsedTime, Icon, lessonHref, miniHref, PageHeading, type IconName } from "./ui";
 import { OrderDiagram, QuestionCard } from "./QuestionCard";
+import { mergeImportedProgress, mergePlanSettings, mergeProgress, sameProgress, type ProgressBaseline } from "./progressSync";
+import { isPreviousProgressPage, PreviousProgressPage, primaryOrigin, requestPreviousProgress } from "./previousProgress";
+import { useProgressSync } from "./useProgressSync";
 
 const navigation: { id: string; label: string; icon: IconName }[] = [
   { id: "", label: "Clase de hoy", icon: "home" },
@@ -167,8 +170,13 @@ function Review({ due, state, onAttempt, onFlag }: {
 }
 
 export function App() {
+  return isPreviousProgressPage() ? <main id="main-content" className="main-content"><PreviousProgressPage /></main> : <StudyApp />;
+}
+
+function StudyApp() {
   const [initial] = useState(loadState);
   const [state, setState] = useState(initial.state);
+  const [localChange, setLocalChange] = useState(0);
   const currentState = useRef(initial.state);
   const unsaved = useRef(false);
   const [route, setRoute] = useState(readRoute);
@@ -206,10 +214,16 @@ export function App() {
     };
   }, []);
 
-  function update(transform: (before: StudyState) => StudyState, savedMessage?: string) {
+  const snapshot = useCallback(() => {
+    const saved = loadState();
+    return saved.found && !unsaved.current ? saved.state : currentState.current;
+  }, []);
+
+  const update = useCallback((transform: (before: StudyState) => StudyState, savedMessage?: string, fromSync = false) => {
     function commit() {
-      const saved = loadState();
-      const next = transform(saved.found && !unsaved.current ? saved.state : currentState.current);
+      const next = transform(snapshot());
+      if (fromSync && !unsaved.current && sameProgress(currentState.current, next)) return true;
+      if (!fromSync) setLocalChange(change => change + 1);
       currentState.current = next;
       setState(next);
       try {
@@ -227,7 +241,20 @@ export function App() {
       return navigator.locks.request("marie-cetys:study", commit).catch(() => commit());
     }
     return Promise.resolve(commit());
+  }, [snapshot]);
+  const applyRemote = useCallback((remote: StudyState, captured: ProgressBaseline) =>
+    update(before => mergeProgress(before, remote, captured), undefined, true), [update]);
+  const sync = useProgressSync({ change: localChange, snapshot, apply: applyRemote });
+  const connected = sync.connected;
+  function importBackup(data: StudyState) {
+    return update(before => connected ? mergeImportedProgress(before, data) : data);
   }
+  async function importPrevious() {
+    const previous = await requestPreviousProgress();
+    await update(before => mergeImportedProgress(before, previous));
+    await sync.syncNow().catch(() => { /* the imported history is already stored locally */ });
+  }
+
   function addAttempts(items: Attempt[]) {
     update(before => {
       const ids = new Set(before.attempts.map(attempt => attempt.id));
@@ -264,7 +291,11 @@ export function App() {
       <Progress state={state} today={today} onFlag={toggleFlag}/>
     </Suspense>
     : page === "plan" ? <Suspense fallback={<p>Cargando el plan…</p>}>
-      <Planner state={state} today={today} onSettings={settings => update(before => ({ ...before, settings }))} onImport={data => update(() => data)}/>
+      <Planner state={state} today={today} onSettings={(settings, base) => update(before => ({
+          ...before, settings: mergePlanSettings(settings, before.settings, base),
+        }))}
+        onImport={importBackup} mergeBackup={connected}
+        sync={{ ...sync, importPrevious: location.origin === primaryOrigin ? importPrevious : undefined }} />
     </Suspense>
     : <><PageHeading title="No encontramos esa página" /><a href="#/">Volver a Clase de hoy</a></>;
 

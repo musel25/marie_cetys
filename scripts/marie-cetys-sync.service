@@ -1,0 +1,33 @@
+[Unit]
+Description=PIENSE II progress synchronization
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/node /opt/marie-cetys-sync/current/sync.mjs
+LoadCredential=key.hash:/etc/marie-cetys-sync/key.hash
+Environment=PIENSA_SYNC_KEY_HASH_FILE=%d/key.hash
+Environment=PIENSA_SYNC_DATA_FILE=/var/lib/marie-cetys-sync/progress.json
+Environment=PIENSA_SYNC_PORT=8417
+DynamicUser=yes
+StateDirectory=marie-cetys-sync
+StateDirectoryMode=0700
+UMask=0077
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=strict
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+NoNewPrivileges=yes
+RestrictSUIDSGID=yes
+RestrictRealtime=yes
+RestrictAddressFamilies=AF_UNIX AF_INET
+IPAddressDeny=any
+IPAddressAllow=localhost
+Restart=on-failure
+RestartSec=2s
+
+[Install]
+WantedBy=multi-user.target
