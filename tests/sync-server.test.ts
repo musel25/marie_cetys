@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { once } from "node:events";
-import { mkdir, mkdtemp, readFile, readdir, rm, writeFile } from "node:fs/promises";
+import { mkdir, mkdtemp, readFile, readdir, rm, stat, writeFile } from "node:fs/promises";
 import type { Server } from "node:http";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
@@ -178,4 +178,75 @@ test("malformed, unsupported, and oversized updates cannot mutate progress", asy
   assert.equal((await fetch(url + route + "/unknown", { headers })).status, 404);
   const response = await fetch(url + route, { headers });
   assert.deepEqual(await response.json(), { revision: 0, state: null });
+});
+
+const password = "Un-plan-privado-26";
+
+function requestSession(url: string, method: string, payload: object, headers: Record<string, string> = {}) {
+  return fetch(url + route + "/session", {
+    method,
+    headers: { Origin: canonical, "Content-Type": "application/json", ...headers },
+    body: JSON.stringify(payload),
+  });
+}
+
+test("username and password verify the exact account and accept the activation key", async t => {
+  const { url } = await fixture(t);
+  for (const payload of [{ username: "otra", password: key }, { username: "marie", password }, { password: key }]) {
+    const denied = await requestSession(url, "POST", payload);
+    assert.equal(denied.status, 401);
+    assert.equal(denied.headers.get("set-cookie"), null);
+  }
+  const accepted = await requestSession(url, "POST", { username: "marie", password: key });
+  assert.equal(accepted.status, 204);
+  assert.match(accepted.headers.get("set-cookie") ?? "", /; HttpOnly;/);
+});
+
+test("changing the password verifies the current credential and persists privately across restart", async t => {
+  const { url, dataFile, close, start } = await fixture(t);
+  const cookie = await signInCookie(url);
+  const otherCookie = await signInCookie(url);
+  const saved = blankState("2026-11-24");
+  assert.equal((await save(url, cookie, 0, saved)).status, 200);
+  assert.equal((await requestSession(url, "PUT", { currentPassword: key, password })).status, 401);
+  assert.equal((await requestSession(url, "PUT", { currentPassword: "wrong", password }, { Cookie: cookie })).status, 401);
+  assert.equal((await requestSession(url, "PUT", { currentPassword: key, password: "too short" }, { Cookie: cookie })).status, 400);
+  assert.equal((await requestSession(url, "PUT", { currentPassword: key, password }, { Cookie: cookie, Origin: legacy })).status, 403);
+  const changed = await requestSession(url, "PUT", { currentPassword: key, password }, { Cookie: cookie });
+  assert.equal(changed.status, 204);
+  assert.equal((await fetch(url + route, { headers: { Cookie: cookie } })).status, 200);
+  assert.equal((await fetch(url + route, { headers: { Cookie: otherCookie } })).status, 401);
+  const stored = dataFile + ".password";
+  const contents = await readFile(stored, "utf8");
+  assert.equal((await stat(stored)).mode & 0o777, 0o600);
+  assert.ok(!contents.includes(password) && !contents.includes(key));
+
+  await close();
+  const restarted = await start();
+  const signInResponse = await requestSession(restarted.url, "POST", { username: "marie", password });
+  assert.equal(signInResponse.status, 204);
+  const restartedCookie = signInResponse.headers.get("set-cookie")?.split(";")[0];
+  assert.ok(restartedCookie);
+  const progress = await fetch(restarted.url + route, { headers: { Cookie: restartedCookie } });
+  assert.deepEqual(await progress.json(), { revision: 1, state: saved });
+  const recovery = await requestSession(restarted.url, "POST", { username: "marie", password: key });
+  assert.equal(recovery.status, 204);
+
+  const nextPassword = "Una-clave-nueva-26";
+  assert.equal((await requestSession(restarted.url, "PUT", { currentPassword: password, password: nextPassword }, { Cookie: restartedCookie })).status, 204);
+  assert.equal((await requestSession(restarted.url, "POST", { username: "marie", password })).status, 401);
+  assert.equal((await requestSession(restarted.url, "POST", { username: "marie", password: nextPassword })).status, 204);
+});
+
+test("repeated wrong sign-in attempts are rate limited per verified client IP", async t => {
+  const { url } = await fixture(t);
+  const invalid = { username: "marie", password: "clave incorrecta" };
+  for (let i = 0; i < 10; i++) {
+    const failed = await requestSession(url, "POST", invalid, { "X-Real-IP": "192.0.2.23" });
+    assert.equal(failed.status, 401);
+  }
+  const blocked = await requestSession(url, "POST", { username: "marie", password: key }, { "X-Real-IP": "192.0.2.23" });
+  assert.equal(blocked.status, 429);
+  assert.ok(Number(blocked.headers.get("retry-after")) > 0);
+  assert.equal((await requestSession(url, "POST", { username: "marie", password: key }, { "X-Real-IP": "192.0.2.24" })).status, 204);
 });

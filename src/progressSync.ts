@@ -110,12 +110,20 @@ export async function setProgress(revision: number, state: StudyState): Promise<
   return remoteProgress(response);
 }
 
-export async function startProgressSession(key: string) {
+export async function startProgressSession(username: string, password: string) {
   const response = await fetch(progressUrl() + "/session", {
     method: "POST", headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ key }), signal: AbortSignal.timeout(10000),
+    body: JSON.stringify({ username, password }), signal: AbortSignal.timeout(10000),
   });
-  if (!response.ok) throw Error("No se pudo conectar el dispositivo.");
+  if (!response.ok) throw Error("No se pudo iniciar sesión.");
+}
+
+export async function changeProgressPassword(currentPassword: string, password: string) {
+  const response = await fetch(progressUrl() + "/session", {
+    method: "PUT", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ currentPassword, password }), signal: AbortSignal.timeout(10000),
+  });
+  if (!response.ok) throw Error("No se pudo guardar la contraseña.");
 }
 
 export async function endProgressSession() {
