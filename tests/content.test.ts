@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { areaOrder, areas, byArea, curriculum, expectedMiniFormCount, guidedSections, miniQuestionCount } from "../src/content";
+import { areaOrder, areas, byArea, curriculum, expectedMiniFormCount, miniQuestionCount } from "../src/content";
+import { guidedSections } from "../src/content/guides";
 import { miniFormCount, miniQuestions } from "../src/content/mini";
 import { questions } from "../src/study";
 
@@ -14,21 +15,17 @@ test("each exam area has enough original questions for a timed section and order
     assert.ok(!lessons.has(lesson.id), lesson.id);
     assert.ok(lesson.prerequisiteIds.every(id => lessons.has(id)), lesson.id);
     assert.ok(lesson.title && lesson.objective && lesson.source);
-    if (Array.isArray(lesson.explanation)) {
-      assert.ok(lesson.explanation.length, lesson.id);
-      assert.ok(lesson.example?.prompt && lesson.example.steps.length, lesson.id);
-    } else {
-      assert.ok(lesson.explanation.sections.length, lesson.id);
-      for (const section of lesson.explanation.sections) {
-        assert.match(section.id, /^[a-z-]+$/);
-        assert.ok(section.title.trim() && section.points.length, lesson.id);
-        assert.ok(section.example.prompt.trim() && section.example.steps.length >= 2, section.id);
-        for (const step of section.example.steps) {
-          assert.ok(step.prompt.trim() && step.explanation.trim(), section.id);
-          assert.ok(step.options.length >= 2 && step.options.every(option => option.trim()), section.id);
-          assert.equal(new Set(step.options).size, step.options.length, section.id);
-          assert.ok(Number.isInteger(step.answer) && step.answer >= 0 && step.answer < step.options.length, section.id);
-        }
+    const guided = guidedSections(lesson);
+    assert.ok(guided.length >= 2, lesson.id);
+    for (const section of guided) {
+      assert.match(section.id, /^[a-z-]+$/);
+      assert.ok(section.title.trim() && section.points.length && section.points.every(point => point.trim()), lesson.id);
+      assert.ok(section.example.prompt.trim() && section.example.steps.length >= 2, section.id);
+      for (const step of section.example.steps) {
+        assert.ok(step.prompt.trim() && step.explanation.trim(), section.id);
+        assert.ok(step.options.length >= 2 && step.options.every(option => option.trim()), section.id);
+        assert.equal(new Set(step.options).size, step.options.length, section.id);
+        assert.ok(Number.isInteger(step.answer) && step.answer >= 0 && step.answer < step.options.length, section.id);
       }
     }
     assert.ok(lesson.exercises.length >= 7, lesson.id);
@@ -51,15 +48,11 @@ test("each exam area has enough original questions for a timed section and order
   }
 });
 
-test("every lesson has fresh mini-exam questions and Spanish lessons have worked examples", () => {
+test("every lesson has independent mini-exam questions", () => {
   const prompts = new Set(curriculum.flatMap(lesson => [...questions(lesson), ...guidedSections(lesson).map(section => section.question)].map(item => item.prompt)));
   for (const lesson of curriculum) {
     if (lesson.area === "hc") {
       assert.equal(lesson.exercises.filter(item => item.difficulty !== "challenge").length, 7, lesson.id);
-    }
-    if (lesson.area === "es" && Array.isArray(lesson.explanation)) {
-      assert.ok((lesson.workedExamples?.length ?? 0) >= 4, lesson.id);
-      assert.ok(lesson.workedExamples?.every(item => item.prompt.trim() && item.explanation.trim()), lesson.id);
     }
     const formCount = miniFormCount(lesson.id);
     assert.equal(formCount, expectedMiniFormCount(lesson), lesson.id);

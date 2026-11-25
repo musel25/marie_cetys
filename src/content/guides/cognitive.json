@@ -1,0 +1,987 @@
+{
+  "hc-orden": [
+    {
+      "id": "vecindad",
+      "title": "Antes e inmediatamente antes",
+      "points": [
+        "Dibuja una casilla por objeto y numéralas de izquierda a derecha. Si A va antes de B, la posición de A es menor que la de B. Puede haber casillas entre las dos.",
+        "Si A va inmediatamente antes de B, coloca el bloque A–B sin espacio. Si solo dice que van juntos, prueba ambos órdenes. Usa otra pista para decidir quién va primero."
+      ],
+      "example": {
+        "visual": "order-slots",
+        "prompt": "Ordena R, M, T y P. T va antes de M. R va después de M. P va entre T y M. R no puede quedar junto a T.",
+        "steps": [
+          {
+            "prompt": "Antes de colocar P, ¿qué orden parcial dan las dos primeras pistas?",
+            "options": [
+              "T–M–R",
+              "M–T–R"
+            ],
+            "answer": 0,
+            "explanation": "T va a la izquierda de M. R va a la derecha de M. Anota el orden T–M–R y deja espacio para P. Las pistas no exigen que T y M sean vecinos."
+          },
+          {
+            "prompt": "¿Dónde puedes colocar P para cumplir también las dos pistas que faltan?",
+            "options": [
+              "Entre M y R",
+              "Entre T y M"
+            ],
+            "answer": 1,
+            "explanation": "P va entre T y M. El orden T–P–M–R también deja a R lejos de T, tal como pide la última pista."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "En una fila de cuatro casillas, C va inmediatamente antes de F y G va antes de C. ¿Qué orden funciona?",
+        "options": [
+          "C–G–F–H",
+          "G–C–H–F",
+          "H–G–C–F",
+          "H–F–G–C"
+        ],
+        "answer": 2,
+        "explanation": "En H–G–C–F, C y F son vecinos en ese orden, y G queda a la izquierda de C.",
+        "hint": "Busca el bloque C–F. Después revisa la posición de G.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "extremos",
+      "title": "Entre dos objetos frente a ocupar el centro",
+      "points": [
+        "Para probar «B va entre A y C», busca B a la derecha de uno de los extremos y a la izquierda del otro. A–B–C y C–B–A cumplen esa pista.",
+        "B puede estar lejos de ambos extremos. «Entre» tampoco exige ocupar la casilla central de toda la fila. Usa las otras pistas para escoger la orientación."
+      ],
+      "example": {
+        "prompt": "P queda entre M y V. M aparece después de V. Hay cuatro casillas y también se debe colocar D.",
+        "steps": [
+          {
+            "prompt": "¿En qué orden deben aparecer V, P y M al leer de izquierda a derecha?",
+            "options": [
+              "M–P–V",
+              "V–P–M"
+            ],
+            "answer": 1,
+            "explanation": "P queda entre ambos extremos. La pista «M después de V» deja a V a la izquierda."
+          },
+          {
+            "prompt": "¿Puede D separar a V de P?",
+            "options": [
+              "Sí. V–D–P–M conserva el orden.",
+              "No. V y P deben ir juntos."
+            ],
+            "answer": 0,
+            "explanation": "Entre los extremos V y M, P puede ocupar cualquier casilla disponible. V y P no tienen que ser vecinos."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Z queda entre H y J. H va después de J. ¿Qué orden permite también colocar X?",
+        "options": [
+          "H–Z–J–X",
+          "Z–J–H–X",
+          "J–H–X–Z",
+          "J–X–Z–H"
+        ],
+        "answer": 3,
+        "explanation": "J va antes de H. La fila J–X–Z–H coloca a Z entre ambos, aunque X ocupe una casilla intermedia.",
+        "hint": "Decide qué extremo va primero. Luego revisa dónde queda Z.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "descarte",
+      "title": "Una posición permitida y un orden que cumple todas las pistas",
+      "points": [
+        "Transforma las prohibiciones en casillas que puedes tachar. Con objetos distintos, «Q no va antes de L» coloca a Q después de L. «Q no va junto a L» también elimina las dos casillas vecinas a L.",
+        "Una opción que pasa una pista aún puede fallar otra. Revisa una pista a la vez y conserva únicamente las opciones que cumplen todas."
+      ],
+      "example": {
+        "prompt": "En una fila de cinco casillas, T ocupa la casilla 2. V no va antes de T y no va junto a T.",
+        "steps": [
+          {
+            "prompt": "Después de aplicar solo «V no va antes de T», ¿dónde puede estar V?",
+            "options": [
+              "En 3, 4 o 5",
+              "Solo en 4 o 5"
+            ],
+            "answer": 0,
+            "explanation": "Por ahora, la única condición es quedar a la derecha de T. La casilla 3 todavía entra."
+          },
+          {
+            "prompt": "¿Qué casillas quedan al aplicar también «V no va junto a T»?",
+            "options": [
+              "3, 4 y 5",
+              "4 y 5"
+            ],
+            "answer": 1,
+            "explanation": "La casilla 3 es vecina de la 2. Al quitarla, quedan las posiciones 4 y 5."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "A queda antes de N. D no va antes de N ni junto a N. ¿Cuál fila cumple las tres condiciones?",
+        "options": [
+          "A–N–K–D",
+          "A–N–D–K",
+          "D–A–N–K",
+          "N–A–K–D"
+        ],
+        "answer": 0,
+        "explanation": "En A–N–K–D, A va antes de N y D va después de N. K separa a D de N.",
+        "hint": "Primero elimina las filas donde A no está antes de N. Después aplica las dos restricciones de D.",
+        "difficulty": "base"
+      }
+    }
+  ],
+  "hc-metaforas": [
+    {
+      "id": "sentido",
+      "title": "Sentido literal y sentido figurado",
+      "points": [
+        "Lee primero la escena. Si la frase presenta un objeto como si fuera otro, prueba qué rasgo concreto pueden compartir.",
+        "Convierte la imagen en una descripción que sí pueda suceder en la escena. Conserva el rasgo señalado por las palabras, como la forma, el sonido o el movimiento."
+      ],
+      "example": {
+        "prompt": "A la salida de una función, el público aplaudió. La narradora dice «Un trueno llenó el teatro».",
+        "steps": [
+          {
+            "prompt": "¿Qué sonido está presente en la escena?",
+            "options": [
+              "Una tormenta",
+              "El aplauso"
+            ],
+            "answer": 1,
+            "explanation": "La escena menciona el aplauso del público. Trueno es la imagen elegida para describirlo."
+          },
+          {
+            "prompt": "¿Qué rasgo del aplauso destaca la imagen del trueno?",
+            "options": [
+              "La intensidad del sonido",
+              "La altura del público"
+            ],
+            "answer": 0,
+            "explanation": "El trueno sugiere un sonido fuerte. Ese rasgo también se puede aplicar al aplauso dentro del teatro."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "En el taller había pelusa flotando. Una niña dijo «Son copos de algodón». ¿Qué rasgo explica mejor la comparación?",
+        "options": [
+          "La pelusa corta como el vidrio.",
+          "La pelusa se endurece al caer.",
+          "La pelusa es ligera y parece flotar al caer.",
+          "La pelusa tiene el mismo peso que la mesa."
+        ],
+        "answer": 2,
+        "explanation": "La palabra copos sugiere pedazos ligeros que flotan o caen despacio. La escena solo describe pelusa suspendida.",
+        "hint": "Une la imagen de los copos con el movimiento que describe la escena.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "rasgos",
+      "title": "Parecido en un rasgo y coincidencia con todas las pistas",
+      "points": [
+        "Una opción puede compartir una característica con la metáfora y fallar en otra. Escribe una pista por palabra importante.",
+        "Separa las pistas de forma, posición, color o comportamiento. Da preferencia a la opción que reúna los rasgos específicos en el contexto."
+      ],
+      "example": {
+        "prompt": "Al borde de un río, una fotógrafa escribe «Un cinturón verde abrazaba el agua».",
+        "steps": [
+          {
+            "prompt": "¿Qué añade «cinturón» a la descripción?",
+            "options": [
+              "Una franja que rodea o bordea",
+              "Un punto verde aislado"
+            ],
+            "answer": 0,
+            "explanation": "La imagen de un cinturón sugiere una tira continua colocada alrededor de algo."
+          },
+          {
+            "prompt": "¿Qué opción conserva la forma y el color?",
+            "options": [
+              "Una franja de hierba junto a la orilla",
+              "Un bote verde en mitad del río"
+            ],
+            "answer": 0,
+            "explanation": "La hierba forma una franja verde junto al agua. El bote comparte el color y falla en la posición y la forma."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "En el auditorio solo se ve desde arriba la fila de asistentes con lámparas encendidas. ¿Qué representa mejor «Un collar de luces»?",
+        "options": [
+          "Una lámpara azul en el techo",
+          "Las lámparas en fila, como cuentas brillantes",
+          "La música que suena al fondo",
+          "La mesa larga y oscura del escenario"
+        ],
+        "answer": 1,
+        "explanation": "Un collar reúne cuentas distribuidas a lo largo de una línea. La fila de lámparas también alinea puntos brillantes.",
+        "hint": "Busca a la vez la disposición de un collar y el brillo de las luces.",
+        "difficulty": "base"
+      }
+    }
+  ],
+  "hc-analogias": [
+    {
+      "id": "relacion",
+      "title": "Relación específica y simple asociación",
+      "points": [
+        "Explica la primera pareja con un verbo. Es mejor decir «se usa para cortar» que «tiene algo que ver con».",
+        "Lee la misma frase con la segunda pareja. Elige la opción que reproduzca la función, la parte, el material, la oposición u otra relación específica."
+      ],
+      "example": {
+        "prompt": "«Llave es a abrir como pala es a ___». Cubeta, cavar y jardín están relacionados con una pala.",
+        "steps": [
+          {
+            "prompt": "¿Qué frase conserva el sentido de «llave es a abrir»?",
+            "options": [
+              "Una llave se usa para abrir.",
+              "Una llave se guarda en una caja."
+            ],
+            "answer": 0,
+            "explanation": "Abrir es la acción que se realiza con la llave. La relación va de herramienta a función."
+          },
+          {
+            "prompt": "¿Qué palabra completa la relación de herramienta a función?",
+            "options": [
+              "Jardín",
+              "Cavar"
+            ],
+            "answer": 1,
+            "explanation": "Una pala se usa para cavar. Jardín es un lugar donde puede usarse, pero no es una tarea."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Lupa es a ampliar como embudo es a ___. ¿Qué opción conserva la relación?",
+        "options": [
+          "Vidrio",
+          "Trasvasar",
+          "Botella",
+          "Laboratorio"
+        ],
+        "answer": 1,
+        "explanation": "Una lupa se usa para ampliar una imagen. Un embudo se usa para trasvasar líquidos a otro recipiente.",
+        "hint": "Identifica la acción que se realiza con cada instrumento.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "direccion",
+      "title": "Parte a conjunto y conjunto a parte",
+      "points": [
+        "El orden de las palabras forma parte de la relación. Si la primera es una parte, la frase debe comenzar con «es una parte de». Si es el conjunto, empieza con «tiene como parte».",
+        "Antes de elegir, lee la frase al revés. Si el significado cambia, revisa en qué dirección va la segunda pareja."
+      ],
+      "example": {
+        "prompt": "«Teclado es a tecla como escalera es a ___».",
+        "steps": [
+          {
+            "prompt": "¿En qué dirección va la primera pareja?",
+            "options": [
+              "Parte a conjunto",
+              "Conjunto a parte"
+            ],
+            "answer": 1,
+            "explanation": "Un teclado tiene teclas. Primero aparece el conjunto y luego una de sus partes."
+          },
+          {
+            "prompt": "¿Qué opción mantiene la dirección con «escalera»?",
+            "options": [
+              "Peldaño",
+              "Edificio"
+            ],
+            "answer": 0,
+            "explanation": "Un peldaño es parte de una escalera. Un edificio puede contener una escalera y eso invierte la relación."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "«Pétalo es a flor como eslabón es a ___». ¿Qué completa la analogía?",
+        "options": [
+          "Metal",
+          "Collar",
+          "Cadena",
+          "Cierre"
+        ],
+        "answer": 2,
+        "explanation": "Un pétalo forma parte de una flor. Un eslabón es una pieza que, unida con otras, forma una cadena.",
+        "hint": "Empieza con «un pétalo es una parte de» y conserva ese orden.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "material",
+      "title": "Material y producto frente a herramienta y acción",
+      "points": [
+        "Para reconocer una relación de material a producto, prueba «se fabrica con». El material permanece en el producto.",
+        "Para reconocer herramienta y acción, prueba «se usa para». El objeto facilita una acción y normalmente no pasa a formar parte del resultado."
+      ],
+      "example": {
+        "prompt": "Compara «madera → cajón» y «serrucho → cortar».",
+        "steps": [
+          {
+            "prompt": "¿Cuál pareja responde a «¿con qué está hecho?»?",
+            "options": [
+              "Madera → cajón",
+              "Serrucho → cortar"
+            ],
+            "answer": 0,
+            "explanation": "Un cajón puede estar hecho de madera. Esa es una relación de material a producto."
+          },
+          {
+            "prompt": "Si la pareja empieza con «termómetro», ¿qué término reproduce la relación de herramienta a acción?",
+            "options": [
+              "Vidrio",
+              "Medir"
+            ],
+            "answer": 1,
+            "explanation": "Para repetir «se usa para», el segundo término debe nombrar una acción. Un termómetro se usa para medir."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "«Aluminio es a lata como papel es a ___». ¿Qué opción conserva la relación material a producto?",
+        "options": [
+          "Gramaje",
+          "Tijeras",
+          "Recortar",
+          "Sobre"
+        ],
+        "answer": 3,
+        "explanation": "Una lata puede fabricarse con aluminio y un sobre puede fabricarse con papel. Tijeras y recortar forman otra relación.",
+        "hint": "Prueba la frase «puede fabricarse con» con la primera pareja y con la segunda.",
+        "difficulty": "base"
+      }
+    }
+  ],
+  "hc-secuencias": [
+    {
+      "id": "operacion",
+      "title": "Sumar lo mismo y multiplicar por lo mismo",
+      "points": [
+        "Calcula la diferencia entre dos términos vecinos. Si cada diferencia es igual, suma ese mismo cambio para continuar.",
+        "Si la diferencia cambia, prueba si hay un factor constante. Comprueba la regla con más de un salto y, si el hueco está en medio, verifica el término que sigue."
+      ],
+      "example": {
+        "prompt": "Compara las series A: 4, 10, 16 y B: 4, 12, 36.",
+        "steps": [
+          {
+            "prompt": "¿Qué regla da los dos saltos de la serie A?",
+            "options": [
+              "Sumar 6",
+              "Multiplicar por 3"
+            ],
+            "answer": 0,
+            "explanation": "De 4 a 10 y de 10 a 16 el aumento es 6. El siguiente término sería 22."
+          },
+          {
+            "prompt": "¿Qué número sigue en la serie B?",
+            "options": [
+              "60",
+              "108"
+            ],
+            "answer": 1,
+            "explanation": "Cada término es el anterior multiplicado por 3: 4 × 3 = 12 y 12 × 3 = 36. Por eso sigue 36 × 3 = 108."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Completa las series 5, 9, 13, ___ y 5, 10, 20, ___, en ese orden.",
+        "options": [
+          "17 y 30",
+          "17 y 40",
+          "19 y 40",
+          "20 y 25"
+        ],
+        "answer": 1,
+        "explanation": "La primera suma 4 en cada salto y sigue con 17. La segunda multiplica por 2 en cada salto y sigue con 40.",
+        "hint": "Compara dos saltos de cada serie. Revisa la diferencia y el factor.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "alternancia",
+      "title": "Una secuencia continua y dos secuencias intercaladas",
+      "points": [
+        "Si los términos vecinos saltan en direcciones distintas, numera las posiciones. Compara 1, 3 y 5 por separado de 2, 4 y 6.",
+        "Completa cada grupo con su regla. Coloca cada respuesta en la posición que le toca. Una regla que solo explica el primer salto puede fallar en el siguiente."
+      ],
+      "example": {
+        "prompt": "Completa los espacios de 6, 40, 9, 35, 12, ___, ___.",
+        "steps": [
+          {
+            "prompt": "¿Qué regla tienen los términos en posiciones 1, 3 y 5?",
+            "options": [
+              "Sumar 3",
+              "Restar 5"
+            ],
+            "answer": 0,
+            "explanation": "Los términos de las posiciones impares son 6, 9 y 12. Aumentan de 3 en 3."
+          },
+          {
+            "prompt": "¿Qué dos números faltan, en el orden que aparecen los huecos?",
+            "options": [
+              "15 y 30",
+              "30 y 15"
+            ],
+            "answer": 1,
+            "explanation": "La posición 6 es par: 40, 35, 30. La posición 7 es impar: 6, 9, 12, 15."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "¿Qué términos ocupan las posiciones 7 y 8 de 2, 70, 6, 60, 10, 50, ___, ___?",
+        "options": [
+          "40 y 14",
+          "13 y 40",
+          "14 y 40",
+          "14 y 45"
+        ],
+        "answer": 2,
+        "explanation": "En posiciones impares, suma 4 y obtén 14. En las pares, resta 10 y obtén 40.",
+        "hint": "La posición 7 sigue la serie que empieza en 2. La posición 8 sigue la que empieza en 70.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "componentes",
+      "title": "Letras y números con reglas separadas",
+      "points": [
+        "Escribe las letras en una línea y los números en otra. Comprueba qué cambia en cada una.",
+        "Usa el alfabeto para contar saltos de letras y mira también el uso de mayúsculas. Termina la regla de cada línea antes de reunir ambas partes."
+      ],
+      "example": {
+        "prompt": "Completa p3, R6, t12, V24, ___. Usa el orden del alfabeto español.",
+        "steps": [
+          {
+            "prompt": "¿Qué letra debe ir después de V si se conserva el salto y la alternancia de mayúsculas?",
+            "options": [
+              "X",
+              "x"
+            ],
+            "answer": 1,
+            "explanation": "El patrón p, R, t, V avanza dos posiciones hasta x. Después de una mayúscula va una minúscula."
+          },
+          {
+            "prompt": "¿Qué número corresponde al término que falta?",
+            "options": [
+              "48",
+              "27"
+            ],
+            "answer": 0,
+            "explanation": "Los números 3, 6, 12 y 24 se duplican. Sigue 48. El término completo es x48."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Los saltos de letras se cuentan con el alfabeto español, incluida la ñ. ¿Qué término completa a4, C7, e10, G13, ___?",
+        "options": [
+          "i16",
+          "I16",
+          "i26",
+          "h16"
+        ],
+        "answer": 0,
+        "explanation": "Las letras avanzan dos posiciones: a, c, e, g, i. Toca minúscula. Los números suben de tres en tres, así que sigue 16.",
+        "hint": "Separa las letras de los números y revisa la mayúscula después de G.",
+        "difficulty": "base"
+      }
+    }
+  ],
+  "hc-matrices": [
+    {
+      "id": "filas-columnas",
+      "title": "Regla horizontal y regla vertical",
+      "points": [
+        "Lee las filas de izquierda a derecha. Lee las columnas de arriba abajo. El paso en una dirección puede ser distinto del paso en la otra.",
+        "Busca una fila y una columna que estén completas. Usa las dos reglas para comprobar el valor en su cruce."
+      ],
+      "example": {
+        "prompt": "Completa esta matriz. Cada línea es una fila.\n\n6 | 9 | 12\n10 | 13 | 16\n14 | 17 | ___",
+        "steps": [
+          {
+            "prompt": "¿Qué paso horizontal aparece en las dos filas completas?",
+            "options": [
+              "Sumar 3",
+              "Sumar 4"
+            ],
+            "answer": 0,
+            "explanation": "Cada fila sube de tres en tres. El aumento de 4 corresponde al recorrido hacia abajo."
+          },
+          {
+            "prompt": "¿Qué número cumple la regla horizontal desde 17 y la vertical desde 16?",
+            "options": [
+              "21",
+              "20"
+            ],
+            "answer": 1,
+            "explanation": "17 + 3 = 20 en la última fila. También 16 + 4 = 20 al bajar por la última columna."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Cada línea es una fila. ¿Qué valor completa la matriz si cada dirección mantiene su propio paso?\n\n6 | 11 | 16\n8 | 13 | 18\n10 | 15 | ___",
+        "options": [
+          "17",
+          "23",
+          "20",
+          "25"
+        ],
+        "answer": 2,
+        "explanation": "Las filas suben 5 por casilla y las columnas suben 2 por fila. Desde 15 + 5 o desde 18 + 2 se llega a 20.",
+        "hint": "Calcula el paso hacia la derecha y el paso hacia abajo con líneas completas.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "operacion",
+      "title": "Paso fijo y resultado de las primeras casillas",
+      "points": [
+        "Cuando la diferencia entre casillas cambia, prueba si las dos primeras determinan el resultado de la tercera. Una suma, una resta o un producto deben funcionar en más de una fila.",
+        "Elige una operación que explique todas las filas completas. Luego aplícala con los valores de la fila incompleta."
+      ],
+      "example": {
+        "prompt": "Encuentra la regla de las filas.\n\n6 | 2 | 12\n5 | 3 | 15\n8 | 4 | ___",
+        "steps": [
+          {
+            "prompt": "¿Qué operación relaciona los dos primeros datos con el último en ambas filas completas?",
+            "options": [
+              "Multiplicación",
+              "Suma"
+            ],
+            "answer": 0,
+            "explanation": "6 × 2 = 12 y 5 × 3 = 15. Las sumas darían 8 y 8."
+          },
+          {
+            "prompt": "¿Qué número resulta en la tercera fila?",
+            "options": [
+              "12",
+              "32"
+            ],
+            "answer": 1,
+            "explanation": "Aplica la misma operación a 8 y 4. Su producto es 32."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Aplica una misma operación a las dos primeras casillas de cada fila. ¿Qué valor falta?\n\n18 | 6 | 12\n10 | 3 | 7\n25 | 8 | ___",
+        "options": [
+          "17",
+          "33",
+          "200",
+          "3"
+        ],
+        "answer": 0,
+        "explanation": "En cada fila, el tercer valor es el primero menos el segundo. 18 − 6 = 12, 10 − 3 = 7 y 25 − 8 = 17.",
+        "hint": "Prueba qué operación convierte 18 y 6 en 12 y comprueba la segunda fila.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "mayusculas",
+      "title": "Cambio de letra y cambio de mayúscula",
+      "points": [
+        "En una matriz de letras, sigue el orden alfabético sin atender todavía a las mayúsculas. Encuentra el salto de letra por fila o por columna.",
+        "Después encuentra el patrón de mayúsculas y minúsculas. Una letra correcta con otra forma puede ser un distractor."
+      ],
+      "example": {
+        "prompt": "Continúa el patrón. Cada línea es una fila.\n\nb | D | f\nd | F | h\nf | H | ___",
+        "steps": [
+          {
+            "prompt": "Si ignoras las mayúsculas, ¿qué letra completa f, h, ___?",
+            "options": [
+              "j",
+              "i"
+            ],
+            "answer": 0,
+            "explanation": "De f a h hay dos posiciones. De h, el mismo salto llega a j."
+          },
+          {
+            "prompt": "¿Con qué forma debe ir esa letra?",
+            "options": [
+              "J",
+              "j"
+            ],
+            "answer": 1,
+            "explanation": "En cada fila, solo la casilla central lleva mayúscula. La respuesta es j minúscula."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "¿Qué letra completa la tercera fila de la matriz?\n\nA | b | C\nC | d | E\nE | f | ___",
+        "options": [
+          "g",
+          "H",
+          "F",
+          "G"
+        ],
+        "answer": 3,
+        "explanation": "Las letras avanzan una posición por casilla hacia la derecha. Después de f va g. Las casillas de los extremos llevan mayúscula, así que se escribe G.",
+        "hint": "Determina primero la letra que sigue a f. Luego observa el uso de mayúsculas de esa columna.",
+        "difficulty": "base"
+      }
+    }
+  ],
+  "hc-diagramas": [
+    {
+      "id": "pertenencia",
+      "title": "Cumplir una condición y cumplir varias",
+      "points": [
+        "Un conjunto agrupa elementos con una propiedad. Una letra indica la propiedad que debes revisar. Antes de mirar un sector, marca sí o no para cada conjunto.",
+        "Si aparece más de un sí, busca la intersección de esos conjuntos. La zona también debe quedar fuera de los conjuntos que marcaste no."
+      ],
+      "example": {
+        "prompt": "Sectores del diagrama. 1 solo A · 2 A y B sin C · 3 solo B · 4 A y C sin B · 5 A, B y C · 6 B y C sin A · 7 solo C.\nA reúne termos de metal. B reúne termos de más de 500 mL. C reúne termos de color verde. Un termo es de metal, mide 600 mL y es blanco.",
+        "steps": [
+          {
+            "prompt": "¿Qué respuestas corresponden a A, B y C, en ese orden?",
+            "options": [
+              "Sí, sí, no",
+              "Sí, no, sí"
+            ],
+            "answer": 0,
+            "explanation": "El material cumple A y el volumen cumple B. El color blanco no cumple C."
+          },
+          {
+            "prompt": "¿En qué zona queda el termo?",
+            "options": [
+              "Sector 5: dentro de los tres conjuntos",
+              "Sector 2: dentro de A y B, fuera de C"
+            ],
+            "answer": 1,
+            "explanation": "La zona debe cumplir los dos sí y quedar fuera del conjunto C. Esa zona es el sector 2."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "A reúne mochilas con ruedas. B reúne mochilas rojas. C reúne mochilas con dos bolsillos. ¿Dónde va una mochila roja con dos bolsillos y sin ruedas?",
+        "options": [
+          "Solo en B",
+          "En A y C, fuera de B",
+          "En los tres conjuntos",
+          "En B y C, fuera de A"
+        ],
+        "answer": 3,
+        "explanation": "La mochila pertenece a B por su color y a C por sus bolsillos. Como no tiene ruedas, queda fuera de A.",
+        "hint": "Marca sí o no para cada característica antes de elegir una zona.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "exacto",
+      "title": "Solamente A y B frente a A y B con o sin C",
+      "points": [
+        "«Solamente A y B» exige que el elemento pertenezca a A y B y quede fuera de C. «A y B, con o sin C» admite la intersección de los tres conjuntos.",
+        "Si te piden una cantidad, suma la de todas las zonas admitidas. Cada elemento ocupa una sola zona, así que no vuelvas a contar el centro."
+      ],
+      "example": {
+        "prompt": "A = entradas de la mañana. B = entradas reservadas por internet. C = entradas con descuento. Hay 8 entradas de A y B fuera de C y 3 en la intersección de los tres conjuntos.",
+        "steps": [
+          {
+            "prompt": "¿Cuántas entradas reúnen únicamente A y B?",
+            "options": [
+              "11",
+              "8"
+            ],
+            "answer": 1,
+            "explanation": "Únicamente A y B deja fuera a las entradas con descuento. Cuenta las 8 que ocupan esa zona."
+          },
+          {
+            "prompt": "¿Cuántas entradas reúnen A y B, con o sin descuento?",
+            "options": [
+              "11",
+              "8"
+            ],
+            "answer": 0,
+            "explanation": "Cuenta las 8 sin descuento y las 3 con descuento. 8 + 3 = 11."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Hay 4 fichas en A y C fuera de B y 6 fichas en los tres conjuntos. ¿Cuántas cumplen A y C si B es opcional?",
+        "options": [
+          "6",
+          "10",
+          "4",
+          "2"
+        ],
+        "answer": 1,
+        "explanation": "Con B opcional, sirven las dos zonas: las 4 fichas sin B y las 6 que están en los tres conjuntos. El total es 10.",
+        "hint": "Observa si la pregunta exige excluir B o permite ambas zonas.",
+        "difficulty": "base"
+      }
+    }
+  ],
+  "hc-condicional": [
+    {
+      "id": "flecha",
+      "title": "Aplicar una regla e invertirla",
+      "points": [
+        "Escribe «si A, entonces B» como A → B. Si sabes que A ocurre, sigue la flecha hasta B. Si solo sabes que B ocurre, revisa si otra causa también podría producir B.",
+        "Si B no ocurre, A tampoco pudo ocurrir. Si A no ocurre y no sabes más, B aún podría ocurrir por otro motivo."
+      ],
+      "example": {
+        "prompt": "Si la alarma detecta humo, enciende la luz roja. La luz roja también se enciende al pulsar el botón de prueba.",
+        "steps": [
+          {
+            "prompt": "La alarma detecta humo. ¿Qué se puede concluir?",
+            "options": [
+              "La luz roja se enciende.",
+              "Alguien pulsó el botón de prueba."
+            ],
+            "answer": 0,
+            "explanation": "Detectar humo alcanza para concluir que la luz se enciende. La regla no exige el botón."
+          },
+          {
+            "prompt": "La luz roja está encendida. ¿Es seguro que hay humo?",
+            "options": [
+              "Sí, la luz solo puede indicar humo.",
+              "No, el botón de prueba también puede encenderla."
+            ],
+            "answer": 1,
+            "explanation": "La misma señal tiene dos causas posibles. Ver B no te permite recorrer la flecha de regreso a A."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Si la máquina termina su ciclo, suena una campana. La campana también puede sonar durante una prueba. ¿Qué conclusión es obligatoria si la campana no sonó?",
+        "options": [
+          "La prueba ya terminó.",
+          "La máquina no terminó su ciclo.",
+          "La máquina terminó sin aviso.",
+          "La prueba se cancelará."
+        ],
+        "answer": 1,
+        "explanation": "Si la máquina hubiese terminado su ciclo, la campana habría sonado. Como no sonó, la máquina no completó el ciclo.",
+        "hint": "Busca qué condición habría obligado a que sonara la campana.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "requisito",
+      "title": "Un requisito y una condición que basta",
+      "points": [
+        "«A solamente si B» significa que B es un requisito para A. Escribe A → B y comprueba qué pasa cuando B falta.",
+        "Una acción puede tener varios requisitos. Cumplir uno permite considerarla, pero solo una regla explícita permite afirmar que ese requisito basta."
+      ],
+      "example": {
+        "prompt": "El equipo puede usar el salón solamente si hay una reserva. En algunos horarios también se necesita autorización.",
+        "steps": [
+          {
+            "prompt": "Si el equipo usó el salón, ¿qué dato es obligatorio?",
+            "options": [
+              "Que había una reserva",
+              "Que se usó el horario de la mañana"
+            ],
+            "answer": 0,
+            "explanation": "La reserva es un requisito. El enunciado no informa a qué hora se usó el salón."
+          },
+          {
+            "prompt": "Hay una reserva. ¿Eso garantiza que el equipo puede usar el salón?",
+            "options": [
+              "Sí, la reserva basta.",
+              "No, puede faltar autorización."
+            ],
+            "answer": 1,
+            "explanation": "La regla dice que tener reserva es necesario. En algunos horarios hay otro requisito."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Para publicar una foto es obligatorio tener permiso. Algunas publicaciones también necesitan revisión. Tania no tiene permiso. ¿Qué conclusión es segura?",
+        "options": [
+          "Tania puede publicar la foto si pasó la revisión.",
+          "La foto ya se publicó.",
+          "Tania no puede publicar esa foto.",
+          "Tania tiene permiso para otra foto."
+        ],
+        "answer": 2,
+        "explanation": "El permiso es un requisito para publicar esa foto. Sin él, la publicación no puede hacerse, haya o no revisión.",
+        "hint": "Traduce «es obligatorio» como una condición que la acción no puede saltarse.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "grupos",
+      "title": "Todos, algunos y ningún",
+      "points": [
+        "«Todos los A son B» coloca al grupo A dentro de B. «Ningún A es B» separa los grupos. «Algunos» confirma que hay por lo menos un caso que cumple.",
+        "Una conclusión necesaria debe funcionar en todas las escenas posibles. Para descartar una afirmación, basta un caso que respete los datos y la contradiga."
+      ],
+      "example": {
+        "prompt": "Todos los libros de la colección Azul tienen etiqueta. Algunos libros de la mesa pertenecen a esa colección.",
+        "steps": [
+          {
+            "prompt": "¿Qué dato está garantizado para los libros de la mesa que son de la colección Azul?",
+            "options": [
+              "Tienen etiqueta.",
+              "Son todos los libros de la mesa."
+            ],
+            "answer": 0,
+            "explanation": "Los libros de la colección Azul siempre tienen etiqueta. La regla no abarca al resto de la mesa."
+          },
+          {
+            "prompt": "¿Qué conclusión sobre la mesa sí se puede afirmar?",
+            "options": [
+              "Todos sus libros tienen etiqueta.",
+              "Al menos un libro tiene etiqueta."
+            ],
+            "answer": 1,
+            "explanation": "Hay al menos un libro de la colección Azul en la mesa. Ese libro tiene etiqueta. Los demás pueden tenerla o no."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Ninguna caja abierta está lista para el envío. Algunas cajas del estante están abiertas. ¿Qué frase debe ser cierta?",
+        "options": [
+          "Algunas cajas del estante no están listas para el envío.",
+          "Ninguna caja del estante está lista.",
+          "Todas las cajas listas están en el estante.",
+          "Algunas cajas abiertas están listas para el envío."
+        ],
+        "answer": 0,
+        "explanation": "Las cajas abiertas del estante no están listas. El enunciado solo asegura que hay al menos una abierta, así que no podemos hablar de todas.",
+        "hint": "Toma una de las cajas abiertas que sí sabemos que está en el estante. Aplica la primera regla.",
+        "difficulty": "base"
+      }
+    }
+  ],
+  "hc-practico": [
+    {
+      "id": "requisitos",
+      "title": "Requisitos obligatorios y ventajas opcionales",
+      "points": [
+        "Copia cada condición obligatoria. Descarta una opción si no cumple alguna, aunque sea la más barata o tenga ventajas.",
+        "Traduce las palabras límite con cuidado. «Al menos 20» permite 20. «Antes de las 16:00» no permite llegar exactamente a las 16:00."
+      ],
+      "example": {
+        "prompt": "Un equipo busca una cancha con techo para al menos 14 personas. Puede pagar hasta $250. La cancha Sol es abierta, admite 20 personas y cuesta $150. La cancha Luna es techada, admite 14 y cuesta $250.",
+        "steps": [
+          {
+            "prompt": "¿La cancha Sol cumple todos los requisitos?",
+            "options": [
+              "Sí. Tiene cupo y es barata.",
+              "No. Carece de techo."
+            ],
+            "answer": 1,
+            "explanation": "El techo es obligatorio. El precio y el cupo no compensan ese incumplimiento."
+          },
+          {
+            "prompt": "¿La cancha Luna cumple los límites de cupo y precio?",
+            "options": [
+              "Sí. Los dos límites permiten la igualdad.",
+              "No. Debe admitir más de 14 y costar menos de $250."
+            ],
+            "answer": 0,
+            "explanation": "Al menos 14 incluye 14. Hasta $250 incluye exactamente $250. Luna también cumple el requisito de techo."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Una impresión debe estar lista antes de las 14:00. Debe ser a color y costar $60 o menos. ¿Qué opción cumple todo?",
+        "options": [
+          "Color a las 14:00 por $45",
+          "Blanco y negro a las 13:30 por $35",
+          "Color a las 13:50 por $60",
+          "Color a las 13:45 por $65"
+        ],
+        "answer": 2,
+        "explanation": "La opción a las 13:50 llega antes de las 14:00, es a color y cuesta $60, una cantidad permitida.",
+        "hint": "Anota el límite de tiempo, el formato y el precio. Revisa los tres en cada opción.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "evidencia",
+      "title": "Explicación con apoyo y explicación posible",
+      "points": [
+        "En una pregunta de causa probable, conecta cada opción con un hecho que ayude a distinguirla de las otras.",
+        "Una explicación puede ser posible sin respaldo. Da prioridad a la que explica cuándo aparece la falla y cuándo deja de aparecer."
+      ],
+      "example": {
+        "prompt": "El sonido de una bocina se corta al mover su cable. Con la misma bocina y un segundo cable, no se corta.",
+        "steps": [
+          {
+            "prompt": "¿Qué elemento cambió entre las dos pruebas?",
+            "options": [
+              "La bocina",
+              "El cable"
+            ],
+            "answer": 1,
+            "explanation": "Se probó la misma bocina con dos cables. El cambio observado acompaña al cable usado."
+          },
+          {
+            "prompt": "¿Qué explicación recibe más apoyo de los datos?",
+            "options": [
+              "El primer cable tiene una conexión defectuosa.",
+              "El volumen estaba demasiado bajo en todas las pruebas."
+            ],
+            "answer": 0,
+            "explanation": "La falla aparece con el primer cable y desaparece al sustituirlo. Esto señala al primer cable como la causa más probable."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Una puerta roza el piso. Al retirar un tapete que quedó debajo, abre bien. La bisagra y la manija siguen iguales. ¿Qué explicación tiene más apoyo?",
+        "options": [
+          "La bisagra estaba rota.",
+          "El tapete impedía que la puerta abriera bien.",
+          "La manija necesitaba pintura.",
+          "El piso acaba de subir de nivel."
+        ],
+        "answer": 1,
+        "explanation": "Al retirar el tapete, desapareció el roce. El cambio observado apoya la explicación del tapete.",
+        "hint": "Busca qué elemento cambió cuando la puerta volvió a funcionar.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "comparacion",
+      "title": "Total y cantidad por unidad",
+      "points": [
+        "Identifica qué se debe comparar. Si el problema pregunta «por cada persona», divide el total entre el número de personas de cada grupo.",
+        "Compara cantidades con la misma unidad. Un total mayor puede corresponder a un promedio menor si también hay más personas."
+      ],
+      "example": {
+        "prompt": "Una mesa de 3 personas armó 12 figuras. Otra mesa de 5 personas armó 15 figuras.",
+        "steps": [
+          {
+            "prompt": "¿Cuál mesa armó más figuras en total?",
+            "options": [
+              "La mesa de 5 personas",
+              "La mesa de 3 personas"
+            ],
+            "answer": 0,
+            "explanation": "La segunda mesa armó 15 figuras y la primera 12. Esta comparación solo usa el total."
+          },
+          {
+            "prompt": "¿Cuál mesa armó más figuras por persona, en promedio?",
+            "options": [
+              "La mesa de 5 personas",
+              "La mesa de 3 personas"
+            ],
+            "answer": 1,
+            "explanation": "La mesa de 3 hizo 12 ÷ 3 = 4 por persona. La mesa de 5 hizo 15 ÷ 5 = 3. La primera tuvo mayor promedio."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Cuatro equipos recogen papel. A reúne 24 kg con 8 personas. B reúne 18 kg con 3. C reúne 20 kg con 5. D reúne 25 kg con 5. ¿Cuál juntó más kilogramos por persona?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "answer": 1,
+        "explanation": "Los resultados por persona son A: 3 kg, B: 6 kg, C: 4 kg y D: 5 kg. B tiene el mayor valor.",
+        "hint": "Divide los kilogramos de cada equipo entre su número de personas.",
+        "difficulty": "base"
+      }
+    }
+  ]
+}

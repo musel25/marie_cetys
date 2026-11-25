@@ -5,11 +5,8 @@ test("gives feedback and keeps the attempt in all progress periods after a reloa
   await page.getByRole("link", { name: "Abrir la clase", exact: true }).click();
   await expect(page.getByRole("heading", { level: 1, name: "Ordenar con pistas" })).toBeVisible();
 
-  const example = page.getByRole("button", { name: "Ver el primer paso" });
-  await example.click();
-  await expect(page.getByText("T va a la izquierda de M. R va a la derecha de M. Anota el orden T–M–R. Deja las cuatro casillas vacías.")).toBeVisible();
-
-  const checkAnswer = page.getByRole("button", { name: "Comprobar", exact: true });
+  const practice = page.getByRole("region", { name: "Ejercicios de prueba", exact: true });
+  const checkAnswer = practice.getByRole("button", { name: "Comprobar", exact: true });
   await expect(checkAnswer).toBeDisabled();
   await page.getByRole("radio", { name: "A, C, B", exact: true }).check();
   await checkAnswer.click();
@@ -41,7 +38,7 @@ test("opens a copied lesson link in a separate browser context", async ({ page, 
   try {
     await shared.goto(url);
     await expect(shared.getByRole("heading", { level: 1, name: "Ordenar con pistas" })).toBeVisible();
-    await expect(shared.getByRole("heading", { name: "Ejercicios" })).toBeVisible();
+    await expect(shared.getByRole("heading", { name: "Ejercicios de prueba" })).toBeVisible();
   } finally {
     await shared.close();
   }
@@ -127,8 +124,9 @@ test.describe("narrow mobile viewport", () => {
 test("brings back a missed skill with a fresh question on the following day", async ({ page }) => {
   await page.clock.setFixedTime(new Date("2026-11-23T20:00:00Z"));
   await page.goto("/#/clase/hc-orden");
-  await page.getByRole("radio", { name: "A, B, C", exact: true }).check();
-  await page.getByRole("button", { name: "Comprobar", exact: true }).click();
+  const practice = page.getByRole("region", { name: "Ejercicios de prueba", exact: true });
+  await practice.getByRole("radio", { name: "A, B, C", exact: true }).check();
+  await practice.getByRole("button", { name: "Comprobar", exact: true }).click();
   await expect(page.getByText("Respuesta correcta: B", { exact: true })).toBeVisible();
 
   await page.clock.setFixedTime(new Date("2026-11-24T20:00:00Z"));
@@ -146,21 +144,29 @@ test("brings back a missed skill with a fresh question on the following day", as
   await expect(page.getByRole("heading", { name: "Ronda terminada" })).toBeVisible();
 });
 
-test("lets the student try first and shows the provisional order before assigning slots", async ({ page }) => {
+test("keeps the shortcut to trial exercises and shows the order while checking example steps", async ({ page }) => {
   await page.goto("/#/clase/hc-orden");
   await page.getByRole("button", { name: "Probar el primer ejercicio" }).click();
   await expect(page.locator("#ejercicios")).toBeFocused();
-  await page.getByRole("button", { name: "Ver el primer paso" }).click();
-  await expect(page.getByText("Orden provisional: T–M–R", { exact: true })).toBeVisible();
-  await expect(page.locator(".worked-example .diagram-tile")).toHaveText(["·", "·", "·", "·"]);
-  await page.getByRole("button", { name: "Ver el siguiente paso" }).click();
-  await expect(page.locator(".worked-example .diagram-tile")).toHaveText(["T", "P", "M", "R"]);
+  const rule = page.getByRole("region", { name: "Antes e inmediatamente antes", exact: true });
+  const example = rule.getByRole("form", { name: "Ejemplo resuelto", exact: true });
+  const tiles = rule.locator(".diagram-tile");
+  await expect(tiles).toHaveText(["·", "·", "·", "·"]);
+  await example.getByRole("radio", { name: "T–M–R", exact: true }).check();
+  await example.getByRole("button", { name: "Comprobar paso" }).click();
+  await expect(rule.getByText("Orden provisional: T–M–R", { exact: true })).toBeVisible();
+  await expect(tiles).toHaveText(["·", "·", "·", "·"]);
+  await example.getByRole("button", { name: "Siguiente paso" }).click();
+  await example.getByRole("radio", { name: "Entre T y M", exact: true }).check();
+  await example.getByRole("button", { name: "Comprobar paso" }).click();
+  await expect(tiles).toHaveText(["T", "P", "M", "R"]);
 });
 
 test("exports progress and imports it only after confirmation", async ({ page, browser }) => {
   await page.goto("/#/clase/hc-orden");
-  await page.getByRole("radio", { name: "A, C, B", exact: true }).check();
-  await page.getByRole("button", { name: "Comprobar", exact: true }).click();
+  const practice = page.getByRole("region", { name: "Ejercicios de prueba", exact: true });
+  await practice.getByRole("radio", { name: "A, C, B", exact: true }).check();
+  await practice.getByRole("button", { name: "Comprobar", exact: true }).click();
   await page.getByText("Correcto", { exact: true }).waitFor();
 
   await page.getByRole("link", { name: "Plan", exact: true }).click();
@@ -209,7 +215,7 @@ test("restores a submitted question and opens its saved doubt directly", async (
 
 test("shows the diagram with equivalent labels in diagram exercises", async ({ page }) => {
   await page.goto("/#/clase/hc-diagramas");
-  const diagram = page.locator(".exercise").first().getByRole("img", { name: /Sectores del diagrama/ });
+  const diagram = page.locator("#ejercicios .exercise").first().getByRole("img", { name: /Sectores del diagrama/ });
   await expect(diagram).toBeVisible();
   await expect(diagram.locator("[data-venn-label]")).toHaveText(["A", "B", "C", "1", "2", "3", "4", "5", "6", "7"]);
 });
@@ -452,3 +458,22 @@ test("sets more study time for one date and keeps the normal weekday duration", 
   await page.getByRole("button", { name: "Guardar plan", exact: true }).click();
   await expect(saturdaySlot).toHaveCount(0);
 });
+
+for (const lesson of ["mat-areas", "en-verb-forms", "es-comprension"]) {
+  test(`uses the same contrast, example and exercise sequence for ${lesson}`, async ({ page }) => {
+    await page.goto(`/#/clase/${lesson}`);
+    const rules = page.getByRole("region", { name: "Explicación", exact: true });
+    await expect(rules).toBeVisible();
+    expect(await rules.getByRole("heading", { level: 3 }).count()).toBeGreaterThanOrEqual(2);
+    const first = rules.getByRole("region").first();
+    const example = first.getByRole("form", { name: "Ejemplo resuelto", exact: true });
+    await example.getByRole("radio").first().check();
+    await example.getByRole("button", { name: "Comprobar paso", exact: true }).click();
+    await expect(example.locator(".feedback p")).toBeVisible();
+    await example.getByRole("button", { name: "Siguiente paso", exact: true }).click();
+    await expect(example.getByText(/^Paso 2 de /)).toBeVisible();
+    await expect(first.getByRole("button", { name: "Comprobar", exact: true })).toBeVisible();
+    await expect(page.locator("#explicacion + #ejercicios + section").getByRole("link", { name: "Hacer miniexamen" }))
+      .toHaveAttribute("href", `#/mini/${lesson}`);
+  });
+}

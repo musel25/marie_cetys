@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { areas, areaOrder, byArea, lessonById } from "./content";
 import { questions, studyDay } from "./study";
 import { AreaTag, Icon, PageHeading, lessonHref } from "./ui";
-import { QuestionVisual, questionText } from "./Workbook";
+import { QuestionVisual, questionText } from "./QuestionCard";
 import type { Area, Attempt, Question, StudyState } from "./types";
 
 interface ExamRun {

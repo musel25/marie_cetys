@@ -1,11 +1,10 @@
 import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { areas, areaOrder, byArea, curriculum, lessonById, resourceLinks } from "./content";
 import { Exam } from "./Exam";
-import { Progress } from "./Progress";
 import { addDays, classPlan, dateLabel, loadState, periodStart, reviewCards, reviewQuestion, saveState, studyDay, studyMinutes, summary } from "./study";
 import type { Area, Attempt, ClassRecord, Lesson, MiniResult, Question, StudyState } from "./types";
 import { AreaTag, duration, elapsedTime, Icon, lessonHref, miniHref, PageHeading, type IconName } from "./ui";
-import { OrderDiagram, QuestionCard, Workbook } from "./Workbook";
+import { OrderDiagram, QuestionCard } from "./QuestionCard";
 
 const navigation: { id: string; label: string; icon: IconName }[] = [
   { id: "", label: "Clase de hoy", icon: "home" },
@@ -16,6 +15,8 @@ const navigation: { id: string; label: string; icon: IconName }[] = [
   { id: "plan", label: "Plan", icon: "calendar" },
 ];
 const MiniExam = lazy(() => import("./MiniExam"));
+const Workbook = lazy(() => import("./Workbook"));
+const Progress = lazy(() => import("./Progress"));
 const Planner = lazy(() => import("./Planner"));
 function readRoute() { return location.hash.replace(/^#\/?/, "").split("/").slice(0, 3); }
 
@@ -250,14 +251,18 @@ export function App() {
   const active = page === "clase" || page === "mini" ? "temario" : page;
   const content = page === "" ? <Home state={state} today={today} dueCount={due.length}/>
     : page === "temario" ? <Curriculum state={state} filter={areaOrder.find(area => area === id)}/>
-    : page === "clase" && lesson ? <Workbook key={lesson.id + (target ?? "")} lesson={lesson} target={target} state={state} onAttempt={item => addAttempts([item])} onClass={recordClass}
-      onFlag={toggleFlag} announce={announce} onPin={pinned => { update(before => ({ ...before, pinned }), pinned ? "Clase fijada en el inicio." : "Clase quitada del inicio."); }}/>
+    : page === "clase" && lesson ? <Suspense fallback={<p>Cargando la lección…</p>}>
+      <Workbook key={lesson.id + (target ?? "")} lesson={lesson} target={target} state={state} onAttempt={item => addAttempts([item])} onClass={recordClass}
+        onFlag={toggleFlag} announce={announce} onPin={pinned => { update(before => ({ ...before, pinned }), pinned ? "Clase fijada en el inicio." : "Clase quitada del inicio."); }}/>
+    </Suspense>
     : page === "mini" && lesson ? <Suspense fallback={<p>Cargando miniexamen…</p>}>
       <MiniExam key={lesson.id} lesson={lesson} results={state.miniResults} onFinish={addMini} />
     </Suspense>
     : page === "repaso" ? <Review due={due} state={state} onAttempt={item => addAttempts([item])} onFlag={toggleFlag}/>
     : page === "simulacro" ? <Exam state={state} onAttempts={addAttempts}/>
-    : page === "progreso" ? <Progress state={state} today={today} onFlag={toggleFlag}/>
+    : page === "progreso" ? <Suspense fallback={<p>Cargando el progreso…</p>}>
+      <Progress state={state} today={today} onFlag={toggleFlag}/>
+    </Suspense>
     : page === "plan" ? <Suspense fallback={<p>Cargando el plan…</p>}>
       <Planner state={state} today={today} onSettings={settings => update(before => ({ ...before, settings }))} onImport={data => update(() => data)}/>
     </Suspense>

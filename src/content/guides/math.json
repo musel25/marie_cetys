@@ -1,0 +1,1574 @@
+{
+  "mat-enteros": [
+    {
+      "id": "recta-y-distancia",
+      "title": "Orden en la recta y distancia a cero",
+      "points": [
+        "En la recta, el número situado a la izquierda es menor. El valor absoluto mide la distancia a cero y nunca es negativo.",
+        "Un racional se escribe como fracción de enteros con denominador distinto de cero. Los decimales finitos y periódicos son racionales. Los números π y √3 son irracionales."
+      ],
+      "example": {
+        "prompt": "Compara −5 y 2. Después compara sus distancias a cero.",
+        "steps": [
+          {
+            "prompt": "¿Cuál queda a la izquierda?",
+            "options": [
+              "−5",
+              "2"
+            ],
+            "answer": 0,
+            "explanation": "−5 es menor que 2. Los números negativos quedan a la izquierda del cero."
+          },
+          {
+            "prompt": "¿Cuál queda más lejos de cero?",
+            "options": [
+              "2",
+              "−5"
+            ],
+            "answer": 1,
+            "explanation": "∣−5∣ = 5 y ∣2∣ = 2. El punto que tiene mayor distancia es −5."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "¿Qué lista ordena −6, 0 y 4 de la menor a la mayor distancia a cero?",
+        "options": [
+          "0, 4, −6",
+          "−6, 0, 4",
+          "0, −6, 4",
+          "4, 0, −6"
+        ],
+        "answer": 0,
+        "explanation": "Las distancias son 6, 0 y 4. Sus puntos en orden son 0, 4 y −6.",
+        "hint": "Compara ∣−6∣, ∣0∣ y ∣4∣.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "signos-y-jerarquia",
+      "title": "Signo de una resta y signo de un producto",
+      "points": [
+        "Restar equivale a sumar el opuesto. En un producto o división, los signos iguales dan positivo y los distintos dan negativo.",
+        "Resuelve paréntesis y potencias primero. Después multiplica y divide de izquierda a derecha. Al final suma y resta de izquierda a derecha."
+      ],
+      "example": {
+        "prompt": "Calcula 6 − (−3)(−2).",
+        "steps": [
+          {
+            "prompt": "¿Cuánto vale (−3)(−2)?",
+            "options": [
+              "−6",
+              "6"
+            ],
+            "answer": 1,
+            "explanation": "Al multiplicar dos números negativos, el producto es positivo."
+          },
+          {
+            "prompt": "¿Cuánto vale la expresión completa?",
+            "options": [
+              "0",
+              "12"
+            ],
+            "answer": 0,
+            "explanation": "El producto es 6. La resta que queda es 6 − 6 = 0."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "¿Cuánto vale 9 − (−4)(3)?",
+        "options": [
+          "−3",
+          "15",
+          "−21",
+          "21"
+        ],
+        "answer": 3,
+        "explanation": "Multiplica −4 × 3 = −12. Después, 9 − (−12) = 9 + 12 = 21.",
+        "hint": "Haz el producto antes de la resta.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "racional-o-irracional",
+      "title": "Decimales periódicos y raíces",
+      "points": [
+        "Un decimal que termina o repite un bloque fijo se puede escribir como fracción de enteros. Es racional.",
+        "La raíz de un cuadrado perfecto es un entero. La raíz de un entero positivo que no es cuadrado perfecto es irracional."
+      ],
+      "example": {
+        "prompt": "Compara el decimal 0.454545… que repite 45, la raíz √121 y la raíz √114.",
+        "steps": [
+          {
+            "prompt": "¿Cuál de las dos raíces es un entero?",
+            "options": [
+              "√121",
+              "√114"
+            ],
+            "answer": 0,
+            "explanation": "121 = 11². El número 114 está entre 10² y 11² y no es un cuadrado perfecto."
+          },
+          {
+            "prompt": "¿Es racional el decimal que repite 45?",
+            "options": [
+              "No, porque tiene infinitas cifras.",
+              "Sí, porque repite un bloque fijo."
+            ],
+            "answer": 1,
+            "explanation": "El bloque 45 se repite y permite escribir el número como 45/99 = 5/11."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "¿Cuál de estas raíces cuadradas representa un número irracional?",
+        "options": [
+          "√100",
+          "√144",
+          "√50",
+          "√169"
+        ],
+        "answer": 2,
+        "explanation": "50 no es un cuadrado perfecto. En cambio, 100, 144 y 169 tienen raíces enteras.",
+        "hint": "Comprueba si cada radicando es un cuadrado perfecto.",
+        "difficulty": "base"
+      }
+    }
+  ],
+  "mat-fracciones": [
+    {
+      "id": "denominador-comun",
+      "title": "Igualar partes para sumar o comparar",
+      "points": [
+        "Para comparar fracciones, usa partes del mismo tamaño. Busca un denominador común. El mínimo común múltiplo da el menor denominador común posible.",
+        "Para sumar o restar, iguala los denominadores y opera con los numeradores. Para simplificar, divide arriba y abajo por el mismo factor."
+      ],
+      "example": {
+        "prompt": "Compara 3/5 y 2/3. Luego súmalas.",
+        "steps": [
+          {
+            "prompt": "¿Cuál fracción es mayor, 3/5 o 2/3?",
+            "options": [
+              "3/5",
+              "2/3"
+            ],
+            "answer": 1,
+            "explanation": "Con denominador 15, las fracciones son 10/15 y 9/15."
+          },
+          {
+            "prompt": "¿Cuál es su suma?",
+            "options": [
+              "19/15",
+              "5/8"
+            ],
+            "answer": 0,
+            "explanation": "Suma 9 + 10. Conserva el denominador 15."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "¿Cuál es la diferencia 7/9 − 1/6?",
+        "options": [
+          "6/3",
+          "11/18",
+          "6/18",
+          "5/18"
+        ],
+        "answer": 1,
+        "explanation": "Con denominador 18, resta 14/18 − 3/18 = 11/18.",
+        "hint": "Usa el mínimo común múltiplo de 9 y 6.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "cantidad-y-cambio",
+      "title": "Fracción de una cantidad o número de porciones",
+      "points": [
+        "Para hallar una fracción de una cantidad, multiplica. Para saber cuántas porciones caben, divide por el tamaño de una porción. Si divides entre una fracción, multiplica por su recíproco.",
+        "Para una razón constante puedes buscar el valor por unidad. Para un descuento, multiplica por la proporción que pagas. Si hay otro cambio porcentual, aplícalo al resultado anterior."
+      ],
+      "example": {
+        "prompt": "Una jarra contiene 3/5 L de agua. Puedes usar 2/3 del agua o servir porciones de 1/5 L.",
+        "steps": [
+          {
+            "prompt": "¿Qué operación da los litros que usas al tomar 2/3 del agua?",
+            "options": [
+              "3/5 × 2/3",
+              "3/5 ÷ 2/3"
+            ],
+            "answer": 0,
+            "explanation": "Estás tomando una parte de la cantidad inicial. El producto es 2/5 L."
+          },
+          {
+            "prompt": "¿Qué operación da el número de porciones de 1/5 L que caben?",
+            "options": [
+              "3/5 × 1/5",
+              "3/5 ÷ 1/5"
+            ],
+            "answer": 1,
+            "explanation": "Estás agrupando el agua en porciones de un tamaño fijo. El cociente es 3 porciones."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Una caja cuesta $400. Su precio sube 10 % y luego recibe 10 % de descuento. ¿Cuál es su precio final?",
+        "options": [
+          "$396",
+          "$400",
+          "$360",
+          "$440"
+        ],
+        "answer": 0,
+        "explanation": "La subida da 400 × 1.10 = 440. El descuento usa ese nuevo precio: 440 × 0.90 = 396.",
+        "hint": "El segundo porcentaje se aplica al precio de $440.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "razon-y-proporcion",
+      "title": "Precio unitario y precio de un lote",
+      "points": [
+        "El precio unitario indica cuánto cuesta una unidad. Divide el precio total entre el número de unidades para encontrarlo.",
+        "Si el precio unitario no cambia, multiplica ese precio por la cantidad que necesitas. Compara ofertas con el precio por unidad cuando los tamaños de paquete son distintos."
+      ],
+      "example": {
+        "prompt": "En una tienda, 3 marcadores cuestan $48. Otra tienda vende 5 del mismo tipo por $75.",
+        "steps": [
+          {
+            "prompt": "¿Qué paquete tiene el menor precio total?",
+            "options": [
+              "El de 5 marcadores.",
+              "El de 3 marcadores."
+            ],
+            "answer": 1,
+            "explanation": "$48 es menor que $75, pero el paquete de $48 tiene menos marcadores."
+          },
+          {
+            "prompt": "¿En qué paquete cuesta menos cada marcador?",
+            "options": [
+              "En el de 5 marcadores.",
+              "En el de 3 marcadores."
+            ],
+            "answer": 0,
+            "explanation": "El precio unitario es $75 ÷ 5 = $15 en el segundo paquete y $48 ÷ 3 = $16 en el primero."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Para preparar 4 porciones de sopa se usan 600 mL de caldo. Si la proporción se mantiene, ¿cuánto caldo se usa para 9 porciones?",
+        "options": [
+          "1 200 mL",
+          "1 800 mL",
+          "540 mL",
+          "1 350 mL"
+        ],
+        "answer": 3,
+        "explanation": "Cada porción usa 600 ÷ 4 = 150 mL. Para 9 porciones se necesitan 150 × 9 = 1 350 mL.",
+        "hint": "Halla primero cuánto caldo se usa por porción.",
+        "difficulty": "base"
+      }
+    }
+  ],
+  "mat-potencias": [
+    {
+      "id": "base-y-signo",
+      "title": "El signo dentro o fuera de la potencia",
+      "points": [
+        "Para un entero positivo n, aⁿ es el producto de n factores iguales a a. Si el signo está dentro de los paréntesis, forma parte de la base. Si queda fuera, se aplica después de calcular la potencia.",
+        "Con base negativa, una potencia par da positivo y una impar da negativo. La raíz cuadrada √n siempre representa el valor no negativo."
+      ],
+      "example": {
+        "prompt": "Compara (−3)² y −3². Luego comprueba cuál se relaciona con √9.",
+        "steps": [
+          {
+            "prompt": "¿Cuánto vale (−3)²?",
+            "options": [
+              "9",
+              "−9"
+            ],
+            "answer": 0,
+            "explanation": "La base completa es −3. El producto (−3)(−3) es positivo."
+          },
+          {
+            "prompt": "¿Cuál expresión tiene el mismo valor que √9?",
+            "options": [
+              "El resultado de −3² dividido entre 3.",
+              "El resultado de (−3)² dividido entre 3."
+            ],
+            "answer": 1,
+            "explanation": "√9 = 3. El primer cociente es 9 ÷ 3 = 3 y el segundo es −9 ÷ 3 = −3."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "¿Cuál es el valor de (−5)² − 5²?",
+        "options": [
+          "50",
+          "−50",
+          "0",
+          "−10"
+        ],
+        "answer": 2,
+        "explanation": "Ambas potencias valen 25. Su diferencia es 0.",
+        "hint": "Observa si el signo de la base afecta el resultado con exponente par.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "exponentes-y-raices",
+      "title": "Combinar exponentes y extraer cuadrados",
+      "points": [
+        "Con la misma base, en un producto se suman exponentes y en un cociente se restan. En una potencia elevada a otra potencia se multiplican. Para a ≠ 0, a⁰ = 1.",
+        "Para estimar una raíz, localiza los cuadrados perfectos entre los que cae su radicando. Para simplificarla, saca el factor cuadrado perfecto.",
+        "En un crecimiento por factor fijo, usa como base el factor de crecimiento y como exponente el número de periodos."
+      ],
+      "example": {
+        "prompt": "Simplifica (2³)² y 2³ · 2². Luego relaciona el resultado mayor con su raíz cuadrada.",
+        "steps": [
+          {
+            "prompt": "¿Qué expresión tiene mayor valor, la potencia de una potencia o el producto dado?",
+            "options": [
+              "2³ · 2²",
+              "(2³)²"
+            ],
+            "answer": 1,
+            "explanation": "En la potencia de una potencia obtienes 2⁶ = 64. En el producto obtienes 2⁵ = 32."
+          },
+          {
+            "prompt": "¿Cuánto vale √64?",
+            "options": [
+              "8",
+              "32"
+            ],
+            "answer": 0,
+            "explanation": "8² = 64. La raíz cuadrada no divide el radicando entre dos."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "¿Cuál es la forma simplificada de √147?",
+        "options": [
+          "3√7",
+          "7√3",
+          "49√3",
+          "3√49"
+        ],
+        "answer": 1,
+        "explanation": "El radicando es 49 × 3. Extrae √49 = 7 para obtener 7√3.",
+        "hint": "Busca un cuadrado perfecto que divida a 147.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "factor-o-aumento",
+      "title": "Multiplicar por periodo o sumar por periodo",
+      "points": [
+        "Si una cantidad se multiplica por el mismo factor en cada periodo, eleva ese factor al número de periodos y multiplica por la cantidad inicial.",
+        "Si una cantidad aumenta siempre en la misma cantidad fija, multiplica el aumento por el número de periodos y suma la cantidad inicial."
+      ],
+      "example": {
+        "prompt": "Dos grupos comienzan con 4 miembros. El grupo A duplica su tamaño cada semana. El grupo B agrega dos miembros cada semana.",
+        "steps": [
+          {
+            "prompt": "¿Qué expresión da el tamaño de A después de tres semanas?",
+            "options": [
+              "4 × 2³",
+              "4 + 2 × 3"
+            ],
+            "answer": 0,
+            "explanation": "A multiplica por 2 en cada semana. Tres multiplicaciones por 2 dan el factor 2³."
+          },
+          {
+            "prompt": "¿Cuántos miembros tiene B después de tres semanas?",
+            "options": [
+              "32",
+              "10"
+            ],
+            "answer": 1,
+            "explanation": "B agrega 2 tres veces: 4 + 3 × 2 = 10."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Un cultivo comienza con 7 colonias y el número se triplica cada día. ¿Cuántas hay después de dos días?",
+        "options": [
+          "63",
+          "21",
+          "42",
+          "13"
+        ],
+        "answer": 0,
+        "explanation": "El cultivo se triplica dos veces: 7 × 3² = 63.",
+        "hint": "Aplica el mismo factor cada día.",
+        "difficulty": "base"
+      }
+    }
+  ],
+  "mat-ecuaciones": [
+    {
+      "id": "igualdad-o-limite",
+      "title": "Modelar un total exacto o un límite",
+      "points": [
+        "Define la incógnita y su unidad. «Exactamente» indica igualdad. «Al menos» indica ≥ y «como máximo» indica ≤.",
+        "Al despejar, distribuye, reúne términos semejantes y aplica la misma operación en ambos lados. Comprueba el resultado en el enunciado."
+      ],
+      "example": {
+        "prompt": "Un centro de copiado cobra $12 fijos y $3 por página. Se quieren comparar dos planes con $33.",
+        "steps": [
+          {
+            "prompt": "¿Qué expresión representa un pago exacto de $33?",
+            "options": [
+              "12 + 3p ≤ 33",
+              "12 + 3p = 33"
+            ],
+            "answer": 1,
+            "explanation": "El pago exacto obliga a que los dos valores sean iguales. El resultado es p = 7."
+          },
+          {
+            "prompt": "¿Qué expresión permite gastar menos de $33, pero también gastar exactamente $33?",
+            "options": [
+              "12 + 3p ≤ 33",
+              "12 + 3p < 33"
+            ],
+            "answer": 0,
+            "explanation": "El límite es inclusivo. Sirven las cantidades enteras de páginas desde 0 hasta 7."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Un salón tiene 16 sillas. Añaden 6 por fila. ¿Cuántas filas adicionales hacen falta como mínimo para tener al menos 47 sillas?",
+        "options": [
+          "5",
+          "4",
+          "8",
+          "6"
+        ],
+        "answer": 3,
+        "explanation": "La condición es 16 + 6f ≥ 47. Cinco filas dan 46 sillas. Seis dan 52, que ya cubren la meta.",
+        "hint": "Prueba los enteros cerca de (47 − 16) ÷ 6.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "invertir-o-conservar",
+      "title": "Conservar o invertir una desigualdad",
+      "points": [
+        "Al sumar o restar la misma cantidad, conserva el sentido. Al multiplicar o dividir por un número positivo, también lo conservas.",
+        "Al multiplicar o dividir ambos lados por un número negativo, invierte la desigualdad. En la recta, usa un extremo cerrado si el límite se incluye."
+      ],
+      "example": {
+        "prompt": "Resuelve −5x ≥ 20. Compara el resultado con el de 5x ≥ 20.",
+        "steps": [
+          {
+            "prompt": "¿Qué condición resulta al dividir −5x ≥ 20 entre −5?",
+            "options": [
+              "x ≤ −4",
+              "x ≥ −4"
+            ],
+            "answer": 0,
+            "explanation": "La división por −5 invierte el sentido. El 20 dividido entre −5 da −4."
+          },
+          {
+            "prompt": "¿Cómo se marca el extremo en la recta para x ≤ −4?",
+            "options": [
+              "Punto abierto en −4, hacia la derecha.",
+              "Punto cerrado en −4, hacia la izquierda."
+            ],
+            "answer": 1,
+            "explanation": "El símbolo ≤ incluye −4. Los números menores están a su izquierda."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Resuelve 10 − 2x > 16.",
+        "options": [
+          "x > −3",
+          "x ≤ −3",
+          "x < −3",
+          "x < 3"
+        ],
+        "answer": 2,
+        "explanation": "Resta 10 y obtén −2x > 6. Divide entre −2 e invierte el signo: x < −3.",
+        "hint": "Resta 10 primero y fíjate en el signo del divisor.",
+        "difficulty": "base"
+      }
+    }
+  ],
+  "mat-polinomios": [
+    {
+      "id": "suma-y-producto",
+      "title": "Combinar términos o distribuir factores",
+      "points": [
+        "Al sumar o restar, combina solo términos con las mismas variables y exponentes. Al restar un paréntesis, cambia todos los signos del segundo polinomio.",
+        "Al multiplicar paréntesis, cada término de un paréntesis multiplica a todos los del otro. Después combina los términos semejantes."
+      ],
+      "example": {
+        "prompt": "Compara (x + 5) + (x − 2) con (x + 5)(x − 2).",
+        "steps": [
+          {
+            "prompt": "¿Cuál es el resultado de la suma?",
+            "options": [
+              "2x + 3",
+              "x² + 3x − 10"
+            ],
+            "answer": 0,
+            "explanation": "Agrupa x + x y 5 − 2. La suma no crea un término de grado dos."
+          },
+          {
+            "prompt": "¿Cuál es el resultado del producto?",
+            "options": [
+              "x² + 7x − 10",
+              "x² + 3x − 10"
+            ],
+            "answer": 1,
+            "explanation": "Los productos cruzados son −2x y 5x. Al sumarlos queda 3x."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Simplifica (6a² + a − 2) − (a² − 3a + 7).",
+        "options": [
+          "5a² + 4a − 9",
+          "5a² − 2a + 5",
+          "7a² − 2a + 5",
+          "5a² + 4a + 5"
+        ],
+        "answer": 0,
+        "explanation": "Cambia los signos del segundo paréntesis y reúne términos: 6a² + a − 2 − a² + 3a − 7.",
+        "hint": "Distribuye la resta a cada término del segundo polinomio.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "dos-tipos-de-factor",
+      "title": "Factor común y diferencia de cuadrados",
+      "points": [
+        "Busca un factor común a todos los términos antes de usar otro método. En a² − b², escribe los factores (a − b)(a + b). Esta identidad no se aplica a una suma de cuadrados.",
+        "Con un trinomio x² + bx + c, busca dos números que sumen b y multipliquen c. Comprueba al distribuir."
+      ],
+      "example": {
+        "prompt": "Factoriza 2t² − 50. Compara los pasos con los que usarías para 2t² + 50.",
+        "steps": [
+          {
+            "prompt": "¿Qué queda al extraer el factor común de 2t² − 50?",
+            "options": [
+              "2(t² − 50)",
+              "2(t² − 25)"
+            ],
+            "answer": 1,
+            "explanation": "Divide ambos términos entre 2. El factor exterior multiplica a todo el paréntesis."
+          },
+          {
+            "prompt": "¿Cuál par completa la factorización de t² − 25?",
+            "options": [
+              "(t − 5)(t + 5)",
+              "(t − 5)²"
+            ],
+            "answer": 0,
+            "explanation": "Los términos lineales de los factores conjugados se anulan. En el cuadrado de un binomio aparece el término −10t."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Factoriza z² + 3z − 28.",
+        "options": [
+          "(z − 7)(z + 4)",
+          "(z + 14)(z − 2)",
+          "(z + 7)(z + 4)",
+          "(z + 7)(z − 4)"
+        ],
+        "answer": 3,
+        "explanation": "El 7 y el −4 suman 3 y su producto es −28.",
+        "hint": "El producto negativo pide dos números con signos distintos.",
+        "difficulty": "base"
+      }
+    }
+  ],
+  "mat-fracciones-algebraicas": [
+    {
+      "id": "factores-y-dominio",
+      "title": "Cancelar factores y conservar el dominio",
+      "points": [
+        "Identifica primero los valores que anulan los denominadores originales. Exclúyelos aunque la expresión simplificada ya no tenga denominador.",
+        "Solo cancela factores que multipliquen a todo el numerador y a todo el denominador. Busca una factorización antes de cancelar."
+      ],
+      "example": {
+        "prompt": "Simplifica (x² − 16)/(x + 4). Compárala con (x² + 16)/(x + 4).",
+        "steps": [
+          {
+            "prompt": "¿Con cuál numerador se puede cancelar x + 4?",
+            "options": [
+              "x² + 16",
+              "x² − 16"
+            ],
+            "answer": 1,
+            "explanation": "La diferencia de cuadrados es (x − 4)(x + 4). La suma no tiene el factor x + 4."
+          },
+          {
+            "prompt": "¿Cuál es la forma simplificada con su restricción?",
+            "options": [
+              "x − 4, con x ≠ −4",
+              "x − 4, para todo real"
+            ],
+            "answer": 0,
+            "explanation": "El denominador original x + 4 vale cero en −4. Cancelarlo no agrega ese valor al dominio."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Simplifica (y² − 25)/(y − 5) con su restricción original.",
+        "options": [
+          "y + 5, con y ≠ −5",
+          "y + 5, con y ≠ 5",
+          "y + 5, para todo real",
+          "y − 5, con y ≠ 5"
+        ],
+        "answer": 1,
+        "explanation": "El numerador es (y − 5)(y + 5). Cancela y − 5 solo donde ese factor no sea cero.",
+        "hint": "Encuentra primero el valor que anula y − 5.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "sumar-o-dividir",
+      "title": "Denominador común o recíproco",
+      "points": [
+        "Para sumar o restar, iguala los denominadores. Para multiplicar, multiplica los numeradores y los denominadores por separado. Para dividir, multiplica por el recíproco del divisor. Excluye los valores que hacen cero el divisor.",
+        "En una ecuación con fracciones puedes multiplicar ambos lados por el denominador común. Comprueba que la solución no anule un denominador original."
+      ],
+      "example": {
+        "prompt": "Para t ≠ 0, compara 1/t + 2/(3t) y (1/t) ÷ [2/(3t)].",
+        "steps": [
+          {
+            "prompt": "¿Qué valor tiene la suma?",
+            "options": [
+              "5/(3t)",
+              "3/(4t)"
+            ],
+            "answer": 0,
+            "explanation": "Escribe 1/t como 3/(3t) y suma los numeradores."
+          },
+          {
+            "prompt": "¿Qué valor tiene el cociente?",
+            "options": [
+              "2/(3t²)",
+              "3/2"
+            ],
+            "answer": 1,
+            "explanation": "Usa el recíproco 3t/2 y simplifica: (1/t)(3t/2) = 3/2."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "¿Cuánto vale 1/w − 1/(4w), para w ≠ 0?",
+        "options": [
+          "3/(4w)",
+          "0",
+          "1/(3w)",
+          "3/w"
+        ],
+        "answer": 0,
+        "explanation": "Escribe 1/w como 4/(4w). Resta 1 del numerador 4 y conserva el denominador.",
+        "hint": "Usa 4w como denominador común.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "raiz-valida-o-excluida",
+      "title": "Solución que cumple el dominio",
+      "points": [
+        "Para resolver una ecuación con fracciones, multiplica por un denominador común después de anotar las restricciones. Los valores excluidos se conservan durante todo el cálculo.",
+        "Comprueba cualquier candidato en el enunciado original. Si anula un denominador, no es una solución."
+      ],
+      "example": {
+        "prompt": "Estudia la ecuación x/(x − 2) = 2/(x − 2).",
+        "steps": [
+          {
+            "prompt": "¿Qué candidato resulta al multiplicar ambos lados por x − 2?",
+            "options": [
+              "x = 0",
+              "x = 2"
+            ],
+            "answer": 1,
+            "explanation": "La ecuación que queda es x = 2."
+          },
+          {
+            "prompt": "¿Puede aceptarse ese candidato?",
+            "options": [
+              "No, porque el denominador original sería cero.",
+              "Sí, porque cumple la ecuación sin denominadores."
+            ],
+            "answer": 0,
+            "explanation": "El valor 2 está fuera del dominio. La ecuación original no tiene solución."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "¿Cuál es la solución de (y + 4)/(y − 1) = 2?",
+        "options": [
+          "y = −6",
+          "y = 1",
+          "No hay solución.",
+          "y = 6"
+        ],
+        "answer": 3,
+        "explanation": "El dominio excluye 1. Multiplica por y − 1: y + 4 = 2y − 2. Obtienes y = 6, un valor permitido.",
+        "hint": "Revisa el denominador original antes de comprobar el resultado.",
+        "difficulty": "base"
+      }
+    }
+  ],
+  "mat-cuadraticas": [
+    {
+      "id": "raiz-y-soluciones",
+      "title": "Raíz cuadrada y soluciones de una ecuación",
+      "points": [
+        "√k es la raíz cuadrada no negativa de k. Para x² = k con k > 0, tanto √k como −√k resuelven la ecuación. Con k = 0 hay una solución. Con k negativo no hay soluciones reales.",
+        "En un problema, conserva solo las raíces que cumplen las condiciones de la situación."
+      ],
+      "example": {
+        "prompt": "Resuelve x² = 36. Después aplica la ecuación a un cuadrado cuya área es 36 cm².",
+        "steps": [
+          {
+            "prompt": "¿Cuáles son las soluciones reales de la ecuación sola?",
+            "options": [
+              "−6 y 6",
+              "Solo 6"
+            ],
+            "answer": 0,
+            "explanation": "Las dos soluciones dan 36 al cuadrado. √36, en cambio, representa solo 6."
+          },
+          {
+            "prompt": "¿Qué valor sirve como longitud del lado del cuadrado?",
+            "options": [
+              "−6 cm",
+              "6 cm"
+            ],
+            "answer": 1,
+            "explanation": "La longitud de un lado debe ser positiva."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "¿Cuántas soluciones reales tiene 3x² = −12?",
+        "options": [
+          "Una",
+          "Dos",
+          "Ninguna",
+          "Tres"
+        ],
+        "answer": 2,
+        "explanation": "Divide entre 3 y obtienes x² = −4. El cuadrado de un número real nunca es negativo.",
+        "hint": "Aísla x² antes de decidir si hay raíces reales.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "factor-o-discriminante",
+      "title": "Factorización y número de raíces",
+      "points": [
+        "Escribe la ecuación como ax² + bx + c = 0, con a ≠ 0. Si puedes factorizar, iguala cada factor a cero.",
+        "Calcula D = b² − 4ac. Con D positivo hay dos raíces reales distintas. Con D cero hay una raíz real distinta. Con D negativo no hay raíces reales.",
+        "Si D ≥ 0, puedes calcular las raíces con x = (−b ± √D)/(2a)."
+      ],
+      "example": {
+        "prompt": "Compara x² − 12x + 36 = 0 con x² − 12x + 40 = 0.",
+        "steps": [
+          {
+            "prompt": "¿Cuántas raíces reales distintas tiene la primera?",
+            "options": [
+              "Dos",
+              "Una"
+            ],
+            "answer": 1,
+            "explanation": "Se factoriza como (x − 6)² = 0. El 6 es la única raíz."
+          },
+          {
+            "prompt": "¿Cuántas raíces reales distintas tiene la segunda?",
+            "options": [
+              "Ninguna",
+              "Dos"
+            ],
+            "answer": 0,
+            "explanation": "D = 144 − 160 = −16. La raíz cuadrada de D no es real."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "¿Cuál es el conjunto de raíces de x² + x − 42 = 0?",
+        "options": [
+          "{−6, 7}",
+          "{−7, 6}",
+          "{−7, −6}",
+          "{6, 7}"
+        ],
+        "answer": 1,
+        "explanation": "Los factores son (x + 7)(x − 6). Cada uno debe igualarse a cero para buscar sus raíces.",
+        "hint": "Busca dos números con producto −42 y suma 1.",
+        "difficulty": "base"
+      }
+    }
+  ],
+  "mat-funciones": [
+    {
+      "id": "punto-medio-y-distancia",
+      "title": "Punto medio o distancia",
+      "points": [
+        "En (x, y), x es la coordenada horizontal e y es la vertical. Para hallar el punto medio, promedia cada coordenada por separado.",
+        "Para hallar una distancia, usa √[(Δx)² + (Δy)²]. Las diferencias Δx y Δy se obtienen restando las coordenadas correspondientes."
+      ],
+      "example": {
+        "prompt": "Usa los puntos (1, 3) y (7, 11) para calcular dos medidas.",
+        "steps": [
+          {
+            "prompt": "¿Cuál es su punto medio?",
+            "options": [
+              "(6, 8)",
+              "(4, 7)"
+            ],
+            "answer": 1,
+            "explanation": "Promedia las coordenadas: (1 + 7)/2 = 4 y (3 + 11)/2 = 7."
+          },
+          {
+            "prompt": "¿Cuál es la distancia entre los dos puntos?",
+            "options": [
+              "10",
+              "14"
+            ],
+            "answer": 0,
+            "explanation": "Las diferencias son 6 y 8. Aplica Pitágoras: √(36 + 64) = 10."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "¿Cuál es el punto medio entre (−5, 6) y (3, −2)?",
+        "options": [
+          "(−2, 4)",
+          "(8, −8)",
+          "(1, −2)",
+          "(−1, 2)"
+        ],
+        "answer": 3,
+        "explanation": "Promedia x para obtener (−5 + 3)/2 = −1. Promedia y para obtener (6 − 2)/2 = 2.",
+        "hint": "El resultado es un punto con una coordenada para cada promedio.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "pendiente-y-valor",
+      "title": "Pendiente de una recta y valor de una función",
+      "points": [
+        "Una función asigna una sola salida a cada entrada. Para calcular f(a), sustituye x por a. Usa paréntesis si el valor es negativo o es una expresión.",
+        "En y = mx + b, m es el cambio vertical por unidad horizontal y (0, b) es el corte con el eje y. Una recta vertical no tiene pendiente definida y no representa y como función de x."
+      ],
+      "example": {
+        "prompt": "Una recta pasa por (0, −1) y (2, 5). Llama f a la función que representa.",
+        "steps": [
+          {
+            "prompt": "¿Cuál es la pendiente?",
+            "options": [
+              "3",
+              "5"
+            ],
+            "answer": 0,
+            "explanation": "El cambio vertical es 5 − (−1) = 6 y el horizontal es 2. Su cociente es 3."
+          },
+          {
+            "prompt": "¿Cuánto vale f(2)?",
+            "options": [
+              "3",
+              "5"
+            ],
+            "answer": 1,
+            "explanation": "El punto (2, 5) da la salida 5 para la entrada 2. La pendiente mide un cambio, no una salida."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Sea g(x) = 4 − 2x. ¿Cuánto vale g(−4)?",
+        "options": [
+          "−4",
+          "4",
+          "12",
+          "8"
+        ],
+        "answer": 2,
+        "explanation": "Sustituye −4: 4 − 2(−4) = 4 + 8 = 12.",
+        "hint": "Usa paréntesis al sustituir el valor negativo.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "una-o-varias-salidas",
+      "title": "Una salida por entrada",
+      "points": [
+        "En una función, cada entrada tiene una sola salida. Dos entradas distintas sí pueden compartir la misma salida.",
+        "En un conjunto de pares (x, y), agrupa por x. En una gráfica, una recta vertical no debe cortar la gráfica en dos puntos distintos."
+      ],
+      "example": {
+        "prompt": "Compara A = {(1, 4), (2, 4), (3, 5)} con B = {(1, 4), (1, 5), (2, 6)}.",
+        "steps": [
+          {
+            "prompt": "¿Puede A representar una función de x?",
+            "options": [
+              "No. Las entradas 1 y 2 tienen la misma salida.",
+              "Sí. Cada valor de x tiene una sola salida."
+            ],
+            "answer": 1,
+            "explanation": "Una salida repetida está permitida si las entradas son distintas."
+          },
+          {
+            "prompt": "¿Puede B representar una función de x?",
+            "options": [
+              "No. Para x = 1 hay dos salidas distintas.",
+              "Sí. Cada valor de y es distinto."
+            ],
+            "answer": 0,
+            "explanation": "La entrada x = 1 tiene las salidas 4 y 5. Eso contradice la regla de una salida por entrada."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "¿Cuál relación puede representar y como función de x?",
+        "options": [
+          "x = 8",
+          "y = 8",
+          "x = y²",
+          "y² = x + 1"
+        ],
+        "answer": 1,
+        "explanation": "La recta horizontal asigna y = 8 a cada x. La vertical y las dos parábolas escritas de lado tienen valores de x con más de una salida.",
+        "hint": "Imagina una recta vertical moviéndose por cada gráfica.",
+        "difficulty": "base"
+      }
+    }
+  ],
+  "mat-sistemas": [
+    {
+      "id": "un-par-o-interseccion",
+      "title": "Solución de una ecuación o del sistema",
+      "points": [
+        "Una sola ecuación lineal puede admitir varios pares. Despeja una variable para calcular su valor al elegir la otra.",
+        "Un par resuelve un sistema solo si cumple ambas ecuaciones. Puedes sustituir una expresión despejada o sumar ecuaciones para eliminar una variable."
+      ],
+      "example": {
+        "prompt": "Compara los pares de x + y = 9 con los del sistema que también incluye x − y = 1.",
+        "steps": [
+          {
+            "prompt": "¿Cumple (6, 3) la primera ecuación?",
+            "options": [
+              "Sí, porque 6 + 3 = 9.",
+              "No, porque 6 − 3 ≠ 1."
+            ],
+            "answer": 0,
+            "explanation": "Para la primera ecuación solo se verifica la suma."
+          },
+          {
+            "prompt": "¿Qué par resuelve el sistema completo?",
+            "options": [
+              "(6, 3)",
+              "(5, 4)"
+            ],
+            "answer": 1,
+            "explanation": "Sumar las dos ecuaciones da 2x = 10. Entonces x = 5 y y = 4. El otro par solo cumple la primera."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "En un grupo de 18 personas, 4 más prefieren fútbol que natación. Todas eligen una de las dos actividades. Si f cuenta a quienes prefieren fútbol y n a quienes prefieren natación, ¿qué par (f, n) cumple ambas condiciones?",
+        "options": [
+          "(11, 7)",
+          "(7, 11)",
+          "(12, 6)",
+          "(9, 9)"
+        ],
+        "answer": 0,
+        "explanation": "Las condiciones son f + n = 18 y f − n = 4. Al sumarlas se obtiene 2f = 22. Así, f = 11 y n = 7.",
+        "hint": "La cantidad que prefiere fútbol debe ser mayor.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "paralelas-o-coincidentes",
+      "title": "Rectas que cruzan, paralelas o coincidentes",
+      "points": [
+        "Las rectas que se cruzan tienen un punto común. Las rectas paralelas distintas no tienen ninguno. Las rectas coincidentes comparten todos sus puntos.",
+        "Si al eliminar una variable obtienes una igualdad imposible, no hay solución. Si las dos ecuaciones de rectas son equivalentes, hay infinitas soluciones."
+      ],
+      "example": {
+        "prompt": "Usa como primera ecuación y = 3x + 1. Compara qué pasa si la segunda es y = 3x − 2 o 2y = 6x + 2.",
+        "steps": [
+          {
+            "prompt": "¿Cuántas soluciones hay con y = 3x − 2 como segunda ecuación?",
+            "options": [
+              "Infinitas",
+              "Ninguna"
+            ],
+            "answer": 1,
+            "explanation": "Las pendientes son iguales y los cortes con el eje y son distintos. Las rectas son paralelas."
+          },
+          {
+            "prompt": "¿Cuántas soluciones hay con 2y = 6x + 2 como segunda ecuación?",
+            "options": [
+              "Infinitas",
+              "Una"
+            ],
+            "answer": 0,
+            "explanation": "Al dividir entre 2 obtienes la primera ecuación. Las dos rectas coinciden por completo."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "¿Cuántas soluciones tiene el sistema y = 2x + 3, y = −x + 3?",
+        "options": [
+          "Ninguna",
+          "Dos",
+          "Infinitas",
+          "Una"
+        ],
+        "answer": 3,
+        "explanation": "Las pendientes son diferentes. Ambas rectas pasan por (0, 3), su único punto común.",
+        "hint": "Compara las pendientes y los cortes con el eje y.",
+        "difficulty": "base"
+      }
+    }
+  ],
+  "mat-angulos": [
+    {
+      "id": "igualdad-o-suplemento",
+      "title": "Ángulos iguales y suplementarios",
+      "points": [
+        "Los ángulos opuestos por el vértice son iguales. Dos ángulos adyacentes sobre una línea recta suman 180°. Una vuelta completa mide 360° y un ángulo recto mide 90°.",
+        "Si una secante corta paralelas, los correspondientes y los alternos son iguales. Los interiores del mismo lado de la secante suman 180°."
+      ],
+      "example": {
+        "prompt": "Una secante corta dos rectas paralelas. Uno de los ángulos interiores mide 116°.",
+        "steps": [
+          {
+            "prompt": "¿Cuánto mide su alterno interno?",
+            "options": [
+              "64°",
+              "116°"
+            ],
+            "answer": 1,
+            "explanation": "Los alternos internos están entre las paralelas, en lados opuestos de la secante. Tienen la misma medida."
+          },
+          {
+            "prompt": "¿Cuánto mide el interior del mismo lado de la secante en el otro cruce?",
+            "options": [
+              "64°",
+              "116°"
+            ],
+            "answer": 0,
+            "explanation": "Es suplementario de 116°. Resta 116° de 180° para obtener 64°."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Al cruzar dos rectas, un ángulo mide 39°. ¿Cuánto mide un ángulo adyacente que forma con él una línea recta?",
+        "options": [
+          "39°",
+          "141°",
+          "51°",
+          "321°"
+        ],
+        "answer": 1,
+        "explanation": "Los dos ángulos forman un ángulo llano: 180° − 39° = 141°.",
+        "hint": "Usa la suma de un ángulo llano.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "interior-y-exterior",
+      "title": "Ángulo interior o exterior de un triángulo",
+      "points": [
+        "Los tres ángulos interiores suman 180°. Un ángulo exterior equivale a la suma de los dos interiores no adyacentes.",
+        "Por sus ángulos, un triángulo es acutángulo si todos son agudos, rectángulo si tiene un ángulo recto y obtusángulo si tiene uno obtuso. Por sus lados es equilátero, isósceles o escaleno."
+      ],
+      "example": {
+        "prompt": "Dos ángulos interiores de un triángulo miden 34° y 62°. Busca el interior del tercer vértice y el exterior junto a él.",
+        "steps": [
+          {
+            "prompt": "¿Cuánto mide el tercer ángulo interior?",
+            "options": [
+              "84°",
+              "96°"
+            ],
+            "answer": 0,
+            "explanation": "Resta 34° y 62° de 180°. El interior faltante mide 84°."
+          },
+          {
+            "prompt": "¿Cuánto mide el ángulo exterior junto al ángulo de 84°?",
+            "options": [
+              "84°",
+              "96°"
+            ],
+            "answer": 1,
+            "explanation": "El exterior es 34° + 62° = 96°. También se obtiene con 180° − 84°."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Los ángulos interiores de un triángulo miden 28°, 62° y z. ¿Cómo se clasifica el triángulo por sus ángulos?",
+        "options": [
+          "Rectángulo",
+          "Acutángulo",
+          "Obtusángulo",
+          "Equilátero"
+        ],
+        "answer": 0,
+        "explanation": "Los dos ángulos conocidos suman 90°. El ángulo z mide 90°, así que el triángulo es rectángulo.",
+        "hint": "Resta la suma de los ángulos conocidos de 180°.",
+        "difficulty": "base"
+      }
+    }
+  ],
+  "mat-triangulos": [
+    {
+      "id": "forma-y-tamano",
+      "title": "Semejanza y congruencia",
+      "points": [
+        "Los triángulos semejantes tienen la misma forma. Sus ángulos correspondientes son iguales y sus lados correspondientes guardan una razón constante. Dos pares de ángulos iguales bastan para probar semejanza.",
+        "Los congruentes tienen la misma forma y tamaño. Tres pares de lados iguales bastan para probar congruencia. También bastan dos lados y el ángulo comprendido."
+      ],
+      "example": {
+        "prompt": "Compara un triángulo de lados 5, 5 y 6 cm con otro de lados 10, 10 y 12 cm. Después considera qué cambia si los dos tienen lados 5, 5 y 6 cm.",
+        "steps": [
+          {
+            "prompt": "¿Qué puedes afirmar del par con medidas 5, 5, 6 y 10, 10, 12?",
+            "options": [
+              "Es semejante y sus tamaños son distintos.",
+              "Es congruente porque los dos son isósceles."
+            ],
+            "answer": 0,
+            "explanation": "Cada lado del segundo mide el doble de su correspondiente. Las medidas no son iguales."
+          },
+          {
+            "prompt": "¿Qué relación adicional garantiza tener los tres pares de lados iguales?",
+            "options": [
+              "Solo semejanza.",
+              "Congruencia."
+            ],
+            "answer": 1,
+            "explanation": "Los tres pares iguales garantizan el mismo tamaño y la misma forma."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "En △MNO ∼ △JKL, el lado MN mide 9 cm y JK mide 15 cm. Si NO mide 12 cm, ¿cuánto mide KL?",
+        "options": [
+          "18 cm",
+          "7.2 cm",
+          "20 cm",
+          "16 cm"
+        ],
+        "answer": 2,
+        "explanation": "La razón del segundo al primero es 15/9 = 5/3. Multiplica el lado correspondiente NO por 5/3: 12 × 5/3 = 20.",
+        "hint": "Empareja los lados según el orden de los vértices.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "sumar-o-restar-cuadrados",
+      "title": "Pitágoras para una hipotenusa o un cateto",
+      "points": [
+        "En un triángulo rectángulo, a² + b² = c². La hipotenusa c está frente al ángulo recto. Suma los cuadrados de los catetos si buscas la hipotenusa. Resta si buscas un cateto.",
+        "Para un triángulo 45°–45°–90°, los catetos son iguales y la hipotenusa mide √2 veces un cateto. Para uno 30°–60°–90°, la razón de lados es 1 : √3 : 2, del menor al mayor."
+      ],
+      "example": {
+        "prompt": "Compara un triángulo de catetos 7 y 24 cm con otro que tiene un cateto de 7 cm y una hipotenusa de 25 cm.",
+        "steps": [
+          {
+            "prompt": "¿Cuánto mide la hipotenusa del primero?",
+            "options": [
+              "31 cm",
+              "25 cm"
+            ],
+            "answer": 1,
+            "explanation": "Suma 7² + 24² = 625 y toma la raíz cuadrada."
+          },
+          {
+            "prompt": "¿Cuánto mide el cateto que falta en el segundo?",
+            "options": [
+              "24 cm",
+              "√674 cm"
+            ],
+            "answer": 0,
+            "explanation": "Aquí restas 7² de 25² y tomas la raíz: √576 = 24."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Un triángulo rectángulo isósceles tiene hipotenusa de 12 cm. ¿Cuánto mide cada cateto?",
+        "options": [
+          "12√2 cm",
+          "6√2 cm",
+          "6 cm",
+          "12 cm"
+        ],
+        "answer": 1,
+        "explanation": "Si ambos catetos miden a, se cumple 2a² = 144. Entonces a = √72 = 6√2 cm.",
+        "hint": "Usa que los catetos son iguales.",
+        "difficulty": "base"
+      }
+    }
+  ],
+  "mat-areas": [
+    {
+      "id": "borde-y-superficie",
+      "title": "Perímetro y área de una figura",
+      "points": [
+        "El perímetro mide el borde en unidades de longitud. En figuras compuestas cuenta solo los lados del contorno. El área mide la superficie en unidades cuadradas.",
+        "Para el área de un rectángulo o paralelogramo, multiplica la base por la altura perpendicular. Para un triángulo, divide ese producto entre 2. Para un trapecio usa (B + b)h/2."
+      ],
+      "example": {
+        "prompt": "Una placa rectangular mide 8 cm por 5 cm. Se la corta a lo largo de una diagonal para obtener dos triángulos.",
+        "steps": [
+          {
+            "prompt": "¿Cuánto mide el contorno de la placa original?",
+            "options": [
+              "40 cm",
+              "26 cm"
+            ],
+            "answer": 1,
+            "explanation": "Suma los cuatro lados: 8 + 5 + 8 + 5 = 26 cm."
+          },
+          {
+            "prompt": "¿Cuál es el área de uno de los triángulos?",
+            "options": [
+              "20 cm²",
+              "40 cm²"
+            ],
+            "answer": 0,
+            "explanation": "Cada triángulo ocupa la mitad del rectángulo: 8 × 5 ÷ 2 = 20 cm²."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "De una lámina de 9 cm por 8 cm se recorta un cuadrado de lado 4 cm. ¿Cuánta superficie queda?",
+        "options": [
+          "68 cm²",
+          "36 cm²",
+          "34 cm²",
+          "56 cm²"
+        ],
+        "answer": 3,
+        "explanation": "Resta el área del cuadrado al área del rectángulo: 9 × 8 − 4² = 56 cm².",
+        "hint": "Calcula por separado las dos áreas.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "arco-y-sector",
+      "title": "Longitud del arco y área del sector",
+      "points": [
+        "La circunferencia mide 2πr o πd. El área del círculo es πr². El diámetro d es el doble del radio r.",
+        "Para un ángulo central θ, la fracción del círculo es θ/360. Multiplica por la circunferencia para hallar la longitud del arco. Multiplica por el área para hallar la superficie del sector."
+      ],
+      "example": {
+        "prompt": "Considera un círculo de radio 10 cm y un ángulo central de 90°.",
+        "steps": [
+          {
+            "prompt": "¿Cuánto mide el arco del sector?",
+            "options": [
+              "5π cm",
+              "25π cm"
+            ],
+            "answer": 0,
+            "explanation": "El arco mide un cuarto de la circunferencia: 20π ÷ 4 = 5π cm."
+          },
+          {
+            "prompt": "¿Cuánto mide el área del sector?",
+            "options": [
+              "5π cm²",
+              "25π cm²"
+            ],
+            "answer": 1,
+            "explanation": "El área del sector es un cuarto de 100π cm²: 25π cm²."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Un círculo de diámetro 12 m tiene un sector de 60°. ¿Cuál es el área del sector?",
+        "options": [
+          "2π m²",
+          "24π m²",
+          "6π m²",
+          "36π m²"
+        ],
+        "answer": 2,
+        "explanation": "El radio es 6 m y el círculo mide 36π m². El sector es un sexto del círculo, así que mide 6π m².",
+        "hint": "Usa πr² y después multiplica por 60/360.",
+        "difficulty": "base"
+      }
+    }
+  ],
+  "mat-solidos": [
+    {
+      "id": "bases-y-vertice",
+      "title": "Prismas, cilindros, pirámides y conos",
+      "points": [
+        "Un prisma tiene dos bases poligonales paralelas y congruentes. Un cilindro circular tiene dos bases circulares congruentes.",
+        "Una pirámide tiene una base poligonal y caras triangulares que se unen en un vértice. Un cono circular tiene una base circular y un vértice. Una esfera no tiene caras planas."
+      ],
+      "example": {
+        "prompt": "Compara dos sólidos. El primero tiene dos bases cuadradas paralelas y congruentes. El segundo tiene una base cuadrada y cuatro caras triangulares que se unen en un vértice.",
+        "steps": [
+          {
+            "prompt": "¿Cuál es el primer sólido?",
+            "options": [
+              "Prisma de base cuadrada.",
+              "Pirámide de base cuadrada."
+            ],
+            "answer": 0,
+            "explanation": "Las dos bases congruentes y paralelas identifican un prisma."
+          },
+          {
+            "prompt": "¿Cuál es el segundo sólido?",
+            "options": [
+              "Cono circular.",
+              "Pirámide de base cuadrada."
+            ],
+            "answer": 1,
+            "explanation": "La base es un polígono. Las caras triangulares se juntan en un vértice."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "¿Qué sólido tiene dos bases circulares congruentes y paralelas?",
+        "options": [
+          "Cilindro circular.",
+          "Cono circular.",
+          "Prisma triangular.",
+          "Esfera."
+        ],
+        "answer": 0,
+        "explanation": "El cilindro tiene dos bases circulares. El cono tiene una y la esfera ninguna.",
+        "hint": "Cuenta las bases e identifica su forma.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "base-por-altura",
+      "title": "Volumen con la misma base y altura",
+      "points": [
+        "Con área de base B y altura perpendicular h, el prisma o cilindro tiene volumen Bh. La pirámide o el cono tiene volumen Bh/3. La esfera usa 4πr³/3.",
+        "Usa la misma unidad para las longitudes antes de calcular el volumen. Por ejemplo, 1 m³ = 1 000 000 cm³."
+      ],
+      "example": {
+        "prompt": "Un prisma y una pirámide tienen bases con área de 20 cm² y alturas perpendiculares de 9 cm.",
+        "steps": [
+          {
+            "prompt": "¿Cuál es el volumen del prisma?",
+            "options": [
+              "60 cm³",
+              "180 cm³"
+            ],
+            "answer": 1,
+            "explanation": "El prisma tiene volumen Bh = 20 × 9 = 180 cm³."
+          },
+          {
+            "prompt": "¿Cuál es el volumen de la pirámide?",
+            "options": [
+              "60 cm³",
+              "180 cm³"
+            ],
+            "answer": 0,
+            "explanation": "La pirámide tiene un tercio de ese volumen: 20 × 9 ÷ 3 = 60 cm³."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Un cono de radio 6 cm tiene una altura perpendicular de 5 cm. ¿Cuál es su volumen exacto?",
+        "options": [
+          "180π cm³",
+          "30π cm³",
+          "10π cm³",
+          "60π cm³"
+        ],
+        "answer": 3,
+        "explanation": "Su base tiene área de 36π cm². Multiplica por 5 cm y divide entre 3.",
+        "hint": "Usa un tercio del volumen de un cilindro de igual base y altura.",
+        "difficulty": "base"
+      }
+    }
+  ],
+  "mat-estadistica": [
+    {
+      "id": "media-mediana-y-moda",
+      "title": "Promedio, centro y frecuencia",
+      "points": [
+        "La media reparte el total por igual. La mediana es el dato central de la lista ordenada. Si hay dos datos centrales, usa su promedio.",
+        "La moda es el dato más frecuente. Puede haber más de una moda si varios datos comparten la frecuencia mayor. Si ningún dato se repite, se suele decir que no hay moda."
+      ],
+      "example": {
+        "prompt": "Compara las medidas de los datos 2, 3, 3, 6 y 16.",
+        "steps": [
+          {
+            "prompt": "¿Qué valor da la media?",
+            "options": [
+              "3",
+              "6"
+            ],
+            "answer": 1,
+            "explanation": "La suma es 30. Al dividir entre los cinco datos, la media es 6."
+          },
+          {
+            "prompt": "¿Qué valor es la moda?",
+            "options": [
+              "3",
+              "6"
+            ],
+            "answer": 0,
+            "explanation": "El 3 aparece dos veces. El 6 solo aparece una vez."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "¿Cuál es la mediana de 20, 4, 6 y 10?",
+        "options": [
+          "10",
+          "8",
+          "7",
+          "6"
+        ],
+        "answer": 1,
+        "explanation": "Al ordenar obtienes 4, 6, 10 y 20. Promedia los datos centrales: (6 + 10)/2 = 8.",
+        "hint": "En una lista de cuatro datos, busca el segundo y el tercero después de ordenar.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "frecuencia-y-proporcion",
+      "title": "Frecuencia y parte del total",
+      "points": [
+        "Lee las unidades, la escala y la clave de cada gráfica. Una barra indica una cantidad y cada símbolo de un pictograma puede valer varias unidades. El sector de un círculo muestra una proporción del total.",
+        "En una tabla de frecuencias, para hallar la media multiplica cada dato por su frecuencia antes de sumar. Divide por el total de observaciones."
+      ],
+      "example": {
+        "prompt": "En el registro de un taller, 2 personas construyeron 1 figura y 6 personas construyeron 5 figuras.",
+        "steps": [
+          {
+            "prompt": "¿Cuál es la media de figuras por persona?",
+            "options": [
+              "4",
+              "3"
+            ],
+            "answer": 0,
+            "explanation": "En total se hicieron 2 × 1 + 6 × 5 = 32 figuras. Al dividir entre 8 personas, la media es 4."
+          },
+          {
+            "prompt": "¿Qué fracción de las personas construyó 5 figuras?",
+            "options": [
+              "5/8",
+              "3/4"
+            ],
+            "answer": 1,
+            "explanation": "Seis de ocho personas hicieron 5 figuras. Simplifica 6/8 a 3/4."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "En un pictograma, cada símbolo completo representa a 4 personas y medio símbolo representa a 2. Si hay 3 símbolos completos y un medio símbolo, ¿cuántas personas aparecen?",
+        "options": [
+          "14",
+          "12",
+          "16",
+          "10"
+        ],
+        "answer": 0,
+        "explanation": "Tres símbolos completos representan 3 × 4 = 12 personas. Medio símbolo suma 2: el total es 14.",
+        "hint": "Lee cuánto vale cada clase de símbolo.",
+        "difficulty": "base"
+      }
+    }
+  ],
+  "mat-probabilidad": [
+    {
+      "id": "complemento-y-union",
+      "title": "Excluir resultados o unir dos condiciones",
+      "points": [
+        "El espacio muestral incluye todos los resultados posibles. Si son igualmente probables, divide los favorables entre el total. Si no lo son, suma las probabilidades de los resultados favorables.",
+        "El complemento incluye los resultados que no cumplen la condición. Para «A o B», cuenta los que cumplen una condición, la otra o ambas. Cuenta una sola vez los que cumplen ambas."
+      ],
+      "example": {
+        "prompt": "Usa un dado justo de seis caras. Sea A «sale un número par» y B «sale un número mayor que 3».",
+        "steps": [
+          {
+            "prompt": "¿Cuáles son los resultados del complemento de A?",
+            "options": [
+              "1, 3 y 5.",
+              "1, 2 y 3."
+            ],
+            "answer": 0,
+            "explanation": "El complemento contiene todos los impares, porque A agrupa los pares."
+          },
+          {
+            "prompt": "¿Cuáles cumplen A o B?",
+            "options": [
+              "4 y 6.",
+              "2, 4, 5 y 6."
+            ],
+            "answer": 1,
+            "explanation": "Los pares son 2, 4 y 6. Los mayores que 3 son 4, 5 y 6. La unión incluye el 2 y el 5, además de los que cumplen ambas."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Eliges al azar un entero del 1 al 15, incluidos los extremos. ¿Cuál es la probabilidad de elegir uno que no sea múltiplo de 4?",
+        "options": [
+          "1/5",
+          "3/4",
+          "4/5",
+          "14/15"
+        ],
+        "answer": 2,
+        "explanation": "Los múltiplos de 4 son 4, 8 y 12. Los otros 12 enteros cumplen, así que la probabilidad es 12/15 = 4/5.",
+        "hint": "Resta los múltiplos de 4 del total.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "con-y-sin-reemplazo",
+      "title": "Extracciones con o sin reemplazo",
+      "points": [
+        "Organiza experimentos de varios pasos con una tabla o un árbol. Para una ruta concreta, multiplica la probabilidad del primer paso por la del segundo después de ese resultado.",
+        "Con reemplazo, la bolsa vuelve a su estado original. Sin reemplazo, reduce el total y también la cantidad del color extraído."
+      ],
+      "example": {
+        "prompt": "Una bolsa tiene 3 fichas rojas y 2 verdes. La primera ficha extraída es roja. Compara qué pasa al dejarla fuera o devolverla.",
+        "steps": [
+          {
+            "prompt": "¿Qué probabilidad tiene sacar otra roja si la dejas fuera?",
+            "options": [
+              "3/5",
+              "1/2"
+            ],
+            "answer": 1,
+            "explanation": "Quedan 2 fichas rojas entre 4 fichas en total."
+          },
+          {
+            "prompt": "¿Qué probabilidad tiene sacar otra roja si devuelves la primera?",
+            "options": [
+              "3/5",
+              "1/2"
+            ],
+            "answer": 0,
+            "explanation": "La bolsa vuelve a tener 3 fichas rojas entre 5 fichas."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Una bolsa tiene 5 fichas naranjas y 3 grises. Se extraen dos al azar sin reemplazo. ¿Cuál es la probabilidad de que ambas sean grises?",
+        "options": [
+          "9/64",
+          "3/28",
+          "3/8",
+          "3/14"
+        ],
+        "answer": 1,
+        "explanation": "La primera tiene probabilidad 3/8. Después quedan 2 fichas grises entre 7. El producto es 6/56 = 3/28.",
+        "hint": "Cambia el total y el número de fichas grises antes de la segunda extracción.",
+        "difficulty": "base"
+      }
+    }
+  ]
+}

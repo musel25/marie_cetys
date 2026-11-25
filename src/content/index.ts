@@ -27,14 +27,6 @@ export const curriculum = Array.from({ length: Math.max(...areaOrder.map(area =>
 
 export const lessonById = new Map(curriculum.map(lesson => [lesson.id, lesson]));
 
-export function guidedSections(lesson: Lesson) {
-  if (Array.isArray(lesson.explanation)) return [];
-  return lesson.explanation.sections.map(section => ({
-    ...section,
-    question: { ...section.exercise, id: lesson.id + ":guiado-" + section.id, skill: lesson.id },
-  }));
-}
-
 export function expectedMiniFormCount(lesson: Lesson) {
   return lesson.miniFormCount ?? (lesson.area === "hc" ? 3 : 1);
 }

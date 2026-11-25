@@ -1,0 +1,1323 @@
+{
+  "es-ortografia": [
+    {
+      "id": "nombres",
+      "title": "Nombre común y nombre propio",
+      "points": [
+        "Un nombre común indica un tipo de persona, lugar o cosa. Escribe con minúscula los nombres comunes, incluidos los días y los meses en el uso habitual.",
+        "Un nombre propio identifica por su nombre a alguien o algo. En el nombre oficial de una institución, pon mayúscula inicial en las palabras que aportan significado. Escribe con minúscula las preposiciones y los artículos internos."
+      ],
+      "example": {
+        "prompt": "En una visita a la biblioteca, decide cuándo se necesita la mayúscula.",
+        "steps": [
+          {
+            "prompt": "Completa «Estudié en la ____ del barrio». Aquí solo se indica el tipo de lugar.",
+            "options": [
+              "Biblioteca",
+              "biblioteca"
+            ],
+            "answer": 1,
+            "explanation": "Biblioteca es un nombre común en esta frase. Escribe «la biblioteca del barrio»."
+          },
+          {
+            "prompt": "Ahora se indica el nombre oficial. ¿Cómo escribes «Consulté un mapa en la ____»?",
+            "options": [
+              "Biblioteca Nacional de México",
+              "biblioteca nacional de México"
+            ],
+            "answer": 0,
+            "explanation": "Biblioteca y Nacional son palabras del nombre oficial. La preposición de va en minúscula. México conserva su mayúscula por ser un nombre propio."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "¿En qué oración se distinguen bien el tipo de lugar y su nombre oficial?",
+        "options": [
+          "Buscamos un Museo y visitamos el Museo de Historia de Tijuana.",
+          "Buscamos un museo y visitamos el Museo de Historia de Tijuana.",
+          "Buscamos un museo y visitamos el museo de historia de Tijuana.",
+          "Buscamos un Museo y visitamos el Museo De Historia De Tijuana."
+        ],
+        "answer": 1,
+        "explanation": "En «un museo», la palabra museo es común. En el nombre oficial, Museo e Historia llevan mayúscula y de va en minúscula.",
+        "hint": "Separa el tipo de lugar de las palabras que forman su nombre.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "hiato",
+      "title": "Hiato y diptongo",
+      "points": [
+        "Si dos vocales están en una sola sílaba, forman un diptongo. Para decidir cómo se escribe una palabra, una vocal abierta (a, e, o) junto a una cerrada átona (i, u) forma diptongo. Átona significa que no recibe el acento de voz. Dos cerradas distintas también forman diptongo.",
+        "Si las vocales se separan en dos sílabas, forman un hiato. Para la escritura, dos vocales abiertas o dos iguales forman hiato y siguen las reglas generales de tilde. Una vocal cerrada tónica junto a una abierta también forma hiato. Escribe la tilde sobre la cerrada."
+      ],
+      "example": {
+        "prompt": "Compara «Voy hacia la puerta» y «Hacía frío». Fíjate en qué sílaba queda cada vocal.",
+        "steps": [
+          {
+            "prompt": "¿Cómo se separa «hacia» en «Voy hacia la puerta»?",
+            "options": [
+              "ha-cia",
+              "ha-ci-a"
+            ],
+            "answer": 0,
+            "explanation": "La i átona queda junto a la a en la sílaba cia. Las dos vocales forman un diptongo."
+          },
+          {
+            "prompt": "En «Hacía frío», separa ha-cí-a. ¿Qué forman la í y la a?",
+            "options": [
+              "Diptongo",
+              "Hiato"
+            ],
+            "answer": 1,
+            "explanation": "En hacía, la í tónica queda en una sílaba distinta de la a. Las vocales forman un hiato. La i lleva tilde para indicar que es tónica."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Compara las vocales juntas de «río» y «patio». ¿Cómo se clasifican?",
+        "options": [
+          "río tiene diptongo y patio tiene hiato.",
+          "Las dos palabras tienen diptongo.",
+          "Las dos palabras tienen hiato.",
+          "río tiene hiato y patio tiene diptongo."
+        ],
+        "answer": 3,
+        "explanation": "En rí-o, la í tónica se separa de la o. En pa-tio, io se pronuncia en la misma sílaba.",
+        "hint": "Separa las dos palabras en sílabas y fíjate en cuál recae el acento de voz.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "porques",
+      "title": "Por qué, porque, porqué y por que",
+      "points": [
+        "Usa por qué para preguntar por un motivo. También lleva tilde en una pregunta indirecta.",
+        "Usa porque para dar una causa. En este caso, puedes sustituirlo por ya que.",
+        "Usa el porqué cuando puedas decir el motivo. Es un sustantivo y admite el plural los porqués.",
+        "Escribe por que separado cuando la preposición por pertenece a una construcción como distinguirse por algo. También se escribe separado cuando que es relativo y puedes decir por el que, por la que, por los que o por las que."
+      ],
+      "example": {
+        "prompt": "Cambiaron una clase de aula. Elige la forma que corresponde a cada frase del aviso.",
+        "steps": [
+          {
+            "prompt": "«No sé ____ cambiaron el aula». ¿Cuál introduce la pregunta indirecta?",
+            "options": [
+              "porque",
+              "por qué"
+            ],
+            "answer": 1,
+            "explanation": "Por qué se escribe separado y con tilde. La pregunta directa sería «¿Por qué cambiaron el aula?»."
+          },
+          {
+            "prompt": "«Cambiaron el aula ____ falló el proyector». ¿Cuál introduce la causa?",
+            "options": [
+              "porque",
+              "por qué"
+            ],
+            "answer": 0,
+            "explanation": "Porque se escribe junto y sin tilde. Puedes sustituirlo por ya que."
+          },
+          {
+            "prompt": "«El ____ del cambio quedó en el aviso». ¿Cuál equivale a «motivo»?",
+            "options": [
+              "por qué",
+              "porqué"
+            ],
+            "answer": 1,
+            "explanation": "El porqué es un sustantivo. La frase también puede decir «El motivo del cambio quedó en el aviso»."
+          },
+          {
+            "prompt": "Usa «distinguirse por». «La nueva aula se distingue ____ tiene dos pizarrones».",
+            "options": [
+              "porque",
+              "por que"
+            ],
+            "answer": 1,
+            "explanation": "Por pertenece a la construcción «se distingue por algo». Que introduce ese rasgo. Por eso se escriben separados."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Completa. «El director explicó el ____ del traslado. Cambiaron de salón ____ instalaron un proyector nuevo».",
+        "options": [
+          "por qué / por que",
+          "porque / porqué",
+          "porqué / porque",
+          "por que / por qué"
+        ],
+        "answer": 2,
+        "explanation": "El porqué significa el motivo. Porque introduce la causa del traslado.",
+        "hint": "Intenta sustituir el primer espacio por motivo y el segundo por ya que.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "silaba-tonica",
+      "title": "Agudas, graves y esdrújulas",
+      "points": [
+        "Localiza la sílaba tónica. Cuenta desde el final. En las agudas es la última, en las graves es la penúltima y en las esdrújulas es la antepenúltima.",
+        "Como regla general, una aguda lleva tilde si termina en vocal, n o s. Una grave lleva tilde si termina en una consonante distinta de n o s. Las palabras esdrújulas siempre llevan tilde."
+      ],
+      "example": {
+        "prompt": "Compara «café», «césped» y «brújula». Las tres palabras llevan tilde por reglas distintas.",
+        "steps": [
+          {
+            "prompt": "En ca-fé, ¿qué sílaba recibe el acento de voz?",
+            "options": [
+              "La última",
+              "La penúltima"
+            ],
+            "answer": 0,
+            "explanation": "Fé es la última sílaba. Café es aguda y termina en vocal, así que lleva tilde."
+          },
+          {
+            "prompt": "En cés-ped, la penúltima sílaba es tónica. ¿Qué dato explica la tilde?",
+            "options": [
+              "Termina en d",
+              "Tiene dos sílabas"
+            ],
+            "answer": 0,
+            "explanation": "Césped es una palabra grave. Lleva tilde porque termina en d. Casa también tiene dos sílabas y es grave, pero termina en vocal y no lleva tilde."
+          },
+          {
+            "prompt": "En brú-ju-la, la primera sílaba es la antepenúltima. ¿Qué regla se aplica?",
+            "options": [
+              "Lleva tilde porque termina en vocal",
+              "Lleva tilde porque es esdrújula"
+            ],
+            "answer": 1,
+            "explanation": "Las esdrújulas llevan tilde siempre. En brújula, la tilde va en la u de la sílaba brú."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "¿Qué pareja contiene primero una aguda y después una grave, ambas con tilde?",
+        "options": [
+          "balcón y lápiz",
+          "balcón y casa",
+          "reloj y lápiz",
+          "cámara y lápiz"
+        ],
+        "answer": 0,
+        "explanation": "Balcón es aguda y termina en n. Lápiz es grave y termina en z.",
+        "hint": "Ubica la sílaba tónica y revisa la última letra de cada palabra.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "funciones",
+      "title": "Tildes que distinguen funciones",
+      "points": [
+        "La tilde diacrítica diferencia palabras de escritura parecida que cumplen funciones distintas, como tú y tu, o él y el.",
+        "Las palabras interrogativas llevan tilde al formular una pregunta directa o indirecta. Un adverbio en -mente conserva la tilde de su adjetivo. Un compuesto escrito como una sola palabra, como ciempiés, sigue las reglas de la palabra completa."
+      ],
+      "example": {
+        "prompt": "Dos personas hablan de una mochila. Elige la forma según la función de cada palabra.",
+        "steps": [
+          {
+            "prompt": "«¿____ está tu mochila?». ¿Cuál introduce una pregunta por el lugar?",
+            "options": [
+              "Donde",
+              "Dónde"
+            ],
+            "answer": 1,
+            "explanation": "Dónde lleva tilde porque pregunta por un lugar. En «Está donde dejamos los libros», donde señala un lugar y se escribe sin tilde."
+          },
+          {
+            "prompt": "«____ la guardaste ____ dejamos los libros». Elige primero el pronombre y luego la palabra que indica el lugar.",
+            "options": [
+              "Tú / donde",
+              "Tu / dónde"
+            ],
+            "answer": 0,
+            "explanation": "Tú identifica a la persona que guardó la mochila. Tu sin tilde acompaña a un sustantivo, como en «tu mochila». Donde señala el lugar y no introduce una pregunta."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Completa. «____ dejaste ____ cuaderno junto a la ventana».",
+        "options": [
+          "Tu / tú",
+          "Tú / tú",
+          "Tu / tu",
+          "Tú / tu"
+        ],
+        "answer": 3,
+        "explanation": "Tú es el pronombre que identifica a la persona que dejó el cuaderno. Tu es el posesivo que acompaña al sustantivo cuaderno.",
+        "hint": "Identifica quién hizo la acción y qué palabra acompaña a cuaderno.",
+        "difficulty": "base"
+      }
+    }
+  ],
+  "es-formacion-palabras": [
+    {
+      "id": "prefijo-sufijo",
+      "title": "Prefijo y sufijo",
+      "points": [
+        "Localiza la base y comprueba qué parte se añade. Si va antes, es prefijo. Si va después, es sufijo.",
+        "Prueba el significado de la parte añadida en la oración. Re- puede indicar repetición y -ble indica posibilidad en palabras como lavable."
+      ],
+      "example": {
+        "prompt": "Compara releer y lavable.",
+        "steps": [
+          {
+            "prompt": "En «releer», ¿qué parte se añade a leer?",
+            "options": [
+              "re-",
+              "-er"
+            ],
+            "answer": 0,
+            "explanation": "Re- va antes de leer y aporta repetición. Releer significa leer otra vez."
+          },
+          {
+            "prompt": "En «lavable», ¿qué idea aporta la terminación?",
+            "options": [
+              "Que ya se lavó",
+              "Que se puede lavar"
+            ],
+            "answer": 1,
+            "explanation": "El sufijo -able indica posibilidad. Una tela lavable se puede lavar."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "¿Cómo se formó «desconectar»?",
+        "options": [
+          "Con el sufijo -ar que indica posibilidad.",
+          "Con el prefijo des- antes de conectar.",
+          "Con el sufijo des- después de conectar.",
+          "Con la unión de dos verbos."
+        ],
+        "answer": 1,
+        "explanation": "Des- va antes de conectar y expresa la acción inversa.",
+        "hint": "Separa la base conectar y mira dónde queda des-.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "sonido-escritura",
+      "title": "Homófonos, homógrafos y parónimos",
+      "points": [
+        "Compara primero el sonido y luego la escritura. Si coinciden en sonido y difieren al escribir, son homófonos como tubo y tuvo. Si coinciden también en escritura y tienen sentidos distintos, son homógrafos.",
+        "Si las palabras solo se parecen, pueden ser parónimos. Verifica el sentido con una palabra cercana o prueba sustituirlas por una expresión equivalente."
+      ],
+      "example": {
+        "prompt": "Una nota menciona una vela y dice que alguien tuvo un accidente.",
+        "steps": [
+          {
+            "prompt": "«Prendió una vela» y «remendó la vela del barco». ¿Qué cambia?",
+            "options": [
+              "El significado",
+              "La escritura"
+            ],
+            "answer": 0,
+            "explanation": "Vela se escribe igual en las dos frases. En una designa una pieza de cera y en la otra una tela del barco. Son usos con significado distinto."
+          },
+          {
+            "prompt": "¿Qué palabra completa «Luis ____ que cambiar el foco»?",
+            "options": [
+              "tubo",
+              "tuvo"
+            ],
+            "answer": 1,
+            "explanation": "Tuvo viene de tener. Tubo nombra una pieza hueca. Se pronuncian igual, así que el contexto indica cuál escribir."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "¿Qué relación tienen «actitud» y «aptitud»?",
+        "options": [
+          "Son homógrafos con sentidos distintos.",
+          "Se escriben igual y suenan distinto.",
+          "Son parónimos. Se parecen, pero tienen significados distintos.",
+          "Son dos formas del mismo verbo."
+        ],
+        "answer": 2,
+        "explanation": "Actitud se refiere a una disposición o postura. Aptitud se refiere a una capacidad. Se parecen en su forma.",
+        "hint": "Compara una actitud positiva con la aptitud para dibujar.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "sino-si-no",
+      "title": "Sino y si no",
+      "points": [
+        "Si corriges algo que acabas de negar, usa sino. Busca una estructura del tipo «no A, sino B».",
+        "Si una consecuencia depende de una condición negativa, usa si no. Comprueba si puedes decir «en caso de que no»."
+      ],
+      "example": {
+        "prompt": "Completa dos mensajes sobre un taller.",
+        "steps": [
+          {
+            "prompt": "«No es el jueves, ____ el viernes». ¿Qué forma corrige la fecha?",
+            "options": [
+              "sino",
+              "si no"
+            ],
+            "answer": 0,
+            "explanation": "Sino introduce la alternativa correcta después de la negación."
+          },
+          {
+            "prompt": "«____ llegas a tiempo, espera el próximo turno». ¿Qué forma introduce la condición?",
+            "options": [
+              "Sino",
+              "Si no"
+            ],
+            "answer": 1,
+            "explanation": "Si no equivale a «en caso de que no». El turno depende de si llegas a tiempo."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Completa «Tráelo mañana ____ terminas hoy. No te pido que lo imprimas, ____ que revises el texto».",
+        "options": [
+          "sino / sino",
+          "si no / si no",
+          "sino / si no",
+          "si no / sino"
+        ],
+        "answer": 3,
+        "explanation": "La primera frase plantea una condición negativa. La segunda corrige qué se pide.",
+        "hint": "Prueba «en caso de que no» en el primer espacio.",
+        "difficulty": "base"
+      }
+    }
+  ],
+  "es-verbos": [
+    {
+      "id": "momento-sujeto",
+      "title": "Momento de la acción y persona del verbo",
+      "points": [
+        "Busca primero cuándo ocurre la acción. Después localiza quién la hace y si es una o varias personas.",
+        "Conjuga el verbo para ese momento y ese sujeto. Comprueba las formas irregulares, como dijo, dijeron, vino y vinieron."
+      ],
+      "example": {
+        "prompt": "Compara lo que contó Ana ayer con lo que contaron dos personas.",
+        "steps": [
+          {
+            "prompt": "«Ayer Ana ____ que aceptaba». ¿Qué forma es de pasado y singular?",
+            "options": [
+              "dijo",
+              "dijeron"
+            ],
+            "answer": 0,
+            "explanation": "Ayer sitúa la acción en el pasado. Ana es singular y corresponde dijo."
+          },
+          {
+            "prompt": "«Ayer Ana y Luis ____ que aceptaban». ¿Qué cambia ahora?",
+            "options": [
+              "El tiempo",
+              "El número"
+            ],
+            "answer": 1,
+            "explanation": "El tiempo sigue siendo pasado. El sujeto ahora es plural y corresponde dijeron."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Completa «Ayer los técnicos ____ antes de las ocho», con una forma de venir.",
+        "options": [
+          "vino",
+          "vienen",
+          "vinieron",
+          "vendrá"
+        ],
+        "answer": 2,
+        "explanation": "Ayer pide pasado y los técnicos es un sujeto plural. Usa vinieron.",
+        "hint": "Elige primero el tiempo y después el número.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "participio-concordancia",
+      "title": "Participio con haber y participio con concordancia",
+      "points": [
+        "Con haber, conserva la forma del participio. En «Han cerrado las puertas», cerrado no cambia con el sustantivo.",
+        "Si el participio describe un sustantivo o forma una pasiva con ser, concuerda con ese sustantivo. En la pasiva, el sujeto recibe la acción. Algunos verbos admiten dos participios, como impreso e imprimido."
+      ],
+      "example": {
+        "prompt": "Compara el trabajo que hizo un equipo con el resultado para las ventanas.",
+        "steps": [
+          {
+            "prompt": "«El equipo ha ____ las ventanas». ¿Qué forma va después de haber?",
+            "options": [
+              "pintado",
+              "pintadas"
+            ],
+            "answer": 0,
+            "explanation": "Pintado se mantiene en masculino singular con haber, aunque las ventanas sea plural."
+          },
+          {
+            "prompt": "«Las ventanas fueron ____ por el equipo». ¿Qué forma va con el sujeto?",
+            "options": [
+              "pintado",
+              "pintadas"
+            ],
+            "answer": 1,
+            "explanation": "Las ventanas reciben la acción. En la pasiva con ser, el participio concuerda con ese sujeto: femenino plural."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Completa «Han ____ el informe y las copias ya están ____».",
+        "options": [
+          "revisadas / revisado",
+          "revisado / revisadas",
+          "revisado / revisado",
+          "revisadas / revisadas"
+        ],
+        "answer": 1,
+        "explanation": "Revisado queda invariable con han. Revisadas describe las copias y concuerda en femenino plural.",
+        "hint": "Marca qué participio depende de haber y cuál describe un sustantivo.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "gerundio-secuencia",
+      "title": "Acción simultánea y acción posterior",
+      "points": [
+        "Pregunta si la segunda acción está en curso al mismo tiempo que la principal o muestra cómo ocurre. En ese caso puede servir el gerundio. También puede expresar una acción anterior vinculada a la principal.",
+        "Para dos acciones independientes que ocurren una después de la otra, usa dos verbos conjugados y una marca de orden si hace falta."
+      ],
+      "example": {
+        "prompt": "Compara cómo salió una persona y qué hizo una hora después.",
+        "steps": [
+          {
+            "prompt": "«Salió corriendo». ¿Cuándo corrió esa persona?",
+            "options": [
+              "Al mismo tiempo que salía",
+              "Una hora después de salir"
+            ],
+            "answer": 0,
+            "explanation": "Corriendo expresa cómo salió. Las dos acciones se superponen."
+          },
+          {
+            "prompt": "Si llamó una hora después, ¿cómo conviene escribir la secuencia?",
+            "options": [
+              "Salió llamando una hora después.",
+              "Salió y llamó una hora después."
+            ],
+            "answer": 1,
+            "explanation": "La llamada es una acción posterior e independiente. Los dos verbos conjugados muestran el orden."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "¿Qué frase expresa con claridad dos acciones independientes y sucesivas?",
+        "options": [
+          "Revisó el archivo sonriendo.",
+          "Avanzó leyendo el mapa.",
+          "Cerró el local y envió el reporte por la noche.",
+          "Entró saludando a sus colegas."
+        ],
+        "answer": 2,
+        "explanation": "Cerrar el local y enviar el reporte son dos acciones en secuencia y tienen verbos conjugados propios.",
+        "hint": "Busca cuál frase indica una segunda acción posterior.",
+        "difficulty": "base"
+      }
+    }
+  ],
+  "es-oracion": [
+    {
+      "id": "nucleo-cercania",
+      "title": "Núcleo del sujeto y sustantivo cercano",
+      "points": [
+        "Ubica el verbo conjugado. Encuentra el sujeto y, dentro de él, la palabra principal o núcleo.",
+        "Comprueba la concordancia con el núcleo del sujeto. Un sustantivo más cercano al verbo puede formar parte de un complemento."
+      ],
+      "example": {
+        "prompt": "Compara «La carpeta de los contratos» con «Los contratos de la carpeta».",
+        "steps": [
+          {
+            "prompt": "En «La carpeta de los contratos ____ en el cajón», ¿qué está en el cajón?",
+            "options": [
+              "La carpeta",
+              "Los contratos son el núcleo"
+            ],
+            "answer": 0,
+            "explanation": "El núcleo es carpeta, singular. Los contratos indica qué contiene la carpeta."
+          },
+          {
+            "prompt": "En «Los contratos de la carpeta ____ en el cajón», ¿qué forma concuerda?",
+            "options": [
+              "está",
+              "están"
+            ],
+            "answer": 1,
+            "explanation": "El núcleo ahora es contratos, plural. Usa están aunque carpeta esté más cerca del verbo."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Completa «La caja de las herramientas ____ junto a la puerta».",
+        "options": [
+          "quedaron",
+          "quedan",
+          "quedó",
+          "quedarán"
+        ],
+        "answer": 2,
+        "explanation": "El núcleo caja es singular. Quedó concuerda con ese núcleo.",
+        "hint": "Sustituye el sujeto completo por «la caja».",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "complementos",
+      "title": "Complemento directo, indirecto y circunstancial",
+      "points": [
+        "Para identificar el objeto directo, prueba lo, la, los o las. Para el destinatario, prueba le o les.",
+        "Para una circunstancia, pregunta cuándo, dónde o cómo sucede la acción. Identifica qué palabra modifica cada frase y colócala cerca de ella si la lectura es ambigua."
+      ],
+      "example": {
+        "prompt": "«Marina entregó la llave a sus vecinos ayer».",
+        "steps": [
+          {
+            "prompt": "¿Qué complemento se reemplaza por «la» en «Marina la entregó»?",
+            "options": [
+              "la llave",
+              "a sus vecinos"
+            ],
+            "answer": 0,
+            "explanation": "La llave es el objeto directo y responde a qué entregó."
+          },
+          {
+            "prompt": "En «Marina les entregó la llave», ¿qué reemplaza les?",
+            "options": [
+              "ayer",
+              "a sus vecinos"
+            ],
+            "answer": 1,
+            "explanation": "Les reemplaza al destinatario. Ayer responde a cuándo entregó la llave."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "¿Cuál indica el lugar en «El mecánico explicó el fallo a la clienta en el taller»?",
+        "options": [
+          "el fallo",
+          "a la clienta",
+          "en el taller",
+          "el mecánico"
+        ],
+        "answer": 2,
+        "explanation": "En el taller responde a dónde explicó el fallo. Es un complemento de lugar.",
+        "hint": "Distingue qué explicó, a quién se lo explicó y dónde.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "preposicion",
+      "title": "Verbos con preposición y verbos sin preposición",
+      "points": [
+        "Sustituye la idea subordinada por eso. Conserva la preposición si el verbo la necesita ante eso.",
+        "La palabra que por sí sola no indica si debe aparecer una preposición. La construcción del verbo es la que decide."
+      ],
+      "example": {
+        "prompt": "Compara «me acuerdo de eso» y «pienso eso».",
+        "steps": [
+          {
+            "prompt": "¿Cómo completas «Me acuerdo ____ llegaste temprano»?",
+            "options": [
+              "de que",
+              "que"
+            ],
+            "answer": 0,
+            "explanation": "Me acuerdo de eso conserva de. Por lo tanto, escribe me acuerdo de que."
+          },
+          {
+            "prompt": "Si «Pienso eso» expresa una opinión, ¿cómo completas «Pienso ____ llegaremos temprano»?",
+            "options": [
+              "de que",
+              "que"
+            ],
+            "answer": 1,
+            "explanation": "Pienso eso no lleva preposición en este sentido. Escribe pienso que."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Completa «Insistió ____ volviéramos a medir la mesa».",
+        "options": [
+          "que",
+          "en que",
+          "de que",
+          "a que"
+        ],
+        "answer": 1,
+        "explanation": "Se dice insistió en eso. Conserva en antes de que.",
+        "hint": "Sustituye «volviéramos a medir la mesa» por eso.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "modificador",
+      "title": "Modificador de un nombre y modificador de una acción",
+      "points": [
+        "Pregunta a qué palabra se refiere una frase como «con binoculares». Puede decir cómo ocurre la acción o ayudar a identificar a quien se menciona.",
+        "Si hay dos interpretaciones, coloca el modificador cerca de su referente o reformula la oración con información explícita."
+      ],
+      "example": {
+        "prompt": "«Observé al guía con binoculares». La frase puede indicar quién tenía los binoculares.",
+        "steps": [
+          {
+            "prompt": "Si usé los binoculares para observar, ¿qué frase lo aclara?",
+            "options": [
+              "Usé binoculares para observar al guía.",
+              "Observé al guía que llevaba binoculares."
+            ],
+            "answer": 0,
+            "explanation": "Usé identifica a la persona que se ayudó con los binoculares."
+          },
+          {
+            "prompt": "Si el guía tenía los binoculares, ¿qué frase lo aclara?",
+            "options": [
+              "Con binoculares observé al guía.",
+              "Observé al guía que llevaba binoculares."
+            ],
+            "answer": 1,
+            "explanation": "La frase «que llevaba binoculares» se refiere directamente a guía."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "En «Nuria fotografió al perro con una cámara nueva», ¿qué versión aclara que la cámara era el instrumento de Nuria?",
+        "options": [
+          "Nuria fotografió al perro que tenía una cámara nueva.",
+          "Nuria usó una cámara nueva para fotografiar al perro.",
+          "El perro fotografió a Nuria con una cámara nueva.",
+          "Nuria fotografió al perro y guardó una cámara vieja."
+        ],
+        "answer": 1,
+        "explanation": "La expresión «usó una cámara» identifica a quien la manejó y conserva la acción original.",
+        "hint": "Busca una frase que diga quién usó la cámara.",
+        "difficulty": "exam"
+      }
+    }
+  ],
+  "es-comprension": [
+    {
+      "id": "tema-detalle",
+      "title": "Idea principal y detalle",
+      "points": [
+        "Pregunta de qué trata todo el texto y qué afirma sobre ese tema. La idea principal combina esas dos respuestas.",
+        "Un ejemplo, una cifra o una fecha suele explicar solo una parte. Usa el título que cubre el tema y lo más importante que el texto dice sobre él."
+      ],
+      "example": {
+        "prompt": "«El huerto escolar ahorra agua con riego por goteo. En mayo gastó veinte litros menos. Las mangueras dejan caer agua junto a cada planta».",
+        "steps": [
+          {
+            "prompt": "¿Qué afirmación resume todo el texto?",
+            "options": [
+              "El huerto ahorra agua con riego por goteo.",
+              "En mayo se usaron veinte litros menos."
+            ],
+            "answer": 0,
+            "explanation": "El ahorro con riego por goteo abarca la cifra y la descripción del sistema."
+          },
+          {
+            "prompt": "¿Qué función tiene la cifra de mayo?",
+            "options": [
+              "Introduce otro tema.",
+              "Apoya la idea del ahorro."
+            ],
+            "answer": 1,
+            "explanation": "La cifra muestra cuánto ahorró el huerto en un mes. Es un detalle de apoyo."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "«Una ciclovía nueva facilita los viajes al centro. Tiene cruces señalados y conecta con la estación». ¿Cuál sería el mejor título?",
+        "options": [
+          "Los letreros de la estación",
+          "Una ciclovía para llegar al centro",
+          "Una estación que cerró sus puertas",
+          "El precio de las bicicletas"
+        ],
+        "answer": 1,
+        "explanation": "El título resume la infraestructura nueva y su propósito. Los cruces y la estación son detalles de apoyo.",
+        "hint": "Busca un título que cubra las dos oraciones.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "dato-inferencia",
+      "title": "Dato explícito e inferencia",
+      "points": [
+        "Si puedes señalar la línea que da la respuesta, el dato es explícito.",
+        "Si necesitas unir pistas, haces una inferencia. Elige la conclusión más cercana al texto y evita añadir una causa o intención que no se pueda sostener."
+      ],
+      "example": {
+        "prompt": "«Cuando sonó el timbre, Julia cerró el libro y guardó su cuaderno. Sus compañeros también recogieron sus cosas».",
+        "steps": [
+          {
+            "prompt": "¿Qué hizo Julia con el libro?",
+            "options": [
+              "Lo cerró.",
+              "Lo devolvió a la biblioteca."
+            ],
+            "answer": 0,
+            "explanation": "La primera oración dice que Julia lo cerró. La devolución no aparece."
+          },
+          {
+            "prompt": "¿Qué se puede inferir del timbre y de que todos recogieran sus cosas?",
+            "options": [
+              "Que el grupo se preparaba para salir.",
+              "Que Julia no tenía ganas de estudiar."
+            ],
+            "answer": 0,
+            "explanation": "El timbre y la acción del grupo apoyan la primera conclusión. No indican qué sentía Julia."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "«El mantel estaba empapado junto al florero caído. En el piso había pétalos». ¿Qué conclusión se apoya mejor?",
+        "options": [
+          "Alguien regó las flores toda la mañana.",
+          "El florero cayó al piso y se rompió.",
+          "Es probable que se derramara agua del florero.",
+          "El mantel se mojó porque dejaron la ventana abierta."
+        ],
+        "answer": 2,
+        "explanation": "El mantel empapado junto al florero caído apoya el derrame. El relato no da esas otras causas o resultados.",
+        "hint": "Usa las pistas juntas y evita agregar detalles sin evidencia.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "contexto-valoracion",
+      "title": "Sentido por contexto y hecho frente a opinión",
+      "points": [
+        "Prueba un sinónimo dentro de la oración. Debe encajar con lo que sucede en ese fragmento.",
+        "Un hecho se puede comprobar. Una opinión expresa una valoración. Si comparas dos textos, separa los resultados que coinciden de las condiciones que cambian."
+      ],
+      "example": {
+        "prompt": "«Tras dos horas sin agua, la tierra quedó reseca. El cantero tiene cuatro plantas. Es el rincón más bonito de la escuela».",
+        "steps": [
+          {
+            "prompt": "¿Qué palabra encaja en lugar de «reseca»?",
+            "options": [
+              "muy seca",
+              "cubierta de agua"
+            ],
+            "answer": 0,
+            "explanation": "El contexto dice que pasó tiempo sin agua. Muy seca conserva el sentido."
+          },
+          {
+            "prompt": "¿Cuál afirmación se puede comprobar contando?",
+            "options": [
+              "Es el rincón más bonito.",
+              "El cantero tiene cuatro plantas."
+            ],
+            "answer": 1,
+            "explanation": "El número de plantas es un hecho comprobable. Más bonito expresa una valoración."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "«El camino es estrecho: solo admite a una persona a la vez». ¿Qué palabra conserva el sentido de «estrecho»?",
+        "options": [
+          "angosto",
+          "empinado",
+          "oscuro",
+          "lejano"
+        ],
+        "answer": 0,
+        "explanation": "Admite a una sola persona porque tiene poco ancho. Angosto conserva ese sentido.",
+        "hint": "Usa la parte que explica cuántas personas caben.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "comparar-textos",
+      "title": "Coincidencia y diferencia entre textos",
+      "points": [
+        "Localiza el tema común. Compara qué hecho o resultado afirma cada texto.",
+        "Distingue un resultado distinto de una diferencia en las condiciones. Una diferencia no implica que uno de los textos sea falso."
+      ],
+      "example": {
+        "prompt": "Texto A: El museo abre a las diez el sábado. La entrada es gratuita. Texto B: El museo abre a las diez el domingo. La entrada cuesta cincuenta pesos.",
+        "steps": [
+          {
+            "prompt": "¿Cuál dato coincide?",
+            "options": [
+              "La hora de apertura",
+              "El precio de entrada"
+            ],
+            "answer": 0,
+            "explanation": "El museo abre a las diez ambos días."
+          },
+          {
+            "prompt": "¿Cuál dato cambia según el día?",
+            "options": [
+              "El museo del que se habla",
+              "El precio de entrada"
+            ],
+            "answer": 1,
+            "explanation": "El sábado la entrada es gratuita y el domingo cuesta cincuenta pesos."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Texto A: El sendero del lago mide tres kilómetros y tiene sombra. Texto B: El sendero del cerro mide tres kilómetros y casi no tiene sombra. ¿Qué comparación se sostiene?",
+        "options": [
+          "Miden lo mismo y ofrecen distinta sombra.",
+          "El sendero del lago es más largo.",
+          "El sendero del cerro tiene más sombra.",
+          "Ambos textos describen el mismo sendero."
+        ],
+        "answer": 0,
+        "explanation": "La distancia coincide. La cobertura de sombra es distinta.",
+        "hint": "Separa la distancia de las condiciones de cada sendero.",
+        "difficulty": "exam"
+      }
+    }
+  ],
+  "es-literatura": [
+    {
+      "id": "genero-proposito",
+      "title": "Narración, poema lírico y texto dramático",
+      "points": [
+        "Fíjate en qué hace el texto. Si cuenta hechos con personajes, predomina la narración. Si expresa una emoción o experiencia mediante una voz poética, predomina lo lírico. Si organiza parlamentos para representarlos, es dramático.",
+        "Los géneros pueden incluir descripción, explicación o argumentos. Para clasificar un fragmento, usa el propósito y las marcas que se ven en él."
+      ],
+      "example": {
+        "prompt": "Compara un fragmento que cuenta una acción con un fragmento preparado para el escenario.",
+        "steps": [
+          {
+            "prompt": "«Lía cruzó el vestíbulo y dejó su carta en la mesa». ¿Qué predomina?",
+            "options": [
+              "La narración de una acción",
+              "La expresión lírica de una emoción"
+            ],
+            "answer": 0,
+            "explanation": "El fragmento cuenta qué hizo un personaje."
+          },
+          {
+            "prompt": "«LÍA: —Dejé la carta. (Sale por la puerta del fondo.)». ¿Qué marca apunta al teatro?",
+            "options": [
+              "El uso del pasado",
+              "El nombre antes del diálogo y la acotación"
+            ],
+            "answer": 1,
+            "explanation": "El parlamento y la indicación para quien actúa son marcas de un texto dramático."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "¿Qué fragmento presenta una voz lírica que expresa una emoción?",
+        "options": [
+          "MATEO: —Abre la puerta. (Se sienta.)",
+          "Me pesa tu ausencia cuando calla la ciudad.",
+          "Los pájaros migran al cambiar la estación.",
+          "El grupo tomó el tren a las siete."
+        ],
+        "answer": 1,
+        "explanation": "La voz expresa cómo vive una ausencia. Es la función lírica que pide la pregunta.",
+        "hint": "Elige el fragmento centrado en una experiencia emocional.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "estructura-narracion",
+      "title": "Inicio, conflicto y desenlace",
+      "points": [
+        "En el inicio, identifica quién participa y dónde ocurre la historia. En el desarrollo, busca el problema y los intentos para resolverlo.",
+        "Para reconocer el desenlace, busca qué resultado tiene el conflicto. El desenlace puede resolverlo o mostrar cómo queda."
+      ],
+      "example": {
+        "prompt": "«En la feria, Iván perdió su boleto. Buscó bajo los puestos. Al final, una vendedora se lo devolvió».",
+        "steps": [
+          {
+            "prompt": "¿Qué hecho crea el problema?",
+            "options": [
+              "Iván perdió el boleto.",
+              "Una vendedora devolvió el boleto."
+            ],
+            "answer": 0,
+            "explanation": "Perder el boleto genera la búsqueda. Es el conflicto."
+          },
+          {
+            "prompt": "¿Qué hecho funciona como desenlace?",
+            "options": [
+              "Iván buscó bajo los puestos.",
+              "La vendedora devolvió el boleto."
+            ],
+            "answer": 1,
+            "explanation": "La devolución muestra cómo termina el problema."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "«Luz olvidó su llave. Probó la puerta trasera. Su hermano llegó y abrió». ¿Qué acción es parte del desarrollo?",
+        "options": [
+          "Luz vivía en esa casa.",
+          "Su hermano abrió.",
+          "Luz probó la puerta trasera.",
+          "La puerta era de madera."
+        ],
+        "answer": 2,
+        "explanation": "Probar la puerta trasera es el intento que ocurre entre el problema inicial y su resolución.",
+        "hint": "Busca qué hizo el personaje para resolver el problema.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "recursos",
+      "title": "Símil, metáfora y personificación",
+      "points": [
+        "Busca si se comparan dos cosas de forma explícita o si una se presenta como si fuera la otra. Una comparación explícita puede usar como. La metáfora identifica o nombra una cosa mediante otra.",
+        "Si un objeto o ser no humano actúa como persona, hay personificación. Distingue también la hipérbole, que exagera, la imagen sensorial, que evoca un sentido, y la paradoja, que reúne ideas en contradicción aparente."
+      ],
+      "example": {
+        "prompt": "Compara tres formas de describir una calle al anochecer.",
+        "steps": [
+          {
+            "prompt": "«La calle brillaba como un río». ¿Qué función tiene como?",
+            "options": [
+              "Marca una comparación explícita.",
+              "Atribuye una acción humana a la calle."
+            ],
+            "answer": 0,
+            "explanation": "Como relaciona la calle y un río por su brillo. Es un símil."
+          },
+          {
+            "prompt": "«Las ventanas nos espiaban». ¿Qué recurso aparece?",
+            "options": [
+              "Personificación",
+              "Símil"
+            ],
+            "answer": 0,
+            "explanation": "Espiar se trata como una acción humana que se atribuye a las ventanas."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "En «Sus palabras eran agujas», ¿qué recurso convierte las palabras en algo que pincha?",
+        "options": [
+          "Símil",
+          "Hipérbole",
+          "Acotación",
+          "Metáfora"
+        ],
+        "answer": 3,
+        "explanation": "El texto presenta las palabras como agujas para expresar que lastiman.",
+        "hint": "Busca si las palabras se identifican directamente con otro objeto.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "percepcion-exageracion",
+      "title": "Imagen sensorial, hipérbole y paradoja",
+      "points": [
+        "Una imagen sensorial evoca algo que puedes ver, oír, tocar, oler o saborear.",
+        "Una hipérbole exagera. Una paradoja reúne ideas que parecen contradecirse, pero cuya relación tiene sentido en el contexto."
+      ],
+      "example": {
+        "prompt": "Compara tres descripciones de una espera.",
+        "steps": [
+          {
+            "prompt": "«Olía a pan tostado». ¿Qué pista identifica una imagen sensorial?",
+            "options": [
+              "Evoca un olor.",
+              "Exagera cuánto duró la espera."
+            ],
+            "answer": 0,
+            "explanation": "El olor hace que el lector imagine una percepción concreta."
+          },
+          {
+            "prompt": "«Te esperé mil años en la estación». ¿Qué recurso aparece?",
+            "options": [
+              "Hipérbole",
+              "Paradoja"
+            ],
+            "answer": 0,
+            "explanation": "Mil años exagera la duración para expresar lo larga que pareció la espera."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "«Cuanto más sé del tema, más noto lo que ignoro». ¿Qué recurso organiza la idea?",
+        "options": [
+          "Paradoja",
+          "Imagen olfativa",
+          "Acotación",
+          "Hipérbole"
+        ],
+        "answer": 0,
+        "explanation": "Saber más parece oponerse a ignorar más. La frase cobra sentido porque aprender también permite reconocer lo que falta por aprender.",
+        "hint": "Comprueba si las dos ideas parecen oponerse y luego se pueden explicar juntas.",
+        "difficulty": "exam"
+      }
+    }
+  ],
+  "es-coherencia": [
+    {
+      "id": "inicio-cierre",
+      "title": "Inicio, desarrollo y cierre",
+      "points": [
+        "El inicio anuncia el tema. El desarrollo presenta los detalles o los pasos. El cierre resume o muestra el resultado.",
+        "Para ordenar instrucciones, revisa qué paso necesita un objeto o dato del paso anterior. Palabras como luego, este y ambas señalan referencias que deben aparecer antes."
+      ],
+      "example": {
+        "prompt": "«Prepara etiquetas para dos cajas. [A] Pega una en cada caja. [B] Escribe el contenido en cada etiqueta».",
+        "steps": [
+          {
+            "prompt": "¿Qué acción debe ir primero entre A y B?",
+            "options": [
+              "A. Pegar las etiquetas",
+              "B. Escribir el contenido"
+            ],
+            "answer": 1,
+            "explanation": "Escribir el contenido prepara las etiquetas que se colocarán después en las cajas."
+          },
+          {
+            "prompt": "¿Cuál sería un cierre para el procedimiento?",
+            "options": [
+              "Ahora es fácil saber qué guarda cada caja.",
+              "Las cajas se venden en muchos tamaños."
+            ],
+            "answer": 0,
+            "explanation": "El cierre señala el resultado de usar las etiquetas. El tamaño de las cajas es otro tema."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Ordena «1. Vierte la mezcla en el molde. 2. Mezcla la harina y el agua. 3. Hornea el contenido».",
+        "options": [
+          "1, 2, 3",
+          "3, 2, 1",
+          "2, 1, 3",
+          "2, 3, 1"
+        ],
+        "answer": 2,
+        "explanation": "Primero se forma la mezcla, luego se vierte y al final se hornea.",
+        "hint": "Asegúrate de que la mezcla exista antes de verterla.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "relacion",
+      "title": "Causa, consecuencia, contraste y condición",
+      "points": [
+        "Explica la relación con tus palabras antes de elegir el conector. Porque introduce la causa y por eso introduce el resultado.",
+        "Pero presenta un contraste, y añade información, y si indica una condición. Comprueba el sentido de la oración completa."
+      ],
+      "example": {
+        "prompt": "La lluvia cambió el lugar de una reunión.",
+        "steps": [
+          {
+            "prompt": "«La reunión pasó al salón ____ llovía». ¿Qué conector introduce la causa?",
+            "options": [
+              "porque",
+              "por eso"
+            ],
+            "answer": 0,
+            "explanation": "La lluvia explica el cambio de lugar. Porque introduce esa causa."
+          },
+          {
+            "prompt": "«Llovía. ____, la reunión pasó al salón». ¿Qué conector introduce el resultado?",
+            "options": [
+              "Sin embargo",
+              "Por eso"
+            ],
+            "answer": 1,
+            "explanation": "El traslado es el resultado de la lluvia. Por eso conecta ambos hechos."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Completa «____ se abre el gimnasio, entrenaremos bajo techo».",
+        "options": [
+          "Pero",
+          "Porque",
+          "Por eso",
+          "Si"
+        ],
+        "answer": 3,
+        "explanation": "Abrir el gimnasio es la condición para entrenar bajo techo.",
+        "hint": "Pregunta bajo qué condición se cumple lo que sigue.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "relevancia",
+      "title": "Detalle relevante y oración ajena al tema",
+      "points": [
+        "Resume el propósito del párrafo en una frase. Pregunta qué aporta cada oración a ese propósito.",
+        "Un detalle puede introducir un objeto nuevo y seguir siendo relevante si explica el tema. Una oración ajena puede compartir palabras con el tema sin aportar información."
+      ],
+      "example": {
+        "prompt": "«El taller enseña a reparar bicicletas. Revisan frenos y cambian cámaras. Las bicicletas de carreras suelen ser ligeras».",
+        "steps": [
+          {
+            "prompt": "¿Qué oración apoya el tema con dos actividades?",
+            "options": [
+              "Revisan frenos y cambian cámaras.",
+              "Las bicicletas de carreras suelen ser ligeras."
+            ],
+            "answer": 0,
+            "explanation": "Revisar frenos y cambiar cámaras son tareas que se enseñan en el taller."
+          },
+          {
+            "prompt": "¿Qué problema tiene la última oración?",
+            "options": [
+              "No explica qué se aprende en el taller.",
+              "No menciona ninguna bicicleta."
+            ],
+            "answer": 0,
+            "explanation": "Aunque dice bicicletas, cambia al peso de otro tipo de bicicleta. No explica la reparación."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "En un párrafo sobre el ahorro de agua en la escuela, ¿qué oración queda fuera?",
+        "options": [
+          "Las llaves nuevas cierran solas.",
+          "Las plantas reciben agua de lluvia.",
+          "La escuela tiene un equipo de ajedrez.",
+          "Los alumnos reportan fugas al personal."
+        ],
+        "answer": 2,
+        "explanation": "El equipo de ajedrez no aporta información sobre ahorro de agua.",
+        "hint": "Resume primero el objetivo del párrafo y compara cada opción.",
+        "difficulty": "base"
+      }
+    }
+  ],
+  "es-edicion": [
+    {
+      "id": "coma-funcion",
+      "title": "Coma de vocativo y coma entre sujeto y verbo",
+      "points": [
+        "Si llamas a alguien para dirigirte a esa persona, aísla su nombre con una coma. La coma también separa elementos de una enumeración.",
+        "Si el nombre es el sujeto que hace la acción, conserva unidos el sujeto y el verbo. Solo se admite una coma ahí si forma parte de un inciso."
+      ],
+      "example": {
+        "prompt": "Compara un aviso para Marina y una noticia sobre Marina.",
+        "steps": [
+          {
+            "prompt": "Estás hablándole a Marina. ¿Cómo queda la instrucción?",
+            "options": [
+              "Marina, abre el paquete.",
+              "Marina abre, el paquete."
+            ],
+            "answer": 0,
+            "explanation": "Marina es el vocativo. La coma lo separa de la instrucción."
+          },
+          {
+            "prompt": "Estás contando lo que Marina hizo. ¿Cómo se escribe?",
+            "options": [
+              "Marina, abrió el paquete.",
+              "Marina abrió el paquete."
+            ],
+            "answer": 1,
+            "explanation": "Marina es el sujeto de abrió. Sujeto y verbo no se separan con una coma en esta frase."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "¿Qué oración separa bien el nombre de la persona a quien hablas?",
+        "options": [
+          "Leo deja, las llaves aquí.",
+          "Leo, deja las llaves aquí.",
+          "Leo dejó, las llaves aquí.",
+          "Leo, dejó las llaves aquí."
+        ],
+        "answer": 1,
+        "explanation": "En «Leo, deja las llaves aquí», la coma separa el vocativo de la instrucción.",
+        "hint": "Busca una instrucción dirigida a Leo.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "dos-puntos-punto-coma",
+      "title": "Dos puntos y punto y coma en listas",
+      "points": [
+        "Si una oración anuncia una lista, usa dos puntos entre el anuncio y los elementos.",
+        "Si los elementos de una lista ya contienen comas, puedes separarlos con punto y coma. El punto y coma también puede unir oraciones independientes con una relación estrecha."
+      ],
+      "example": {
+        "prompt": "El equipo prepara materiales y asigna tareas.",
+        "steps": [
+          {
+            "prompt": "«Necesitamos tres cosas __ papel, cinta y tijeras». ¿Qué signo introduce la lista anunciada?",
+            "options": [
+              "Dos puntos",
+              "Punto y coma"
+            ],
+            "answer": 0,
+            "explanation": "La expresión tres cosas anuncia la lista. Los dos puntos marcan su inicio."
+          },
+          {
+            "prompt": "«Traerán cinta, Luis __ tijeras, Clara __ papel, Ana». ¿Qué signo distingue los grupos que ya tienen coma?",
+            "options": [
+              "Comas",
+              "Puntos y coma"
+            ],
+            "answer": 1,
+            "explanation": "El punto y coma marca el límite de cada grupo sin confundirse con la coma interna."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "Completa «Estos son los turnos: Ana, lunes ___ Luis, martes ___ Rosa, miércoles».",
+        "options": [
+          "coma en ambos espacios",
+          "dos puntos en ambos espacios",
+          "punto y coma en ambos espacios",
+          "punto final en ambos espacios"
+        ],
+        "answer": 2,
+        "explanation": "Cada turno contiene una coma entre nombre y día. El punto y coma separa los turnos.",
+        "hint": "Distingue la coma interna del separador entre turnos.",
+        "difficulty": "base"
+      }
+    },
+    {
+      "id": "precision-concision",
+      "title": "Precisión, redundancia y datos necesarios",
+      "points": [
+        "Identifica qué acción y qué datos afectan el sentido. Sustituye expresiones vagas por palabras precisas cuando el contexto indique qué ocurrió.",
+        "Quita una repetición si el significado queda completo. Al unir dos oraciones, conserva los hechos de ambas y expresa su relación."
+      ],
+      "example": {
+        "prompt": "«La editora volvió a releer el aviso y corrigió la dirección que estaba incompleta».",
+        "steps": [
+          {
+            "prompt": "¿Qué cambio elimina una repetición?",
+            "options": [
+              "Cambiar «volvió a releer» por «releyó».",
+              "Cambiar «corrigió» por «hizo algo con»."
+            ],
+            "answer": 0,
+            "explanation": "Releer ya significa leer otra vez. Releyó conserva el sentido sin repetirlo."
+          },
+          {
+            "prompt": "¿Qué dato explica por qué corrigió la dirección?",
+            "options": [
+              "Que el aviso era un texto.",
+              "Que la dirección estaba incompleta."
+            ],
+            "answer": 1,
+            "explanation": "Incompleta explica qué problema corrigió. Quitar ese dato perdería información."
+          }
+        ]
+      },
+      "exercise": {
+        "prompt": "¿Qué versión expresa lo esencial con menos palabras? «La secretaria cambió el horario de la cita a una hora distinta y mandó un aviso por correo electrónico a todo el grupo».",
+        "options": [
+          "La secretaria hizo cambios y avisó.",
+          "La secretaria avisó al grupo.",
+          "La secretaria cambió la cita sin avisar.",
+          "La secretaria cambió la hora de la cita y avisó al grupo por correo."
+        ],
+        "answer": 3,
+        "explanation": "La opción conserva qué cambió, a quién avisó y por qué medio.",
+        "hint": "Comprueba qué pasó con la hora, quién recibió el aviso y cómo.",
+        "difficulty": "base"
+      }
+    }
+  ]
+}

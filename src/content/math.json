@@ -3,20 +3,6 @@
     "id": "mat-enteros",
     "title": "Números reales y operaciones",
     "objective": "Ordenar números reales y calcular con enteros con signo.",
-    "explanation": [
-      "En la recta numérica, el número de la izquierda es menor. El valor absoluto mide la distancia a cero. Por eso ∣−7∣ = 7.",
-      "Un racional se puede escribir como a/b con a y b enteros y b ≠ 0. Los decimales finitos y periódicos son racionales. √2 y π son irracionales. Todos ellos son reales.",
-      "Restar un número equivale a sumar su opuesto. En multiplicaciones y divisiones, dos signos iguales dan positivo. Dos signos distintos dan negativo.",
-      "Resuelve primero los paréntesis y después las potencias. Sigue con multiplicación y división de izquierda a derecha. Termina con suma y resta de izquierda a derecha."
-    ],
-    "example": {
-      "prompt": "Calcula 10 − 3 × (2 − 6).",
-      "steps": [
-        "El paréntesis vale −4.",
-        "Multiplica 3 × (−4) = −12.",
-        "Resta el negativo. 10 − (−12) = 22."
-      ]
-    },
     "source": "Guía oficial de College Board (2019), p. 9. Refuerzo CONEA, fichas 01–03.",
     "prerequisiteIds": [],
     "exercises": [
@@ -117,23 +103,6 @@
     "id": "mat-fracciones",
     "title": "Fracciones, razones y porcentajes",
     "objective": "Resolver problemas de comparación, reparto proporcional y cambio porcentual.",
-    "explanation": [
-      "Para comparar fracciones, usa números que representen partes del mismo tamaño. Por ejemplo, 1/2 = 3/6, así que 1/2 es menor que 4/6.",
-      "Para simplificar una fracción, divide el número de arriba y el de abajo por el mismo número. Por ejemplo, 6/8 = 3/4.",
-      "El mínimo común múltiplo es el menor múltiplo positivo que dos números comparten. El de 4 y 6 es 12.",
-      "Para sumar o restar, iguala los denominadores y opera los numeradores. Para multiplicar, multiplica los números de arriba y los de abajo.",
-      "Para dividir entre una fracción, inviértela y multiplica. Por ejemplo, 1/2 ÷ 1/4 = 1/2 × 4 = 2.",
-      "Una razón compara dos cantidades. Si dos cuadernos cuestan $40, uno cuesta $20. Usa el precio de uno para calcular otros pedidos.",
-      "Un porcentaje indica partes de cada 100. Con 25 % de descuento, pagas el 75 % del precio. Aplica cada cambio al precio que acabas de calcular."
-    ],
-    "example": {
-      "prompt": "Un artículo de $320 tiene 25 % de descuento. Después se agrega 10 % sobre el precio rebajado. ¿Cuál es el precio final?",
-      "steps": [
-        "Pagas 100 % − 25 % = 75 % del precio. Divide 75 entre 100 para obtener 0.75. Calcula 320 × 0.75 = 240.",
-        "Con el aumento pagas 100 % + 10 % = 110 % del precio rebajado. Divide 110 entre 100 para obtener 1.10.",
-        "Calcula 240 × 1.10 = 264. El costo final es $264."
-      ]
-    },
     "source": "Guía oficial de College Board (2019), p. 9. Descriptores oficiales, pp. 10–11. Refuerzo CONEA, fichas 04–06.",
     "prerequisiteIds": [
       "mat-enteros"
@@ -262,19 +231,6 @@
     "id": "mat-potencias",
     "title": "Potencias y raíces cuadradas",
     "objective": "Aplicar leyes de exponentes, estimar raíces y evaluar fórmulas.",
-    "explanation": [
-      "En aⁿ, multiplica la base a por sí misma n veces. Los paréntesis determinan si un signo negativo forma parte de la base.",
-      "Para potencias de la misma base, aᵐ × aⁿ = aᵐ⁺ⁿ y aᵐ ÷ aⁿ = aᵐ⁻ⁿ si a ≠ 0 y m ≥ n. En (aᵐ)ⁿ, multiplica los exponentes. Un exponente cero da 1 si a ≠ 0.",
-      "La raíz cuadrada √n es el número no negativo cuyo cuadrado es n. Usa cuadrados perfectos para estimarla y extraer factores. Por ejemplo, √20 = √(4 × 5) = 2√5.",
-      "Si una cantidad se triplica en cada periodo, tras k periodos su valor es el inicial multiplicado por 3ᵏ."
-    ],
-    "example": {
-      "prompt": "Simplifica √72 y ubícala entre dos enteros consecutivos.",
-      "steps": [
-        "Separa el factor cuadrado mayor. √72 = √(36 × 2) = 6√2.",
-        "Compara 72 con 64 y 81. Como 8² = 64 y 9² = 81, se cumple 8 < √72 < 9."
-      ]
-    },
     "source": "Guía oficial de College Board (2019), p. 9. Descriptores oficiales, pp. 10–11. Refuerzo CONEA, ficha 03.",
     "prerequisiteIds": [
       "mat-enteros"
@@ -377,20 +333,6 @@
     "id": "mat-ecuaciones",
     "title": "Ecuaciones e inecuaciones lineales",
     "objective": "Traducir enunciados a expresiones y despejar una incógnita.",
-    "explanation": [
-      "Define la letra con su unidad. «Tres más que el doble de n» se escribe 2n + 3. «Como máximo» indica ≤. «Al menos» indica ≥.",
-      "Una ecuación pide igualdad. Distribuye, agrupa términos semejantes y realiza la misma operación en ambos miembros hasta aislar la letra.",
-      "En una inecuación, invertir el signo es obligatorio al multiplicar o dividir ambos miembros por un número negativo. Por ejemplo, −2x < 6 lleva a x > −3.",
-      "En la recta, usa un punto cerrado si incluyes el extremo y uno abierto si lo excluyes. Una solución se puede comprobar en el enunciado original."
-    ],
-    "example": {
-      "prompt": "Una visita cuesta $35 de entrada y $22 por cada actividad. ¿Cuántas actividades puedes pagar como máximo con $150?",
-      "steps": [
-        "Sea a el número de actividades. Plantea 35 + 22a ≤ 150.",
-        "Resta 35 y divide por 22. Obtienes a ≤ 115/22, aproximadamente 5.23.",
-        "El mayor entero permitido es 5. Cuesta $145. Seis costarían $167."
-      ]
-    },
     "source": "Guía oficial de College Board (2019), p. 9. Descriptores oficiales, pp. 12–13. Refuerzo CONEA, fichas 02, 16 y 18.",
     "prerequisiteIds": [
       "mat-enteros",
@@ -494,20 +436,6 @@
     "id": "mat-polinomios",
     "title": "Polinomios y factorización",
     "objective": "Sumar, restar, multiplicar y factorizar polinomios.",
-    "explanation": [
-      "Los términos semejantes tienen las mismas variables y exponentes. Para sumarlos o restarlos, opera con los coeficientes. Al restar un polinomio, cambia el signo de cada término del segundo polinomio.",
-      "Distribuye cada término de un factor entre todos los términos del otro. Por ejemplo, (x + 2)(x + 5) = x² + 7x + 10.",
-      "Al factorizar, busca primero un factor común. La diferencia de cuadrados cumple a² − b² = (a − b)(a + b).",
-      "Para x² + bx + c, busca dos números cuya suma sea b y cuyo producto sea c. Comprueba tu factorización al distribuir."
-    ],
-    "example": {
-      "prompt": "Factoriza por completo 3x³ − 27x.",
-      "steps": [
-        "Extrae el factor común 3x. Resulta 3x(x² − 9).",
-        "Reconoce x² − 3² como diferencia de cuadrados.",
-        "El resultado es 3x(x − 3)(x + 3)."
-      ]
-    },
     "source": "Guía oficial de College Board (2019), p. 9. Descriptores oficiales, pp. 12–13. Refuerzo CONEA, fichas 12–14.",
     "prerequisiteIds": [
       "mat-potencias"
@@ -610,20 +538,6 @@
     "id": "mat-fracciones-algebraicas",
     "title": "Fracciones algebraicas",
     "objective": "Simplificar y operar con fracciones algebraicas sin cambiar su dominio.",
-    "explanation": [
-      "Antes de operar, identifica los valores que hacen cero cada denominador original. Esos valores quedan excluidos.",
-      "Factoriza numerador y denominador. Cancela solo factores completos que aparezcan multiplicando. Con (x² + x)/x puedes cancelar x después de escribir x(x + 1)/x.",
-      "Para sumar o restar, usa un denominador común. Para multiplicar, multiplica por separado numeradores y denominadores. Para dividir, invierte la segunda fracción y excluye los valores que la hacen cero.",
-      "En una ecuación con fracciones, puedes multiplicar ambos miembros por el denominador común. Comprueba la solución en la ecuación original."
-    ],
-    "example": {
-      "prompt": "Simplifica (x² − 25)/(x − 5) e indica la restricción.",
-      "steps": [
-        "El denominador original vale cero si x = 5. Excluye ese valor.",
-        "Factoriza x² − 25 como (x − 5)(x + 5).",
-        "Cancela x − 5. Resulta x + 5 con x ≠ 5."
-      ]
-    },
     "source": "Guía oficial de College Board (2019), p. 9. Descriptores oficiales, pp. 12–13. Refuerzo para factorizar en CONEA, ficha 14.",
     "prerequisiteIds": [
       "mat-fracciones",
@@ -728,20 +642,6 @@
     "id": "mat-cuadraticas",
     "title": "Ecuaciones cuadráticas",
     "objective": "Resolver ecuaciones de segundo grado y verificar sus raíces.",
-    "explanation": [
-      "Escribe la ecuación como ax² + bx + c = 0 con a ≠ 0. Si puedes factorizar, iguala cada factor a cero.",
-      "Cuando x² = k y k > 0, hay dos raíces, √k y −√k. Si k = 0, solo hay una. Si k < 0, no hay raíces reales.",
-      "Para cualquier cuadrática, con D = b² − 4ac, la fórmula es x = (−b ± √D)/(2a) si D ≥ 0. Si D > 0, hay dos raíces reales distintas. Si D = 0, hay una. Si D < 0, ninguna.",
-      "En un problema aplicado, descarta las raíces que incumplen las condiciones, como una longitud negativa."
-    ],
-    "example": {
-      "prompt": "El ancho de un terreno rectangular es w y su largo es w + 3. Tiene un área de 54 m². ¿Cuánto mide su ancho?",
-      "steps": [
-        "Plantea w(w + 3) = 54. Pasa todo al mismo miembro para obtener w² + 3w − 54 = 0.",
-        "Factoriza (w + 9)(w − 6) = 0. Las raíces son −9 y 6.",
-        "El ancho debe ser positivo. Mide 6 m."
-      ]
-    },
     "source": "Guía oficial de College Board (2019), p. 9. Descriptores oficiales, pp. 12–13. Refuerzo CONEA, ficha 19.",
     "prerequisiteIds": [
       "mat-potencias",
@@ -845,20 +745,6 @@
     "id": "mat-funciones",
     "title": "Plano cartesiano, rectas y funciones",
     "objective": "Interpretar puntos, tablas y gráficas, y evaluar funciones.",
-    "explanation": [
-      "Un punto (x, y) indica primero el desplazamiento horizontal y luego el vertical. Para hallar el punto medio, promedia cada coordenada por separado.",
-      "Para hallar la distancia entre dos puntos, usa √[(Δx)² + (Δy)²]. El símbolo Δ indica la diferencia entre las coordenadas del segundo punto y las del primero.",
-      "Cada entrada de una función tiene una sola salida. Para hallar f(a), sustituye x por a, con paréntesis si a es negativo o es una expresión. En una gráfica, f(a) es la altura a la que se encuentra la curva cuando x = a.",
-      "En y = mx + b, la pendiente m es el cambio vertical dividido por el horizontal. El corte con el eje y es (0, b). Una recta vertical no tiene pendiente definida y no representa y como función de x."
-    ],
-    "example": {
-      "prompt": "La gráfica de una recta pasa por (−1, 3) y (2, 9). ¿Cuál es su ecuación?",
-      "steps": [
-        "Calcula la pendiente. m = (9 − 3)/(2 − (−1)) = 6/3 = 2.",
-        "Sustituye (2, 9) en y = 2x + b. Entonces 9 = 4 + b.",
-        "La ecuación es y = 2x + 5."
-      ]
-    },
     "source": "Guía oficial de College Board (2019), p. 9. Descriptores oficiales, pp. 12–13. Refuerzo CONEA, fichas 30–32.",
     "prerequisiteIds": [
       "mat-ecuaciones",
@@ -988,20 +874,6 @@
     "id": "mat-sistemas",
     "title": "Ecuaciones con dos variables y sistemas",
     "objective": "Representar dos relaciones a la vez y hallar un par que cumpla ambas.",
-    "explanation": [
-      "Una ecuación como 2x + y = 8 admite varios pares. Puedes escribir y = 8 − 2x para calcular y al elegir x.",
-      "Para resolver un sistema por sustitución, despeja una variable. Reemplázala en la otra ecuación. Para usar eliminación, suma o resta ecuaciones, después de multiplicarlas si hace falta, para cancelar una variable.",
-      "En una gráfica, cada solución es un punto común. Rectas que se cruzan tienen una solución. Rectas paralelas distintas no tienen solución. Rectas que coinciden tienen infinitas.",
-      "En un problema con dos cantidades, escribe qué indica cada variable. Verifica el par en ambas relaciones y con las unidades del problema."
-    ],
-    "example": {
-      "prompt": "Se vendieron 13 boletos. Los de adulto costaban $50 y los de estudiante $30. El total fue $510. ¿Cuántos boletos de adulto se vendieron?",
-      "steps": [
-        "Sea a el número de adultos y e el de estudiantes. Plantea a + e = 13 y 50a + 30e = 510.",
-        "Sustituye e por 13 − a. Queda 50a + 30(13 − a) = 510.",
-        "Resuelve 20a = 120. Se vendieron 6 boletos de adulto y 7 de estudiante."
-      ]
-    },
     "source": "Guía oficial de College Board (2019), p. 9. Descriptores oficiales, pp. 12–13. Refuerzo CONEA, fichas 17–18.",
     "prerequisiteIds": [
       "mat-ecuaciones",
@@ -1105,20 +977,6 @@
     "id": "mat-angulos",
     "title": "Ángulos, triángulos y rectas paralelas",
     "objective": "Hallar ángulos con la suma de un triángulo y las relaciones de una secante.",
-    "explanation": [
-      "Una vuelta completa mide 360°. Un ángulo llano mide 180° y uno recto mide 90°. Los ángulos opuestos por el vértice son iguales. Dos ángulos adyacentes sobre la misma recta suman 180°.",
-      "Si una secante corta dos rectas paralelas, los correspondientes son iguales. Los alternos internos y los alternos externos también son iguales. Los interiores del mismo lado de la secante suman 180°.",
-      "Los ángulos interiores de un triángulo suman 180°. Un ángulo exterior de un triángulo equivale a la suma de los dos interiores que no son adyacentes a él.",
-      "Por sus lados, un triángulo puede ser equilátero, isósceles o escaleno. Por sus ángulos, puede ser acutángulo, rectángulo u obtusángulo."
-    ],
-    "example": {
-      "prompt": "Un triángulo isósceles tiene un ángulo de 44° entre sus dos lados iguales. ¿Cuánto mide cada ángulo de la base?",
-      "steps": [
-        "Los ángulos opuestos a los lados iguales tienen la misma medida.",
-        "Resta 44° de 180°. Los dos ángulos de la base suman 136°.",
-        "Divide entre 2. Cada ángulo de la base mide 68°."
-      ]
-    },
     "source": "Guía oficial de College Board (2019), p. 9. Descriptores oficiales, pp. 14–15. Refuerzo CONEA, ficha 24.",
     "prerequisiteIds": [
       "mat-ecuaciones"
@@ -1234,20 +1092,6 @@
     "id": "mat-triangulos",
     "title": "Semejanza, congruencia y Pitágoras",
     "objective": "Comparar triángulos y hallar longitudes por escala o por Pitágoras.",
-    "explanation": [
-      "Los triángulos congruentes tienen la misma forma y tamaño. Puedes comprobarlo con tres pares de lados iguales o con dos pares de lados y el ángulo comprendido iguales.",
-      "Los semejantes tienen ángulos correspondientes iguales y lados correspondientes en la misma proporción. Dos pares de ángulos iguales bastan para probar semejanza. En △ABC ∼ △DEF, A corresponde a D, B a E y C a F.",
-      "En un triángulo rectángulo, a² + b² = c². La hipotenusa c es el lado opuesto al ángulo recto. Si buscas un cateto, resta el cuadrado del cateto conocido del cuadrado de la hipotenusa. Toma la raíz cuadrada del resultado.",
-      "En un triángulo 45°–45°–90°, los lados tienen razón 1 : 1 : √2. En uno 30°–60°–90°, tienen razón 1 : √3 : 2, en ese orden."
-    ],
-    "example": {
-      "prompt": "Un triángulo rectángulo tiene hipotenusa de 17 m y un cateto de 8 m. ¿Cuánto mide el otro cateto?",
-      "steps": [
-        "Plantea 8² + b² = 17².",
-        "Resta 64 de 289. Resulta b² = 225.",
-        "Toma la raíz positiva. El cateto mide 15 m."
-      ]
-    },
     "source": "Guía oficial de College Board (2019), p. 9. Descriptores oficiales, pp. 14–15. Refuerzo CONEA, ficha 28.",
     "prerequisiteIds": [
       "mat-angulos",
@@ -1352,20 +1196,6 @@
     "id": "mat-areas",
     "title": "Perímetro, área y círculos",
     "objective": "Calcular medidas de polígonos y círculos con unidades correctas.",
-    "explanation": [
-      "El perímetro es la longitud del contorno. Para el área de un rectángulo o paralelogramo, multiplica base por altura perpendicular. Para un triángulo, divide ese producto entre 2. Para un trapecio, usa (B + b)h/2.",
-      "El diámetro d de un círculo es 2r. La circunferencia mide 2πr = πd. El área del círculo es πr².",
-      "Para un sector de ángulo central θ, multiplica el área del círculo por θ/360. Para hallar la longitud de su arco, aplica esa misma fracción a la circunferencia.",
-      "Para una figura compuesta, suma o resta áreas según corresponda. Para el perímetro, cuenta solo los lados del contorno. El área se expresa en unidades cuadradas."
-    ],
-    "example": {
-      "prompt": "Un piso de 9 m por 7 m tiene una zona circular de radio 2 m. ¿Qué área queda fuera de esa zona?",
-      "steps": [
-        "El área del piso completo es 9 × 7 = 63 m².",
-        "El círculo ocupa π(2)² = 4π m².",
-        "El área solicitada es 63 − 4π m²."
-      ]
-    },
     "source": "Guía oficial de College Board (2019), p. 9. Descriptores oficiales, pp. 14–15. Refuerzo CONEA, ficha 25.",
     "prerequisiteIds": [
       "mat-fracciones",
@@ -1509,20 +1339,6 @@
     "id": "mat-solidos",
     "title": "Sólidos geométricos y volumen",
     "objective": "Reconocer sólidos y calcular su volumen con el área de la base y la altura.",
-    "explanation": [
-      "Un prisma tiene dos bases poligonales paralelas y congruentes. Una pirámide tiene una base poligonal y caras triangulares que se unen en un vértice.",
-      "Un cilindro circular tiene dos bases circulares congruentes. Un cono circular tiene una base circular y un vértice. Una esfera tiene todos los puntos de su superficie a la misma distancia del centro.",
-      "Para prismas y cilindros, V = Bh, donde B es el área de una base y h la altura perpendicular. Para pirámides y conos, V = Bh/3. Para la esfera, V = 4πr³/3.",
-      "El volumen se expresa en unidades cúbicas. Mantén la misma unidad en las longitudes antes de multiplicar. Por ejemplo, 1 m³ equivale a 1 000 000 cm³."
-    ],
-    "example": {
-      "prompt": "Una pirámide tiene base cuadrada de 6 m de lado y altura perpendicular de 5 m. ¿Cuál es su volumen?",
-      "steps": [
-        "El área de la base es 6 × 6 = 36 m².",
-        "Multiplica por la altura y divide entre 3.",
-        "V = 36 × 5 ÷ 3 = 60 m³."
-      ]
-    },
     "source": "Guía oficial de College Board (2019), p. 9. Descriptores oficiales, pp. 14–15. Refuerzo CONEA, ficha 25.",
     "prerequisiteIds": [
       "mat-areas"
@@ -1625,20 +1441,6 @@
     "id": "mat-estadistica",
     "title": "Tablas, gráficas y tendencia central",
     "objective": "Leer datos y hallar la media, la mediana y la moda.",
-    "explanation": [
-      "En tablas y gráficas, lee los rótulos, las unidades, la escala y la clave antes de calcular. Una barra muestra una cantidad. Un sector muestra una parte del total. En un pictograma, un símbolo puede valer varias unidades.",
-      "Para hallar la media aritmética, divide la suma de los datos entre su cantidad. Con una tabla de frecuencias, multiplica cada valor por su frecuencia antes de sumar.",
-      "Para hallar la mediana, ordena los datos. Con cantidad impar, toma el dato central. Con cantidad par, promedia los dos datos centrales.",
-      "La moda es el valor con mayor frecuencia. Puede haber más de una si varios valores comparten la frecuencia mayor. Si ningún dato se repite, es habitual decir que no hay moda."
-    ],
-    "example": {
-      "prompt": "Las calificaciones de cuatro trabajos son 72, 85, 88 y x. Las cuatro tienen el mismo peso y la media es 83. ¿Cuánto vale x?",
-      "steps": [
-        "La suma de las cuatro calificaciones es 83 × 4 = 332.",
-        "Las tres calificaciones conocidas suman 72 + 85 + 88 = 245.",
-        "La cuarta calificación es 332 − 245 = 87."
-      ]
-    },
     "source": "Guía oficial de College Board (2019), p. 10. Descriptores oficiales, pp. 16–17. Refuerzo CONEA, ficha 20.",
     "prerequisiteIds": [
       "mat-fracciones",
@@ -1768,20 +1570,6 @@
     "id": "mat-probabilidad",
     "title": "Probabilidad y espacio muestral",
     "objective": "Enumerar resultados y calcular probabilidades simples y complementos.",
-    "explanation": [
-      "El espacio muestral incluye todos los resultados posibles. Con resultados igualmente probables, divide los favorables entre el total. Si los resultados no tienen la misma probabilidad, suma las probabilidades de los resultados favorables.",
-      "El complemento de A es el evento «no A». Su probabilidad es 1 − P(A).",
-      "Para contar quienes cumplen A o B, suma ambas cantidades y resta una vez a quienes cumplen ambas. Así evitas contarlos dos veces.",
-      "En experimentos de dos pasos, organiza resultados con una tabla o un árbol. En una extracción sin reemplazo, el total disponible baja en el segundo paso."
-    ],
-    "example": {
-      "prompt": "En un grupo de 28 personas, 13 practican voleibol, 12 practican natación y 5 practican ambos. ¿Cuál es la probabilidad de elegir al azar a alguien que no practica ninguno?",
-      "steps": [
-        "Hay 13 + 12 − 5 = 20 que practican al menos uno.",
-        "Quedan 28 − 20 = 8 que no practican ninguno.",
-        "La probabilidad es 8/28 = 2/7."
-      ]
-    },
     "source": "Guía oficial de College Board (2019), p. 10. Prueba de práctica oficial, pp. 28–29. Refuerzo CONEA, ficha 21.",
     "prerequisiteIds": [
       "mat-fracciones",
