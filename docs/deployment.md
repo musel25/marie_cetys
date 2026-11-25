@@ -1,6 +1,7 @@
 # Deploy the PIENSE II study site
 
-The public study site uses [math.musel.dev/piensa/](https://math.musel.dev/piensa/).
+The public study site uses [piensa.musel.dev](https://piensa.musel.dev/).
+[math.musel.dev/piensa/](https://math.musel.dev/piensa/) serves the same release.
 Math Trainer uses [math.musel.dev](https://math.musel.dev/) and requires HTTP Basic authentication.
 
 ## Publish a release
@@ -16,17 +17,25 @@ npm run check
 ./scripts/deploy.sh
 ```
 
-The script compares the local commit with the current upstream branch on GitHub. It installs dependencies from the lockfile and runs the checks again before upload. It uses the `my-vps` SSH alias with your existing SSH key and passwordless `sudo` access.
+The script compares the local commit with the current upstream branch on GitHub. It installs dependencies from the lockfile, runs the checks, and builds the sync service before upload. It uses the `my-vps` SSH alias with your existing SSH key and passwordless `sudo` access. The VPS needs nginx, systemd, and `/usr/bin/node` with `import.meta.main` support.
 
-The script uploads only the tested `dist/` directory. Each release goes in `/var/www/marie-cetys/releases/<commit>`. An atomic symlink switch updates `/var/www/marie-cetys/current`.
+Each frontend release goes in `/var/www/marie-cetys/releases/<commit>`. An atomic symlink switch updates `/var/www/marie-cetys/current`. The sync bundle uses a separate release directory under `/opt/marie-cetys-sync/releases/<commit>`.
 
 The initial deployment adds an include to the existing HTTPS server for `math.musel.dev`. The include serves the study site under `/piensa/`. It redirects `/piensa` to `/piensa/`. The browser revalidates HTML and can cache Vite's hashed files under `/piensa/assets/` for a year.
 
-The script checks the nginx configuration before activation. It checks the public HTTPS response and the local Math Trainer backend before and after activation. It also checks that `/piensa/` and the Vite entry script return HTTP 200 with the exact contents of the build.
+The script checks the nginx configuration before activation. It checks the public HTTPS response and the local Math Trainer backend before and after activation. It verifies the new HTML and Vite entry script on both public frontend URLs.
+
+## Configure progress sync
+
+The first deployment generates a 64-character key at `~/.config/marie-cetys/sync.key` with permissions `0600`. Keep the key in a password manager. Subsequent deployments reuse it. The VPS receives its SHA-256 digest in `/etc/marie-cetys-sync/key.hash`.
+
+The systemd service listens on IPv4 loopback at port 8417. Nginx routes `/api/progress` and `/api/progress/session` on the canonical host. It routes `/piensa/api/progress` and `/piensa/api/progress/session` on the alternate host. The service writes private progress data to `/var/lib/marie-cetys-sync/progress.json`. The service keeps the same data and key across releases.
+
+Open **Plan** on the canonical host and use the progress sync controls to connect with the key. To bring progress from the alternate URL, use the one-time import popup from the canonical host while the original browser profile still has the data. Allow the popup if the browser blocks it. Progress from a normal backup merges with existing progress while connected.
 
 ## Restore a release
 
-If activation or the final checks fail, the script restores the previous symlink and any nginx files that it changed. It keeps release files and stores nginx backups in `/var/www/marie-cetys/nginx-backups/`.
+If sync activation fails, the script restores the previous sync symlink, systemd unit and nginx files that it changed. Sync configuration backups are in `/opt/marie-cetys-sync/backups/`. If the frontend fails its final checks, the script restores the previous frontend symlink and its nginx files. Frontend nginx backups are in `/var/www/marie-cetys/nginx-backups/`. Both stages keep their release files.
 
 To restore an earlier version after a successful deployment, revert the relevant commits, push the branch and run the script again. This records the rollback in Git.
 
@@ -34,7 +43,10 @@ After a release or rollback, open [the study site](https://math.musel.dev/piensa
 
 ```sh
 curl -sS -o /dev/null -w '%{http_code}\n' https://math.musel.dev/piensa/
+curl -sS -o /dev/null -w '%{http_code}\n' https://piensa.musel.dev/
 curl -sS -o /dev/null -w '%{http_code}\n' https://math.musel.dev/
+curl -sS -o /dev/null -w '%{http_code}\n' https://piensa.musel.dev/api/progress
+curl -sS -o /dev/null -w '%{http_code}\n' https://math.musel.dev/piensa/api/progress
 ```
 
-The study site returns `200`. Math Trainer returns `401` to an unauthenticated request.
+Both study pages return `200`. Math Trainer and both sync endpoints return `401` to an unauthenticated request.

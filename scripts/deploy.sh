@@ -34,6 +34,8 @@ asset=$(sed -nE 's#.*src="\./(assets/[^"]+\.js)".*#\1#p' dist/index.html)
 index_hash=$(sha256sum < dist/index.html)
 asset_hash=$(sha256sum < "dist/$asset")
 
+./scripts/deploy-sync.sh "$release"
+
 local_work=$(mktemp -d)
 remote_work=
 cleanup() {
@@ -63,6 +65,7 @@ base=/var/www/marie-cetys
 site=/etc/nginx/sites-available/math.musel.dev
 snippet=/etc/nginx/snippets/marie-cetys.conf
 url=https://math.musel.dev
+canonical=https://piensa.musel.dev
 target="$base/releases/$release"
 current="$base/current"
 
@@ -233,24 +236,29 @@ if (( site_changed || snippet_changed )); then
   systemctl reload nginx
 fi
 
-check_release() {
-  local status
-  status=$(curl --silent --show-error --max-time 10 --output /dev/null \
-    --write-out '%{http_code} %{redirect_url}' "$url/piensa") || return 1
-  [[ "$status" == "301 $url/piensa/" ]] || return 1
+check_assets() {
+  local root=$1 status
   status=$(curl --silent --show-error --max-time 10 --output "$work/served.html" \
-    --write-out '%{http_code}' "$url/piensa/") || return 1
+    --write-out '%{http_code}' "$root/") || return 1
   [[ "$status" == 200 ]] || return 1
   status=$(curl --silent --show-error --max-time 10 --output "$work/served.js" \
-    --write-out '%{http_code}' "$url/piensa/$asset") || return 1
+    --write-out '%{http_code}' "$root/$asset") || return 1
   [[ "$status" == 200 ]] || return 1
   printf '%s  %s\n%s  %s\n' "$index_hash" "$work/served.html" "$asset_hash" "$work/served.js" |
     sha256sum -c --status -
 }
 
+check_release() {
+  local status
+  status=$(curl --silent --show-error --max-time 10 --output /dev/null \
+    --write-out '%{http_code} %{redirect_url}' "$url/piensa") || return 1
+  [[ "$status" == "301 $url/piensa/" ]] || return 1
+  check_assets "$url/piensa" && check_assets "$canonical"
+}
+
 for attempt in {1..5}; do
   if check_release && check_math_trainer; then
-    printf 'Deployed %s. Confirmed HTTPS for /piensa/, its entry asset, and Math Trainer.\n' "$release"
+    printf 'Deployed %s. Confirmed both public frontends and Math Trainer.\n' "$release"
     exit 0
   fi
   sleep 1
@@ -258,4 +266,5 @@ done
 fail 'The HTTPS checks failed after activation.'
 REMOTE
 
-printf 'Live: %s/piensa/\n' "$origin_url"
+printf 'Live: https://piensa.musel.dev/\n'
+printf 'Alternate URL: %s/piensa/\n' "$origin_url"

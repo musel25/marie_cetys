@@ -10,7 +10,7 @@ The default plan includes sixty minutes per day from Monday through Friday. The 
 - Abre **Guía para la clase** para ver los tiempos, las variantes y la pregunta de salida de la primera sesión.
 - En **Plan**, selecciona los días, minutos por sesión, fecha de inicio, fecha del examen y días libres.
 - En **Progreso**, selecciona **Día**, **Semana** o **Mes**. Las respuestas del modo de clase cuentan en los resultados. Registra los minutos de la clase una vez.
-- El progreso se guarda en el navegador. Usa el respaldo en **Plan** para moverlo a otro dispositivo o compartirlo con el tutor.
+- El progreso se guarda en el navegador. En **Plan**, conecta la sincronización con la clave para tener el mismo progreso en otro dispositivo. También puedes descargar un respaldo.
 
 ## Desarrollo
 

@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import SyncPanel from "./SyncPanel";
+import { mergePlanSettings } from "./progressSync";
 import { curriculum, lessonById } from "./content";
 import { classPlan, dateLabel, parseBackup } from "./study";
 import { duration, lessonHref, PageHeading } from "./ui";
@@ -6,10 +8,12 @@ import type { Settings, StudyState } from "./types";
 
 const weekdays = [[1, "Lun"], [2, "Mar"], [3, "Mié"], [4, "Jue"], [5, "Vie"], [6, "Sáb"], [0, "Dom"]] as const;
 
-export default function Planner({ state, today, onSettings, onImport }: {
-  state: StudyState; today: string; onSettings: (settings: Settings) => Promise<boolean>; onImport: (state: StudyState) => Promise<boolean>;
+export default function Planner({ state, today, onSettings, onImport, mergeBackup, sync }: {
+  state: StudyState; today: string; onSettings: (settings: Settings, base: Settings) => Promise<boolean>;
+  onImport: (state: StudyState) => Promise<boolean>; mergeBackup: boolean; sync: React.ComponentProps<typeof SyncPanel>;
 }) {
   const [draft, setDraft] = useState(state.settings);
+  const lastSettings = useRef(state.settings);
   const [exception, setException] = useState("");
   const [studyDate, setStudyDate] = useState("");
   const [dateMinutes, setDateMinutes] = useState("");
@@ -26,6 +30,12 @@ export default function Planner({ state, today, onSettings, onImport }: {
     Number.isInteger(scheduledMinutes) && scheduledMinutes >= 15 && scheduledMinutes <= 180;
 
   useEffect(() => {
+    const previous = lastSettings.current;
+    lastSettings.current = state.settings;
+    setDraft(current => mergePlanSettings(current, state.settings, previous));
+  }, [state.settings]);
+
+  useEffect(() => {
     if (planMessage) planNotice.current?.scrollIntoView({ block: "nearest" });
   }, [planMessage]);
 
@@ -35,7 +45,7 @@ export default function Planner({ state, today, onSettings, onImport }: {
       if (!draft.weekdays.length) throw Error("Elige al menos un día de estudio.");
       if (draft.exam && draft.exam <= draft.start) throw Error("El examen debe ser posterior al inicio.");
       parseBackup(JSON.stringify({ ...state, settings: draft }));
-      const saved = await onSettings(draft);
+      const saved = await onSettings(draft, lastSettings.current);
       setPlanMessage(saved ? "Plan guardado." : "");
     } catch (error) { setPlanMessage(error instanceof Error ? error.message : "Revisa las fechas del plan."); }
   }
@@ -165,20 +175,21 @@ export default function Planner({ state, today, onSettings, onImport }: {
         {forecast.slots.length > 10 && <button className="button secondary" onClick={() => setMore(!more)}>{more ? "Mostrar menos" : "Ver el plan completo"}</button>}
       </section>
     </div>
+    <SyncPanel {...sync} />
     <section className="panel backups">
       <h2>Respaldo de progreso</h2>
-      <p>El progreso se guarda en este navegador. Descarga una copia para compartirla con tu tutor o cargarla en otro dispositivo.</p>
+      <p>Descarga una copia del progreso de este navegador para compartirla con tu tutor o cargarla en otro dispositivo.</p>
       <div className="row">
         <button className="button secondary" onClick={download}>Descargar respaldo</button>
         <button className="button secondary" onClick={() => input.current?.click()}>Elegir respaldo</button>
         <input ref={input} type="file" accept=".json,application/json" hidden onChange={event => void readFile(event.target.files?.[0])} />
       </div>
       {pending && <div className="plan-notice">
-        <p>El respaldo incluye {pending.attempts.length} {pending.attempts.length === 1 ? "respuesta" : "respuestas"}, {pending.miniResults.length} {pending.miniResults.length === 1 ? "miniexamen" : "miniexámenes"} y {pending.classes.length} {pending.classes.length === 1 ? "registro" : "registros"} de clase. Cargarlo reemplaza el progreso de este navegador.</p>
+        <p>El respaldo incluye {pending.attempts.length} {pending.attempts.length === 1 ? "respuesta" : "respuestas"}, {pending.miniResults.length} {pending.miniResults.length === 1 ? "miniexamen" : "miniexámenes"} y {pending.classes.length} {pending.classes.length === 1 ? "registro" : "registros"} de clase. {mergeBackup ? "Cargarlo combina el historial y usa el plan del respaldo." : "Cargarlo reemplaza el progreso de este navegador."}</p>
         <div className="row"><button className="button primary" onClick={async () => {
           const saved = await onImport(pending);
           setDraft(pending.settings); setPending(undefined); setBackupMessage(saved ? "Respaldo cargado." : "");
-        }}>Cargar y reemplazar</button><button className="button secondary" onClick={() => { setPending(undefined); setBackupMessage(""); }}>Cancelar</button></div>
+        }}>{mergeBackup ? "Cargar y combinar" : "Cargar y reemplazar"}</button><button className="button secondary" onClick={() => { setPending(undefined); setBackupMessage(""); }}>Cancelar</button></div>
       </div>}
       <p role="status" className={backupMessage ? "notice" : "sr-only"}>{backupMessage}</p>
     </section>

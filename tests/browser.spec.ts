@@ -477,3 +477,92 @@ for (const lesson of ["mat-areas", "en-verb-forms", "es-comprension"]) {
       .toHaveAttribute("href", `#/mini/${lesson}`);
   });
 }
+
+test("syncs local history between two devices and uploads work after a connection failure", async ({ page, browser }) => {
+  const key = "a".repeat(64);
+  const progressKey = "marie-cetys:study:v1";
+  const second = await browser.newPage();
+  const start = new Date("2026-11-24T20:00:00Z");
+  await page.clock.setFixedTime(start);
+  await second.clock.setFixedTime(start);
+  let revision = 0;
+  const remote: { state: { attempts: { id: string; item: string }[]; settings: { minutes: number } } | null } = { state: null };
+
+  async function mock(device: typeof page) {
+    let connected = false;
+    let offline = false;
+    await device.route(/\/api\/progress(?:\/session)?$/, async route => {
+      const request = route.request();
+      const method = request.method();
+      if (offline) return route.abort("internetdisconnected");
+      if (new URL(request.url()).pathname.endsWith("/session")) {
+        if (method === "DELETE") {
+          connected = false;
+          return route.fulfill({ status: 204 });
+        }
+        connected = request.postDataJSON().key === key;
+        return route.fulfill({ status: connected ? 204 : 401 });
+      }
+      if (!connected) return route.fulfill({ status: 401 });
+      if (method === "PUT") {
+        const update = request.postDataJSON();
+        if (update.revision !== revision) return route.fulfill({ status: 409 });
+        remote.state = update.state;
+        revision++;
+      }
+      return route.fulfill({ json: { revision, state: remote.state } });
+    });
+    return { setOffline: (value: boolean) => { offline = value; } };
+  }
+
+  const panel = (device: typeof page) => device.getByRole("region", { name: "Sincronizar progreso", exact: true });
+  async function connect(device: typeof page) {
+    await device.getByRole("link", { name: "Plan", exact: true }).click();
+    const sync = panel(device);
+    await sync.getByLabel("Clave privada", { exact: true }).fill(key);
+    await sync.getByRole("button", { name: "Conectar este dispositivo", exact: true }).click();
+    await expect(sync.getByText("Este dispositivo está sincronizado.", { exact: true })).toBeVisible();
+  }
+
+  try {
+    await mock(page);
+    const device = await mock(second);
+    await page.goto("/#/clase/hc-orden");
+    const firstPractice = page.getByRole("region", { name: "Ejercicios de prueba", exact: true });
+    await firstPractice.getByRole("radio", { name: "A, C, B", exact: true }).check();
+    await firstPractice.getByRole("button", { name: "Comprobar", exact: true }).click();
+    await expect(firstPractice.getByText("Correcto", { exact: true })).toBeVisible();
+    await connect(page);
+    await expect.poll(() => remote.state?.attempts.length).toBe(1);
+    await page.getByLabel("Minutos al día", { exact: true }).fill("75");
+    await page.getByRole("button", { name: "Guardar plan", exact: true }).click();
+    await expect.poll(() => remote.state?.settings.minutes).toBe(75);
+
+    await second.goto("/#/");
+    await connect(second);
+    await expect(second.getByLabel("Minutos al día", { exact: true })).toHaveValue("75");
+    await second.getByRole("link", { name: "Progreso", exact: true }).click();
+    await expect(second.getByText("100%", { exact: true })).toBeVisible();
+
+    device.setOffline(true);
+    await second.goto("/#/clase/es-ortografia/guiado-hiato");
+    const guided = second.getByRole("region", { name: "Hiato y diptongo", exact: true }).locator(".lesson-guided-practice");
+    await guided.getByRole("radio", { name: "río tiene hiato y patio tiene diptongo.", exact: true }).check();
+    await guided.getByRole("button", { name: "Comprobar", exact: true }).click();
+    await second.getByRole("link", { name: "Plan", exact: true }).click();
+    await expect(panel(second).getByText(/No se pudo sincronizar/)).toBeVisible();
+    expect(await second.evaluate(storageKey => JSON.parse(localStorage.getItem(storageKey)!).attempts.length, progressKey)).toBe(2);
+    expect(remote.state?.attempts.length).toBe(1);
+
+    device.setOffline(false);
+    await panel(second).getByRole("button", { name: "Sincronizar ahora", exact: true }).click();
+    await expect.poll(() => remote.state?.attempts.length).toBe(2);
+    await panel(page).getByRole("button", { name: "Sincronizar ahora", exact: true }).click();
+    await expect.poll(() => page.evaluate(storageKey => JSON.parse(localStorage.getItem(storageKey)!).attempts.length, progressKey)).toBe(2);
+    await panel(page).getByRole("button", { name: "Desconectar este dispositivo", exact: true }).click();
+    await expect(panel(page).getByLabel("Clave privada", { exact: true })).toBeVisible();
+    await expect.poll(() => page.evaluate(storageKey => JSON.parse(localStorage.getItem(storageKey)!).attempts.length, progressKey)).toBe(2);
+  } finally {
+    await second.close();
+  }
+});
