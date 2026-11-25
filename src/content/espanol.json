@@ -13,8 +13,27 @@
             "Un nombre propio identifica por su nombre a alguien o algo. En el nombre oficial de una institución, pon mayúscula inicial en las palabras que aportan significado. Escribe con minúscula las preposiciones y los artículos internos."
           ],
           "example": {
-            "prompt": "Compara «Estudié en la biblioteca» y «Consulté un mapa en la Biblioteca Nacional de México».",
-            "explanation": "En la primera frase, biblioteca señala un tipo de lugar. En la segunda, Biblioteca y Nacional son parte del nombre oficial. De va con minúscula y México lleva mayúscula porque es un nombre propio."
+            "prompt": "En una visita a la biblioteca, decide cuándo se necesita la mayúscula.",
+            "steps": [
+              {
+                "prompt": "Completa «Estudié en la ____ del barrio». Aquí solo se indica el tipo de lugar.",
+                "options": [
+                  "Biblioteca",
+                  "biblioteca"
+                ],
+                "answer": 1,
+                "explanation": "Biblioteca es un nombre común en esta frase. Escribe «la biblioteca del barrio»."
+              },
+              {
+                "prompt": "Ahora se indica el nombre oficial. ¿Cómo escribes «Consulté un mapa en la ____»?",
+                "options": [
+                  "Biblioteca Nacional de México",
+                  "biblioteca nacional de México"
+                ],
+                "answer": 0,
+                "explanation": "Biblioteca y Nacional son palabras del nombre oficial. La preposición de va en minúscula. México conserva su mayúscula por ser un nombre propio."
+              }
+            ]
           },
           "exercise": {
             "prompt": "¿En qué oración se distinguen bien el tipo de lugar y su nombre oficial?",
@@ -38,8 +57,27 @@
             "Si las vocales se separan en dos sílabas, forman un hiato. Para la escritura, dos vocales abiertas o dos iguales forman hiato y siguen las reglas generales de tilde. Una vocal cerrada tónica junto a una abierta también forma hiato. Escribe la tilde sobre la cerrada."
           ],
           "example": {
-            "prompt": "Compara «Voy hacia la puerta» y «Hacía frío».",
-            "explanation": "Separa ha-cia y ha-cí-a. En hacia, ia queda en una sílaba y forma diptongo. En hacía, la í tónica queda en una sílaba distinta de la a. Por eso forma hiato y lleva tilde."
+            "prompt": "Compara «Voy hacia la puerta» y «Hacía frío». Fíjate en qué sílaba queda cada vocal.",
+            "steps": [
+              {
+                "prompt": "¿Cómo se separa «hacia» en «Voy hacia la puerta»?",
+                "options": [
+                  "ha-cia",
+                  "ha-ci-a"
+                ],
+                "answer": 0,
+                "explanation": "La i átona queda junto a la a en la sílaba cia. Las dos vocales forman un diptongo."
+              },
+              {
+                "prompt": "En «Hacía frío», separa ha-cí-a. ¿Qué forman la í y la a?",
+                "options": [
+                  "Diptongo",
+                  "Hiato"
+                ],
+                "answer": 1,
+                "explanation": "En hacía, la í tónica queda en una sílaba distinta de la a. Las vocales forman un hiato. La i lleva tilde para indicar que es tónica."
+              }
+            ]
           },
           "exercise": {
             "prompt": "Compara las vocales juntas de «río» y «patio». ¿Cómo se clasifican?",
@@ -65,8 +103,45 @@
             "Escribe por que separado cuando la preposición por pertenece a una construcción como distinguirse por algo. También se escribe separado cuando que es relativo y puedes decir por el que, por la que, por los que o por las que."
           ],
           "example": {
-            "prompt": "Compara estas frases sobre el cambio de una clase.",
-            "explanation": "«No sé por qué cambiaron el aula» plantea una pregunta indirecta. «Cambiaron el aula porque falló el proyector» da la causa. «El porqué del cambio quedó en el aviso» nombra el motivo. «La nueva aula se distingue por que tiene dos pizarrones» indica un rasgo con la construcción distinguirse por algo."
+            "prompt": "Cambiaron una clase de aula. Elige la forma que corresponde a cada frase del aviso.",
+            "steps": [
+              {
+                "prompt": "«No sé ____ cambiaron el aula». ¿Cuál introduce la pregunta indirecta?",
+                "options": [
+                  "porque",
+                  "por qué"
+                ],
+                "answer": 1,
+                "explanation": "Por qué se escribe separado y con tilde. La pregunta directa sería «¿Por qué cambiaron el aula?»."
+              },
+              {
+                "prompt": "«Cambiaron el aula ____ falló el proyector». ¿Cuál introduce la causa?",
+                "options": [
+                  "porque",
+                  "por qué"
+                ],
+                "answer": 0,
+                "explanation": "Porque se escribe junto y sin tilde. Puedes sustituirlo por ya que."
+              },
+              {
+                "prompt": "«El ____ del cambio quedó en el aviso». ¿Cuál equivale a «motivo»?",
+                "options": [
+                  "por qué",
+                  "porqué"
+                ],
+                "answer": 1,
+                "explanation": "El porqué es un sustantivo. La frase también puede decir «El motivo del cambio quedó en el aviso»."
+              },
+              {
+                "prompt": "Usa «distinguirse por». «La nueva aula se distingue ____ tiene dos pizarrones».",
+                "options": [
+                  "porque",
+                  "por que"
+                ],
+                "answer": 1,
+                "explanation": "Por pertenece a la construcción «se distingue por algo». Que introduce ese rasgo. Por eso se escriben separados."
+              }
+            ]
           },
           "exercise": {
             "prompt": "Completa. «El director explicó el ____ del traslado. Cambiaron de salón ____ instalaron un proyector nuevo».",
@@ -90,8 +165,36 @@
             "Como regla general, una aguda lleva tilde si termina en vocal, n o s. Una grave lleva tilde si termina en una consonante distinta de n o s. Las palabras esdrújulas siempre llevan tilde."
           ],
           "example": {
-            "prompt": "Compara «café», «césped» y «brújula».",
-            "explanation": "En ca-fé, la última sílaba es tónica y la palabra termina en vocal. En cés-ped, la penúltima sílaba es tónica y la palabra termina en d. En brú-ju-la, la antepenúltima sílaba es tónica. Las tres llevan tilde, cada una por una regla distinta."
+            "prompt": "Compara «café», «césped» y «brújula». Las tres palabras llevan tilde por reglas distintas.",
+            "steps": [
+              {
+                "prompt": "En ca-fé, ¿qué sílaba recibe el acento de voz?",
+                "options": [
+                  "La última",
+                  "La penúltima"
+                ],
+                "answer": 0,
+                "explanation": "Fé es la última sílaba. Café es aguda y termina en vocal, así que lleva tilde."
+              },
+              {
+                "prompt": "En cés-ped, la penúltima sílaba es tónica. ¿Qué dato explica la tilde?",
+                "options": [
+                  "Termina en d",
+                  "Tiene dos sílabas"
+                ],
+                "answer": 0,
+                "explanation": "Césped es una palabra grave. Lleva tilde porque termina en d. Casa también tiene dos sílabas y es grave, pero termina en vocal y no lleva tilde."
+              },
+              {
+                "prompt": "En brú-ju-la, la primera sílaba es la antepenúltima. ¿Qué regla se aplica?",
+                "options": [
+                  "Lleva tilde porque termina en vocal",
+                  "Lleva tilde porque es esdrújula"
+                ],
+                "answer": 1,
+                "explanation": "Las esdrújulas llevan tilde siempre. En brújula, la tilde va en la u de la sílaba brú."
+              }
+            ]
           },
           "exercise": {
             "prompt": "¿Qué pareja contiene primero una aguda y después una grave, ambas con tilde?",
@@ -115,8 +218,27 @@
             "Las palabras interrogativas llevan tilde al formular una pregunta directa o indirecta. Un adverbio en -mente conserva la tilde de su adjetivo. Un compuesto escrito como una sola palabra, como ciempiés, sigue las reglas de la palabra completa."
           ],
           "example": {
-            "prompt": "Compara «¿Dónde está tu mochila? Tú la guardaste donde dejamos los libros».",
-            "explanation": "Dónde pregunta por un lugar. Donde indica el lugar en que dejamos los libros. Tu acompaña a mochila. Tú identifica a la persona que la guardó."
+            "prompt": "Dos personas hablan de una mochila. Elige la forma según la función de cada palabra.",
+            "steps": [
+              {
+                "prompt": "«¿____ está tu mochila?». ¿Cuál introduce una pregunta por el lugar?",
+                "options": [
+                  "Donde",
+                  "Dónde"
+                ],
+                "answer": 1,
+                "explanation": "Dónde lleva tilde porque pregunta por un lugar. En «Está donde dejamos los libros», donde señala un lugar y se escribe sin tilde."
+              },
+              {
+                "prompt": "«____ la guardaste ____ dejamos los libros». Elige primero el pronombre y luego la palabra que indica el lugar.",
+                "options": [
+                  "Tú / donde",
+                  "Tu / dónde"
+                ],
+                "answer": 0,
+                "explanation": "Tú identifica a la persona que guardó la mochila. Tu sin tilde acompaña a un sustantivo, como en «tu mochila». Donde señala el lugar y no introduce una pregunta."
+              }
+            ]
           },
           "exercise": {
             "prompt": "Completa. «____ dejaste ____ cuaderno junto a la ventana».",
