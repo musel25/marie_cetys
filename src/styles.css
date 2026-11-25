@@ -149,6 +149,9 @@ progress::-webkit-progress-value { background: var(--forest); }
 .worked-example { margin-block: .8rem 0; padding: 1rem; border-radius: .7rem; background: #eef3e7; }
 .worked-steps:empty { display: none; }
 .worked-example > .row { margin-block-start: .9rem; }
+.worked-example .example-steps { padding: .5rem 0 0; }
+.example-steps > p { margin: 0; font-size: .9rem; }
+.example-steps :is(.answer, .button) { min-block-size: 3rem; }
 .class-agenda { list-style: none; padding: 0; margin: 1rem 0; }
 .class-agenda li { display: grid; grid-template-columns: 3.15rem minmax(0, 1fr); gap: .65rem; margin-block-end: .85rem; }
 .agenda-time { border-radius: .4rem; align-self: start; padding: .26rem .2rem; color: #2d503b; background: #e9f0df; font-size: .8rem; text-align: center; font-weight: 750; }

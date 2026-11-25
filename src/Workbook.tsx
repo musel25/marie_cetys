@@ -2,7 +2,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import { AreaTag, duration, Icon, lessonHref, miniHref } from "./ui";
 import { guidedSections, lessonById, miniQuestionCount } from "./content";
 import { nextQuestion, questions, studyDay } from "./study";
-import type { Attempt, ClassRecord, Lesson, Mode, Question, StudyState } from "./types";
+import type { Attempt, ClassRecord, InteractiveExample, Lesson, Mode, Question, StudyState } from "./types";
 
 const classBlocks = [
   ["Diagnóstico", 5], ["Explicación", 10], ["Ejemplo guiado", 10],
@@ -93,12 +93,79 @@ function GuidedExample({ lesson, example }: { lesson: Lesson; example: NonNullab
   </div>;
 }
 
+function AnswerOptions({ options, selection, answer, revealed, lang, onSelect }: {
+  options: string[]; selection: number | null; answer: number; revealed: boolean;
+  lang?: string; onSelect: (index: number) => void;
+}) {
+  const group = useId();
+  return <div className="answers">{options.map((option, index) => (
+    <label className="answer" key={option} data-correct={revealed && index === answer}
+      data-wrong={revealed && selection === index && index !== answer}>
+      <input type="radio" name={group} required checked={selection === index} onChange={() => onSelect(index)} />
+      <span className="answer-letter" aria-hidden="true">{String.fromCharCode(65 + index)}</span>
+      <span lang={lang}>{option}</span>
+    </label>
+  ))}</div>;
+}
+
+function WorkedExampleSteps({ example }: { example: InteractiveExample }) {
+  const headingId = useId();
+  const [index, setIndex] = useState(0);
+  const [responses, setResponses] = useState<Record<number, { selection: number; revealed: boolean }>>({});
+  const prompt = useRef<HTMLLegendElement>(null);
+  const feedback = useRef<HTMLDivElement>(null);
+  const step = example.steps[index];
+  const response = responses[index];
+  const revealed = response?.revealed ?? false;
+  const correct = response?.selection === step.answer;
+
+  function move(next: number) {
+    setIndex(next);
+    requestAnimationFrame(() => prompt.current?.focus());
+  }
+
+  function check(event: React.FormEvent) {
+    event.preventDefault();
+    if (!response || revealed) return;
+    setResponses({ ...responses, [index]: { ...response, revealed: true } });
+    requestAnimationFrame(() => feedback.current?.focus());
+  }
+
+  function restart() {
+    setResponses({});
+    move(0);
+  }
+
+  return <div className="worked-example">
+    <h4 id={headingId}>Ejemplo resuelto</h4>
+    <p>{example.prompt}</p>
+    <form className="exercise example-steps" aria-labelledby={headingId} onSubmit={check}>
+      <p className="muted">Paso {index + 1} de {example.steps.length}</p>
+      <fieldset disabled={revealed}>
+        <legend className="exercise-prompt" ref={prompt} tabIndex={-1}>{step.prompt}</legend>
+        <AnswerOptions options={step.options} answer={step.answer} selection={response?.selection ?? null}
+          revealed={revealed} onSelect={selection => setResponses({ ...responses, [index]: { selection, revealed: false } })} />
+      </fieldset>
+      {revealed && <div className={`feedback ${correct ? "correct" : "wrong"}`} ref={feedback} tabIndex={-1}>
+        <strong>{correct ? "Correcto" : `Respuesta correcta: ${String.fromCharCode(65 + step.answer)}`}</strong>
+        <p>{step.explanation}</p>
+      </div>}
+      <div className="row">
+        {index > 0 && <button className="button secondary" type="button" onClick={() => move(index - 1)}>Paso anterior</button>}
+        {!revealed && <button className="button primary" type="submit">Comprobar paso</button>}
+        {revealed && index < example.steps.length - 1 &&
+          <button className="button primary" type="button" onClick={() => move(index + 1)}>Siguiente paso</button>}
+        {(revealed || index > 0) && <button className="button quiet" type="button" onClick={restart}>Reiniciar ejemplo</button>}
+      </div>
+    </form>
+  </div>;
+}
+
 export function QuestionCard({ question, mode, area, flagged, previous, onFlag, onAttempt }: {
   question: Question; mode: Exclude<Mode, "exam">; area: Lesson["area"]; flagged: boolean;
   previous?: Attempt;
   onFlag: () => void; onAttempt: (attempt: Attempt) => void;
 }) {
-  const group = useId();
   const [selection, setSelection] = useState<number | null>(previous?.selection ?? null);
   const [hinted, setHinted] = useState(false);
   const [guessed, setGuessed] = useState(false);
@@ -168,13 +235,8 @@ export function QuestionCard({ question, mode, area, flagged, previous, onFlag, 
     <fieldset disabled={submitted}>
       <legend ref={prompt} tabIndex={-1} className="exercise-prompt" lang={area === "en" ? "en" : undefined}>{questionText(question.prompt)}</legend>
       <QuestionVisual prompt={question.prompt} />
-      <div className="answers">{question.options.map((option, index) => (
-        <label className="answer" key={option} data-correct={submitted && index === question.answer} data-wrong={submitted && selection === index && index !== question.answer}>
-          <input type="radio" name={group} required checked={selection === index} onChange={() => setSelection(index)} />
-          <span className="answer-letter" aria-hidden="true">{String.fromCharCode(65 + index)}</span>
-          <span lang={area === "en" ? "en" : undefined}>{option}</span>
-        </label>
-      ))}</div>
+      <AnswerOptions options={question.options} answer={question.answer} selection={selection} revealed={submitted}
+        lang={area === "en" ? "en" : undefined} onSelect={setSelection} />
     </fieldset>
     <div className="feedback-region" aria-live="polite">
       {submitted && <div tabIndex={-1} ref={nextFeedback} className={`feedback ${selection === question.answer ? "correct" : "wrong"}`}>
@@ -272,11 +334,7 @@ export function Workbook({ lesson, target, state, onAttempt, onFlag, onClass, on
         aria-labelledby={`regla-${id}`} id={question.id === targetQuestion?.id ? "pregunta-marcada" : undefined} tabIndex={-1}>
         <h3 id={`regla-${id}`}>{title}</h3>
         <ul className="lesson-steps">{points.map(point => <li key={point}>{point}</li>)}</ul>
-        <div className="worked-example">
-          <h4>Ejemplo resuelto</h4>
-          <p className="exercise-prompt">{example.prompt}</p>
-          <p>{example.explanation}</p>
-        </div>
+        <WorkedExampleSteps example={example} />
         <div className="lesson-guided-practice">
           <h4>Ejercicio guiado</h4>
           {exerciseCard(question, classMode)}

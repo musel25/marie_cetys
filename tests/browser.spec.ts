@@ -297,7 +297,8 @@ test("the orthography lesson interleaves examples and exercises before the trial
     const rule = rules.getByRole("region", { name: title, exact: true });
     await expect(rule.getByRole("list").first()).toBeVisible();
     await expect(rule.getByRole("heading", { level: 4 })).toHaveText(["Ejemplo resuelto", "Ejercicio guiado"]);
-    await expect(rule.getByRole("radio")).toHaveCount(4);
+    await expect(rule.getByRole("form", { name: "Ejemplo resuelto" }).getByRole("radio")).toHaveCount(2);
+    await expect(rule.locator(".lesson-guided-practice").getByRole("radio")).toHaveCount(4);
   }
   await expect(page.locator("#explicacion + #ejercicios")).toHaveCount(1);
   const afterExercises = page.locator("#ejercicios + section");
@@ -390,4 +391,33 @@ test("remembers a guided answer and opens its saved doubt inside the explanation
   await saved.click();
   await expect(guided).toBeFocused();
   await expect(guided.getByText("Correcto", { exact: true })).toBeVisible();
+});
+
+test("checks each step of an example and keeps its choices when moving back", async ({ page }) => {
+  await page.setViewportSize({ width: 360, height: 800 });
+  await page.goto("/#/clase/es-ortografia");
+  const example = page.getByRole("region", { name: "Hiato y diptongo", exact: true })
+    .getByRole("form", { name: "Ejemplo resuelto", exact: true });
+  await expect(example.getByText("Paso 1 de 2")).toBeVisible();
+  await expect(example.getByText(/La i átona queda junto a la a/)).toHaveCount(0);
+  const wrongAnswer = example.getByRole("radio", { name: "ha-ci-a", exact: true });
+  await wrongAnswer.focus();
+  await wrongAnswer.press("Space");
+  await example.getByRole("button", { name: "Comprobar paso", exact: true }).press("Enter");
+  await expect(example.getByText("Respuesta correcta: A")).toBeVisible();
+  await expect(example.getByText(/La i átona queda junto a la a/)).toBeVisible();
+  await example.getByRole("button", { name: "Siguiente paso" }).click();
+  await expect(example.getByText("Paso 2 de 2")).toBeVisible();
+  await expect(example.locator("legend")).toBeFocused();
+  await example.getByRole("radio", { name: "Hiato", exact: true }).check();
+  await example.getByRole("button", { name: "Comprobar paso", exact: true }).click();
+  await expect(example.getByText("Correcto", { exact: true })).toBeVisible();
+  await example.getByRole("button", { name: "Paso anterior" }).click();
+  await expect(wrongAnswer).toBeChecked();
+  await expect(example.getByText("Respuesta correcta: A")).toBeVisible();
+  await example.getByRole("button", { name: "Reiniciar ejemplo" }).click();
+  await expect(wrongAnswer).not.toBeChecked();
+  await expect(example.getByText(/La i átona queda junto a la a/)).toHaveCount(0);
+  await page.getByRole("link", { name: "Progreso", exact: true }).click();
+  await expect(page.getByText("Español", { exact: true }).locator("..")).toContainText("0 de 0");
 });

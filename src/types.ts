@@ -17,11 +17,16 @@ export interface WorkedExample {
   explanation: string;
 }
 
+export interface InteractiveExample {
+  prompt: string;
+  steps: Pick<Exercise, "prompt" | "options" | "answer" | "explanation">[];
+}
+
 export interface GuidedSection {
   id: string;
   title: string;
   points: string[];
-  example: WorkedExample;
+  example: InteractiveExample;
   exercise: Exercise;
 }
 

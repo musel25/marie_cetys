@@ -22,7 +22,13 @@ test("each exam area has enough original questions for a timed section and order
       for (const section of lesson.explanation.sections) {
         assert.match(section.id, /^[a-z-]+$/);
         assert.ok(section.title.trim() && section.points.length, lesson.id);
-        assert.ok(section.example.prompt.trim() && section.example.explanation.trim(), section.id);
+        assert.ok(section.example.prompt.trim() && section.example.steps.length >= 2, section.id);
+        for (const step of section.example.steps) {
+          assert.ok(step.prompt.trim() && step.explanation.trim(), section.id);
+          assert.ok(step.options.length >= 2 && step.options.every(option => option.trim()), section.id);
+          assert.equal(new Set(step.options).size, step.options.length, section.id);
+          assert.ok(Number.isInteger(step.answer) && step.answer >= 0 && step.answer < step.options.length, section.id);
+        }
       }
     }
     assert.ok(lesson.exercises.length >= 7, lesson.id);
