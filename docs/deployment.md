@@ -19,6 +19,8 @@ npm run check
 
 The script compares the local commit with the current upstream branch on GitHub. It installs dependencies from the lockfile, runs the checks, and builds the sync service before upload. It uses the `my-vps` SSH alias with your existing SSH key and passwordless `sudo` access. The VPS needs nginx, systemd, and `/usr/bin/node` with `import.meta.main` support.
 
+This release needs the site and sync service from the same commit. The updated service accepts 15-question miniexamen results and earlier results. Reload open study tabs after the release.
+
 Each frontend release goes in `/var/www/marie-cetys/releases/<commit>`. An atomic symlink switch updates `/var/www/marie-cetys/current`. The sync bundle uses a separate release directory under `/opt/marie-cetys-sync/releases/<commit>`.
 
 The initial deployment adds an include to the existing HTTPS server for `math.musel.dev`. The include serves the study site under `/piensa/`. It redirects `/piensa` to `/piensa/`. The browser revalidates HTML and can cache Vite's hashed files under `/piensa/assets/` for a year.

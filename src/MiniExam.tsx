@@ -37,7 +37,6 @@ export default function MiniExam({ lesson, results, onFinish }: {
   lesson: Lesson; results: MiniResult[]; onFinish: (result: MiniResult) => Promise<boolean>;
 }) {
   const formCount = miniFormCount(lesson.id);
-  const questionCount = miniQuestionCount(lesson);
   const questionLanguage = lesson.area === "en" ? "en" : undefined;
   const key = "marie-cetys:mini:" + lesson.id;
   const [run, setRun] = useState(() => loadRun(key, lesson, formCount));
@@ -84,7 +83,7 @@ export default function MiniExam({ lesson, results, onFinish }: {
     const at = Date.now();
     setNow(at);
     update({ id: crypto.randomUUID(), started: at, form: nextMiniForm(results, lesson.id, formCount),
-      current: 0, answers: Array(questionCount).fill(null) });
+      current: 0, answers: Array(miniQuestionCount).fill(null) });
     focusHeading();
   }
 
@@ -117,13 +116,13 @@ export default function MiniExam({ lesson, results, onFinish }: {
   const spent = run ? Math.max(0, Math.floor((now - run.started) / 1000)) : 0;
   return <>
     <header className="lesson-header">
-      <a className="back-link" href={lessonHref(lesson.id)}>Volver a los ejercicios</a>
+      <a className="back-link" href={lessonHref(lesson.id)}>Volver a la lección</a>
       <AreaTag area={lesson.area} />
       <h1>Miniexamen</h1>
       <p>{lesson.title}</p>
     </header>
     {!active && !result && <section className="worksheet mini-sheet">
-      <h2 ref={heading} tabIndex={-1}>{questionCount} preguntas</h2>
+      <h2 ref={heading} tabIndex={-1}>{miniQuestionCount} preguntas</h2>
       <p>El cronómetro va desde que empiezas hasta que entregas. Puedes volver a una pregunta para cambiar tu respuesta.</p>
       <p>Al terminar verás tu tiempo, tus aciertos y las soluciones.</p>
       {history[0] && <p className="mini-previous">Último intento · {history[0].correct} de {history[0].answers.length} · {elapsedTime(history[0].seconds)}</p>}

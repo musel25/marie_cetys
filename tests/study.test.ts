@@ -144,11 +144,13 @@ test("version 1 backups made before mini-tests load with empty mini-test history
   assert.deepEqual(parseBackup(JSON.stringify(legacy)), { ...legacy, miniResults: [] });
 });
 
-test("backups keep the answers, score, and exact time of both mini-test lengths", () => {
+test("backups keep the answers, score, and exact time of current and historical mini-tests", () => {
   const result = { ...miniResult, seconds: 10_801 };
   const spanishResult = { ...result, id: "mini-es", skill: "es-ortografia" };
   const longResult = { ...spanishResult, id: "mini-es-10", form: 2, answers: Array(10).fill(0), correct: 8 };
-  const results = [result, spanishResult, longResult];
+  const expanded = { ...result, id: "mini-hc-15", form: 1, answers: Array(15).fill(0), correct: 13 };
+  const expandedSpanish = { ...expanded, id: "mini-es-15", skill: "es-ortografia" };
+  const results = [result, spanishResult, longResult, expanded, expandedSpanish];
   const data = { ...blankState("2026-11-23"), miniResults: results };
   assert.deepEqual(parseBackup(JSON.stringify(data)).miniResults, results);
 });
@@ -163,6 +165,8 @@ test("backups reject malformed mini-test results", () => {
     [{ ...miniResult, skill: "es-ortografia", answers: Array(9).fill(0) }],
     [{ ...miniResult, skill: "es-ortografia", answers: Array(10).fill(0), correct: 11 }],
     [{ ...miniResult, answers: Array(10).fill(0) }],
+    [{ ...miniResult, answers: Array(14).fill(0) }],
+    [{ ...miniResult, answers: Array(15).fill(0), correct: 16 }],
     [{ ...miniResult, form: 3 }],
     [{ ...miniResult, seconds: 0 }],
     [{ ...miniResult, seconds: 12.5 }],

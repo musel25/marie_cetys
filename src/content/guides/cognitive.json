@@ -43,6 +43,19 @@
         "explanation": "En H–G–C–F, C y F son vecinos en ese orden, y G queda a la izquierda de C.",
         "hint": "Busca el bloque C–F. Después revisa la posición de G.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "En una fila de cuatro casillas, U va antes de L, D va inmediatamente después de L y E va antes de U. ¿Qué orden cumple las tres pistas?",
+        "options": [
+          "E, L, U, D",
+          "U, E, L, D",
+          "E, U, L, D",
+          "E, U, D, L"
+        ],
+        "answer": 2,
+        "explanation": "L y D ocupan dos casillas vecinas en ese orden. U queda antes de L y E queda antes de U. El orden es E, U, L, D.",
+        "hint": "Agrupa L y D en ese orden. Después usa las otras pistas para colocar E y U.",
+        "difficulty": "base"
       }
     },
     {
@@ -87,6 +100,19 @@
         "explanation": "J va antes de H. La fila J–X–Z–H coloca a Z entre ambos, aunque X ocupe una casilla intermedia.",
         "hint": "Decide qué extremo va primero. Luego revisa dónde queda Z.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "En una fila de cinco casillas, X va entre Y y Z. Y va antes de Z. ¿Qué orden cumple ambas pistas?",
+        "options": [
+          "Y, R, S, X, Z",
+          "Z, X, R, S, Y",
+          "X, Y, R, S, Z",
+          "Y, R, Z, S, X"
+        ],
+        "answer": 0,
+        "explanation": "Y ocupa la casilla 1, X la 4 y Z la 5. X queda entre Y y Z aunque no ocupa el centro.",
+        "hint": "Busca Y a la izquierda de X y Z a su derecha.",
+        "difficulty": "base"
       }
     },
     {
@@ -130,6 +156,19 @@
         "answer": 0,
         "explanation": "En A–N–K–D, A va antes de N y D va después de N. K separa a D de N.",
         "hint": "Primero elimina las filas donde A no está antes de N. Después aplica las dos restricciones de D.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "En una fila, G va antes de H. F va después de G y no va junto a H. ¿Qué fila cumple las tres pistas?",
+        "options": [
+          "F, G, K, H",
+          "G, F, H, K",
+          "G, K, H, F",
+          "G, F, K, H"
+        ],
+        "answer": 3,
+        "explanation": "G va antes de H y F queda después de G. K separa a F y H.",
+        "hint": "Primero comprueba que G va antes de F y de H. Después revisa los vecinos de H.",
         "difficulty": "base"
       }
     }
@@ -177,6 +216,19 @@
         "explanation": "La palabra copos sugiere pedazos ligeros que flotan o caen despacio. La escena solo describe pelusa suspendida.",
         "hint": "Une la imagen de los copos con el movimiento que describe la escena.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Al amanecer, una capa de niebla tapaba el campo. La narradora escribe «Una sábana gris cubría el campo». ¿Qué rasgo comparten la sábana y la niebla en esa escena?",
+        "options": [
+          "Están hechas de tela",
+          "Cubren lo que queda debajo",
+          "Hacen ruido al moverse",
+          "Mantienen el campo caliente"
+        ],
+        "answer": 1,
+        "explanation": "La niebla oculta el suelo como una sábana cubre una superficie. La comparación destaca la cobertura.",
+        "hint": "Usa el verbo «cubría». Piensa en lo que deja de verse.",
+        "difficulty": "base"
       }
     },
     {
@@ -220,6 +272,19 @@
         "answer": 1,
         "explanation": "Un collar reúne cuentas distribuidas a lo largo de una línea. La fila de lámparas también alinea puntos brillantes.",
         "hint": "Busca a la vez la disposición de un collar y el brillo de las luces.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Al mirar al fondo de un túnel oscuro, Inés dijo «Se abrió una ventana de luz al final del túnel». ¿Qué imagen reúne las dos pistas de la frase?",
+        "options": [
+          "Un foco encendido a mitad del túnel",
+          "Una puerta cerrada al final del túnel",
+          "Una abertura iluminada a la salida del túnel",
+          "Una fila de focos desde la entrada"
+        ],
+        "answer": 2,
+        "explanation": "La abertura parece una ventana iluminada y está en el extremo del túnel. Esa imagen conserva la forma y la posición.",
+        "hint": "Comprueba qué opción describe una abertura iluminada y la sitúa al final.",
         "difficulty": "base"
       }
     }
@@ -267,6 +332,19 @@
         "explanation": "Una lupa se usa para ampliar una imagen. Un embudo se usa para trasvasar líquidos a otro recipiente.",
         "hint": "Identifica la acción que se realiza con cada instrumento.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Colador es a colar como rallador es a ___.",
+        "options": [
+          "rallar",
+          "queso",
+          "cocina",
+          "metal"
+        ],
+        "answer": 0,
+        "explanation": "Un colador sirve para colar. Un rallador sirve para rallar. Cada pareja va de herramienta a acción.",
+        "hint": "Completa «se usa para __» con una acción.",
+        "difficulty": "base"
       }
     },
     {
@@ -311,6 +389,19 @@
         "explanation": "Un pétalo forma parte de una flor. Un eslabón es una pieza que, unida con otras, forma una cadena.",
         "hint": "Empieza con «un pétalo es una parte de» y conserva ese orden.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Camisa es a manga como árbol es a ___. ¿Qué palabra conserva la relación?",
+        "options": [
+          "bosque",
+          "madera",
+          "huerto",
+          "rama"
+        ],
+        "answer": 3,
+        "explanation": "Una manga es parte de una camisa. Una rama es parte de un árbol. En ambas parejas, el conjunto aparece primero.",
+        "hint": "Completa «un árbol tiene como parte una ___».",
+        "difficulty": "base"
       }
     },
     {
@@ -354,6 +445,19 @@
         "answer": 3,
         "explanation": "Una lata puede fabricarse con aluminio y un sobre puede fabricarse con papel. Tijeras y recortar forman otra relación.",
         "hint": "Prueba la frase «puede fabricarse con» con la primera pareja y con la segunda.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "¿Qué pareja conserva la relación de «algodón es a camiseta»?",
+        "options": [
+          "Lápiz es a dibujar",
+          "Cuero es a cinturón",
+          "Puerta es a casa",
+          "Guante es a mano"
+        ],
+        "answer": 1,
+        "explanation": "La camiseta se fabrica con algodón. El cinturón se fabrica con cuero. Las dos parejas van de material a producto.",
+        "hint": "Busca un material que forme parte del objeto terminado.",
         "difficulty": "base"
       }
     }
@@ -401,6 +505,19 @@
         "explanation": "La primera suma 4 en cada salto y sigue con 17. La segunda multiplica por 2 en cada salto y sigue con 40.",
         "hint": "Compara dos saltos de cada serie. Revisa la diferencia y el factor.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Completa las dos secuencias. Da primero el valor de A. A: 18, 15, 12, ___. B: 2, 8, 32, ___.",
+        "options": [
+          "9 y 36",
+          "6 y 128",
+          "9 y 128",
+          "15 y 64"
+        ],
+        "answer": 2,
+        "explanation": "En A, cada término disminuye en 3. Sigue 9. En B, cada término se multiplica por 4. Sigue 128.",
+        "hint": "Compara las diferencias en A y los factores en B.",
+        "difficulty": "base"
       }
     },
     {
@@ -445,6 +562,19 @@
         "explanation": "En posiciones impares, suma 4 y obtén 14. En las pares, resta 10 y obtén 40.",
         "hint": "La posición 7 sigue la serie que empieza en 2. La posición 8 sigue la que empieza en 70.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Completa las dos últimas posiciones de 3, 54, 8, 45, 13, 36, ___, ___.",
+        "options": [
+          "18 y 27",
+          "18 y 31",
+          "22 y 27",
+          "27 y 18"
+        ],
+        "answer": 0,
+        "explanation": "Las posiciones impares suman 5: 3, 8, 13, 18. Las pares restan 9: 54, 45, 36, 27.",
+        "hint": "Escribe los términos de las posiciones impares en una línea y los pares en otra.",
+        "difficulty": "base"
       }
     },
     {
@@ -488,6 +618,19 @@
         "answer": 0,
         "explanation": "Las letras avanzan dos posiciones: a, c, e, g, i. Toca minúscula. Los números suben de tres en tres, así que sigue 16.",
         "hint": "Separa las letras de los números y revisa la mayúscula después de G.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "En la secuencia C12, e10, G8, i6, ___, ¿qué término va después? Cuenta con el alfabeto español, incluida la ñ.",
+        "options": [
+          "k4",
+          "K6",
+          "L4",
+          "K4"
+        ],
+        "answer": 3,
+        "explanation": "Las letras avanzan dos posiciones y alternan mayúscula y minúscula. Después de i va K. Los números restan 2, así que después de 6 va 4.",
+        "hint": "Encuentra por separado el cambio de letra, el uso de mayúscula y el cambio de número.",
         "difficulty": "base"
       }
     }
@@ -535,6 +678,19 @@
         "explanation": "Las filas suben 5 por casilla y las columnas suben 2 por fila. Desde 15 + 5 o desde 18 + 2 se llega a 20.",
         "hint": "Calcula el paso hacia la derecha y el paso hacia abajo con líneas completas.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Las filas mantienen un paso constante y las columnas mantienen otro. ¿Qué número falta?\n\n24 | 21 | 18\n29 | 26 | 23\n34 | ___ | 28",
+        "options": [
+          "29",
+          "31",
+          "32",
+          "36"
+        ],
+        "answer": 1,
+        "explanation": "En una fila, cada valor disminuye en 3. Desde 34 sigue 31. En la segunda columna, cada valor aumenta en 5. Después de 26 también sigue 31.",
+        "hint": "Usa la tercera fila para hallar el dato. Compruébalo con la segunda columna.",
+        "difficulty": "base"
       }
     },
     {
@@ -579,6 +735,19 @@
         "explanation": "En cada fila, el tercer valor es el primero menos el segundo. 18 − 6 = 12, 10 − 3 = 7 y 25 − 8 = 17.",
         "hint": "Prueba qué operación convierte 18 y 6 en 12 y comprueba la segunda fila.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "En cada fila se aplica la misma operación a los dos primeros números para obtener el tercero. ¿Qué número falta?\n\n8 | 5 | 13\n4 | 8 | 12\n6 | 11 | ___",
+        "options": [
+          "5",
+          "15",
+          "17",
+          "66"
+        ],
+        "answer": 2,
+        "explanation": "La tercera casilla es la suma de las dos primeras. En la última fila, 6 más 11 da 17.",
+        "hint": "Prueba una operación con 8 y 5. Comprueba también la fila de 4 y 8.",
+        "difficulty": "base"
       }
     },
     {
@@ -622,6 +791,19 @@
         "answer": 3,
         "explanation": "Las letras avanzan una posición por casilla hacia la derecha. Después de f va g. Las casillas de los extremos llevan mayúscula, así que se escribe G.",
         "hint": "Determina primero la letra que sigue a f. Luego observa el uso de mayúsculas de esa columna.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "¿Qué letra falta en esta matriz? Usa el alfabeto español, incluida la ñ.\n\np | r | T\nq | s | U\nr | t | ___",
+        "options": [
+          "V",
+          "v",
+          "W",
+          "u"
+        ],
+        "answer": 0,
+        "explanation": "En cada fila hay saltos de dos letras. En la tercera fila sigue v después de r y t. La última columna usa mayúscula, por eso va V.",
+        "hint": "Revisa el salto de la tercera fila y la forma de las letras en la tercera columna.",
         "difficulty": "base"
       }
     }
@@ -669,6 +851,19 @@
         "explanation": "La mochila pertenece a B por su color y a C por sus bolsillos. Como no tiene ruedas, queda fuera de A.",
         "hint": "Marca sí o no para cada característica antes de elegir una zona.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Sectores del diagrama. 1 solo A · 2 A y B sin C · 3 solo B · 4 A y C sin B · 5 A, B y C · 6 B y C sin A · 7 solo C.\nA = llaveros de metal. B = llaveros con letras. C = llaveros redondos. ¿Dónde queda un llavero redondo de metal y sin letras?",
+        "options": [
+          "Sector 1",
+          "Sector 2",
+          "Sector 6",
+          "Sector 4"
+        ],
+        "answer": 3,
+        "explanation": "El llavero cumple A y C. Queda fuera de B porque no tiene letras. El sector 4 reúne esas condiciones.",
+        "hint": "Marca sí o no para metal, letras y forma redonda.",
+        "difficulty": "base"
       }
     },
     {
@@ -712,6 +907,19 @@
         "answer": 1,
         "explanation": "Con B opcional, sirven las dos zonas: las 4 fichas sin B y las 6 que están en los tres conjuntos. El total es 10.",
         "hint": "Observa si la pregunta exige excluir B o permite ambas zonas.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Sectores del diagrama. 1 solo A · 2 A y B sin C · 3 solo B · 4 A y C sin B · 5 A, B y C · 6 B y C sin A · 7 solo C.\nA = paquetes grandes. B = paquetes frágiles. C = paquetes numerados. Hay 7 paquetes en el sector 2 y 9 en el sector 5. ¿Cuántos son grandes y frágiles, pero no numerados?",
+        "options": [
+          "9",
+          "7",
+          "16",
+          "2"
+        ],
+        "answer": 1,
+        "explanation": "El sector 2 reúne A y B sin C y tiene 7 paquetes. El sector 5 incluye C, por lo que sus 9 paquetes quedan fuera del conteo.",
+        "hint": "Busca el sector que cumple A y B y deja fuera C.",
         "difficulty": "base"
       }
     }
@@ -759,6 +967,19 @@
         "explanation": "Si la máquina hubiese terminado su ciclo, la campana habría sonado. Como no sonó, la máquina no completó el ciclo.",
         "hint": "Busca qué condición habría obligado a que sonara la campana.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Si se reinicia la computadora, aparece un aviso. El mismo aviso puede aparecer al abrir una aplicación. Hoy apareció el aviso. ¿Qué se puede concluir sobre el reinicio?",
+        "options": [
+          "La computadora se reinició",
+          "La computadora no se reinició",
+          "El aviso no basta para saber si la computadora se reinició",
+          "Se abrió una aplicación y se reinició la computadora"
+        ],
+        "answer": 2,
+        "explanation": "Reiniciar produce el aviso, pero abrir una aplicación también puede producirlo. El aviso por sí solo no identifica la causa.",
+        "hint": "Comprueba si hay más de una manera de producir el aviso.",
+        "difficulty": "base"
       }
     },
     {
@@ -803,6 +1024,19 @@
         "explanation": "El permiso es un requisito para publicar esa foto. Sin él, la publicación no puede hacerse, haya o no revisión.",
         "hint": "Traduce «es obligatorio» como una condición que la acción no puede saltarse.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Una persona puede participar en la final solamente si tiene un pase. El comité también puede pedir una identificación. Mara tiene un pase. ¿Qué se puede concluir?",
+        "options": [
+          "Mara cumple un requisito, pero los datos no confirman que pueda participar",
+          "Mara puede participar con seguridad",
+          "Mara ya mostró su identificación",
+          "Mara no puede participar"
+        ],
+        "answer": 0,
+        "explanation": "El pase es necesario. Si el comité pide identificación, también hay que mostrarla. El pase de Mara no confirma por sí solo su participación.",
+        "hint": "Distingue un requisito de todo lo que se necesita para entrar.",
+        "difficulty": "base"
       }
     },
     {
@@ -846,6 +1080,19 @@
         "answer": 0,
         "explanation": "Las cajas abiertas del estante no están listas. El enunciado solo asegura que hay al menos una abierta, así que no podemos hablar de todas.",
         "hint": "Toma una de las cajas abiertas que sí sabemos que está en el estante. Aplica la primera regla.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Todos los vasos de la repisa son de vidrio. Ningún vaso de vidrio se usa al aire libre. ¿Qué se puede concluir?",
+        "options": [
+          "Ningún vaso de vidrio está en la repisa",
+          "Todos los vasos de vidrio están en la repisa",
+          "Algunos vasos de la repisa se usan al aire libre",
+          "Ningún vaso de la repisa se usa al aire libre"
+        ],
+        "answer": 3,
+        "explanation": "Cada vaso de la repisa pertenece al grupo de vidrio. Como ningún vaso de vidrio se usa al aire libre, tampoco se usa al aire libre un vaso de la repisa.",
+        "hint": "Aplica la segunda regla a los vasos de la repisa.",
         "difficulty": "base"
       }
     }
@@ -893,6 +1140,19 @@
         "explanation": "La opción a las 13:50 llega antes de las 14:00, es a color y cuesta $60, una cantidad permitida.",
         "hint": "Anota el límite de tiempo, el formato y el precio. Revisa los tres en cada opción.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Una reunión debe comenzar a las 17:00 o más tarde. La sala debe tener lugar para al menos 12 personas y costar menos de $300. Cada opción indica una hora de inicio disponible. ¿Cuál sala cumple los tres requisitos?",
+        "options": [
+          "Sala Sur: 17:00, 13 personas, $300",
+          "Sala Norte: 17:30, 12 personas, $290",
+          "Sala Este: 16:45, 14 personas, $250",
+          "Sala Oeste: 18:00, 11 personas, $220"
+        ],
+        "answer": 1,
+        "explanation": "Norte está disponible después de las 17:00, admite a 12 personas y cuesta menos de $300. Sur falla por precio, Este por hora y Oeste por cupo.",
+        "hint": "El cupo admite exactamente 12. El precio debe ser menor que $300.",
+        "difficulty": "base"
       }
     },
     {
@@ -937,6 +1197,19 @@
         "explanation": "Al retirar el tapete, desapareció el roce. El cambio observado apoya la explicación del tapete.",
         "hint": "Busca qué elemento cambió cuando la puerta volvió a funcionar.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Una puerta queda trabada cuando su pestillo está salido. Al retraer el pestillo, la misma puerta cierra bien. ¿Cuál es la explicación con más apoyo?",
+        "options": [
+          "El suelo cambió de altura",
+          "Cambió la temperatura del edificio",
+          "El pestillo impide cerrar la puerta",
+          "La puerta pesa demasiado"
+        ],
+        "answer": 2,
+        "explanation": "La puerta cierra al retraer el pestillo. El cambio que coincide con la solución es la posición del pestillo.",
+        "hint": "Identifica qué cambió entre el intento que falló y el intento que funcionó.",
+        "difficulty": "base"
       }
     },
     {
@@ -980,6 +1253,19 @@
         "answer": 1,
         "explanation": "Los resultados por persona son A: 3 kg, B: 6 kg, C: 4 kg y D: 5 kg. B tiene el mayor valor.",
         "hint": "Divide los kilogramos de cada equipo entre su número de personas.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Cuatro grupos arman tarjetas. A arma 36 con 6 personas, B arma 32 con 8, C arma 25 con 5 y D arma 28 con 7. ¿Cuál arma más tarjetas por persona?",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "answer": 0,
+        "explanation": "Divide las tarjetas entre las personas. Los resultados son 6 para A, 4 para B, 5 para C y 4 para D.",
+        "hint": "Calcula las tarjetas por persona de cada grupo antes de comparar.",
         "difficulty": "base"
       }
     }

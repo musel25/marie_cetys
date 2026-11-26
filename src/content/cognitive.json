@@ -1,6 +1,7 @@
 [
   {
     "id": "hc-orden",
+    "miniReserveSize": 14,
     "title": "Ordenar con pistas",
     "objective": "Ubica letras o números con pistas de posición y elige el orden que cumple todas las pistas.",
     "source": "Guía de College Board 2019, pp. 7 y 13 del PDF. Temario de CETYS, pp. 4–5. Prueba de práctica PIENSE II, pp. 2–3, ejercicios 1–6.",
@@ -148,11 +149,51 @@
         "explanation": "H va en la tercera casilla, Z va en la segunda y W va en la primera. Quedan G e Y. Como Y va después de G, G ocupa el cuarto lugar.",
         "hint": "Coloca a H y a Z. Después comprueba qué lugar queda libre antes de Z.",
         "difficulty": "exam"
+      },
+      {
+        "prompt": "N y H van antes de B. K va inmediatamente después de B. E va después de K. N no va junto a B. ¿Qué orden cumple todas las pistas?",
+        "options": [
+          "H, N, B, K, E",
+          "N, H, B, K, E",
+          "N, H, B, E, K",
+          "H, B, K, N, E"
+        ],
+        "answer": 1,
+        "explanation": "N y H ocupan las casillas anteriores a B. Como N no puede tocar a B, H queda en la segunda casilla. Después de B van K y E.",
+        "hint": "Coloca primero el bloque B–K. Deja espacio para E después del bloque.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "En una fila de cinco lugares, P ocupa la segunda casilla. Y no va junto a P. J va inmediatamente antes de S. T va antes de J. ¿Quién ocupa la quinta casilla?",
+        "options": [
+          "T",
+          "J",
+          "S",
+          "Y"
+        ],
+        "answer": 3,
+        "explanation": "Si J y S ocuparan las casillas 4 y 5, Y tendría que ocupar la 1 o la 3, ambas vecinas de P. J y S ocupan las casillas 3 y 4. T ocupa la 1 y Y la 5.",
+        "hint": "Prueba las dos ubicaciones posibles para el bloque J–S.",
+        "difficulty": "challenge"
+      },
+      {
+        "prompt": "R va antes de P. P va antes de Q. S va después de Q. N no ocupa ninguna de las dos primeras casillas. ¿Qué debe ser cierto en todos los órdenes válidos?",
+        "options": [
+          "P va antes de S",
+          "Q ocupa la tercera casilla",
+          "N va antes de Q",
+          "S ocupa la quinta casilla"
+        ],
+        "answer": 0,
+        "explanation": "Las primeras tres pistas fijan la relación R–P–Q–S. N puede insertarse en la tercera, cuarta o quinta casilla. P queda antes de S en los tres casos.",
+        "hint": "Ordena primero las cuatro letras relacionadas. Después prueba dónde puede ir N.",
+        "difficulty": "exam"
       }
     ]
   },
   {
     "id": "hc-metaforas",
+    "miniReserveSize": 13,
     "title": "Encontrar el sentido de una metáfora",
     "objective": "Relaciona una descripción figurada con la opción que mejor comparte sus características.",
     "source": "Guía de College Board 2019, pp. 7 y 13–14 del PDF. Temario de CETYS, pp. 6–7. Prueba de práctica PIENSE II, p. 3, ejercicios 7–11.",
@@ -287,11 +328,51 @@
         "explanation": "Un plano y una brújula ayudan a orientarse. El director dice que el plano sirve de guía por el edificio.",
         "hint": "Compara para qué sirven un plano y una brújula.",
         "difficulty": "exam"
+      },
+      {
+        "prompt": "Dos grupos habían dejado de hablarse. Una vecina entregó una nota que los animó a reunirse. Alguien dijo «La nota fue un puente». ¿Qué significa la comparación?",
+        "options": [
+          "La nota indicaba dónde cruzar un río",
+          "Los grupos escribieron una nota sobre construcción",
+          "La nota ayudó a restablecer el contacto",
+          "Los grupos se reunieron para medir una distancia"
+        ],
+        "answer": 2,
+        "explanation": "Un puente conecta dos lugares separados. En esta escena, la nota ayuda a conectar a los dos grupos.",
+        "hint": "Identifica qué hizo la nota por los dos grupos.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Al llover, muchas personas cruzaron juntas con sus paraguas amarillos abiertos. El narrador escribe «Un enjambre amarillo atravesó la calle». ¿Qué rasgos destaca la metáfora?",
+        "options": [
+          "Muchos elementos amarillos se mueven juntos",
+          "Un solo paraguas grande bloquea el paso",
+          "Un grupo de personas permanece inmóvil",
+          "La lluvia cae sobre la calle vacía"
+        ],
+        "answer": 0,
+        "explanation": "El enjambre aporta la imagen de muchos elementos en movimiento. «Amarillo» conserva el color visible de los paraguas.",
+        "hint": "Busca tanto la idea de grupo en movimiento como la pista del color.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Al principio, nadie proponía cambios en la asamblea. Después de leer un anuncio, varias personas empezaron a compartir ideas. Una dijo «El anuncio fue la chispa de la reunión». ¿Qué quiere decir?",
+        "options": [
+          "El anuncio iluminó el salón",
+          "El anuncio puso fin a la reunión",
+          "El anuncio describe un incendio",
+          "El anuncio inició el intercambio de ideas"
+        ],
+        "answer": 3,
+        "explanation": "Una chispa puede iniciar un fuego. En este contexto, el anuncio inicia el intercambio de ideas.",
+        "hint": "Compara lo que ocurre antes y después de leer el anuncio.",
+        "difficulty": "exam"
       }
     ]
   },
   {
     "id": "hc-analogias",
+    "miniReserveSize": 13,
     "title": "Completar analogías",
     "objective": "Explica la relación entre dos palabras y encuentra otra pareja con la misma relación y el mismo orden.",
     "source": "Guía de College Board 2019, pp. 7 y 14 del PDF. Temario de CETYS, pp. 6–7. Prueba de práctica PIENSE II, p. 4, ejercicios 12–16.",
@@ -426,11 +507,51 @@
         "explanation": "Un vendaval es viento intenso y una brisa es viento suave. Un grito es intenso y un susurro es suave. Llovizna y aguacero siguen el orden inverso.",
         "hint": "Compara la intensidad de las dos palabras en el orden dado.",
         "difficulty": "exam"
+      },
+      {
+        "prompt": "«Calendario es a mes» conserva la misma relación y dirección que ___.",
+        "options": [
+          "capítulo es a libro",
+          "novela es a capítulo",
+          "autor es a editorial",
+          "tinta es a bolígrafo"
+        ],
+        "answer": 1,
+        "explanation": "Un mes es una división del calendario. Un capítulo es una división de una novela. El conjunto aparece antes que una de sus partes.",
+        "hint": "La primera palabra debe nombrar lo que se divide en partes.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Vidrio es a frasco como cera es a ___.",
+        "options": [
+          "lámpara",
+          "abeja",
+          "vela",
+          "fuego"
+        ],
+        "answer": 2,
+        "explanation": "Un frasco puede fabricarse con vidrio y una vela puede fabricarse con cera. Las dos parejas van de material a producto.",
+        "hint": "Busca un objeto que se pueda fabricar con cera.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Qué pareja reproduce la relación de «frágil es a resistente»?",
+        "options": [
+          "romper es a vidrio",
+          "duro es a firme",
+          "pesado es a metal",
+          "áspero es a liso"
+        ],
+        "answer": 3,
+        "explanation": "Frágil y resistente se oponen. Áspero y liso también expresan cualidades opuestas.",
+        "hint": "Decide si las palabras tienen significados parecidos, contrarios o asociados.",
+        "difficulty": "exam"
       }
     ]
   },
   {
     "id": "hc-secuencias",
+    "miniReserveSize": 13,
     "title": "Completar secuencias",
     "objective": "Identifica una regla que se repite en números o letras y úsala para completar los espacios.",
     "source": "Guía de College Board 2019, pp. 7 y 15 del PDF. Temario de CETYS, pp. 8–9. Prueba de práctica PIENSE II, p. 5, ejercicios 17–21.",
@@ -565,11 +686,51 @@
         "explanation": "La regla alterna sumar 3 y multiplicar por 2. Después de 34 siguen 34 + 3 = 37 y 37 × 2 = 74.",
         "hint": "Busca dos operaciones que se alternan.",
         "difficulty": "exam"
+      },
+      {
+        "prompt": "Completa la secuencia 42, 39, 33, 24, ___.",
+        "options": [
+          "12",
+          "15",
+          "18",
+          "21"
+        ],
+        "answer": 0,
+        "explanation": "Los términos disminuyen en 3, luego en 6 y luego en 9. La disminución siguiente es 12. El valor es 24 − 12 = 12.",
+        "hint": "Anota cuánto baja la secuencia en cada salto. Mira cómo cambian esas cantidades.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Completa la secuencia 2, 81, 6, 27, 18, 9, ___, ___.",
+        "options": [
+          "24 y 6",
+          "54 y 6",
+          "54 y 3",
+          "27 y 3"
+        ],
+        "answer": 2,
+        "explanation": "Las posiciones impares van de 2 a 6 y a 18 al multiplicar por 3. Sigue 54. Las pares van de 81 a 27 y a 9 al dividir entre 3. Sigue 3.",
+        "hint": "Separa las posiciones pares de las impares y busca un factor en cada grupo.",
+        "difficulty": "challenge"
+      },
+      {
+        "prompt": "Usa el alfabeto español, incluida la ñ. ¿Qué término completa B1, e4, H7, k10, N13, ___?",
+        "options": [
+          "q16",
+          "p16",
+          "P16",
+          "p15"
+        ],
+        "answer": 1,
+        "explanation": "Las letras avanzan de tres en tres. Después de N se cuentan ñ, o y p. Sigue minúscula. Los números aumentan en 3, de 13 a 16.",
+        "hint": "Cuenta el salto desde N, luego revisa la mayúscula y el número.",
+        "difficulty": "exam"
       }
     ]
   },
   {
     "id": "hc-matrices",
+    "miniReserveSize": 13,
     "title": "Encontrar patrones en matrices",
     "objective": "Compara filas y columnas de un cuadro para encontrar los datos que faltan.",
     "source": "Guía de College Board 2019, pp. 7 y 15–16 del PDF. Temario de CETYS, pp. 8–9. Prueba de práctica PIENSE II, p. 6, ejercicios 22–26.",
@@ -706,11 +867,51 @@
         "explanation": "En cada fila, multiplica los dos primeros números y resta el tercero. En la última fila, 7 × 4 − 9 = 19.",
         "hint": "Multiplica los dos primeros datos. Luego compara el resultado con el dato de la última columna.",
         "difficulty": "exam"
+      },
+      {
+        "prompt": "Si el paso de cada fila y el de cada columna se mantienen, ¿qué entrada falta?\n\n30 | 28 | 26\n26 | 24 | 22\n22 | 20 | ___",
+        "options": [
+          "22",
+          "20",
+          "16",
+          "18"
+        ],
+        "answer": 3,
+        "explanation": "De izquierda a derecha se resta 2. De arriba abajo se resta 4. Ambas direcciones dan 18 para la última casilla.",
+        "hint": "Calcula el paso en la primera fila y el paso en la primera columna.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "El valor de la tercera columna depende de los dos primeros de cada fila. ¿Cuál es el dato que falta?\n\n7 | 11 | 16\n13 | 6 | 17\n5 | 17 | ___",
+        "options": [
+          "20",
+          "22",
+          "24",
+          "12"
+        ],
+        "answer": 0,
+        "explanation": "En cada fila se suman los dos primeros valores y se resta 2. En la tercera fila, 5 + 17 − 2 = 20.",
+        "hint": "Compara la suma de los dos primeros números con el último en cada fila completa.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "En las filas hay un salto de letra constante. En las columnas hay otro. ¿Qué casilla completa la matriz? Usa el alfabeto español, incluida la ñ.\n\nE | g | I\nH | j | L\nK | m | ___",
+        "options": [
+          "Ñ",
+          "ñ",
+          "O",
+          "o"
+        ],
+        "answer": 0,
+        "explanation": "En una fila las letras avanzan dos lugares. Después de m se cuentan n y ñ. En una columna las letras avanzan tres lugares: desde L se cuentan m, n y ñ. La última columna usa mayúscula, así que va Ñ.",
+        "hint": "Comprueba el salto en la primera fila y el salto en la primera columna.",
+        "difficulty": "exam"
       }
     ]
   },
   {
     "id": "hc-diagramas",
+    "miniReserveSize": 13,
     "title": "Leer diagramas de tres conjuntos",
     "objective": "Identifica el sector que corresponde a lo que un objeto cumple y a lo que queda fuera.",
     "source": "Guía de College Board 2019, pp. 7 y 16–17 del PDF. Temario de CETYS, pp. 10–11. Prueba de práctica PIENSE II, pp. 7–8, ejercicios 27–32.",
@@ -845,11 +1046,51 @@
         "explanation": "En el sector 4 se cumplen A y C. En el 6 se cumplen B y C. El sector 5 cumple las tres condiciones y el 7 solo cumple C.",
         "hint": "Empieza con los sectores que tienen C. Comprueba qué pasa con A y B en cada uno.",
         "difficulty": "exam"
+      },
+      {
+        "prompt": "Sectores del diagrama. 1 solo A · 2 A y B sin C · 3 solo B · 4 A y C sin B · 5 A, B y C · 6 B y C sin A · 7 solo C.\nA = lámparas portátiles. B = lámparas con batería. C = lámparas regulables. ¿Qué sectores reúnen las lámparas portátiles que no son regulables, con o sin batería?",
+        "options": [
+          "Sectores 1 y 4",
+          "Sectores 1 y 2",
+          "Sectores 2 y 5",
+          "Sectores 3 y 6"
+        ],
+        "answer": 1,
+        "explanation": "Necesitamos A y excluimos C. El sector 1 es solo A. El 2 cumple A y B sin C. La batería es opcional.",
+        "hint": "Busca los sectores de A fuera del círculo C.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Sectores del diagrama. 1 solo A · 2 A y B sin C · 3 solo B · 4 A y C sin B · 5 A, B y C · 6 B y C sin A · 7 solo C.\nA = tazas con asa. B = tazas estampadas. C = tazas grandes. Hay 5 tazas en el sector 4, 8 en el sector 5 y 6 en el sector 7. Los demás sectores están vacíos. ¿Cuántas tazas grandes no están estampadas?",
+        "options": [
+          "14",
+          "8",
+          "13",
+          "11"
+        ],
+        "answer": 3,
+        "explanation": "Los sectores 4 y 7 pertenecen a C y quedan fuera de B. Suma 5 + 6. Las 8 tazas del sector 5 sí están estampadas.",
+        "hint": "Toma los sectores de C. Tacha los que también quedan dentro de B.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Sectores del diagrama. 1 solo A · 2 A y B sin C · 3 solo B · 4 A y C sin B · 5 A, B y C · 6 B y C sin A · 7 solo C.\nA = credenciales con foto. B = credenciales con firma. C = credenciales vigentes. ¿Qué describe una credencial del sector 3?",
+        "options": [
+          "Está firmada, no tiene foto y no está vigente",
+          "Tiene foto y está firmada, pero no está vigente",
+          "Está vigente y firmada, pero no tiene foto",
+          "Está vigente, pero no tiene firma ni foto"
+        ],
+        "answer": 0,
+        "explanation": "El sector 3 pertenece solo a B. Por eso la credencial tiene firma y queda fuera de A y de C.",
+        "hint": "Identifica los conjuntos que incluyen el número 3.",
+        "difficulty": "base"
       }
     ]
   },
   {
     "id": "hc-condicional",
+    "miniReserveSize": 13,
     "title": "Sacar conclusiones de reglas",
     "objective": "Distingue las conclusiones obligatorias de las que solo podrían ser ciertas.",
     "source": "Guía de College Board 2019, pp. 7 y 18 del PDF. Temario de CETYS, pp. 10–11. Prueba de práctica PIENSE II, p. 10, ejercicios 38–42.",
@@ -986,11 +1227,51 @@
         "explanation": "Las reglas indican qué pasa si una pieza supera la revisión. No indican que todas las piezas del armario la hayan superado.",
         "hint": "Comprueba si la regla dice que solo se guardan piezas que superaron la revisión.",
         "difficulty": "exam"
+      },
+      {
+        "prompt": "Si una solicitud está completa, el sistema genera un folio. Si genera un folio, se envía un correo. La solicitud de Eva no generó un correo. ¿Qué conclusión es necesaria?",
+        "options": [
+          "La solicitud de Eva está completa",
+          "El sistema generó un folio para Eva",
+          "La solicitud de Eva no está completa",
+          "Eva recibió un correo con otro folio"
+        ],
+        "answer": 2,
+        "explanation": "Una solicitud completa habría generado un folio y después un correo. Como el correo no se envió para esa solicitud, la solicitud no estaba completa.",
+        "hint": "Empieza por lo que faltó al final. Recorre la cadena de condiciones hacia atrás.",
+        "difficulty": "challenge"
+      },
+      {
+        "prompt": "Una pieza entra al concurso solo si está firmada. La pieza R entró al concurso. ¿Qué dato se puede afirmar?",
+        "options": [
+          "La pieza R está firmada",
+          "Cualquier pieza firmada entra al concurso",
+          "La pieza R ganó el concurso",
+          "La pieza R fue la primera que se firmó"
+        ],
+        "answer": 0,
+        "explanation": "La firma es un requisito para entrar. Como R entró, cumple ese requisito. La regla no dice si ganó ni cuándo se firmó.",
+        "hint": "Identifica qué requisito es obligatorio para una pieza que ya entró.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Algunos sobres del cajón son reciclados. Ningún sobre reciclado tiene ventana. ¿Qué conclusión es obligatoria?",
+        "options": [
+          "Todos los sobres del cajón son reciclados",
+          "Todos los sobres sin ventana están en el cajón",
+          "Todos los sobres del cajón tienen ventana",
+          "Algunos sobres del cajón no tienen ventana"
+        ],
+        "answer": 3,
+        "explanation": "Hay por lo menos un sobre reciclado en el cajón. La segunda regla impide que ese sobre tenga ventana.",
+        "hint": "Aplica la segunda regla a los sobres del cajón que sí son reciclados.",
+        "difficulty": "exam"
       }
     ]
   },
   {
     "id": "hc-practico",
+    "miniReserveSize": 13,
     "title": "Resolver situaciones con los datos",
     "objective": "Elige la solución que cumple las condiciones o la explicación con mayor apoyo en los datos.",
     "source": "Guía de College Board 2019, pp. 7 y 18–19 del PDF. Temario de CETYS, pp. 12–13. Prueba de práctica PIENSE II, pp. 8–9, ejercicios 33–37.",
@@ -1124,6 +1405,45 @@
         "answer": 3,
         "explanation": "Antes de la reserva hay 20 minutos libres. Después hay 25 minutos, de 16:35 a 17:00.",
         "hint": "Identifica los dos periodos libres y compara su duración.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Una asociación necesita 40 sillas para un acto. Cada paquete contiene 12 sillas y cuesta $140. El presupuesto es de $500. Solo se venden paquetes completos. ¿Qué puede concluir la asociación?",
+        "options": [
+          "Tres paquetes alcanzan y respetan el presupuesto",
+          "Ninguna compra de paquetes cumple las dos condiciones",
+          "Cuatro paquetes alcanzan y respetan el presupuesto",
+          "Cinco paquetes alcanzan y respetan el presupuesto"
+        ],
+        "answer": 1,
+        "explanation": "Tres paquetes dan 36 sillas. Se necesitan al menos cuatro para llegar a 40, pero cuatro cuestan $560. Comprar más aumenta el costo.",
+        "hint": "Calcula primero la cantidad mínima de paquetes. Luego compara su costo con el presupuesto.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Un lector de tarjetas falla con las tarjetas A y B. Otro lector funciona con esas mismas tarjetas. ¿Qué explicación tiene más apoyo?",
+        "options": [
+          "Las dos tarjetas están defectuosas",
+          "El problema ocurre con cualquier lector",
+          "La falla está asociada al primer lector",
+          "La falla se debe a que ninguna tarjeta es válida"
+        ],
+        "answer": 2,
+        "explanation": "Las mismas tarjetas funcionan en el segundo lector. El cambio que coincide con la falla es el lector utilizado.",
+        "hint": "Busca el elemento que cambia. Las tarjetas se mantienen iguales.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Cuatro grifos llenan recipientes a caudal constante. A vierte 30 litros en 5 minutos, B vierte 35 en 7, C vierte 27 en 3 y D vierte 32 en 4. ¿Cuál vierte más litros por minuto?",
+        "options": [
+          "Grifo C",
+          "Grifo A",
+          "Grifo B",
+          "Grifo D"
+        ],
+        "answer": 0,
+        "explanation": "Divide el volumen de cada grifo entre sus minutos. A vierte 6 por minuto, B vierte 5, C vierte 9 y D vierte 8. C tiene el caudal mayor.",
+        "hint": "Compara litros por minuto, porque los tiempos de medición son diferentes.",
         "difficulty": "exam"
       }
     ]

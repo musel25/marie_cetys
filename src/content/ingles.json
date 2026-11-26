@@ -122,6 +122,19 @@
         "explanation": "Después de Would you mind se usa la forma en -ing. La petición completa es «Would you mind closing the window?»",
         "hint": "Busca la forma verbal que sigue a mind en esta petición.",
         "difficulty": "exam"
+      },
+      {
+        "prompt": "Choose the question that asks for the name of the person who received the award.",
+        "options": [
+          "Who the award received?",
+          "Who received the award?",
+          "Who receive the award yesterday?",
+          "Who did the award receive it?"
+        ],
+        "answer": 1,
+        "explanation": "Who ocupa el lugar del sujeto. Le siguen el verbo en pasado received y el objeto the award.",
+        "hint": "La palabra who reemplaza al sujeto que realizó la acción.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -249,6 +262,19 @@
         "answer": 2,
         "explanation": "Lamps recibe la acción. Se usa were con el sujeto plural y replaced como participio.",
         "hint": "Usa voz pasiva en pasado. El sujeto lamps es plural.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Complete the sentence with the past perfect. “When Nora reached the station at nine, the train ____ ten minutes earlier.”",
+        "options": [
+          "has left",
+          "will leave",
+          "was leaving",
+          "had left"
+        ],
+        "answer": 3,
+        "explanation": "Had left usa had y el participio left. Indica que el tren salió antes de que Nora llegara a la estación.",
+        "hint": "La salida del tren ocurrió antes de otro momento del pasado.",
         "difficulty": "exam"
       }
     ]
@@ -378,6 +404,19 @@
         "explanation": "Only modifica a three students y limita a tres el número de asistentes. Because of the storm da la causa.",
         "hint": "Busca only junto a la cantidad que se quiere limitar.",
         "difficulty": "exam"
+      },
+      {
+        "prompt": "Complete the sentence with words that describe the recording and how it was made. “The recording sounded ____ because the team worked ____.”",
+        "options": [
+          "clear / carefully",
+          "clearly / careful",
+          "clearly / carefully",
+          "clear / careful"
+        ],
+        "answer": 0,
+        "explanation": "Clear es un adjetivo que describe la grabación con sounded. Carefully es un adverbio que indica cómo trabajó el equipo.",
+        "hint": "Después de sounded, describe el sonido de la grabación. Después de worked, describe cómo trabajó el equipo.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -505,6 +544,19 @@
         "answer": 3,
         "explanation": "A few more expresa una pequeña cantidad adicional con un sustantivo plural contable. A little more se usa con sustancias como flour.",
         "hint": "Eggs es un sustantivo plural que se puede contar.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Choose the words that express a small amount and a purpose. “Ravi added ____ water ____ the clay would stay soft.”",
+        "options": [
+          "a few / because",
+          "many / but",
+          "a little / so that",
+          "a little / although"
+        ],
+        "answer": 2,
+        "explanation": "A little indica una pequeña cantidad de agua. So that introduce el propósito de mantener blanda la arcilla.",
+        "hint": "Water se usa como sustantivo no contable. La segunda parte explica qué quería lograr Ravi.",
         "difficulty": "exam"
       }
     ]
@@ -915,6 +967,19 @@
         "explanation": "Las primeras tres oraciones describen el lugar y su preparación. La cuarta cambia de tema a un partido de fútbol.",
         "hint": "Identifica la oración que no explica cómo prepararon el rincón de lectura.",
         "difficulty": "exam"
+      },
+      {
+        "prompt": "Choose the best closing sentence. “Volunteers started a weekly repair table at the library. They showed neighbors how to mend torn bags and replace loose buttons. By June, the table had helped more than fifty people. ____.”",
+        "options": [
+          "The library has a red door on George Street.",
+          "The repair table gave many neighbors a way to make simple repairs.",
+          "Some bags are larger than other bags.",
+          "A neighborhood market began selling vegetables."
+        ],
+        "answer": 1,
+        "explanation": "La opción correcta reúne el resultado y el propósito del proyecto. Las otras opciones presentan detalles que no desarrollan esa idea.",
+        "hint": "El cierre debe resumir el beneficio de la mesa de reparaciones.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -1042,6 +1107,19 @@
         "answer": 3,
         "explanation": "Sana realiza las dos acciones. Them sustituye a the jars después de placed y conserva el sentido.",
         "hint": "Conserva un solo sujeto y usa un pronombre para la segunda mención de the jars.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Choose the most precise revision. The worker used a tape measure to find the exact width.",
+        "options": [
+          "The worker saw the door.",
+          "The worker opened the wide door.",
+          "The worker fixed something beside the door.",
+          "The worker measured the width of the door."
+        ],
+        "answer": 3,
+        "explanation": "Measured indica que la persona determinó una medida. The width of the door especifica cuál.",
+        "hint": "Elige el verbo que indique qué hizo la persona con la cinta métrica.",
         "difficulty": "exam"
       }
     ]

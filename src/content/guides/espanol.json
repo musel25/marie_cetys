@@ -42,6 +42,19 @@
         "explanation": "En «un museo», la palabra museo es común. En el nombre oficial, Museo e Historia llevan mayúscula y de va en minúscula.",
         "hint": "Separa el tipo de lugar de las palabras que forman su nombre.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Elige la oración que distingue el nombre del recinto y el día de la visita.",
+        "options": [
+          "El Jueves visitamos el Museo del Mar.",
+          "El jueves visitamos el Museo del Mar.",
+          "El jueves visitamos el museo del Mar.",
+          "El Jueves visitamos el Museo Del Mar."
+        ],
+        "answer": 1,
+        "explanation": "Jueves se escribe con minúscula dentro de la oración. En Museo del Mar, Museo y Mar llevan mayúscula y del se escribe con minúscula.",
+        "hint": "Museo del Mar es el nombre oficial del recinto. Escribe el día como nombre común.",
+        "difficulty": "base"
       }
     },
     {
@@ -85,6 +98,19 @@
         "answer": 3,
         "explanation": "En rí-o, la í tónica se separa de la o. En pa-tio, io se pronuncia en la misma sílaba.",
         "hint": "Separa las dos palabras en sílabas y fíjate en cuál recae el acento de voz.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "¿Qué palabra tiene un hiato formado por una vocal cerrada tónica junto a una vocal abierta?",
+        "options": [
+          "puerta",
+          "aire",
+          "cuota",
+          "maíz"
+        ],
+        "answer": 3,
+        "explanation": "Separa ma-íz. La i tónica lleva tilde y se pronuncia en una sílaba distinta de la a.",
+        "hint": "Busca una i o una u que se pronuncie con fuerza en una sílaba propia.",
         "difficulty": "base"
       }
     },
@@ -150,6 +176,19 @@
         "explanation": "El porqué significa el motivo. Porque introduce la causa del traslado.",
         "hint": "Intenta sustituir el primer espacio por motivo y el segundo por ya que.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Completa. «¿____ guardaste la llave aquí?». «____ la necesita el siguiente grupo».",
+        "options": [
+          "Por qué / Porque",
+          "Porqué / Por que",
+          "Porque / Porqué",
+          "Por que / Por qué"
+        ],
+        "answer": 0,
+        "explanation": "Por qué introduce la pregunta. Porque une la respuesta con su explicación.",
+        "hint": "El primer espacio pide una causa. El segundo presenta esa causa.",
+        "difficulty": "base"
       }
     },
     {
@@ -203,6 +242,19 @@
         "explanation": "Balcón es aguda y termina en n. Lápiz es grave y termina en z.",
         "hint": "Ubica la sílaba tónica y revisa la última letra de cada palabra.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "¿Cuál de estas palabras es grave y lleva tilde porque termina en una consonante distinta de n o s?",
+        "options": [
+          "canción",
+          "botella",
+          "lápiz",
+          "rápido"
+        ],
+        "answer": 2,
+        "explanation": "En lá-piz, lá es la penúltima sílaba. La palabra grave lleva tilde porque termina en z.",
+        "hint": "Pronuncia cada palabra y localiza la penúltima sílaba.",
+        "difficulty": "base"
       }
     },
     {
@@ -246,6 +298,19 @@
         "answer": 3,
         "explanation": "Tú es el pronombre que identifica a la persona que dejó el cuaderno. Tu es el posesivo que acompaña al sustantivo cuaderno.",
         "hint": "Identifica quién hizo la acción y qué palabra acompaña a cuaderno.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Completa con las formas correctas. «Si me das una taza de ____, llevaré una para ____».",
+        "options": [
+          "te / tí",
+          "té / ti",
+          "te / ti",
+          "té / tí"
+        ],
+        "answer": 1,
+        "explanation": "Té lleva tilde cuando nombra la bebida. El pronombre ti se escribe sin tilde.",
+        "hint": "Distingue el nombre de la bebida y el pronombre después de para.",
         "difficulty": "base"
       }
     }
@@ -293,6 +358,19 @@
         "explanation": "Des- va antes de conectar y expresa la acción inversa.",
         "hint": "Separa la base conectar y mira dónde queda des-.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "¿Qué palabra se forma al añadir un sufijo de tamaño a la raíz de «mesa»?",
+        "options": [
+          "portamesas",
+          "mesa grande",
+          "sobremesa",
+          "mesita"
+        ],
+        "answer": 3,
+        "explanation": "Mesita se forma con la raíz mes- y el sufijo diminutivo -ita. Nombra una mesa pequeña.",
+        "hint": "Localiza el elemento que se añade al final de la raíz.",
+        "difficulty": "base"
       }
     },
     {
@@ -337,6 +415,19 @@
         "explanation": "Actitud se refiere a una disposición o postura. Aptitud se refiere a una capacidad. Se parecen en su forma.",
         "hint": "Compara una actitud positiva con la aptitud para dibujar.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "En una región donde b y v se pronuncian igual, ¿qué relación tienen «bello» y «vello»?",
+        "options": [
+          "Son homófonos.",
+          "Son homógrafos.",
+          "Son sinónimos.",
+          "Son antónimos."
+        ],
+        "answer": 0,
+        "explanation": "Se pronuncian igual, tienen distinta escritura y significan cosas distintas. Por eso son homófonos.",
+        "hint": "Compara la pronunciación, la escritura y el significado.",
+        "difficulty": "base"
       }
     },
     {
@@ -380,6 +471,19 @@
         "answer": 3,
         "explanation": "La primera frase plantea una condición negativa. La segunda corrige qué se pide.",
         "hint": "Prueba «en caso de que no» en el primer espacio.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Completa. «____ encuentras el mapa, llama a Sara. No está en la mochila, ____ en el cajón».",
+        "options": [
+          "Sino / sino",
+          "Si no / si no",
+          "Si no / sino",
+          "Sino / si no"
+        ],
+        "answer": 2,
+        "explanation": "Si no introduce la condición de no encontrar el mapa. Sino corrige la ubicación negada y señala el cajón.",
+        "hint": "Identifica primero una condición negativa. Después identifica una corrección.",
         "difficulty": "base"
       }
     }
@@ -427,6 +531,19 @@
         "explanation": "Ayer pide pasado y los técnicos es un sujeto plural. Usa vinieron.",
         "hint": "Elige primero el tiempo y después el número.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Completa con una forma de hacer. «Ayer yo ____ la lista en cinco minutos».",
+        "options": [
+          "hace",
+          "hice",
+          "hizo",
+          "hago"
+        ],
+        "answer": 1,
+        "explanation": "Hice corresponde a la primera persona singular del pretérito de hacer.",
+        "hint": "La acción terminó ayer. El sujeto es yo.",
+        "difficulty": "base"
       }
     },
     {
@@ -471,6 +588,19 @@
         "explanation": "Revisado queda invariable con han. Revisadas describe las copias y concuerda en femenino plural.",
         "hint": "Marca qué participio depende de haber y cuál describe un sustantivo.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Completa. «Las editoras han ____ la portada. Las etiquetas ya estaban ____».",
+        "options": [
+          "revisadas / pegadas",
+          "revisado / pegado",
+          "revisadas / pegado",
+          "revisado / pegadas"
+        ],
+        "answer": 3,
+        "explanation": "Con han, el participio revisado mantiene su forma. Con estaban, pegadas concuerda con las etiquetas en femenino plural.",
+        "hint": "Distingue el participio que acompaña a haber del que describe a las etiquetas.",
+        "difficulty": "base"
       }
     },
     {
@@ -514,6 +644,19 @@
         "answer": 2,
         "explanation": "Cerrar el local y enviar el reporte son dos acciones en secuencia y tienen verbos conjugados propios.",
         "hint": "Busca cuál frase indica una segunda acción posterior.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Elige la oración en la que el gerundio indica una acción simultánea.",
+        "options": [
+          "Iván ordenaba sus notas escuchando música.",
+          "Iván salió del museo, regresando dos días más tarde.",
+          "Iván sembró el lunes, cosechando dos meses después.",
+          "Iván terminó el curso en mayo, inscribiéndose en otro en agosto."
+        ],
+        "answer": 0,
+        "explanation": "Escuchar música ocurre al mismo tiempo que ordenar las notas. En las otras opciones, el gerundio expresa una acción posterior independiente.",
+        "hint": "Comprueba si las dos acciones ocurren al mismo tiempo.",
         "difficulty": "base"
       }
     }
@@ -561,6 +704,19 @@
         "explanation": "El núcleo caja es singular. Quedó concuerda con ese núcleo.",
         "hint": "Sustituye el sujeto completo por «la caja».",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Completa. «Las instrucciones de la máquina ____ dentro de la caja».",
+        "options": [
+          "está",
+          "aparece",
+          "están",
+          "se encuentra"
+        ],
+        "answer": 2,
+        "explanation": "El núcleo del sujeto es instrucciones y está en plural. Están concuerda con ese núcleo.",
+        "hint": "Localiza el sustantivo principal del sujeto. El verbo concuerda con ese sustantivo.",
+        "difficulty": "base"
       }
     },
     {
@@ -604,6 +760,19 @@
         "answer": 2,
         "explanation": "En el taller responde a dónde explicó el fallo. Es un complemento de lugar.",
         "hint": "Distingue qué explicó, a quién se lo explicó y dónde.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "En «Paula envió las invitaciones a sus primos el martes», ¿qué grupo indica quién recibe las invitaciones?",
+        "options": [
+          "las invitaciones",
+          "a sus primos",
+          "el martes",
+          "Paula"
+        ],
+        "answer": 1,
+        "explanation": "A sus primos indica a quiénes llegan las invitaciones. Ese grupo funciona como complemento indirecto.",
+        "hint": "Pregunta a quién envió Paula las invitaciones.",
         "difficulty": "base"
       }
     },
@@ -649,6 +818,19 @@
         "explanation": "Se dice insistió en eso. Conserva en antes de que.",
         "hint": "Sustituye «volviéramos a medir la mesa» por eso.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Completa. «El equipo confía ____ la medición es exacta».",
+        "options": [
+          "que",
+          "a que",
+          "por que",
+          "en que"
+        ],
+        "answer": 3,
+        "explanation": "Confiar en algo exige la preposición en. La conservamos cuando el complemento empieza con que.",
+        "hint": "Completa primero «El equipo confía ___ el resultado».",
+        "difficulty": "base"
       }
     },
     {
@@ -693,6 +875,19 @@
         "explanation": "La expresión «usó una cámara» identifica a quien la manejó y conserva la acción original.",
         "hint": "Busca una frase que diga quién usó la cámara.",
         "difficulty": "exam"
+      },
+      "followUp": {
+        "prompt": "¿Qué versión aclara que Leo llevaba la mochila? «Leo vio a Marta con una mochila amarilla».",
+        "options": [
+          "Con una mochila amarilla al hombro, Leo vio a Marta.",
+          "Leo vio a Marta, que llevaba una mochila amarilla.",
+          "Leo miró la mochila amarilla que llevaba Marta.",
+          "Leo vio a Marta junto a una mochila amarilla."
+        ],
+        "answer": 0,
+        "explanation": "El grupo «Con una mochila amarilla al hombro» describe a Leo. Leo es quien lleva la mochila.",
+        "hint": "Busca qué persona lleva la mochila en cada versión.",
+        "difficulty": "base"
       }
     }
   ],
@@ -739,6 +934,19 @@
         "explanation": "El título resume la infraestructura nueva y su propósito. Los cruces y la estación son detalles de apoyo.",
         "hint": "Busca un título que cubra las dos oraciones.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "El vivero escolar presta herramientas y entrega semillas a las familias. Cada sábado, una voluntaria enseña a preparar la tierra para sembrar en casa.\n\n¿Cuál es la idea principal?",
+        "options": [
+          "Las familias prefieren asistir los sábados.",
+          "Una voluntaria lleva todas las herramientas.",
+          "El vivero apoya a las familias para que puedan sembrar en casa.",
+          "Todas las semillas necesitan el mismo tipo de tierra."
+        ],
+        "answer": 2,
+        "explanation": "Las tres acciones ayudan a las familias a comenzar sus cultivos en casa. El sábado y los materiales son detalles que apoyan esa idea.",
+        "hint": "Identifica para qué sirven en conjunto las herramientas, las semillas y la clase.",
+        "difficulty": "base"
       }
     },
     {
@@ -782,6 +990,19 @@
         "answer": 2,
         "explanation": "El mantel empapado junto al florero caído apoya el derrame. El relato no da esas otras causas o resultados.",
         "hint": "Usa las pistas juntas y evita agregar detalles sin evidencia.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Al entrar al salón, Ada vio las sillas apiladas, el piso recién trapeado y un letrero que decía «Espere a que seque».\n\n¿Qué inferencia tiene más apoyo?",
+        "options": [
+          "Ada fue la última en salir del salón.",
+          "Es probable que apartaran las sillas para limpiar el piso.",
+          "Ada puso el letrero antes de trapear.",
+          "Una silla rota causó la limpieza."
+        ],
+        "answer": 1,
+        "explanation": "Al apilar las sillas se despeja el piso para limpiarlo. El texto indica que la limpieza acaba de terminar.",
+        "hint": "Relaciona el lugar de las sillas con el estado del piso.",
         "difficulty": "base"
       }
     },
@@ -827,6 +1048,19 @@
         "explanation": "Admite a una sola persona porque tiene poco ancho. Angosto conserva ese sentido.",
         "hint": "Usa la parte que explica cuántas personas caben.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "«Se inscribieron 28 equipos. Los partidos duraron veinte minutos. El torneo fue el más divertido del año. El último partido terminó a las seis». ¿Cuál es una opinión?",
+        "options": [
+          "Se inscribieron 28 equipos.",
+          "Los partidos duraron veinte minutos.",
+          "El último partido terminó a las seis.",
+          "El torneo fue el más divertido del año."
+        ],
+        "answer": 3,
+        "explanation": "«El más divertido» expresa una valoración personal. El número de equipos, la duración y la hora del final son datos que se pueden verificar.",
+        "hint": "Busca una valoración que puede cambiar de una persona a otra.",
+        "difficulty": "base"
       }
     },
     {
@@ -871,6 +1105,19 @@
         "explanation": "La distancia coincide. La cobertura de sombra es distinta.",
         "hint": "Separa la distancia de las condiciones de cada sendero.",
         "difficulty": "exam"
+      },
+      "followUp": {
+        "prompt": "Texto A. La biblioteca del parque abre los sábados y presta libros sin costo. Texto B. La biblioteca de la escuela abre los sábados y permite leer en la sala, pero no presta libros. ¿En qué coinciden?",
+        "options": [
+          "Ambas abren los sábados.",
+          "Ambas prestan libros sin costo.",
+          "Ambas quedan en el parque.",
+          "Ambas cierran el fin de semana."
+        ],
+        "answer": 0,
+        "explanation": "Los dos textos dicen que las bibliotecas abren los sábados. El préstamo solo aparece en el texto A.",
+        "hint": "Busca un mismo dato que aparezca de forma explícita en los dos textos.",
+        "difficulty": "base"
       }
     }
   ],
@@ -917,6 +1164,19 @@
         "explanation": "La voz expresa cómo vive una ausencia. Es la función lírica que pide la pregunta.",
         "hint": "Elige el fragmento centrado en una experiencia emocional.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "¿Qué fragmento presenta el diálogo y la indicación de escena de un texto dramático?",
+        "options": [
+          "Mar cruzó la calle y saludó a los vecinos.",
+          "Cuánto extraño la voz tranquila de mi abuela.",
+          "PABLO: ¿Guardaste el boleto? (Se acerca a la ventana.)",
+          "La puerta principal tiene dos hojas de madera."
+        ],
+        "answer": 2,
+        "explanation": "Pablo es el personaje que habla. La indicación «Se acerca a la ventana» señala cómo representar la escena.",
+        "hint": "Busca el nombre de un personaje, sus palabras y una indicación entre paréntesis.",
+        "difficulty": "base"
       }
     },
     {
@@ -960,6 +1220,19 @@
         "answer": 2,
         "explanation": "Probar la puerta trasera es el intento que ocurre entre el problema inicial y su resolución.",
         "hint": "Busca qué hizo el personaje para resolver el problema.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Bea perdió su tarjeta del autobús. Buscó en sus bolsillos y pidió ayuda en la ventanilla. Un conductor encontró la tarjeta y se la devolvió. ¿Qué acción resuelve el conflicto?",
+        "options": [
+          "Bea pierde su tarjeta.",
+          "El conductor le devuelve la tarjeta.",
+          "Bea revisa los bolsillos.",
+          "Bea pide ayuda en la ventanilla."
+        ],
+        "answer": 1,
+        "explanation": "El problema es que Bea perdió su tarjeta. La devolución resuelve ese conflicto y forma parte del desenlace.",
+        "hint": "Ubica el hecho que pone fin al problema inicial.",
         "difficulty": "base"
       }
     },
@@ -1005,6 +1278,19 @@
         "explanation": "El texto presenta las palabras como agujas para expresar que lastiman.",
         "hint": "Busca si las palabras se identifican directamente con otro objeto.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "¿En qué opción se atribuye una acción humana a un objeto?",
+        "options": [
+          "El reloj marcaba las siete.",
+          "El reloj era redondo.",
+          "El reloj brillaba como una moneda.",
+          "El reloj nos regañó con cada campanada."
+        ],
+        "answer": 3,
+        "explanation": "Un reloj no puede regañar. Atribuirle esa acción es una personificación.",
+        "hint": "Busca una acción que pueda realizar una persona.",
+        "difficulty": "base"
       }
     },
     {
@@ -1049,6 +1335,19 @@
         "explanation": "Saber más parece oponerse a ignorar más. La frase cobra sentido porque aprender también permite reconocer lo que falta por aprender.",
         "hint": "Comprueba si las dos ideas parecen oponerse y luego se pueden explicar juntas.",
         "difficulty": "exam"
+      },
+      "followUp": {
+        "prompt": "«Te llamé mil veces y solo marqué dos». ¿Qué recurso usa «mil veces»?",
+        "options": [
+          "Hipérbole",
+          "Paradoja",
+          "Símil",
+          "Imagen olfativa"
+        ],
+        "answer": 0,
+        "explanation": "La expresión exagera la cantidad de llamadas. Esa exageración intencional es una hipérbole.",
+        "hint": "Compara el número dicho con el número de llamadas reales.",
+        "difficulty": "base"
       }
     }
   ],
@@ -1095,6 +1394,19 @@
         "explanation": "Primero se forma la mezcla, luego se vierte y al final se hornea.",
         "hint": "Asegúrate de que la mezcla exista antes de verterla.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Elige un cierre para el párrafo. «El club abrió un punto de reparación de bicicletas. En un mes, sus integrantes ajustaron frenos y cambiaron llantas en treinta bicicletas. ____».",
+        "options": [
+          "El club se reúne junto a una cancha de voleibol.",
+          "Las bicicletas pueden ser de muchos colores.",
+          "El punto de reparación ayudó a que treinta bicicletas volvieran a circular.",
+          "Un grupo de vecinos pidió un horario de natación."
+        ],
+        "answer": 2,
+        "explanation": "La oración elegida reúne el propósito del punto y el resultado del trabajo. Las otras oraciones cambian el enfoque.",
+        "hint": "El cierre debe recuperar el resultado de las reparaciones.",
+        "difficulty": "base"
       }
     },
     {
@@ -1139,6 +1451,19 @@
         "explanation": "Abrir el gimnasio es la condición para entrenar bajo techo.",
         "hint": "Pregunta bajo qué condición se cumple lo que sigue.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Completa con un conector de consecuencia. «Cerraron el puente para repararlo. ____, los autobuses tomaron otra ruta».",
+        "options": [
+          "Sin embargo",
+          "Por eso",
+          "Por ejemplo",
+          "Mientras tanto"
+        ],
+        "answer": 1,
+        "explanation": "Por eso indica que los autobuses cambiaron de ruta como consecuencia del cierre.",
+        "hint": "La segunda oración presenta el resultado de la primera.",
+        "difficulty": "base"
       }
     },
     {
@@ -1182,6 +1507,19 @@
         "answer": 2,
         "explanation": "El equipo de ajedrez no aporta información sobre ahorro de agua.",
         "hint": "Resume primero el objetivo del párrafo y compara cada opción.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "En un párrafo sobre cómo preparar materiales para un mural, ¿qué oración queda fuera de tema?",
+        "options": [
+          "Protege el piso con cartón.",
+          "Separa los pinceles por tamaño.",
+          "Coloca las pinturas cerca de la pared.",
+          "El torneo de ajedrez empieza el viernes."
+        ],
+        "answer": 3,
+        "explanation": "El horario del torneo no aporta información sobre el mural. Las demás oraciones indican cómo preparar los materiales o el lugar.",
+        "hint": "Comprueba si cada oración ayuda a organizar el trabajo del mural.",
         "difficulty": "base"
       }
     }
@@ -1229,6 +1567,19 @@
         "explanation": "En «Leo, deja las llaves aquí», la coma separa el vocativo de la instrucción.",
         "hint": "Busca una instrucción dirigida a Leo.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Hablas directamente con Ana. ¿Qué oración puntúa bien tu petición?",
+        "options": [
+          "Ana, pásame la regla.",
+          "Ana pásame, la regla.",
+          "Ana pásame la regla.",
+          "Ana, pásame, la regla."
+        ],
+        "answer": 0,
+        "explanation": "Ana es un vocativo y se separa con una coma. Pásame y la regla forman la petición y van juntos.",
+        "hint": "Identifica el nombre de la persona a quien se dirige la orden.",
+        "difficulty": "base"
       }
     },
     {
@@ -1273,6 +1624,19 @@
         "explanation": "Cada turno contiene una coma entre nombre y día. El punto y coma separa los turnos.",
         "hint": "Distingue la coma interna del separador entre turnos.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "¿Qué opción puntúa bien la lista después de «Los materiales quedaron así»?",
+        "options": [
+          "Los materiales quedaron así; Julia, papel: Leo, tijeras: Nora, cinta.",
+          "Los materiales quedaron así, Julia; papel, Leo; tijeras, Nora; cinta.",
+          "Los materiales quedaron así: Julia, papel; Leo, tijeras; Nora, cinta.",
+          "Los materiales quedaron así: Julia; papel, Leo; tijeras, Nora; cinta."
+        ],
+        "answer": 2,
+        "explanation": "Los dos puntos anuncian la lista. Los puntos y coma separan los grupos que ya contienen una coma.",
+        "hint": "Usa dos puntos para anunciar la lista. Mantén cada nombre junto a su material.",
+        "difficulty": "base"
       }
     },
     {
@@ -1316,6 +1680,19 @@
         "answer": 3,
         "explanation": "La opción conserva qué cambió, a quién avisó y por qué medio.",
         "hint": "Comprueba qué pasó con la hora, quién recibió el aviso y cómo.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Elige la edición que conserva el dato de tiempo y elimina la repetición. «El electricista subió arriba al tercer piso a las seis».",
+        "options": [
+          "El electricista subió arriba otra vez.",
+          "El electricista subió al tercer piso a las seis.",
+          "El electricista bajó al tercer piso a las seis.",
+          "El electricista subió al tercer piso."
+        ],
+        "answer": 1,
+        "explanation": "La edición elimina «arriba» y conserva la acción, el lugar y la hora.",
+        "hint": "El verbo subir ya indica la dirección.",
         "difficulty": "base"
       }
     }

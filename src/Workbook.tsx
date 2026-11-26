@@ -3,14 +3,13 @@ import { AreaTag, duration, Icon, lessonHref, miniHref } from "./ui";
 import { lessonById, miniQuestionCount } from "./content";
 import { guidedSections } from "./content/guides";
 import { AnswerOptions, OrderDiagram, QuestionCard, QuestionVisual, questionText } from "./QuestionCard";
-import { nextQuestion, questions, studyDay } from "./study";
+import { questions, studyDay } from "./study";
 import type { Attempt, ClassRecord, InteractiveExample, Lesson, Question, StudyState } from "./types";
 
 const interleavedAgenda = [
   ["Diagnóstico", 5, "Elige un ejercicio guiado. Pídele que diga qué diferencia tendría que identificar."],
-  ["Explicación y ejercicios guiados", 20, "En cada bloque, lean la regla y el ejemplo. Pídele que intente el ejercicio antes de pasar al siguiente bloque."],
-  ["Ejercicios de prueba", 15, "Deja que resuelva las preguntas por su cuenta. Pídele que explique qué regla aplicó."],
-  ["Miniexamen", 10, "Deja que responda el miniexamen y entregue por su cuenta."],
+  ["Explicación y práctica guiada", 25, "Lean la regla y resuelvan el ejemplo. Usa los dos ejercicios para practicar el mismo método."],
+  ["Miniexamen", 20, "Deja que responda las preguntas y entregue por su cuenta."],
   ["Corrección", 10, "Revisen las respuestas. Vuelvan al bloque que explica cada error."],
 ] as const;
 
@@ -80,46 +79,28 @@ export default function Workbook({ lesson, target, state, onAttempt, onFlag, onC
   onClass: (record: ClassRecord) => void; onPin: (id: string) => void; announce: (message: string) => void;
 }) {
   const [minutes, setMinutes] = useState(state.settings.minutes);
-  const [live, setLive] = useState(false);
   const classModeKey = "marie-cetys:class:" + lesson.id;
   const [classMode, setClassMode] = useState(() => {
     try { return sessionStorage.getItem(classModeKey) === studyDay(); } catch { return false; }
   });
   const [complete, setComplete] = useState(true);
-  const [liveQuestions, setLiveQuestions] = useState<Question[]>([]);
-  const cognitive = lesson.area === "hc";
-  const all = questions(lesson);
-  const published = all.filter(item => item.difficulty !== "challenge");
   const guided = guidedSections(lesson);
-  const targetQuestion = [...all, ...guided.map(section => section.question)].find(item => item.id === lesson.id + ":" + target);
-  const exerciseList = live ? liveQuestions : all.filter(item => item.difficulty !== "challenge" || targetQuestion?.id === item.id);
+  const targetId = target && lesson.id + ":" + target;
+  const bankQuestion = targetId && questions(lesson).find(item => item.id === targetId);
   const latestAnswers = new Map(state.attempts
     .filter(attempt => attempt.skill === lesson.id && attempt.selection !== undefined && attempt.selection >= 0 && ["live", "practice"].includes(attempt.mode))
     .map(attempt => [attempt.item, attempt]));
   const done = state.classes.some(c => c.skill === lesson.id && c.complete);
   useEffect(() => {
-    if (!targetQuestion) return;
+    if (!targetId) return;
     const frame = requestAnimationFrame(() => jumpTo("pregunta-marcada"));
     return () => cancelAnimationFrame(frame);
-  }, [targetQuestion?.id]);
+  }, [targetId]);
   async function copyLink() {
     try {
       await navigator.clipboard.writeText(new URL(lessonHref(lesson.id), location.href).href);
       announce("Enlace copiado.");
     } catch { announce("Copia el enlace desde la barra del navegador."); }
-  }
-  function openLive() {
-    const excluded = new Set<string>();
-    const selection: Question[] = [];
-    for (let i = 0; i < 3; i++) {
-      const question = nextQuestion(lesson, state.attempts, excluded);
-      if (!question) break;
-      selection.push(question);
-      excluded.add(question.id);
-    }
-    setLiveQuestions(selection);
-    setLive(true);
-    requestAnimationFrame(() => document.getElementById("ejercicios")?.scrollIntoView());
   }
   function logClass(event: React.FormEvent) {
     event.preventDefault();
@@ -140,21 +121,26 @@ export default function Workbook({ lesson, target, state, onAttempt, onFlag, onC
     target?.focus({ preventScroll: true });
     target?.scrollIntoView();
   }
-  function exerciseCard(question: Question, inClass: boolean) {
-    return <QuestionCard question={question} area={lesson.area} mode={inClass ? "live" : "practice"}
+  function exerciseCard(question: Question) {
+    return <QuestionCard question={question} area={lesson.area} mode={classMode ? "live" : "practice"}
       previous={latestAnswers.get(question.id)} flagged={state.flagged.includes(question.id)}
       onFlag={() => onFlag(question.id)} onAttempt={onAttempt} />;
   }
   const rules = <>
-    {guided.map(({ id, title, points, example, question }) => <section className="lesson-rule" key={id}
-        aria-labelledby={`regla-${id}`} id={question.id === targetQuestion?.id ? "pregunta-marcada" : undefined} tabIndex={-1}>
+    {guided.map(({ id, title, points, example, question, followUpQuestion }) => <section className="lesson-rule" key={id}
+        aria-labelledby={`regla-${id}`} id={question.id === targetId ? "pregunta-marcada" : undefined} tabIndex={-1}>
         <h3 id={`regla-${id}`}>{title}</h3>
         <ul className="lesson-steps">{points.map(point => <li key={point}>{point}</li>)}</ul>
         <WorkedExampleSteps example={example} area={lesson.area} />
         <div className="lesson-guided-practice">
           <h4>Ejercicio guiado</h4>
-          {exerciseCard(question, classMode)}
+          {exerciseCard(question)}
         </div>
+        <details className="question-details guided-follow-up" id={followUpQuestion.id === targetId ? "pregunta-marcada" : undefined}
+          open={followUpQuestion.id === targetId || undefined} tabIndex={-1}>
+          <summary>Practicar otra vez</summary>
+          {exerciseCard(followUpQuestion)}
+        </details>
       </section>)}
     {lesson.prerequisiteIds.some(id => lessonById.has(id)) && <p className="muted">Temas previos: {lesson.prerequisiteIds.map(id => lessonById.get(id)).filter(Boolean).map((entry, index) =>
       <span key={entry!.id}>{index > 0 && ", "}<a href={lessonHref(entry!.id)}>{entry!.title}</a></span>,
@@ -167,7 +153,7 @@ export default function Workbook({ lesson, target, state, onAttempt, onFlag, onC
       <h1>{lesson.title}</h1>
       <p>{lesson.objective}</p>
       <div className="row">
-        {cognitive && <button className="button primary" onClick={() => jumpTo("ejercicios")}>Probar el primer ejercicio</button>}
+        <button className="button primary" onClick={() => jumpTo("explicacion")}>Ir a la práctica guiada</button>
         <button className="button secondary" onClick={copyLink}><Icon name="link" size={16}/> Copiar enlace</button>
         <button className="button secondary" onClick={() => onPin(state.pinned === lesson.id ? "" : lesson.id)}>
           {state.pinned === lesson.id ? "Quitar de Clase de hoy" : "Fijar como clase de hoy"}
@@ -177,28 +163,19 @@ export default function Workbook({ lesson, target, state, onAttempt, onFlag, onC
     </header>
     <div className="workbook-grid">
       <div className="workbook-flow">
-        <section className="worksheet" id="explicacion" aria-labelledby="workbook-explanation">
+        <section className="worksheet" id="explicacion" tabIndex={-1} aria-labelledby="workbook-explanation">
           <h2 id="workbook-explanation">Explicación</h2>
           {rules}
         </section>
-        <section className="practice-stack" id="ejercicios" tabIndex={-1} aria-labelledby="workbook-exercises">
-          <div className="section-title"><h2 id="workbook-exercises">{live ? "Variantes para la clase" : "Ejercicios de prueba"}</h2><span>{exerciseList.length} preguntas</span></div>
-          {cognitive && !live && <p>Intenta cada ejercicio. Si te atoras, abre la pista. Lee cómo se resuelve después de comprobar.</p>}
-          {live && <button className="button secondary" onClick={() => setLive(false)}>Volver a ejercicios publicados</button>}
-          {exerciseList.map((question, index) => (
-            <details className="question-details" key={question.id + (live ? ":live" : "")}
-              id={question.id === targetQuestion?.id ? "pregunta-marcada" : undefined} tabIndex={-1}
-              open={question.id === targetQuestion?.id || (!targetQuestion && index === 0) || undefined}>
-              <summary><span>{!live && question.difficulty === "challenge" ? "Ejercicio de reto" : `Ejercicio ${live ? index + 1 : published.findIndex(item => item.id === question.id) + 1}`}</span><span className="muted">{question.difficulty === "base" ? "Base" : question.difficulty === "exam" ? "Tipo examen" : "Reto"}</span></summary>
-              {exerciseCard(question, live || classMode)}
-            </details>
-          ))}
-        </section>
         <section className="worksheet mini-sheet" aria-labelledby="mini-title">
           <h2 id="mini-title">Miniexamen</h2>
-          <p>Resuelve {miniQuestionCount(lesson)} preguntas distintas. Al entregar, el sitio guarda tu tiempo y tus aciertos.</p>
+          <p>Resuelve {miniQuestionCount} preguntas. Al entregar, el sitio guarda tu tiempo y tus aciertos.</p>
           <a className="button primary" href={miniHref(lesson.id)}>Hacer miniexamen</a>
         </section>
+        {bankQuestion && <section className="worksheet" id="pregunta-marcada" tabIndex={-1} aria-labelledby="bank-question-title">
+          <h2 id="bank-question-title">Pregunta del banco</h2>
+          {exerciseCard(bankQuestion)}
+        </section>}
         <p className="source-note">{lesson.source}</p>
       </div>
       <aside className="lesson-rail" id="guia-clase" tabIndex={-1} aria-label="Guía de clase">
@@ -208,7 +185,6 @@ export default function Workbook({ lesson, target, state, onAttempt, onFlag, onC
           <Agenda />
           <label className="check-label"><input type="checkbox" checked={classMode} onChange={event => updateClassMode(event.target.checked)} /> Estamos en clase</label>
           {classMode && <p className="muted">Las respuestas cuentan. Registra el tiempo total al final.</p>}
-          {!live && <button className="button secondary" onClick={openLive}>Abrir 3 ejercicios para la clase</button>}
           <a className="button quiet" href={miniHref(lesson.id)}>Ir al miniexamen</a>
         </section>
         <form className="rail-panel log-class" onSubmit={logClass}>

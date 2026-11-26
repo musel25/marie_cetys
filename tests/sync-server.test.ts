@@ -163,6 +163,22 @@ test("a failed atomic write leaves the revision unchanged and permits retry", as
   assert.deepEqual(await (await save(url, cookie, 0, state)).json(), { revision: 1, state });
 });
 
+test("sync stores current and historical mini-exam lengths together", async t => {
+  const { url } = await fixture(t);
+  const cookie = await signInCookie(url);
+  const day = "2026-11-25";
+  const state = blankState(day);
+  state.miniResults = [5, 10, 15].map(length => ({
+    id: `orthography-${length}`, skill: "es-ortografia", at: Date.parse(day) + length, day,
+    form: length === 5 ? 0 : 1, answers: Array<number>(length).fill(0), correct: 4, seconds: 120,
+  }));
+
+  const updated = await save(url, cookie, 0, state);
+  assert.equal(updated.status, 200);
+  const response = await fetch(url + route, { headers: { Cookie: cookie } });
+  assert.deepEqual(await response.json(), { revision: 1, state });
+});
+
 test("malformed, unsupported, and oversized updates cannot mutate progress", async t => {
   const { url } = await fixture(t);
   const cookie = await signInCookie(url);

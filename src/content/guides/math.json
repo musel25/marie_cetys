@@ -42,6 +42,19 @@
         "explanation": "Las distancias son 6, 0 y 4. Sus puntos en orden son 0, 4 y −6.",
         "hint": "Compara ∣−6∣, ∣0∣ y ∣4∣.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "En una recta numérica, ¿cuál afirmación sobre −8 y 3 es correcta?",
+        "options": [
+          "−8 es menor que 3 y está más cerca de cero.",
+          "−8 es menor que 3 y está más lejos de cero.",
+          "−8 es mayor que 3 y está más lejos de cero.",
+          "−8 es mayor que 3 y está más cerca de cero."
+        ],
+        "answer": 1,
+        "explanation": "−8 queda a la izquierda de 3 y por eso es menor. Su distancia a cero es 8, que supera la distancia de 3 a cero.",
+        "hint": "Compara primero las posiciones. Después calcula las dos distancias a cero.",
+        "difficulty": "base"
       }
     },
     {
@@ -86,6 +99,19 @@
         "explanation": "Multiplica −4 × 3 = −12. Después, 9 − (−12) = 9 + 12 = 21.",
         "hint": "Haz el producto antes de la resta.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Calcula −18 ÷ (−3) − 2 × 4.",
+        "options": [
+          "16",
+          "14",
+          "−14",
+          "−2"
+        ],
+        "answer": 3,
+        "explanation": "La división de dos negativos da 6. El producto 2 × 4 da 8. Al restar resulta 6 − 8 = −2.",
+        "hint": "Calcula el cociente y el producto antes de hacer la resta.",
+        "difficulty": "base"
       }
     },
     {
@@ -129,6 +155,19 @@
         "answer": 2,
         "explanation": "50 no es un cuadrado perfecto. En cambio, 100, 144 y 169 tienen raíces enteras.",
         "hint": "Comprueba si cada radicando es un cuadrado perfecto.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "El decimal 0.171717… repite el bloque 17. ¿Cómo se clasifican ese decimal y √35?",
+        "options": [
+          "El decimal es racional y √35 es irracional.",
+          "Los dos son racionales.",
+          "Los dos son irracionales.",
+          "El decimal es irracional y √35 es racional."
+        ],
+        "answer": 0,
+        "explanation": "El decimal periódico equivale a 17/99, por lo que es racional. Como 25 < 35 < 36, 35 no es un cuadrado perfecto y √35 es irracional.",
+        "hint": "Revisa si el decimal es periódico y si 35 es un cuadrado perfecto.",
         "difficulty": "base"
       }
     }
@@ -176,6 +215,19 @@
         "explanation": "Con denominador 18, resta 14/18 − 3/18 = 11/18.",
         "hint": "Usa el mínimo común múltiplo de 9 y 6.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "¿Cuál es la suma de 3/8 y 5/12?",
+        "options": [
+          "8/20",
+          "8/24",
+          "19/24",
+          "11/24"
+        ],
+        "answer": 2,
+        "explanation": "3/8 = 9/24 y 5/12 = 10/24. Las partes tienen el mismo tamaño. La suma es 19/24.",
+        "hint": "Usa 24 como denominador común. Convierte las dos fracciones antes de sumarlas.",
+        "difficulty": "base"
       }
     },
     {
@@ -220,6 +272,19 @@
         "explanation": "La subida da 400 × 1.10 = 440. El descuento usa ese nuevo precio: 440 × 0.90 = 396.",
         "hint": "El segundo porcentaje se aplica al precio de $440.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Hay 5/6 kg de arroz. Se usa 2/5 del arroz en una receta. ¿Cuántos kilogramos se usan?",
+        "options": [
+          "1/6 kg",
+          "1/3 kg",
+          "2/5 kg",
+          "25/12 kg"
+        ],
+        "answer": 1,
+        "explanation": "Se usa (2/5)(5/6) = 2/6 = 1/3 kg. Dividir serviría para contar cuántas porciones de un tamaño fijo caben.",
+        "hint": "El enunciado pide una parte de la cantidad disponible. Multiplica las dos fracciones.",
+        "difficulty": "base"
       }
     },
     {
@@ -263,6 +328,19 @@
         "answer": 3,
         "explanation": "Cada porción usa 600 ÷ 4 = 150 mL. Para 9 porciones se necesitan 150 × 9 = 1 350 mL.",
         "hint": "Halla primero cuánto caldo se usa por porción.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Un paquete de 6 barras cuesta $78. Otro de 8 barras cuesta $96. ¿Cuál opción tiene el menor precio por barra?",
+        "options": [
+          "El paquete de 6, a $13 por barra.",
+          "El paquete de 6, a $12 por barra.",
+          "El paquete de 8, a $12 por barra.",
+          "Los dos cuestan $13 por barra."
+        ],
+        "answer": 2,
+        "explanation": "El paquete de 6 cuesta 78 ÷ 6 = $13 por barra. El de 8 cuesta 96 ÷ 8 = $12 por barra. El de 8 tiene el menor precio por unidad.",
+        "hint": "Divide el precio de cada paquete entre su cantidad de barras.",
         "difficulty": "base"
       }
     }
@@ -310,6 +388,19 @@
         "explanation": "Ambas potencias valen 25. Su diferencia es 0.",
         "hint": "Observa si el signo de la base afecta el resultado con exponente par.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "¿Cuánto vale (−4)² + (−4²)?",
+        "options": [
+          "32",
+          "−32",
+          "−8",
+          "0"
+        ],
+        "answer": 3,
+        "explanation": "(−4)² = (−4)(−4) = 16. En cambio, −4² = −(4²) = −16. Su suma es 0.",
+        "hint": "En el segundo término, el exponente se aplica al 4 antes de aplicar el signo negativo.",
+        "difficulty": "base"
       }
     },
     {
@@ -355,6 +446,19 @@
         "explanation": "El radicando es 49 × 3. Extrae √49 = 7 para obtener 7√3.",
         "hint": "Busca un cuadrado perfecto que divida a 147.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "¿Qué potencia de 5 equivale a (5³)² ÷ 5⁴?",
+        "options": [
+          "5¹",
+          "5²",
+          "5⁵",
+          "5¹⁰"
+        ],
+        "answer": 1,
+        "explanation": "(5³)² = 5⁶. En el cociente de potencias de la misma base, 5⁶ ÷ 5⁴ = 5².",
+        "hint": "Primero multiplica los exponentes del numerador. Después resta el exponente del denominador.",
+        "difficulty": "base"
       }
     },
     {
@@ -398,6 +502,19 @@
         "answer": 0,
         "explanation": "El cultivo se triplica dos veces: 7 × 3² = 63.",
         "hint": "Aplica el mismo factor cada día.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Dos depósitos comienzan con 10 L de agua cada uno. Al final de cada hora, se duplica la cantidad del depósito A y se añaden 10 L al B. ¿Cuántos litros más tiene A que B después de 3 horas?",
+        "options": [
+          "40 L",
+          "30 L",
+          "60 L",
+          "80 L"
+        ],
+        "answer": 0,
+        "explanation": "A contiene 10 × 2³ = 80 L. B contiene 10 + 3 × 10 = 40 L. La diferencia es 40 L.",
+        "hint": "Calcula por separado el doble repetido y el aumento fijo.",
         "difficulty": "base"
       }
     }
@@ -445,6 +562,19 @@
         "explanation": "La condición es 16 + 6f ≥ 47. Cinco filas dan 46 sillas. Seis dan 52, que ya cubren la meta.",
         "hint": "Prueba los enteros cerca de (47 − 16) ÷ 6.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Una sala tiene cupo para 55 personas. Ya hay 19 personas y llegan grupos de 8. ¿Cuántos grupos completos más pueden entrar como máximo?",
+        "options": [
+          "3",
+          "5",
+          "6",
+          "4"
+        ],
+        "answer": 3,
+        "explanation": "De 19 + 8g ≤ 55 se obtiene g ≤ 4.5. Cuatro grupos dan 51 personas. Cinco dan 59 y superan el cupo.",
+        "hint": "Modela el total con 19 + 8g. El total debe ser menor o igual que 55.",
+        "difficulty": "base"
       }
     },
     {
@@ -488,6 +618,19 @@
         "answer": 2,
         "explanation": "Resta 10 y obtén −2x > 6. Divide entre −2 e invierte el signo: x < −3.",
         "hint": "Resta 10 primero y fíjate en el signo del divisor.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "¿Qué valores cumplen 15 − 3t ≤ 6?",
+        "options": [
+          "t ≥ 3",
+          "t ≤ 3",
+          "t > 3",
+          "t ≥ −3"
+        ],
+        "answer": 0,
+        "explanation": "Al restar 15, resulta −3t ≤ −9. Dividir por −3 invierte la desigualdad. Queda t ≥ 3.",
+        "hint": "Resta 15 en ambos lados. Revisa qué pasa con el símbolo al dividir por −3.",
         "difficulty": "base"
       }
     }
@@ -535,6 +678,19 @@
         "explanation": "Cambia los signos del segundo paréntesis y reúne términos: 6a² + a − 2 − a² + 3a − 7.",
         "hint": "Distribuye la resta a cada término del segundo polinomio.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Simplifica (t + 4)(t − 6).",
+        "options": [
+          "t² − 10t − 24",
+          "t² − 2t + 24",
+          "t² − 2t − 24",
+          "t² − 24"
+        ],
+        "answer": 2,
+        "explanation": "Los productos son t², −6t, 4t y −24. Los términos lineales suman −2t. El resultado es t² − 2t − 24.",
+        "hint": "Multiplica cada término del primer paréntesis por los dos términos del segundo.",
+        "difficulty": "base"
       }
     },
     {
@@ -578,6 +734,19 @@
         "answer": 3,
         "explanation": "El 7 y el −4 suman 3 y su producto es −28.",
         "hint": "El producto negativo pide dos números con signos distintos.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "¿Cuál es la factorización completa de 5m² − 80?",
+        "options": [
+          "5(m − 4)(m + 4)",
+          "5(m − 4)²",
+          "(5m − 4)(m + 4)",
+          "5(m − 8)(m + 8)"
+        ],
+        "answer": 0,
+        "explanation": "5m² − 80 = 5(m² − 16). Como 16 = 4², el factor restante se descompone en (m − 4)(m + 4).",
+        "hint": "Extrae el factor común 5 y reconoce una diferencia de cuadrados.",
         "difficulty": "base"
       }
     }
@@ -625,6 +794,19 @@
         "explanation": "El numerador es (y − 5)(y + 5). Cancela y − 5 solo donde ese factor no sea cero.",
         "hint": "Encuentra primero el valor que anula y − 5.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Simplifica (t² + 7t)/(t² + 3t) y conserva todas las restricciones originales.",
+        "options": [
+          "(t + 7)/(t + 3), solo con t ≠ −3",
+          "(t + 7)/(t + 3), con t ≠ 0 y t ≠ 3",
+          "7/3, con t ≠ 0 y t ≠ −3",
+          "(t + 7)/(t + 3), con t ≠ 0 y t ≠ −3"
+        ],
+        "answer": 3,
+        "explanation": "El denominador es t(t + 3), así que se excluyen 0 y −3. Cancela el factor t donde es distinto de cero. El cociente restante es (t + 7)/(t + 3).",
+        "hint": "Factoriza t en el numerador y en el denominador. Revisa dónde el denominador original vale cero.",
+        "difficulty": "base"
       }
     },
     {
@@ -669,6 +851,19 @@
         "explanation": "Escribe 1/w como 4/(4w). Resta 1 del numerador 4 y conserva el denominador.",
         "hint": "Usa 4w como denominador común.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Para p ≠ 0, calcula [3/(2p)] ÷ (9/p).",
+        "options": [
+          "6",
+          "27/(2p²)",
+          "1/6",
+          "1/(6p²)"
+        ],
+        "answer": 2,
+        "explanation": "El recíproco de 9/p es p/9. El producto (3/(2p))(p/9) = 3/18 = 1/6.",
+        "hint": "Invierte solo la segunda fracción y cambia la división a multiplicación.",
+        "difficulty": "base"
       }
     },
     {
@@ -712,6 +907,19 @@
         "answer": 3,
         "explanation": "El dominio excluye 1. Multiplica por y − 1: y + 4 = 2y − 2. Obtienes y = 6, un valor permitido.",
         "hint": "Revisa el denominador original antes de comprobar el resultado.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "¿Cuál es el conjunto de soluciones de (2u − 3)/(u − 3) = u/(u − 3)?",
+        "options": [
+          "{3}",
+          "No hay solución.",
+          "{−3}",
+          "{0}"
+        ],
+        "answer": 1,
+        "explanation": "El denominador excluye u = 3. Al eliminarlo se obtiene 2u − 3 = u, cuyo único candidato es 3. Como está excluido, no hay solución.",
+        "hint": "Escribe primero el valor excluido. Luego multiplica los dos lados por el denominador.",
         "difficulty": "base"
       }
     }
@@ -759,6 +967,19 @@
         "explanation": "Divide entre 3 y obtienes x² = −4. El cuadrado de un número real nunca es negativo.",
         "hint": "Aísla x² antes de decidir si hay raíces reales.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Una baldosa cuadrada tiene 121 cm² de área. Si s mide el lado en centímetros, ¿cuál solución de s² = 121 tiene sentido para la baldosa?",
+        "options": [
+          "s = −11",
+          "s = −11 y s = 11",
+          "s = 60.5",
+          "s = 11"
+        ],
+        "answer": 3,
+        "explanation": "La ecuación tiene raíces −11 y 11 porque ambas al cuadrado dan 121. La longitud del lado es 11 cm.",
+        "hint": "La ecuación tiene dos raíces. Una longitud de la baldosa debe ser positiva.",
+        "difficulty": "base"
       }
     },
     {
@@ -803,6 +1024,19 @@
         "answer": 1,
         "explanation": "Los factores son (x + 7)(x − 6). Cada uno debe igualarse a cero para buscar sus raíces.",
         "hint": "Busca dos números con producto −42 y suma 1.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "¿Cuántas raíces reales distintas tiene 2x² − 12x + 18 = 0?",
+        "options": [
+          "Ninguna",
+          "Dos",
+          "Una",
+          "Infinitas"
+        ],
+        "answer": 2,
+        "explanation": "El discriminante es (−12)² − 4 × 2 × 18 = 144 − 144 = 0. La ecuación tiene una sola raíz real distinta.",
+        "hint": "Calcula b² − 4ac con a = 2, b = −12 y c = 18.",
         "difficulty": "base"
       }
     }
@@ -850,6 +1084,19 @@
         "explanation": "Promedia x para obtener (−5 + 3)/2 = −1. Promedia y para obtener (6 − 2)/2 = 2.",
         "hint": "El resultado es un punto con una coordenada para cada promedio.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "¿Cuál es la distancia entre los puntos (−3, 4) y (2, −8)?",
+        "options": [
+          "17 unidades",
+          "13 unidades",
+          "7 unidades",
+          "169 unidades"
+        ],
+        "answer": 1,
+        "explanation": "Las diferencias son 5 y −12. La distancia es √(5² + (−12)²) = √169 = 13.",
+        "hint": "Halla el cambio horizontal y el vertical. Eleva cada uno al cuadrado.",
+        "difficulty": "base"
       }
     },
     {
@@ -894,6 +1141,19 @@
         "explanation": "Sustituye −4: 4 − 2(−4) = 4 + 8 = 12.",
         "hint": "Usa paréntesis al sustituir el valor negativo.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Una recta pasa por (−1, 5) y (3, −3). ¿Cuál es su pendiente?",
+        "options": [
+          "−2",
+          "2",
+          "−8",
+          "−1/2"
+        ],
+        "answer": 0,
+        "explanation": "Cuando x aumenta de −1 a 3, y cambia de 5 a −3. La pendiente es (−3 − 5)/(3 − (−1)) = −8/4 = −2.",
+        "hint": "Divide el cambio en y por el cambio en x. Conserva el mismo orden al restar.",
+        "difficulty": "base"
       }
     },
     {
@@ -937,6 +1197,19 @@
         "answer": 1,
         "explanation": "La recta horizontal asigna y = 8 a cada x. La vertical y las dos parábolas escritas de lado tienen valores de x con más de una salida.",
         "hint": "Imagina una recta vertical moviéndose por cada gráfica.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "En los pares (−2, 3), (0, 3), (5, 7) y (5, k), ¿qué valor de k hace que la relación sea una función de x?",
+        "options": [
+          "7",
+          "5",
+          "3",
+          "0"
+        ],
+        "answer": 0,
+        "explanation": "La entrada 5 ya tiene salida 7, por lo que k debe valer 7. Sí se permite que las entradas −2 y 0 compartan la salida 3.",
+        "hint": "Encuentra la entrada que aparece dos veces y comprueba que le corresponde una sola salida.",
         "difficulty": "base"
       }
     }
@@ -984,6 +1257,19 @@
         "explanation": "Las condiciones son f + n = 18 y f − n = 4. Al sumarlas se obtiene 2f = 22. Así, f = 11 y n = 7.",
         "hint": "La cantidad que prefiere fútbol debe ser mayor.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "¿Qué par (x, y) cumple a la vez x + 2y = 13 y 3x − y = 4?",
+        "options": [
+          "(5, 4)",
+          "(2, 2)",
+          "(3, 5)",
+          "(5, 3)"
+        ],
+        "answer": 2,
+        "explanation": "Con x = 3 y y = 5, se obtiene 3 + 2(5) = 13 y 3(3) − 5 = 4. Los pares (5, 4) y (2, 2) solo cumplen una ecuación cada uno.",
+        "hint": "Sustituye los dos valores del par en ambas ecuaciones.",
+        "difficulty": "base"
       }
     },
     {
@@ -1027,6 +1313,19 @@
         "answer": 3,
         "explanation": "Las pendientes son diferentes. Ambas rectas pasan por (0, 3), su único punto común.",
         "hint": "Compara las pendientes y los cortes con el eje y.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "¿Qué relación tienen las rectas 4x − 2y = 6 y 2x − y = 3?",
+        "options": [
+          "Son paralelas distintas y no tienen puntos comunes.",
+          "Se cruzan en un solo punto.",
+          "Tienen exactamente dos puntos comunes.",
+          "Son coincidentes y tienen infinitos puntos comunes."
+        ],
+        "answer": 3,
+        "explanation": "La primera ecuación se reduce a 2x − y = 3, igual que la segunda. Como describen la misma recta, comparten todos sus puntos.",
+        "hint": "Divide la primera ecuación entre 2 y compárala con la segunda.",
         "difficulty": "base"
       }
     }
@@ -1074,6 +1373,19 @@
         "explanation": "Los dos ángulos forman un ángulo llano: 180° − 39° = 141°.",
         "hint": "Usa la suma de un ángulo llano.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Una secante corta dos rectas paralelas. Un ángulo interior mide 58°. ¿Cuánto mide el otro ángulo interior situado del mismo lado de la secante?",
+        "options": [
+          "58°",
+          "122°",
+          "32°",
+          "148°"
+        ],
+        "answer": 1,
+        "explanation": "Los ángulos suman 180°. El ángulo que falta mide 180° − 58° = 122°.",
+        "hint": "Los dos ángulos interiores del mismo lado forman una pareja suplementaria.",
+        "difficulty": "base"
       }
     },
     {
@@ -1117,6 +1429,19 @@
         "answer": 0,
         "explanation": "Los dos ángulos conocidos suman 90°. El ángulo z mide 90°, así que el triángulo es rectángulo.",
         "hint": "Resta la suma de los ángulos conocidos de 180°.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "En un triángulo, dos ángulos interiores miden 42° y 67°. ¿Cuánto mide el ángulo exterior adyacente al tercer ángulo interior?",
+        "options": [
+          "71°",
+          "25°",
+          "138°",
+          "109°"
+        ],
+        "answer": 3,
+        "explanation": "El exterior mide 42° + 67° = 109°. El tercer ángulo interior mide 71°, y la suma de 71° y 109° es 180°.",
+        "hint": "Suma los dos ángulos interiores que no son adyacentes al exterior.",
         "difficulty": "base"
       }
     }
@@ -1164,6 +1489,19 @@
         "explanation": "La razón del segundo al primero es 15/9 = 5/3. Multiplica el lado correspondiente NO por 5/3: 12 × 5/3 = 20.",
         "hint": "Empareja los lados según el orden de los vértices.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Un triángulo tiene lados de 6, 8 y 10 cm. Otro tiene lados de 9, 12 y 15 cm. ¿Qué afirmación se cumple?",
+        "options": [
+          "Son congruentes porque ambos tienen tres lados.",
+          "Son semejantes y la razón de sus lados del segundo al primero es 3/2.",
+          "Son semejantes y la razón de sus lados del segundo al primero es 2.",
+          "No son semejantes porque sus lados correspondientes tienen medidas distintas."
+        ],
+        "answer": 1,
+        "explanation": "Los cocientes 9/6, 12/8 y 15/10 valen 3/2. La razón constante prueba semejanza. Sus lados tienen distinta longitud y por eso no son congruentes.",
+        "hint": "Divide cada lado del segundo triángulo entre el lado correspondiente del primero.",
+        "difficulty": "base"
       }
     },
     {
@@ -1207,6 +1545,19 @@
         "answer": 1,
         "explanation": "Si ambos catetos miden a, se cumple 2a² = 144. Entonces a = √72 = 6√2 cm.",
         "hint": "Usa que los catetos son iguales.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "La diagonal de una lámina rectangular mide 41 cm y su lado largo mide 40 cm. ¿Cuánto mide su lado corto?",
+        "options": [
+          "1 cm",
+          "81 cm",
+          "9 cm",
+          "√3281 cm"
+        ],
+        "answer": 2,
+        "explanation": "El cuadrado del lado corto es 41² − 40² = 1681 − 1600 = 81. Su longitud es √81 = 9 cm.",
+        "hint": "La diagonal es la hipotenusa. Para hallar un cateto, resta los cuadrados.",
         "difficulty": "base"
       }
     }
@@ -1254,6 +1605,19 @@
         "explanation": "Resta el área del cuadrado al área del rectángulo: 9 × 8 − 4² = 56 cm².",
         "hint": "Calcula por separado las dos áreas.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Un jardín rectangular mide 11 m de largo y 4 m de ancho. Se coloca una cerca por todo el borde excepto en una entrada de 2 m. ¿Cuántos metros de cerca se necesitan?",
+        "options": [
+          "28 m",
+          "26 m",
+          "30 m",
+          "42 m"
+        ],
+        "answer": 0,
+        "explanation": "El perímetro es 2(11 + 4) = 30 m. Se dejan 2 m libres, así que se necesitan 28 m de cerca.",
+        "hint": "Calcula el perímetro del rectángulo y después resta el ancho de la entrada.",
+        "difficulty": "base"
       }
     },
     {
@@ -1297,6 +1661,19 @@
         "answer": 2,
         "explanation": "El radio es 6 m y el círculo mide 36π m². El sector es un sexto del círculo, así que mide 6π m².",
         "hint": "Usa πr² y después multiplica por 60/360.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Un círculo tiene diámetro de 24 cm. ¿Qué longitud tiene el arco de un ángulo central de 45°?",
+        "options": [
+          "6π cm",
+          "3π cm",
+          "18π cm",
+          "24π cm"
+        ],
+        "answer": 1,
+        "explanation": "La circunferencia mide 24π cm. Como 45/360 = 1/8, el arco mide 24π/8 = 3π cm.",
+        "hint": "El arco ocupa 45/360 de la circunferencia. Halla la circunferencia con πd.",
         "difficulty": "base"
       }
     }
@@ -1344,6 +1721,19 @@
         "explanation": "El cilindro tiene dos bases circulares. El cono tiene una y la esfera ninguna.",
         "hint": "Cuenta las bases e identifica su forma.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Un sólido tiene una base pentagonal y cinco caras triangulares que se unen en un vértice. ¿Qué sólido es?",
+        "options": [
+          "Pirámide pentagonal",
+          "Prisma pentagonal",
+          "Cono circular",
+          "Cilindro circular"
+        ],
+        "answer": 0,
+        "explanation": "Una base poligonal y caras triangulares que se unen en un vértice forman una pirámide. La base de cinco lados la hace pentagonal.",
+        "hint": "Cuenta las bases y observa la forma de la base.",
+        "difficulty": "base"
       }
     },
     {
@@ -1387,6 +1777,19 @@
         "answer": 3,
         "explanation": "Su base tiene área de 36π cm². Multiplica por 5 cm y divide entre 3.",
         "hint": "Usa un tercio del volumen de un cilindro de igual base y altura.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Un prisma y una pirámide tienen bases de área 18 cm² y una altura perpendicular de 7 cm. ¿Cuántos centímetros cúbicos más ocupa el prisma?",
+        "options": [
+          "42 cm³",
+          "126 cm³",
+          "168 cm³",
+          "84 cm³"
+        ],
+        "answer": 3,
+        "explanation": "El volumen del prisma es 18 × 7 = 126 cm³. El de la pirámide es 126 ÷ 3 = 42 cm³. La diferencia es 84 cm³.",
+        "hint": "Calcula Bh para el prisma y Bh/3 para la pirámide antes de restar.",
         "difficulty": "base"
       }
     }
@@ -1434,6 +1837,19 @@
         "explanation": "Al ordenar obtienes 4, 6, 10 y 20. Promedia los datos centrales: (6 + 10)/2 = 8.",
         "hint": "En una lista de cuatro datos, busca el segundo y el tercero después de ordenar.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Las edades de cinco integrantes son 12, 12, 14, 17 y 20 años. ¿Cuáles son la media, la mediana y la moda, en ese orden?",
+        "options": [
+          "14, 15 y 12",
+          "15, 12 y 14",
+          "15, 14 y 12",
+          "16, 14 y 12"
+        ],
+        "answer": 2,
+        "explanation": "La suma de las edades es 75 y 75 ÷ 5 = 15. El dato central es 14. El valor 12 aparece más veces que los demás.",
+        "hint": "La media usa la suma. La mediana usa la posición central. La moda usa la frecuencia.",
+        "difficulty": "base"
       }
     },
     {
@@ -1477,6 +1893,19 @@
         "answer": 0,
         "explanation": "Tres símbolos completos representan 3 × 4 = 12 personas. Medio símbolo suma 2: el total es 14.",
         "hint": "Lee cuánto vale cada clase de símbolo.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "En una encuesta de 96 personas, un sector de 135° representa la opción «Parque». ¿Cuántas personas eligieron esa opción?",
+        "options": [
+          "36",
+          "24",
+          "48",
+          "60"
+        ],
+        "answer": 0,
+        "explanation": "El sector ocupa 135/360 = 3/8 del círculo. Tres octavos de 96 son 36.",
+        "hint": "El círculo completo mide 360°. Multiplica el total por 135/360.",
         "difficulty": "base"
       }
     }
@@ -1524,6 +1953,19 @@
         "explanation": "Los múltiplos de 4 son 4, 8 y 12. Los otros 12 enteros cumplen, así que la probabilidad es 12/15 = 4/5.",
         "hint": "Resta los múltiplos de 4 del total.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "En una caja hay 10 tarjetas numeradas del 1 al 10. Eliges una al azar. ¿Con qué probabilidad sale un múltiplo de 2 o de 5?",
+        "options": [
+          "1/2",
+          "7/10",
+          "3/5",
+          "1/10"
+        ],
+        "answer": 2,
+        "explanation": "Los resultados favorables son 2, 4, 5, 6, 8 y 10. El 10 se cuenta una sola vez. La probabilidad es 6/10 = 3/5.",
+        "hint": "Haz las dos listas de múltiplos. Cuenta solo una vez los números que aparecen en ambas.",
+        "difficulty": "base"
       }
     },
     {
@@ -1567,6 +2009,19 @@
         "answer": 1,
         "explanation": "La primera tiene probabilidad 3/8. Después quedan 2 fichas grises entre 7. El producto es 6/56 = 3/28.",
         "hint": "Cambia el total y el número de fichas grises antes de la segunda extracción.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Una bolsa tiene 2 fichas verdes y 3 amarillas. Sacas una al azar, la devuelves, mezclas y sacas otra. ¿Cuál es la probabilidad de que ambas sean verdes?",
+        "options": [
+          "1/10",
+          "4/25",
+          "2/5",
+          "3/10"
+        ],
+        "answer": 1,
+        "explanation": "Cada extracción tiene probabilidad 2/5 de dar verde. Con reemplazo, multiplicas (2/5)(2/5) = 4/25.",
+        "hint": "Al devolver la primera ficha, la composición de la bolsa vuelve a ser la misma.",
         "difficulty": "base"
       }
     }

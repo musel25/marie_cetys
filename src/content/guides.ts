@@ -12,8 +12,12 @@ const guides = new Map(Object.entries({
 } as Record<string, GuidedSection[]>));
 
 export function guidedSections(lesson: Lesson) {
-  return (guides.get(lesson.id) ?? []).map(section => ({
-    ...section,
-    question: { ...section.exercise, id: lesson.id + ":guiado-" + section.id, skill: lesson.id },
-  }));
+  return (guides.get(lesson.id) ?? []).map(section => {
+    const id = lesson.id + ":guiado-" + section.id;
+    return {
+      ...section,
+      question: { ...section.exercise, id, skill: lesson.id },
+      followUpQuestion: { ...section.followUp, id: id + "-practica", skill: lesson.id },
+    };
+  });
 }

@@ -143,6 +143,7 @@ progress::-webkit-progress-value { background: var(--forest); }
 .lesson-rule h4 { margin: 0; font-size: .9rem; }
 .lesson-guided-practice { margin-block-start: 1rem; }
 .lesson-guided-practice .exercise { padding: .5rem 0 0; }
+.guided-follow-up { margin-block-start: 1rem; }
 .lesson-rule .lesson-steps { margin-block-start: .45rem; }
 .lesson-steps { margin-block: .9rem; padding-inline-start: 1.55rem; }
 .lesson-steps li { padding-inline-start: .4rem; margin-block-end: .5rem; line-height: 1.6; }
