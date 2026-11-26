@@ -62,7 +62,7 @@ legend { padding: 0; }
 .hero-copy p { color: #e3ede4; max-inline-size: 38ch; margin-block: 1rem 1.3rem; }
 .hero-button { color: #182d20; background: var(--leaf); border-color: var(--leaf); }
 .hero-button:hover { background: #eef5d8; }
-.hero a:focus-visible { outline-color: #c8deff; }
+.hero :is(a, button):focus-visible { outline-color: #c8deff; }
 .hero-footer { display: flex; align-items: center; flex-wrap: wrap; gap: .8rem 1.1rem; grid-column: 1 / -1; border-block-start: 1px solid #648478; padding-block-start: 1rem; font-size: .875rem; color: #f0f3e9; }
 .hero-footer span { display: flex; align-items: center; gap: .4rem; }
 .hero-symbol { color: #a9c989; justify-self: center; }
@@ -169,6 +169,9 @@ progress::-webkit-progress-value { background: var(--forest); }
 .log-class { display: grid; gap: .75rem; }
 .log-class input[type=number] { max-inline-size: 7rem; }
 .log-class > p { margin: 0; }
+.class-timer-panel { margin-block-end: 1rem; }
+.class-time-details > summary { cursor: pointer; font-weight: 650; }
+.class-time-details > :is(form, label) { display: grid; gap: .35rem; margin-block-start: .65rem; }
 .question-details { background: var(--white); border: 1px solid var(--line); border-radius: .88rem; }
 .question-details > summary { padding: .8rem 1rem; cursor: pointer; list-style-position: inside; font-weight: 750; line-height: 1.5; }
 .question-details > summary > .muted { float: inline-end; font-size: .82rem; font-weight: 600; }

@@ -128,6 +128,49 @@ test("backups restore study minutes for a date and accept older settings", () =>
   }
 });
 
+test("backups keep measured class intervals and still accept older class records", () => {
+  const day = "2026-11-23";
+  const start = Date.parse("2026-11-23T19:00:00Z");
+  const minute = 60_000;
+  const state = blankState(day);
+  state.classes = [
+    { id: "manual", at: start, day, skill: "hc-orden", minutes: 25, complete: false },
+    {
+      id: "timed", at: start + 215 * minute, day, skill: "hc-orden", minutes: 205, complete: true,
+      intervals: [
+        { start, end: start + 100 * minute },
+        { start: start + 110 * minute, end: start + 215 * minute },
+      ],
+    },
+  ];
+  assert.deepEqual(parseBackup(JSON.stringify(state)).classes, state.classes);
+});
+
+test("backups reject invalid time intervals in class records", () => {
+  const day = "2026-11-23";
+  const state = blankState(day);
+  const record = { id: "timed", at: 120_000, day, skill: "hc-orden", minutes: 1, complete: true };
+  for (const intervals of [
+    null,
+    [],
+    [{}],
+    [{ start: -1, end: 1 }],
+    [{ start: 10, end: 10 }],
+    [{ start: 10, end: 9 }],
+    [{ start: 10, end: 11.5 }],
+    [{ start: 10, end: record.at + 1 }],
+    [{ start: 10, end: Number.MAX_SAFE_INTEGER + 1 }],
+    [{ start: 20, end: 30 }, { start: 10, end: 15 }],
+    [{ start: 10, end: 30 }, { start: 20, end: 40 }],
+  ]) {
+    assert.throws(() => parseBackup(JSON.stringify({ ...state, classes: [{ ...record, intervals }] })));
+  }
+  assert.throws(() => parseBackup(JSON.stringify({ ...state, classes: [{ ...record, minutes: 181 }] })));
+  assert.throws(() => parseBackup(JSON.stringify({
+    ...state, classes: [{ ...record, minutes: 181, intervals: [{ start: 10, end: 20 }] }],
+  })));
+});
+
 const miniResult: MiniResult = {
   id: "mini-a", at: 123, day: "2026-11-23", skill: "hc-orden", form: 0,
   seconds: 127, answers: [1, 2, 0, 3, 1], correct: 5,
@@ -229,6 +272,59 @@ test("summaries subtract only the class time that overlaps a mini-test for the s
     assert.equal(result.classMinutes, 160);
     assert.deepEqual(result.miniResults, [mini]);
   }
+});
+
+test("summaries count quiz time during a class pause or after the class", () => {
+  const day = "2026-11-23";
+  const start = Date.parse("2026-11-23T19:00:00Z");
+  const minute = 60_000;
+  const state = blankState(day);
+  state.classes = [{
+    id: "timed", at: start + 20 * minute, day, skill: "hc-orden", minutes: 9, complete: true,
+    intervals: [
+      { start, end: start + 5 * minute },
+      { start: start + 8 * minute, end: start + 15 * minute },
+    ],
+  }];
+  const mini = { ...miniResult, at: start + 17 * minute, seconds: 14 * 60 };
+  const result = summary({ ...state, miniResults: [mini] }, day, day);
+  assert.equal(result.seconds, 5 * 60);
+  assert.equal(result.classMinutes, 9);
+  assert.deepEqual(result.miniResults, [mini]);
+});
+
+test("summaries count a quiz once when the class ends on the next study day", () => {
+  const day = "2026-11-23";
+  const nextDay = "2026-11-24";
+  const start = Date.parse("2026-11-24T07:55:00Z");
+  const minute = 60_000;
+  const state = blankState(day);
+  state.classes = [{
+    id: "overnight", at: start + 17 * minute, day: nextDay, skill: "hc-orden", minutes: 17, complete: true,
+    intervals: [{ start, end: start + 17 * minute }],
+  }];
+  const mini = { ...miniResult, at: start + 4 * minute, seconds: 5 * 60 };
+  state.miniResults = [mini];
+  const beforeMidnight = summary(state, day, day);
+  assert.equal(beforeMidnight.seconds, 60);
+  assert.equal(beforeMidnight.classMinutes, 0);
+  assert.equal(summary(state, day, nextDay).seconds, 60);
+  assert.equal(summary(state, day, nextDay).classMinutes, 17);
+});
+
+test("measured class intervals cover timed tests on other topics too", () => {
+  const day = "2026-11-23";
+  const end = Date.parse("2026-11-23T19:00:00Z");
+  const state = blankState(day);
+  state.classes = [{
+    id: "timed", at: end, day, skill: "mat-enteros", minutes: 10, complete: true,
+    intervals: [{ start: end - 600_000, end }],
+  }];
+  state.miniResults = [{ ...miniResult, at: end, seconds: 240 }];
+  state.attempts = [{ ...practiceAttempt, at: end + 60_000, seconds: 240, mode: "exam" }];
+  const result = summary(state, day, day);
+  assert.equal(result.classMinutes, 10);
+  assert.equal(result.seconds, 60);
 });
 
 test("mini-test history sorts by time and breaks ties by ID within the same skill", () => {

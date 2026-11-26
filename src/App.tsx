@@ -1,5 +1,7 @@
 import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { areas, areaOrder, byArea, curriculum, lessonById, miniQuestionCount, resourceLinks } from "./content";
+import ClassTimerPanel from "./ClassTimerPanel";
+import { classTimerRecord, pauseClassTimer, readClassTimer, resumeClassTimer, startClassTimer, writeClassTimer, type ClassTimer } from "./classTimer";
 import { Exam } from "./Exam";
 import { addDays, classPlan, dateLabel, loadState, longReviewLimit, longReviewQuestions, periodStart, reviewCards, reviewQuestion, saveState, studyDay, studyMinutes, summary } from "./study";
 import type { Area, Attempt, ClassRecord, Lesson, MiniResult, Question, StudyState } from "./types";
@@ -24,7 +26,9 @@ const Progress = lazy(() => import("./Progress"));
 const Planner = lazy(() => import("./Planner"));
 function readRoute() { return location.hash.replace(/^#\/?/, "").split("/").slice(0, 3); }
 
-function Home({ state, today, dueCount, hasStudied }: { state: StudyState; today: string; dueCount: number; hasStudied: boolean }) {
+function Home({ state, today, dueCount, hasStudied, onStartClass }: {
+  state: StudyState; today: string; dueCount: number; hasStudied: boolean; onStartClass?: (skill: string) => void;
+}) {
   const plan = classPlan(curriculum, state, today);
   const slot = plan.slots[0];
   const lesson = lessonById.get(state.pinned) ?? (slot ? lessonById.get(slot.lessons[0]) : undefined);
@@ -44,7 +48,10 @@ function Home({ state, today, dueCount, hasStudied }: { state: StudyState; today
             <AreaTag area={lesson.area} />
             <h2>{lesson.title}</h2>
             <p>{lesson.objective}</p>
-            <a className="button hero-button" href={lessonHref(lesson.id)}>Abrir la clase</a>
+            <div className="row">
+              {onStartClass && <button className="button hero-button" onClick={() => onStartClass(lesson.id)}>Iniciar clase</button>}
+              <a className={`button ${onStartClass ? "secondary" : "hero-button"}`} href={lessonHref(lesson.id)}>Abrir la clase</a>
+            </div>
           </div>
           {lesson.id === "hc-orden" ? <OrderDiagram preview /> : <div className="hero-symbol"><Icon name="book" size={90}/></div>}
         </> : <div className="hero-copy"><h2>{completed.size >= curriculum.length ? "Temario completado" : "Estudia a tu ritmo"}</h2><p>Abre cualquier lección o ajusta tus fechas.</p><a className="button hero-button" href="#/temario">Ver temario</a></div>}
@@ -115,16 +122,25 @@ function Curriculum({ filter, state }: { filter: Area | undefined; state: StudyS
   </>;
 }
 
-function Review({ due, studied, state, onAttempt, onFlag }: {
-  due: Lesson[]; studied: Lesson[]; state: StudyState; onAttempt: (item: Attempt) => void; onFlag: (id: string) => void;
+function dueReviewQuestions(due: Lesson[], attempts: Attempt[]) {
+  return due.slice(0, 8).flatMap(lesson => {
+    const question = reviewQuestion(lesson, attempts);
+    return question ? [question] : [];
+  });
+}
+
+function Review({ due, studied, state, classLesson, classRunning, onAttempt, onFlag }: {
+  due: Lesson[]; studied: Lesson[]; state: StudyState; classLesson?: Lesson; classRunning: boolean;
+  onAttempt: (item: Attempt) => void; onFlag: (id: string) => void;
 }) {
-  const [batch, setBatch] = useState<Question[]>([]);
+  const [batch, setBatch] = useState<Question[]>(() => classLesson ? dueReviewQuestions(due, state.attempts) : []);
   const [index, setIndex] = useState(0);
   const [answered, setAnswered] = useState(false);
   const heading = useRef<HTMLHeadingElement>(null);
   const started = batch.length > 0;
   const question = batch[index];
   const lesson = question && lessonById.get(question.skill);
+  const classHref = classLesson && lessonHref(classLesson.id);
   const minis = new Map([...state.miniResults].sort((a, b) => a.at - b.at).map(entry => [entry.skill, entry]));
   const available = curriculum.filter(item => minis.has(item.id) && !due.includes(item));
 
@@ -137,10 +153,7 @@ function Review({ due, studied, state, onAttempt, onFlag }: {
   function start(long: boolean) {
     const next = long
       ? longReviewQuestions([...due, ...studied.filter(item => !due.includes(item))], state.attempts)
-      : due.slice(0, 8).flatMap(item => {
-        const fresh = reviewQuestion(item, state.attempts);
-        return fresh ? [fresh] : [];
-      });
+      : dueReviewQuestions(due, state.attempts);
     setBatch(next);
     move(0);
   }
@@ -151,8 +164,9 @@ function Review({ due, studied, state, onAttempt, onFlag }: {
   }
 
   return <>
-    <PageHeading title="Repaso opcional" />
-    {!started && <section className="panel review-state">
+    <PageHeading title={classLesson ? "Repaso de inicio" : "Repaso opcional"} />
+    {!started && classHref && <button className="button primary" onClick={() => { location.hash = classHref; }}>Continuar a la clase</button>}
+    {!started && !classLesson && <section className="panel review-state">
       <div className="panel-icon"><Icon name="repeat" /></div>
       <h2>{due.length ? `${due.length} ${due.length === 1 ? "tema para repasar" : "temas para repasar"}` : "Estás al día"}</h2>
       {due.length > 0 && <p>El repaso diario usa una pregunta por tema pendiente, hasta ocho.</p>}
@@ -167,16 +181,26 @@ function Review({ due, studied, state, onAttempt, onFlag }: {
     {started && lesson && question && <section className="worksheet review-work">
       <div className="section-title"><AreaTag area={lesson.area}/><span>{index + 1} de {batch.length}</span></div>
       <h2 ref={heading} tabIndex={-1}>{lesson.title}</h2>
-      <QuestionCard key={question.id} question={question} mode="review" area={lesson.area} flagged={state.flagged.includes(question.id)} onFlag={() => onFlag(question.id)} onAttempt={item => { onAttempt(item); setAnswered(true); }} />
+      <QuestionCard key={question.id} question={question} mode="review" area={lesson.area} timeInClass={classRunning}
+        flagged={state.flagged.includes(question.id)} onFlag={() => onFlag(question.id)} onAttempt={item => { onAttempt(item); setAnswered(true); }} />
       <div className="row review-actions">
-        <a className="button secondary" href={lessonHref(lesson.id)}>Abrir explicación</a>
-        <a className="button secondary" href={miniHref(lesson.id)}>Hacer miniexamen</a>
-        {answered && (index === batch.length - 1
+        {classHref ? <>
+          {answered && index === batch.length - 1
+            ? <button className="button primary" onClick={() => { location.hash = classHref; }}>Continuar a la clase</button>
+            : <>
+              {answered && <button className="button primary" onClick={() => move(index + 1)}>Siguiente pregunta</button>}
+              <a className="button quiet" href={classHref}>Pasar a la clase</a>
+            </>}
+        </> : <>
+          <a className="button secondary" href={lessonHref(lesson.id)}>Abrir explicación</a>
+          <a className="button secondary" href={miniHref(lesson.id)}>Hacer miniexamen</a>
+          {answered && (index === batch.length - 1
           ? <button className="button primary" onClick={finish}>Terminar repaso</button>
           : <>
             <button className="button primary" onClick={() => move(index + 1)}>Siguiente pregunta</button>
             <button className="button quiet" onClick={finish}>Terminar ahora</button>
           </>)}
+        </>}
       </div>
     </section>}
     {started && !question && <section className="panel review-state">
@@ -188,14 +212,14 @@ function Review({ due, studied, state, onAttempt, onFlag }: {
         <a className="button secondary" href="#/progreso">Ver progreso</a>
       </div>
     </section>}
-    {!started && due.length > 0 && <section className="panel due-topics">
+    {!started && !classLesson && due.length > 0 && <section className="panel due-topics">
       <h2>Temas disponibles</h2>
       <ul className="plain-list">{due.map(item => <li key={item.id}>
         <a href={lessonHref(item.id)}>{item.title}</a>
         <a href={miniHref(item.id)} aria-label={`Miniexamen de ${item.title}`}>Miniexamen</a>
       </li>)}</ul>
     </section>}
-    {!started && available.length > 0 && <section className="panel due-topics">
+    {!started && !classLesson && available.length > 0 && <section className="panel due-topics">
       <h2>Miniexámenes para repetir</h2>
       <ul className="plain-list">{available.map(item => <li key={item.id}>
         <a href={miniHref(item.id)}>{item.title}</a><span>{elapsedTime(minis.get(item.id)!.seconds)}</span>
@@ -217,6 +241,13 @@ function StudyApp() {
   const [route, setRoute] = useState(readRoute);
   const [message, announce] = useState(initial.recovered ? "No se encontró un progreso válido en este navegador." : "");
   const [today, setToday] = useState(studyDay);
+  const [classTimer, setClassTimer] = useState(() => {
+    try {
+      const timer = readClassTimer(sessionStorage);
+      return timer && lessonById.has(timer.skill) && !initial.state.classes.some(record => record.id === timer.id) ? timer : null;
+    } catch { return null; }
+  });
+  const savingClass = useRef(false);
   const main = useRef<HTMLElement>(null);
   const [page = "", id, target] = route;
   const cards = useMemo(() => reviewCards(state.attempts, state.miniResults), [state.attempts, state.miniResults]);
@@ -308,24 +339,61 @@ function StudyApp() {
     update(before => ({ ...before, flagged: before.flagged.includes(id) ? before.flagged.filter(item => item !== id) : [...before.flagged, id] }));
   }
   function recordClass(record: ClassRecord) {
-    update(
-      before => ({ ...before, classes: [...before.classes, record], pinned: record.complete && before.pinned === record.skill ? "" : before.pinned }),
-      record.complete ? "Clase registrada como completa." : "Tiempo de clase guardado.",
+    return update(
+      before => before.classes.some(entry => entry.id === record.id) ? before
+        : { ...before, classes: [...before.classes, record], pinned: record.complete && before.pinned === record.skill ? "" : before.pinned },
+      (record.complete ? "Clase completa. " : "") + `Guardaste ${duration(record.minutes)} de clase.`,
     );
   }
+
+  function updateClassTimer(timer: ClassTimer | null) {
+    setClassTimer(timer);
+    try { writeClassTimer(sessionStorage, timer); } catch { /* keep the timer in memory */ }
+  }
+
+  function startClass(skill: string) {
+    if (classTimer) return;
+    updateClassTimer(startClassTimer(crypto.randomUUID(), skill, Date.now()));
+    if (due.length) location.hash = "/repaso/clase";
+    else if (page !== "clase" || id !== skill) location.hash = lessonHref(skill);
+    else requestAnimationFrame(() => document.getElementById("class-timer-title")?.focus());
+  }
+
+  async function saveTimedClass(complete: boolean, minutes?: number) {
+    if (!classTimer || savingClass.current) return;
+    const at = Date.now();
+    const paused = pauseClassTimer(classTimer, at);
+    const record = classTimerRecord(paused, at, complete, minutes);
+    if (!record) return;
+    savingClass.current = true;
+    updateClassTimer(paused);
+    try {
+      if (!await recordClass(record)) return;
+      updateClassTimer(null);
+      if (page === "repaso" && id === "clase") location.hash = lessonHref(record.skill);
+      else requestAnimationFrame(() => main.current?.focus({ preventScroll: true }));
+    } finally { savingClass.current = false; }
+  }
+
   const syncPanel = { ...sync, importPrevious: location.origin === primaryOrigin ? importPrevious : undefined };
   const lesson = id ? lessonById.get(id) : undefined;
+  const timedLesson = classTimer ? lessonById.get(classTimer.skill) : undefined;
+  const classRunning = !!classTimer && classTimer.startedAt !== null;
+  const reviewLesson = page === "repaso" && id === "clase" ? timedLesson : undefined;
   const active = page === "clase" || page === "mini" ? "temario" : page;
-  const content = page === "" ? <Home state={state} today={today} dueCount={due.length} hasStudied={studied.length > 0}/>
+  const content = page === "" ? <Home state={state} today={today} dueCount={due.length} hasStudied={studied.length > 0}
+    onStartClass={classTimer ? undefined : startClass} />
     : page === "temario" ? <Curriculum state={state} filter={areaOrder.find(area => area === id)}/>
     : page === "clase" && lesson ? <Suspense fallback={<p>Cargando la lección…</p>}>
       <Workbook key={lesson.id + (target ?? "")} lesson={lesson} target={target} state={state} onAttempt={item => addAttempts([item])} onClass={recordClass}
+        classRunning={classRunning} onStartClass={classTimer ? undefined : () => startClass(lesson.id)}
         onFlag={toggleFlag} announce={announce} onPin={pinned => { update(before => ({ ...before, pinned }), pinned ? "Clase fijada en el inicio." : "Clase quitada del inicio."); }}/>
     </Suspense>
     : page === "mini" && lesson ? <Suspense fallback={<p>Cargando miniexamen…</p>}>
       <MiniExam key={lesson.id} lesson={lesson} results={state.miniResults} onFinish={addMini} />
     </Suspense>
-    : page === "repaso" ? <Review due={due} studied={studied} state={state} onAttempt={item => addAttempts([item])} onFlag={toggleFlag}/>
+    : page === "repaso" ? <Review key={reviewLesson?.id ?? "repaso"} due={due} studied={studied} state={state} classLesson={reviewLesson} classRunning={classRunning}
+      onAttempt={item => addAttempts([item])} onFlag={toggleFlag}/>
     : page === "simulacro" ? <Exam state={state} onAttempts={addAttempts}/>
     : page === "progreso" ? <Suspense fallback={<p>Cargando el progreso…</p>}>
       <Progress state={state} today={today} onFlag={toggleFlag}/>
@@ -362,6 +430,10 @@ function StudyApp() {
         <p>Inicia sesión para ver tu avance y seguir estudiando desde cualquier dispositivo.</p>
         <a className="button primary" href="#/sesion">Iniciar sesión</a>
       </aside>}
+      {classTimer && timedLesson && <ClassTimerPanel key={classTimer.id} timer={classTimer} lessonTitle={timedLesson.title}
+        lessonLink={reviewLesson || (page === "clase" && lesson?.id === timedLesson.id) ? undefined : lessonHref(timedLesson.id)}
+        onToggle={at => updateClassTimer(classRunning ? pauseClassTimer(classTimer, at) : resumeClassTimer(classTimer, at))}
+        onSave={saveTimedClass} />}
       {content}
     </main>
     <div role="status" className={message ? "announcement" : "sr-only"} onClick={() => announce("")}>{message}{message && <button onClick={() => announce("")} aria-label="Cerrar aviso">×</button>}</div>
