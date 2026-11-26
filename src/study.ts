@@ -51,7 +51,7 @@ function dateIsValid(value: unknown): value is string {
     Number.isFinite(noon(value).getTime()) && addDays(value, 0) === value;
 }
 
-function boundedInt(value: unknown, min: number, max: number) {
+function boundedInt(value: unknown, min: number, max: number): value is number {
   return typeof value === "number" && Number.isInteger(value) && value >= min && value <= max;
 }
 
@@ -91,7 +91,19 @@ function validAttempt(value: unknown): value is Attempt {
 }
 
 function validClass(value: unknown): value is ClassRecord {
-  return validEvent(value) && typeof value.complete === "boolean" && boundedInt(value.minutes, 1, 180);
+  if (!validEvent(value) || typeof value.complete !== "boolean") return false;
+  if (value.intervals === undefined) return boundedInt(value.minutes, 1, 180);
+  if (!Array.isArray(value.intervals) || value.intervals.length === 0) return false;
+
+  let previousEnd = 0;
+  let measuredMs = 0;
+  for (const interval of value.intervals) {
+    if (!object(interval) || !boundedInt(interval.start, previousEnd, value.at) ||
+        !boundedInt(interval.end, interval.start + 1, value.at)) return false;
+    measuredMs += interval.end - interval.start;
+    previousEnd = interval.end;
+  }
+  return boundedInt(value.minutes, 1, Math.max(180, Math.round(measuredMs / 60_000)));
 }
 
 function validMiniResult(value: unknown): value is MiniResult {
@@ -287,20 +299,24 @@ export function reviewCards(attempts: Attempt[], miniResults: MiniResult[] = [])
   return cards;
 }
 
-function miniSecondsOutsideClasses(result: MiniResult, classes: ClassRecord[]) {
-  const intervals = classes.filter(record => record.day === result.day && record.skill === result.skill)
-    .map(record => ({ start: record.at - record.minutes * 60_000, end: record.at }))
+function secondsOutsideClasses(event: Pick<MiniResult, "at" | "day" | "skill" | "seconds">, classes: ClassRecord[], includeManual = false) {
+  if (!event.seconds) return 0;
+  const intervals = classes.flatMap(record => {
+    if (record.intervals) return record.intervals;
+    return includeManual && record.skill === event.skill && record.day === event.day
+      ? [{ start: record.at - record.minutes * 60_000, end: record.at }] : [];
+  })
     .sort((a, b) => a.start - b.start);
-  let coveredUntil = result.at - result.seconds * 1000;
+  let coveredUntil = event.at - event.seconds * 1000;
   let coveredMs = 0;
   for (const interval of intervals) {
     const start = Math.max(interval.start, coveredUntil);
-    const end = Math.min(interval.end, result.at);
+    const end = Math.min(interval.end, event.at);
     if (end <= start) continue;
     coveredMs += end - start;
     coveredUntil = end;
   }
-  return result.seconds - coveredMs / 1000;
+  return event.seconds - coveredMs / 1000;
 }
 
 export function summary(state: StudyState, first: string, last: string) {
@@ -308,8 +324,9 @@ export function summary(state: StudyState, first: string, last: string) {
   const attempts = items.filter(event => event.selection !== -1);
   const classes = state.classes.filter(event => event.day >= first && event.day <= last);
   const miniResults = state.miniResults.filter(event => event.day >= first && event.day <= last);
-  const questionSeconds = items.reduce((sum, event) => sum + event.seconds, 0);
-  const miniSeconds = miniResults.reduce((sum, result) => sum + miniSecondsOutsideClasses(result, classes), 0);
+  const questionSeconds = items.reduce((sum, event) =>
+    sum + (event.mode === "exam" ? secondsOutsideClasses(event, state.classes) : event.seconds), 0);
+  const miniSeconds = miniResults.reduce((sum, result) => sum + secondsOutsideClasses(result, state.classes, true), 0);
   return {
     attempts,
     classes,

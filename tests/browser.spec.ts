@@ -334,15 +334,120 @@ test("times fifteen cognitive questions and compares with the next form", async 
   await expect(page.getByRole("button", { name: "Entregar miniexamen" })).toHaveCount(0);
 });
 
-test("keeps class mode when returning from a miniexam and clears it after logging class", async ({ page }) => {
-  await page.goto("/#/clase/hc-orden");
-  const classMode = page.getByRole("checkbox", { name: "Estamos en clase" });
-  await classMode.check();
+test("saves measured class time across pauses, a reload and a miniexam", async ({ page }) => {
+  const started = Date.parse("2026-11-24T20:00:00Z");
+  const setMinutesSinceStart = (minutes: number) => page.clock.setFixedTime(new Date(started + minutes * 60_000));
+  await page.setViewportSize({ width: 360, height: 800 });
+  await setMinutesSinceStart(0);
+  await page.goto("/");
+  const startClass = page.getByRole("button", { name: "Iniciar clase", exact: true });
+  await expect(startClass).toBeVisible();
+  await startClass.press("Enter");
+  await expect(page).toHaveURL(/#\/clase\/hc-orden$/);
+
+  const runningClass = page.getByRole("region", { name: "Clase en curso", exact: true });
+  const clock = runningClass.getByRole("timer", { name: "Tiempo de clase", exact: true });
+  await expect(clock).toHaveText("0 s");
+  await setMinutesSinceStart(12);
+  await expect(clock).toHaveText("12 min");
+  await runningClass.getByRole("button", { name: "Pausar", exact: true }).click();
+
   await page.getByRole("link", { name: "Hacer miniexamen", exact: true }).click();
+  await setMinutesSinceStart(17);
+  await page.reload();
+  await expect(clock).toHaveText("12 min");
+  await runningClass.getByRole("button", { name: "Reanudar", exact: true }).click();
+  await page.getByRole("button", { name: "Empezar miniexamen", exact: true }).click();
+  for (let index = 0; index < 15; index++) {
+    await page.getByRole("radio").first().check();
+    if (index < 14) await page.getByRole("button", { name: "Siguiente", exact: true }).click();
+  }
+  await setMinutesSinceStart(26);
+  await page.getByRole("button", { name: "Entregar miniexamen", exact: true }).click();
+  await expect(page.getByRole("heading", { name: "Resultado del miniexamen" })).toBeVisible();
+
   await page.getByRole("link", { name: "Volver a la lección" }).click();
-  await expect(classMode).toBeChecked({ timeout: 2000 });
-  await page.getByRole("button", { name: /Guardar sesión/ }).click();
-  await expect(classMode).not.toBeChecked();
+  await setMinutesSinceStart(47);
+  await expect(clock).toHaveText("42 min");
+  await runningClass.getByRole("button", { name: "Guardar clase", exact: true }).click();
+  await expect(runningClass).toHaveCount(0);
+  await expect(startClass).toBeVisible();
+
+  await page.getByRole("link", { name: "Progreso", exact: true }).click();
+  await page.reload();
+  const studyTime = page.locator(".metric").filter({ hasText: "Tiempo de estudio" });
+  await expect(studyTime.getByText("42 min", { exact: true })).toBeVisible();
+  await expect(studyTime.getByText(/^42 min de clase/)).toBeVisible();
+  const miniexams = page.getByRole("region", { name: "Miniexámenes", exact: true });
+  await expect(miniexams.getByText("9 min", { exact: true })).toBeVisible();
+});
+
+test("accepts an optional class time adjustment and a manual class entry", async ({ page }) => {
+  const started = Date.parse("2026-11-24T20:00:00Z");
+  await page.clock.setFixedTime(new Date(started));
+  await page.goto("/#/clase/hc-orden");
+  await page.getByRole("button", { name: "Iniciar clase", exact: true }).click();
+  await page.clock.setFixedTime(new Date(started + 10 * 60_000));
+
+  const runningClass = page.getByRole("region", { name: "Clase en curso", exact: true });
+  await expect(runningClass.getByRole("timer", { name: "Tiempo de clase", exact: true })).toHaveText("10 min");
+  const adjustment = runningClass.getByText("Ajustar minutos", { exact: true });
+  const minutes = runningClass.getByLabel("Minutos", { exact: true });
+  await adjustment.click();
+  await minutes.fill("181");
+  await adjustment.click();
+  await runningClass.getByRole("button", { name: "Guardar clase", exact: true }).click();
+  await expect(minutes).toBeVisible();
+  await minutes.fill("8");
+  await runningClass.getByRole("button", { name: "Guardar clase", exact: true }).click();
+  await expect(runningClass).toHaveCount(0);
+
+  const manual = page.locator("details").filter({ hasText: "Registrar tiempo manual" });
+  await manual.getByText("Registrar tiempo manual", { exact: true }).click();
+  await manual.getByLabel("Minutos", { exact: true }).fill("7");
+  await manual.getByRole("button", { name: "Guardar clase", exact: true }).click();
+  await page.getByRole("link", { name: "Progreso", exact: true }).click();
+  const studyTime = page.locator(".metric").filter({ hasText: "Tiempo de estudio" });
+  await expect(studyTime.getByText("15 min", { exact: true })).toBeVisible();
+  await expect(studyTime.getByText(/^15 min de clase/)).toBeVisible();
+});
+
+test("starts the due review with a class and returns to the selected lesson", async ({ page }) => {
+  await page.clock.install({ time: new Date("2026-11-23T20:00:00Z") });
+  await page.goto("/#/clase/hc-orden/0");
+  const olderQuestion = page.getByRole("region", { name: "Pregunta del banco", exact: true });
+  await olderQuestion.getByRole("radio", { name: "A, B, C", exact: true }).check();
+  await olderQuestion.getByRole("button", { name: "Comprobar", exact: true }).click();
+  await expect(olderQuestion.getByText("Respuesta correcta: B", { exact: true })).toBeVisible();
+
+  await page.clock.fastForward(24 * 60 * 60_000);
+  await page.goto("/#/clase/mat-enteros");
+  await page.getByRole("button", { name: "Iniciar clase", exact: true }).click();
+  await expect(page).toHaveURL(/#\/repaso\/clase$/);
+  await expect(page.getByRole("button", { name: "Empezar repaso", exact: true })).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: "Ordenar con pistas", exact: true })).toBeVisible();
+
+  const runningClass = page.getByRole("region", { name: "Clase en curso", exact: true });
+  const clock = runningClass.getByRole("timer", { name: "Tiempo de clase", exact: true });
+  await page.getByRole("radio").first().check();
+  await page.clock.fastForward("03:00");
+  await expect(clock).toContainText("3 min");
+  await page.getByRole("button", { name: "Comprobar", exact: true }).click();
+  await page.getByRole("button", { name: "Continuar a la clase", exact: true }).click();
+  await expect(page).toHaveURL(/#\/clase\/mat-enteros$/);
+  await expect(page.getByRole("heading", { name: "Números reales y operaciones", level: 1 })).toBeVisible();
+
+  await page.clock.fastForward("07:00");
+  await expect(clock).toContainText("10 min");
+  await runningClass.getByRole("button", { name: "Guardar clase", exact: true }).click();
+  await expect(runningClass).toHaveCount(0);
+  await page.getByRole("link", { name: "Progreso", exact: true }).click();
+  await page.getByRole("button", { name: "Día", exact: true }).click();
+  const studyTime = page.locator(".metric").filter({ hasText: "Tiempo de estudio" });
+  await expect(studyTime.getByText("10 min", { exact: true })).toBeVisible();
+  await expect(studyTime.getByText(/^10 min de clase/)).toBeVisible();
+  const answers = page.locator(".metric").filter({ hasText: "Preguntas resueltas" });
+  await expect(answers.locator("strong")).toHaveText("1");
 });
 
 test("the orthography lesson goes from guided practice straight to a fifteen-question mini-exam", async ({ page }) => {

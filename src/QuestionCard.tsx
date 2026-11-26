@@ -47,9 +47,10 @@ export function AnswerOptions({ options, selection, answer, revealed, lang, onSe
   ))}</div>;
 }
 
-export function QuestionCard({ question, mode, area, flagged, previous, onFlag, onAttempt }: {
+export function QuestionCard({ question, mode, area, flagged, previous, onFlag, onAttempt, timeInClass = false }: {
   question: Question; mode: Exclude<Mode, "exam">; area: Lesson["area"]; flagged: boolean;
   previous?: Attempt;
+  timeInClass?: boolean;
   onFlag: () => void; onAttempt: (attempt: Attempt) => void;
 }) {
   const [selection, setSelection] = useState<number | null>(previous?.selection ?? null);
@@ -61,6 +62,7 @@ export function QuestionCard({ question, mode, area, flagged, previous, onFlag, 
   const answered = useRef(previous?.selection !== undefined);
   const focusOnFeedback = useRef(false);
   const nextFeedback = useRef<HTMLDivElement>(null);
+  const timedSeparately = mode !== "live" && !timeInClass;
   useEffect(() => {
     if (submitted && focusOnFeedback.current) {
       nextFeedback.current?.focus();
@@ -68,7 +70,7 @@ export function QuestionCard({ question, mode, area, flagged, previous, onFlag, 
     }
   }, [submitted]);
   useEffect(() => {
-    if (!prompt.current || mode === "live" || submitted) return;
+    if (!prompt.current || !timedSeparately || submitted) return;
     const tracker = time.current;
     function updateClock() {
       const now = performance.now();
@@ -91,7 +93,7 @@ export function QuestionCard({ question, mode, area, flagged, previous, onFlag, 
       tracker.visible = false;
       updateClock();
     };
-  }, [mode, submitted]);
+  }, [timedSeparately, submitted]);
   function submit(event: React.FormEvent) {
     event.preventDefault();
     if (selection === null || answered.current) return;
@@ -103,7 +105,7 @@ export function QuestionCard({ question, mode, area, flagged, previous, onFlag, 
     onAttempt({
       id: crypto.randomUUID(), at, day: studyDay(new Date(at)), item: question.id, skill: question.skill,
       correct: selection === question.answer, help: hinted || guessed, selection,
-      seconds: mode === "live" ? 0 : Math.max(1, Math.min(300, Math.round(elapsed / 1000))),
+      seconds: timedSeparately || elapsed > 0 ? Math.max(1, Math.min(300, Math.round(elapsed / 1000))) : 0,
       mode,
     });
     setSubmitted(true);

@@ -1,5 +1,5 @@
 import { useEffect, useId, useRef, useState } from "react";
-import { AreaTag, duration, Icon, lessonHref, miniHref } from "./ui";
+import { AreaTag, Icon, lessonHref, miniHref } from "./ui";
 import { lessonById, miniQuestionCount } from "./content";
 import { guidedSections } from "./content/guides";
 import { AnswerOptions, OrderDiagram, QuestionCard, QuestionVisual, questionText } from "./QuestionCard";
@@ -74,16 +74,15 @@ function WorkedExampleSteps({ example, area }: { example: InteractiveExample; ar
   </div>;
 }
 
-export default function Workbook({ lesson, target, state, onAttempt, onFlag, onClass, onPin, announce }: {
+export default function Workbook({ lesson, target, state, classRunning, onStartClass, onAttempt, onFlag, onClass, onPin, announce }: {
   lesson: Lesson; target?: string; state: StudyState; onAttempt: (attempt: Attempt) => void; onFlag: (id: string) => void;
-  onClass: (record: ClassRecord) => void; onPin: (id: string) => void; announce: (message: string) => void;
+  classRunning: boolean; onStartClass?: () => void; onClass: (record: ClassRecord) => Promise<boolean>;
+  onPin: (id: string) => void; announce: (message: string) => void;
 }) {
-  const [minutes, setMinutes] = useState(state.settings.minutes);
-  const classModeKey = "marie-cetys:class:" + lesson.id;
-  const [classMode, setClassMode] = useState(() => {
-    try { return sessionStorage.getItem(classModeKey) === studyDay(); } catch { return false; }
-  });
+  const [minutes, setMinutes] = useState("");
   const [complete, setComplete] = useState(true);
+  const [saving, setSaving] = useState(false);
+  const manualRecordId = useRef<string | null>(null);
   const guided = guidedSections(lesson);
   const targetId = target && lesson.id + ":" + target;
   const bankQuestion = targetId && questions(lesson).find(item => item.id === targetId);
@@ -102,19 +101,19 @@ export default function Workbook({ lesson, target, state, onAttempt, onFlag, onC
       announce("Enlace copiado.");
     } catch { announce("Copia el enlace desde la barra del navegador."); }
   }
-  function logClass(event: React.FormEvent) {
+  async function logClass(event: React.FormEvent) {
     event.preventDefault();
-    if (!Number.isInteger(minutes) || minutes < 1 || minutes > 180) return;
+    const count = Number(minutes);
+    if (saving || !Number.isInteger(count) || count < 1 || count > 180) return;
     const at = Date.now();
-    onClass({ id: crypto.randomUUID(), at, day: studyDay(new Date(at)), skill: lesson.id, minutes, complete });
-    updateClassMode(false);
-  }
-  function updateClassMode(enabled: boolean) {
-    setClassMode(enabled);
+    const id = manualRecordId.current ??= crypto.randomUUID();
+    setSaving(true);
     try {
-      if (enabled) sessionStorage.setItem(classModeKey, studyDay());
-      else sessionStorage.removeItem(classModeKey);
-    } catch { /* the current lesson still works in memory */ }
+      if (await onClass({ id, at, day: studyDay(new Date(at)), skill: lesson.id, minutes: count, complete })) {
+        manualRecordId.current = null;
+        setMinutes("");
+      }
+    } finally { setSaving(false); }
   }
   function jumpTo(id: string) {
     const target = document.getElementById(id);
@@ -122,7 +121,7 @@ export default function Workbook({ lesson, target, state, onAttempt, onFlag, onC
     target?.scrollIntoView();
   }
   function exerciseCard(question: Question) {
-    return <QuestionCard question={question} area={lesson.area} mode={classMode ? "live" : "practice"}
+    return <QuestionCard question={question} area={lesson.area} mode={classRunning ? "live" : "practice"}
       previous={latestAnswers.get(question.id)} flagged={state.flagged.includes(question.id)}
       onFlag={() => onFlag(question.id)} onAttempt={onAttempt} />;
   }
@@ -153,7 +152,8 @@ export default function Workbook({ lesson, target, state, onAttempt, onFlag, onC
       <h1>{lesson.title}</h1>
       <p>{lesson.objective}</p>
       <div className="row">
-        <button className="button primary" onClick={() => jumpTo("explicacion")}>Ir a la práctica guiada</button>
+        {onStartClass && <button className="button primary" onClick={onStartClass}>Iniciar clase</button>}
+        <button className={`button ${onStartClass ? "secondary" : "primary"}`} onClick={() => jumpTo("explicacion")}>Ir a la práctica guiada</button>
         <button className="button secondary" onClick={copyLink}><Icon name="link" size={16}/> Copiar enlace</button>
         <button className="button secondary" onClick={() => onPin(state.pinned === lesson.id ? "" : lesson.id)}>
           {state.pinned === lesson.id ? "Quitar de Clase de hoy" : "Fijar como clase de hoy"}
@@ -183,17 +183,19 @@ export default function Workbook({ lesson, target, state, onAttempt, onFlag, onC
           <h2>Guía para la clase</h2>
           <p className="muted">Sesión modelo de 60 minutos.</p>
           <Agenda />
-          <label className="check-label"><input type="checkbox" checked={classMode} onChange={event => updateClassMode(event.target.checked)} /> Estamos en clase</label>
-          {classMode && <p className="muted">Las respuestas cuentan. Registra el tiempo total al final.</p>}
           <a className="button quiet" href={miniHref(lesson.id)}>Ir al miniexamen</a>
-        </section>
-        <form className="rail-panel log-class" onSubmit={logClass}>
-          <h2>Registrar clase</h2>
-          <label>Minutos <input type="number" min="1" max="180" required value={minutes || ""} onChange={e => setMinutes(Number(e.target.value))} /></label>
-          <label className="check-label"><input type="checkbox" checked={complete} onChange={e => setComplete(e.target.checked)} /> Terminé esta clase</label>
-          <button className="button primary">Guardar sesión de {duration(minutes)}</button>
           {done && <p className="muted"><Icon name="check" size={14}/> Clase completa</p>}
-        </form>
+        </section>
+        {onStartClass && <details className="rail-panel class-time-details">
+          <summary>Registrar tiempo manual</summary>
+          <form onSubmit={event => void logClass(event)}>
+            <fieldset className="log-class" disabled={saving}>
+              <label>Minutos <input type="number" min="1" max="180" required value={minutes} onChange={event => setMinutes(event.target.value)} /></label>
+              <label className="check-label"><input type="checkbox" checked={complete} onChange={event => setComplete(event.target.checked)} /> Terminé esta clase</label>
+              <button className="button primary">Guardar clase</button>
+            </fieldset>
+          </form>
+        </details>}
       </aside>
     </div>
   </>;

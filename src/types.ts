@@ -65,6 +65,11 @@ export interface Attempt {
   selection?: number;
 }
 
+export interface ClassInterval {
+  start: number;
+  end: number;
+}
+
 export interface ClassRecord {
   id: string;
   at: number;
@@ -72,6 +77,7 @@ export interface ClassRecord {
   skill: string;
   minutes: number;
   complete: boolean;
+  intervals?: ClassInterval[];
 }
 
 export interface MiniResult {
