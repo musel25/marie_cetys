@@ -141,10 +141,10 @@
         "options": [
           "W",
           "Z",
-          "Y",
-          "G"
+          "G",
+          "Y"
         ],
-        "answer": 3,
+        "answer": 2,
         "explanation": "H va en la tercera casilla, Z va en la segunda y W va en la primera. Quedan G e Y. Como Y va después de G, G ocupa el cuarto lugar.",
         "hint": "Coloca a H y a Z. Después comprueba qué lugar queda libre antes de Z.",
         "difficulty": "exam"
@@ -265,12 +265,12 @@
       {
         "prompt": "En «La luna era una lámpara sobre el camino», ¿qué característica comparten la luna y la lámpara?",
         "options": [
-          "Iluminan lo que está cerca",
           "Producen calor intenso",
           "Se conectan a la corriente",
+          "Iluminan lo que está cerca",
           "Cambian de tamaño cada noche"
         ],
-        "answer": 0,
+        "answer": 2,
         "explanation": "La luna alumbra el camino como lo haría una lámpara.",
         "hint": "Piensa en qué podía ver la persona al caminar de noche.",
         "difficulty": "base"
@@ -279,11 +279,11 @@
         "prompt": "El director entregó un plano del edificio a los visitantes. Dijo «Este plano es una brújula entre los pasillos». ¿Qué quiso decir?",
         "options": [
           "El plano señala el norte en todos los salones",
-          "Los pasillos cambian de lugar",
           "El plano ayuda a encontrar el camino",
+          "Los pasillos cambian de lugar",
           "Solo se puede entrar con brújula"
         ],
-        "answer": 2,
+        "answer": 1,
         "explanation": "Un plano y una brújula ayudan a orientarse. El director dice que el plano sirve de guía por el edificio.",
         "hint": "Compara para qué sirven un plano y una brújula.",
         "difficulty": "exam"
@@ -404,12 +404,12 @@
       {
         "prompt": "Anillo es a dedo como pulsera es a ___.",
         "options": [
-          "mano",
           "muñeca",
+          "mano",
           "cuello",
           "metal"
         ],
-        "answer": 1,
+        "answer": 0,
         "explanation": "Un anillo se pone en un dedo. Una pulsera se pone en la muñeca.",
         "hint": "Busca la parte del cuerpo donde se pone cada objeto.",
         "difficulty": "base"
@@ -543,12 +543,12 @@
       {
         "prompt": "Completa la secuencia 72, 63, 54, ___, 36.",
         "options": [
-          "45",
           "46",
+          "45",
           "48",
           "49"
         ],
-        "answer": 0,
+        "answer": 1,
         "explanation": "Cada término disminuye en 9. Después de 54 viene 54 − 9 = 45.",
         "hint": "Resta 63 a 72. Comprueba la diferencia con el siguiente par.",
         "difficulty": "base"
@@ -556,12 +556,12 @@
       {
         "prompt": "Completa la secuencia 4, 7, 14, 17, 34, ___, ___.",
         "options": [
+          "37, 74",
           "37, 40",
           "68, 71",
-          "37, 74",
           "40, 80"
         ],
-        "answer": 2,
+        "answer": 0,
         "explanation": "La regla alterna sumar 3 y multiplicar por 2. Después de 34 siguen 34 + 3 = 37 y 37 × 2 = 74.",
         "hint": "Busca dos operaciones que se alternan.",
         "difficulty": "exam"
@@ -682,14 +682,14 @@
         "difficulty": "base"
       },
       {
-        "prompt": "¿Qué número completa la última fila?\n18 | 5 | 13\n22 | 9 | 13\n27 | 4 | ___",
+        "prompt": "¿Qué número completa la última fila?\n18 | 5 | 13\n22 | 8 | 14\n27 | 4 | ___",
         "options": [
           "21",
-          "23",
           "24",
+          "23",
           "31"
         ],
-        "answer": 1,
+        "answer": 2,
         "explanation": "En cada fila, resta el segundo número al primero. En la última fila, 27 − 4 = 23.",
         "hint": "Usa las dos primeras columnas para obtener la tercera.",
         "difficulty": "base"
@@ -699,10 +699,10 @@
         "options": [
           "20",
           "28",
-          "37",
-          "19"
+          "19",
+          "37"
         ],
-        "answer": 3,
+        "answer": 2,
         "explanation": "En cada fila, multiplica los dos primeros números y resta el tercero. En la última fila, 7 × 4 − 9 = 19.",
         "hint": "Multiplica los dos primeros datos. Luego compara el resultado con el dato de la última columna.",
         "difficulty": "exam"
@@ -823,12 +823,12 @@
       {
         "prompt": "Sectores del diagrama. 1 solo A · 2 A y B sin C · 3 solo B · 4 A y C sin B · 5 A, B y C · 6 B y C sin A · 7 solo C.\nA = carpetas rojas. B = carpetas con etiqueta. C = carpetas con broche. ¿En qué sector va una carpeta roja con broche y sin etiqueta?",
         "options": [
-          "Sector 4",
           "Sector 2",
           "Sector 5",
-          "Sector 6"
+          "Sector 6",
+          "Sector 4"
         ],
-        "answer": 0,
+        "answer": 3,
         "explanation": "La carpeta cumple A y C. Queda fuera de B porque no tiene etiqueta. El sector 4 reúne esas condiciones.",
         "hint": "Marca qué características corresponden a A, B y C.",
         "difficulty": "base"
@@ -836,12 +836,12 @@
       {
         "prompt": "Sectores del diagrama. 1 solo A · 2 A y B sin C · 3 solo B · 4 A y C sin B · 5 A, B y C · 6 B y C sin A · 7 solo C.\nA = carteles impresos a color. B = carteles plastificados. C = carteles con fecha. ¿Qué sectores contienen carteles que tienen fecha y cumplen exactamente una de las otras dos condiciones?",
         "options": [
+          "Sectores 4 y 6",
           "Sectores 2 y 4",
           "Sectores 5 y 7",
-          "Sectores 4 y 6",
           "Sectores 4, 5 y 6"
         ],
-        "answer": 2,
+        "answer": 0,
         "explanation": "En el sector 4 se cumplen A y C. En el 6 se cumplen B y C. El sector 5 cumple las tres condiciones y el 7 solo cumple C.",
         "hint": "Empieza con los sectores que tienen C. Comprueba qué pasa con A y B en cada uno.",
         "difficulty": "exam"
@@ -964,12 +964,12 @@
       {
         "prompt": "Todas las fotos del concurso se imprimen en papel mate. La foto de Inés está en el concurso. ¿Qué conclusión es obligatoria?",
         "options": [
-          "Inés imprimió la foto en casa",
           "La foto de Inés está en papel mate",
+          "Inés imprimió la foto en casa",
           "Inés ganó el concurso",
           "Todas las fotos en papel mate están en el concurso"
         ],
-        "answer": 1,
+        "answer": 0,
         "explanation": "La foto de Inés pertenece al conjunto de fotos del concurso. Por la regla, está impresa en papel mate.",
         "hint": "Aplica la regla a una foto que pertenece al concurso.",
         "difficulty": "base"
@@ -978,11 +978,11 @@
         "prompt": "Si una pieza supera la revisión, recibe un código. Las piezas con código se guardan en el armario. La pieza R está en el armario. ¿Qué conclusión se puede sacar sobre la revisión de R?",
         "options": [
           "R superó la revisión",
+          "Los datos no bastan para saber si R superó la revisión",
           "R no superó la revisión",
-          "R fue la primera pieza revisada",
-          "Los datos no bastan para saber si R superó la revisión"
+          "R fue la primera pieza revisada"
         ],
-        "answer": 3,
+        "answer": 1,
         "explanation": "Las reglas indican qué pasa si una pieza supera la revisión. No indican que todas las piezas del armario la hayan superado.",
         "hint": "Comprueba si la regla dice que solo se guardan piezas que superaron la revisión.",
         "difficulty": "exam"
@@ -1103,12 +1103,12 @@
       {
         "prompt": "Para un proyecto necesitas 9 cartulinas. Cada paquete contiene 4 cartulinas y solo venden paquetes completos. ¿Cuántos paquetes debes comprar como mínimo?",
         "options": [
-          "3 paquetes",
           "2 paquetes",
           "4 paquetes",
-          "9 paquetes"
+          "9 paquetes",
+          "3 paquetes"
         ],
-        "answer": 0,
+        "answer": 3,
         "explanation": "Dos paquetes dan 8 cartulinas. Tres paquetes dan 12 y alcanzan para el proyecto.",
         "hint": "Cuenta cuántas cartulinas tendrías con dos paquetes.",
         "difficulty": "base"
@@ -1118,10 +1118,10 @@
         "options": [
           "16:00 a 16:25",
           "16:10 a 16:35",
-          "16:35 a 17:00",
-          "16:30 a 16:55"
+          "16:30 a 16:55",
+          "16:35 a 17:00"
         ],
-        "answer": 2,
+        "answer": 3,
         "explanation": "Antes de la reserva hay 20 minutos libres. Después hay 25 minutos, de 16:35 a 17:00.",
         "hint": "Identifica los dos periodos libres y compara su duración.",
         "difficulty": "exam"

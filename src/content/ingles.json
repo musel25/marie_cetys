@@ -101,11 +101,11 @@
         "prompt": "Choose the correct word order for a question about where Mia lives.",
         "options": [
           "Where Mia does live?",
-          "Where does Mia live?",
           "Where does live Mia?",
+          "Where does Mia live?",
           "Where do Mia lives?"
         ],
-        "answer": 1,
+        "answer": 2,
         "explanation": "El orden es where, does, Mia y live. El verbo principal usa la forma base después de does.",
         "hint": "En una pregunta con where, coloca el auxiliar antes del sujeto.",
         "difficulty": "base"
@@ -114,11 +114,11 @@
         "prompt": "Complete the polite request. “Would you mind ____ the window?”",
         "options": [
           "close",
+          "closing",
           "to close",
-          "you close",
-          "closing"
+          "you close"
         ],
-        "answer": 3,
+        "answer": 1,
         "explanation": "Después de Would you mind se usa la forma en -ing. La petición completa es «Would you mind closing the window?»",
         "hint": "Busca la forma verbal que sigue a mind en esta petición.",
         "difficulty": "exam"
@@ -228,12 +228,12 @@
       {
         "prompt": "Complete the negative sentence. “Yesterday, Jules ____ take the bus.”",
         "options": [
-          "did not",
           "does not",
           "was not",
-          "is not"
+          "is not",
+          "did not"
         ],
-        "answer": 0,
+        "answer": 3,
         "explanation": "Did not forma la negación del pasado simple. El verbo take conserva su forma base.",
         "hint": "Yesterday indica que la acción se sitúa en el pasado.",
         "difficulty": "base"
@@ -369,12 +369,12 @@
       {
         "prompt": "Which sentence says that only three students came to class because there was a storm?",
         "options": [
+          "Because of the storm, only three students came to class.",
           "Nearly three students missed class during the storm.",
           "Three students nearly missed class during the storm.",
-          "The storm started when three students left class.",
-          "Because of the storm, only three students came to class."
+          "The storm started when three students left class."
         ],
-        "answer": 3,
+        "answer": 0,
         "explanation": "Only modifica a three students y limita a tres el número de asistentes. Because of the storm da la causa.",
         "hint": "Busca only junto a la cantidad que se quiere limitar.",
         "difficulty": "exam"
@@ -484,12 +484,12 @@
       {
         "prompt": "Complete the sentence. “The science fair takes place ____ Friday.”",
         "options": [
-          "on",
           "in",
           "at",
-          "to"
+          "to",
+          "on"
         ],
-        "answer": 0,
+        "answer": 3,
         "explanation": "En inglés se usa on con días de la semana. La expresión correcta es on Friday.",
         "hint": "Identifica si Friday es un día, un mes o una hora.",
         "difficulty": "base"
@@ -499,10 +499,10 @@
         "options": [
           "a little more",
           "much more of",
-          "a few more",
-          "any more of"
+          "any more of",
+          "a few more"
         ],
-        "answer": 2,
+        "answer": 3,
         "explanation": "A few more expresa una pequeña cantidad adicional con un sustantivo plural contable. A little more se usa con sustancias como flour.",
         "hint": "Eggs es un sustantivo plural que se puede contar.",
         "difficulty": "exam"
@@ -624,11 +624,11 @@
         "prompt": "Mina wanted to return a borrowed jacket. She folded it at home, carried it to school in a tote bag, and handed it to Eli before lunch.\n\nWhere did Mina fold the jacket?",
         "options": [
           "At school",
-          "At home",
           "In the cafeteria",
+          "At home",
           "At Eli’s home"
         ],
-        "answer": 1,
+        "answer": 2,
         "explanation": "El texto dice «She folded it at home». Mina dobló la chaqueta en casa.",
         "hint": "Busca la expresión de lugar que aparece justo después de folded it.",
         "difficulty": "base"
@@ -637,11 +637,11 @@
         "prompt": "The community center lent out umbrellas on rainy days. At first, visitors left them in a bin after turning them in. Several wet umbrellas stayed in the bin overnight. The center then added a drying rack next to the returns counter.\n\nWhy did the center most likely add the drying rack?",
         "options": [
           "To collect money for more umbrellas",
+          "To give returned umbrellas a place to dry",
           "To give visitors a place to buy umbrellas",
-          "To stop visitors from returning umbrellas",
-          "To give returned umbrellas a place to dry"
+          "To stop visitors from returning umbrellas"
         ],
-        "answer": 3,
+        "answer": 1,
         "explanation": "Las sombrillas seguían mojadas en el contenedor. El nuevo soporte permite dejar abiertas las sombrillas devueltas para que se sequen.",
         "hint": "Relaciona el problema de las sombrillas mojadas con el uso de un drying rack.",
         "difficulty": "exam"
@@ -764,12 +764,12 @@
       {
         "prompt": "Read the lines. “The empty station was silent. Rain ran down the glass roof, and water dripped onto the platform.”\n\nWhere does the scene take place?",
         "options": [
-          "At a station",
           "On a crowded bus",
+          "At a station",
           "Inside a classroom",
           "In a kitchen"
         ],
-        "answer": 0,
+        "answer": 1,
         "explanation": "El pasaje menciona una estación y su andén. Ambos detalles sitúan la escena en una estación.",
         "hint": "Busca las palabras que indican el lugar antes de identificar el ambiente.",
         "difficulty": "base"
@@ -893,12 +893,12 @@
       {
         "prompt": "Choose the best transition. “First, wash the apples. ____, cut them into thin slices.”",
         "options": [
-          "For example",
           "Next",
+          "For example",
           "However",
           "Instead"
         ],
-        "answer": 1,
+        "answer": 0,
         "explanation": "Next indica el paso que sigue. Aquí se cortan las manzanas después de lavarlas.",
         "hint": "La segunda instrucción sigue a la primera en el tiempo.",
         "difficulty": "base"
@@ -906,12 +906,12 @@
       {
         "prompt": "A draft has four sentences. Which one should the writer remove to keep the paragraph focused on the new reading corner?\n\n(1) The class set up a reading corner by the window. (2) Students brought cushions and a floor lamp. (3) They sorted donated books into baskets. (4) The school’s soccer team won a match on Friday.",
         "options": [
+          "Sentence 4",
           "Sentence 1",
           "Sentence 2",
-          "Sentence 3",
-          "Sentence 4"
+          "Sentence 3"
         ],
-        "answer": 3,
+        "answer": 0,
         "explanation": "Las primeras tres oraciones describen el lugar y su preparación. La cuarta cambia de tema a un partido de fútbol.",
         "hint": "Identifica la oración que no explica cómo prepararon el rincón de lectura.",
         "difficulty": "exam"
@@ -1036,10 +1036,10 @@
         "options": [
           "Sana labeled the shelf and the jars.",
           "Sana placed the jars on the shelf and never labeled them.",
-          "Sana labeled the jars and placed them on the shelf.",
-          "She placed the labels on the shelf with Sana."
+          "She placed the labels on the shelf with Sana.",
+          "Sana labeled the jars and placed them on the shelf."
         ],
-        "answer": 2,
+        "answer": 3,
         "explanation": "Sana realiza las dos acciones. Them sustituye a the jars después de placed y conserva el sentido.",
         "hint": "Conserva un solo sujeto y usa un pronombre para la segunda mención de the jars.",
         "difficulty": "exam"
