@@ -25,14 +25,16 @@ export interface GuidedSection {
   points: string[];
   example: InteractiveExample;
   exercise: Exercise;
+  followUp: Exercise;
 }
 
 export interface LessonDraft {
   id: string;
   title: string;
   objective: string;
-  miniQuestionCount?: number;
+  legacyMiniQuestionCount?: number;
   miniFormCount?: number;
+  miniReserveSize?: number;
   prerequisiteIds: string[];
   source: string;
   exercises: Exercise[];

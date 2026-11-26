@@ -39,8 +39,12 @@ export default function Progress({ state, today, onFlag }: { state: StudyState; 
   const flagged = state.flagged.flatMap(id => {
     const lesson = lessonById.get(id.split(":")[0]);
     if (!lesson) return [];
-    const guided = guidedSections(lesson).find(section => section.question.id === id);
-    if (guided) return [{ question: guided.question, lesson, label: guided.title }];
+    const guided = guidedSections(lesson).find(section => section.question.id === id || section.followUpQuestion.id === id);
+    if (guided) {
+      const extra = guided.followUpQuestion.id === id;
+      return [{ question: extra ? guided.followUpQuestion : guided.question, lesson,
+        label: extra ? `${guided.title} · Práctica adicional` : guided.title }];
+    }
     const practice = questions(lesson);
     const question = practice.find(item => item.id === id);
     const number = practice.filter(item => item.difficulty !== "challenge").findIndex(item => item.id === id) + 1;

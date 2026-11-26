@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { areaOrder, areas, byArea, curriculum, expectedMiniFormCount, miniQuestionCount } from "../src/content";
+import { areaOrder, areas, byArea, curriculum, expectedMiniFormCount, lessonById, miniQuestionCount } from "../src/content";
 import { guidedSections } from "../src/content/guides";
 import { miniFormCount, miniQuestions } from "../src/content/mini";
 import { questions } from "../src/study";
@@ -32,7 +32,7 @@ test("each exam area has enough original questions for a timed section and order
     assert.ok(lesson.exercises.filter(exercise => exercise.difficulty === "exam").length >= 4, lesson.id);
     assert.ok(lesson.exercises.some(exercise => exercise.difficulty === "challenge"), lesson.id);
     lessons.add(lesson.id);
-    for (const item of [...questions(lesson), ...guidedSections(lesson).map(section => section.question)]) {
+    for (const item of [...questions(lesson), ...guided.flatMap(section => [section.question, section.followUpQuestion])]) {
       assert.ok(!itemIds.has(item.id), item.id);
       assert.ok(!prompts.has(item.prompt), item.id);
       assert.equal(item.options.length, 4, item.id);
@@ -49,23 +49,24 @@ test("each exam area has enough original questions for a timed section and order
   }
 });
 
-test("every lesson has independent mini-exam questions", () => {
-  const prompts = new Set(curriculum.flatMap(lesson => [...questions(lesson), ...guidedSections(lesson).map(section => section.question)].map(item => item.prompt)));
+test("every mini-exam has fifteen distinct questions with alternatives to the guided practice", () => {
+  const prompts = new Set(curriculum.flatMap(lesson => [...questions(lesson), ...guidedSections(lesson).flatMap(section => [section.question, section.followUpQuestion])].map(item => item.prompt)));
   for (const lesson of curriculum) {
-    if (lesson.area === "hc") {
-      assert.equal(lesson.exercises.filter(item => item.difficulty !== "challenge").length, 9, lesson.id);
-    }
+    const bank = new Map(lesson.exercises.map(item => [item.prompt, item]));
+    const originalCount = lesson.id === "es-ortografia" ? 10 : 5;
     const formCount = miniFormCount(lesson.id);
     assert.equal(formCount, expectedMiniFormCount(lesson), lesson.id);
     assert.equal(formCount, lesson.area === "hc" || lesson.id === "es-ortografia" ? 3 : 1, lesson.id);
+    const extensions = new Set<string>();
     for (let form = 0; form < formCount; form++) {
       const items = miniQuestions(lesson.id, form);
-      assert.equal(items.length, miniQuestionCount(lesson), lesson.id);
-      assert.equal(items.length, lesson.id === "es-ortografia" ? 10 : 5, lesson.id);
+      assert.equal(items.length, miniQuestionCount, lesson.id);
+      assert.equal(items.length, 15, lesson.id);
+      assert.equal(new Set(items.map(item => item.prompt)).size, items.length, lesson.id);
       if (lesson.area === "hc") {
-        assert.deepEqual(items.map(item => item.difficulty), ["base", "base", "exam", "exam", "exam"]);
+        assert.deepEqual(items.slice(0, originalCount).map(item => item.difficulty), ["base", "base", "exam", "exam", "exam"]);
       }
-      for (const item of items) {
+      for (const item of items.slice(0, originalCount)) {
         assert.equal(item.options.length, 4, item.id);
         assert.equal(new Set(item.options.map(option => option.trim())).size, 4, item.id);
         assert.ok(Number.isInteger(item.answer) && item.answer >= 0 && item.answer < 4, item.id);
@@ -74,6 +75,25 @@ test("every lesson has independent mini-exam questions", () => {
         assert.ok(!prompts.has(item.prompt), item.id);
         prompts.add(item.prompt);
       }
+      const extension = items.slice(originalCount);
+      for (const { id, skill, ...exercise } of extension) {
+        assert.equal(skill, lesson.id, id);
+        assert.deepEqual(exercise, bank.get(exercise.prompt), id);
+      }
+      const promptSet = JSON.stringify(extension.map(item => item.prompt).sort());
+      assert.ok(!extensions.has(promptSet), lesson.id);
+      extensions.add(promptSet);
     }
+  }
+});
+
+test("appending a bank question does not change a saved mini-exam form", () => {
+  const lesson = lessonById.get("hc-analogias")!;
+  const savedForm = miniQuestions(lesson.id, 1);
+  lesson.exercises.push({ ...lesson.exercises[0], prompt: "Future addition" });
+  try {
+    assert.deepEqual(miniQuestions(lesson.id, 1), savedForm);
+  } finally {
+    lesson.exercises.pop();
   }
 });

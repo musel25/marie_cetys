@@ -1,5 +1,5 @@
 import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { areas, areaOrder, byArea, curriculum, lessonById, resourceLinks } from "./content";
+import { areas, areaOrder, byArea, curriculum, lessonById, miniQuestionCount, resourceLinks } from "./content";
 import { Exam } from "./Exam";
 import { addDays, classPlan, dateLabel, loadState, longReviewLimit, longReviewQuestions, periodStart, reviewCards, reviewQuestion, saveState, studyDay, studyMinutes, summary } from "./study";
 import type { Area, Attempt, ClassRecord, Lesson, MiniResult, Question, StudyState } from "./types";
@@ -35,7 +35,6 @@ function Home({ state, today, dueCount, hasStudied }: { state: StudyState; today
     day >= state.settings.start && (!state.settings.exam || day < state.settings.exam),
   ).reduce((total, day) => total + studyMinutes(day, state.settings), 0);
   const usedMinutes = Math.round(week.seconds / 60) + week.classMinutes;
-  const published = lesson?.exercises.filter(exercise => exercise.difficulty !== "challenge").length;
   return <>
     <div className="home-top"><PageHeading title="Clase de hoy" /><time dateTime={today}><Icon name="calendar" size={17}/>{dateLabel(today, "long")}</time></div>
     <div className="home-grid">
@@ -50,8 +49,8 @@ function Home({ state, today, dueCount, hasStudied }: { state: StudyState; today
           {lesson.id === "hc-orden" ? <OrderDiagram preview /> : <div className="hero-symbol"><Icon name="book" size={90}/></div>}
         </> : <div className="hero-copy"><h2>{completed.size >= curriculum.length ? "Temario completado" : "Estudia a tu ritmo"}</h2><p>Abre cualquier lección o ajusta tus fechas.</p><a className="button hero-button" href="#/temario">Ver temario</a></div>}
         {lesson && <div className="hero-footer">
-          <span><Icon name="book" size={17}/> Práctica y miniexamen</span>
-          <span><Icon name="check" size={17}/> {published} ejercicios</span>
+          <span><Icon name="book" size={17}/> Práctica guiada</span>
+          <span><Icon name="check" size={17}/> Miniexamen de {miniQuestionCount} preguntas</span>
           <span><Icon name="clock" size={17}/> {duration(state.pinned ? studyMinutes(today, state.settings) || state.settings.minutes : slot?.minutes ?? state.settings.minutes)}</span>
           {slot && slot.day > today && !state.pinned && <span>Próxima · {dateLabel(slot.day)}</span>}
         </div>}
@@ -105,7 +104,7 @@ function Curriculum({ filter, state }: { filter: Area | undefined; state: StudyS
           <li key={lesson.id}><a href={lessonHref(lesson.id)}>
             <span className={`topic-index ${completed.has(lesson.id) ? "done" : ""}`}>{completed.has(lesson.id) ? <Icon name="check" size={16}/> : index + 1}</span>
             <span><strong>{lesson.title}</strong><span>{lesson.objective}</span></span>
-            <span className="topic-count">{lesson.exercises.filter(item => item.difficulty !== "challenge").length} preguntas</span>
+            <span className="topic-count">{miniQuestionCount} en el miniexamen</span>
           </a></li>
         ))}</ol>
       </section>,

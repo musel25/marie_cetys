@@ -122,6 +122,19 @@
         "explanation": "La temperatura subió 2 × 3 = 6 °C. Luego bajó 5 °C. El resultado es −4 + 6 − 5 = −3 °C.",
         "hint": "Calcula primero el aumento total durante las dos horas.",
         "difficulty": "exam"
+      },
+      {
+        "prompt": "Al comparar −3/2, −1.4 y −√4, ¿cuál es su orden de menor a mayor?",
+        "options": [
+          "−1.4, −3/2, −√4",
+          "−3/2, −√4, −1.4",
+          "−√4, −3/2, −1.4",
+          "−√4, −1.4, −3/2"
+        ],
+        "answer": 2,
+        "explanation": "−√4 = −2 y −3/2 = −1.5. En la recta numérica, −2 < −1.5 < −1.4.",
+        "hint": "Escribe −3/2 y −√4 en forma decimal para compararlos en la misma escala.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -404,6 +417,19 @@
         "explanation": "Todas las potencias tienen base 3. El exponente resultante es 2 + 4 − 3 = 3. La expresión equivale a 3³.",
         "hint": "Suma los exponentes al multiplicar y resta el exponente del divisor.",
         "difficulty": "exam"
+      },
+      {
+        "prompt": "Un sensor guarda 3.2 × 10⁴ bytes por lectura. ¿Cuántos bytes guarda al hacer 2.5 × 10² lecturas?",
+        "options": [
+          "8 × 10⁶",
+          "8 × 10⁸",
+          "5.7 × 10⁶",
+          "8 × 10²"
+        ],
+        "answer": 0,
+        "explanation": "3.2 × 2.5 = 8. Las potencias de 10 dan 10⁴ × 10² = 10⁶. El producto es 8 × 10⁶ bytes.",
+        "hint": "Multiplica los coeficientes. Después combina las potencias de 10.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -533,6 +559,19 @@
         "explanation": "La condición es 100 + 35s ≥ 240. Al restar 100 y dividir entre 35, se obtiene s ≥ 4. Cuatro semanas dan exactamente $240.",
         "hint": "Escribe 100 + 35s y usa el símbolo que incluye la igualdad.",
         "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Qué inecuación representa el intervalo que empieza en 2 sin incluirlo, se extiende hasta 7 y sí incluye el 7?",
+        "options": [
+          "2 ≤ x < 7",
+          "2 ≤ x ≤ 7",
+          "2 < x < 7",
+          "2 < x ≤ 7"
+        ],
+        "answer": 3,
+        "explanation": "El 2 es un extremo abierto y exige x > 2. El 7 es un extremo cerrado y exige x ≤ 7. Juntas dan 2 < x ≤ 7.",
+        "hint": "Revisa por separado si el límite inferior y el superior se incluyen.",
+        "difficulty": "base"
       }
     ]
   },
@@ -661,6 +700,19 @@
         "explanation": "El mayor factor común es 3x. Al dividir 6x² entre 3x queda 2x. Al dividir 15x entre 3x queda 5.",
         "hint": "Busca el máximo divisor común de 6 y 15. Después considera la x común.",
         "difficulty": "exam"
+      },
+      {
+        "prompt": "Simplifica (2a − 3)² − (2a + 3)(2a − 3).",
+        "options": [
+          "−12a",
+          "−12a + 18",
+          "18",
+          "−6a + 18"
+        ],
+        "answer": 1,
+        "explanation": "Extrae (2a − 3). El otro factor es (2a − 3) − (2a + 3) = −6. Al multiplicar obtienes −12a + 18.",
+        "hint": "Desarrolla las dos expresiones por separado antes de restar. También puedes sacar el factor común.",
+        "difficulty": "challenge"
       }
     ]
   },
@@ -791,6 +843,19 @@
         "explanation": "x² − 16 = (x − 4)(x + 4). Se cancela x − 4 cuando x ≠ 4. La restricción del denominador original se conserva.",
         "hint": "Factoriza el numerador como una diferencia de cuadrados.",
         "difficulty": "exam"
+      },
+      {
+        "prompt": "Si r ≠ 2 y r ≠ −2, ¿cuál es la suma de 1/(r − 2) + 1/(r + 2)?",
+        "options": [
+          "2/(r² − 4)",
+          "2r/(r² + 4)",
+          "2r/(r² − 4)",
+          "1/r"
+        ],
+        "answer": 2,
+        "explanation": "Los numeradores ajustados son r + 2 y r − 2. Su suma es 2r. El denominador se simplifica a r² − 4.",
+        "hint": "Usa (r − 2)(r + 2) como denominador común.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -920,6 +985,19 @@
         "explanation": "Con x = 3 se obtiene 9 − 21 + k = 0. Entonces −12 + k = 0 y k = 12.",
         "hint": "Sustituye x por 3 y despeja k.",
         "difficulty": "exam"
+      },
+      {
+        "prompt": "La altura de una pelota, en metros, es h(t) = 3 + 2t − t², donde t es el tiempo en segundos desde el lanzamiento. ¿Cuándo llega al suelo?",
+        "options": [
+          "A los 3 segundos.",
+          "Al segundo 1.",
+          "A los 2 segundos.",
+          "A los 4 segundos."
+        ],
+        "answer": 0,
+        "explanation": "h(t) = −(t − 3)(t + 1). Sus ceros son 3 y −1. Solo 3 segundos pertenece al tiempo desde el lanzamiento.",
+        "hint": "Iguala la altura a cero y busca una raíz que sea un tiempo no negativo.",
+        "difficulty": "challenge"
       }
     ]
   },
@@ -1204,6 +1282,19 @@
         "explanation": "Se cumple a + e = 4 y 90a + 45e = 270. Al dividir la segunda ecuación entre 45 queda 2a + e = 6. La diferencia da a = 2 y por eso e = 2.",
         "hint": "Llama a y e a las cantidades. Escribe una ecuación para los boletos y otra para el costo.",
         "difficulty": "exam"
+      },
+      {
+        "prompt": "Una recta pasa por los puntos (0, 7) y (4, −1). Otra sigue la ecuación y = x + 1. ¿En qué punto se cruzan?",
+        "options": [
+          "(3, 2)",
+          "(4, −1)",
+          "(0, 7)",
+          "(2, 3)"
+        ],
+        "answer": 3,
+        "explanation": "La primera recta tiene pendiente (−1 − 7)/4 = −2 y su ecuación es y = −2x + 7. Al igualarla con y = x + 1, resulta x = 2 y y = 3.",
+        "hint": "Halla la pendiente de la primera recta y usa su corte con el eje y. Después iguala ambas expresiones de y.",
+        "difficulty": "challenge"
       }
     ]
   },
@@ -1474,6 +1565,19 @@
         "answer": 2,
         "explanation": "Si a es el ancho, a² = 25² − 15² = 625 − 225 = 400. Como a es una longitud, a = 20 cm.",
         "hint": "La diagonal es la hipotenusa del triángulo que forman la altura y el ancho.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Dos senderos rectos parten de un cruce y forman un ángulo recto. Lía recorre 20 m por uno y Noé recorre 21 m por el otro. ¿A qué distancia en línea recta quedan?",
+        "options": [
+          "41 m",
+          "29 m",
+          "1 m",
+          "841 m"
+        ],
+        "answer": 1,
+        "explanation": "La distancia mide √(20² + 21²) = √(400 + 441) = √841 = 29 m.",
+        "hint": "Los dos recorridos son los catetos. La distancia entre las personas es la hipotenusa.",
         "difficulty": "exam"
       }
     ]
@@ -1771,6 +1875,19 @@
         "answer": 1,
         "explanation": "El agua alcanza 18 − 3 = 15 cm. Su volumen es 35 × 20 × 15 = 10,500 cm³.",
         "hint": "Calcula la altura que alcanza el agua y usa esa altura en el volumen.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Un cilindro tiene un diámetro de 8 cm y un volumen exacto de 112π cm³. ¿Cuál es su altura?",
+        "options": [
+          "7 cm",
+          "14 cm",
+          "28 cm",
+          "16 cm"
+        ],
+        "answer": 0,
+        "explanation": "El radio mide 4 cm y el área de la base es 16π cm². La altura es 112π ÷ 16π = 7 cm.",
+        "hint": "Halla el radio a partir del diámetro. Divide el volumen entre el área de la base.",
         "difficulty": "exam"
       }
     ]

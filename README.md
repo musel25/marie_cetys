@@ -7,6 +7,7 @@ The default plan includes sixty minutes per day from Monday through Friday. The 
 ## Uso
 
 - Abre **Clase de hoy** para ver la lección sugerida. En una lección, elige **Fijar como clase de hoy** o copia el enlace para compartirla.
+- En cada bloque de la lección, resuelve el ejemplo y el ejercicio guiado. Abre **Practicar otra vez** para resolver un segundo ejercicio. Al final de la explicación, haz el **Miniexamen** de 15 preguntas.
 - Abre **Guía para la clase** para ver los tiempos, las variantes y la pregunta de salida de la primera sesión.
 - En **Repaso**, elige el repaso diario para practicar una pregunta por tema pendiente. Elige **Empezar repaso largo** para practicar hasta 15 preguntas de temas que ya estudiaste, incluso si estás al día.
 - En **Plan**, selecciona los días, minutos por sesión, fecha de inicio, fecha del examen y días libres.

@@ -4,22 +4,19 @@ Al terminar, tu hermana podrá ordenar varios elementos y señalar la pista que 
 
 | Minutos | Actividad | Qué hacer |
 | --- | --- | --- |
-| 0–5 | Primer intento | Pídele que intente el ejercicio 1. Pregunta qué pista revisó primero. |
-| 5–15 | Resuelvan en equipo | Hagan el ejercicio 2. Dibuja una casilla por número y muéstrale dónde queda el 2. Usa el ejercicio 3 para practicar «inmediatamente antes». Pídele que tome la decisión. |
-| 15–35 | Práctica | Pídele que resuelva los ejercicios 4 a 7. Si se atasca, abre una pista. Al corregir, pregúntale qué condición elimina la opción más parecida. |
-| 35–45 | Miniexamen | Abre cinco preguntas nuevas. Pídele que entregue por su cuenta. El sitio guarda su tiempo y sus aciertos. |
-| 45–60 | Corrección | Revisen hasta dos errores. Pídele que señale qué pista pasó por alto y que explique cómo la comprobaría en otra pregunta. |
+| 0–5 | Primer intento | Pídele que intente el primer ejercicio guiado. Pregunta qué pista revisó primero. |
+| 5–30 | Explicación y práctica guiada | En cada bloque, resuelvan el ejemplo y revisen las pistas. Pídele que haga el ejercicio guiado. Abre **Practicar otra vez** para aplicar el método a otro orden. |
+| 30–50 | Miniexamen | Abre las 15 preguntas al final de la explicación. Pídele que las responda y entregue por su cuenta. El sitio guarda su tiempo y sus aciertos. |
+| 50–60 | Corrección | Revisen hasta dos errores. Pídele que señale qué pista pasó por alto y que explique cómo la comprobaría en otra pregunta. |
 
 ## Apoyo durante la práctica
 
-- En el ejercicio 3, dibuja el bloque Q–S para mostrar que «inmediatamente antes» requiere casillas vecinas.
-- En el ejercicio 4, empieza por la prohibición. La opción A pone L antes de M y por eso falla.
-- En el ejercicio 5, compara las opciones A y D. En D el 6 separa al 3 del 1.
-- En el ejercicio 7, añade una quinta casilla. En la opción C, W queda junto a V y la pista exige que estén separados.
-- Usa el ejercicio resuelto paso a paso cuando necesite otro ejemplo. Las reglas están al final de la lección.
+- En el primer bloque, dibuja una casilla por letra. Une las letras que deben quedar juntas.
+- En el segundo bloque, distingue «entre» de «en el centro». Pide que señale todas las posiciones que permite la pista.
+- En el tercer bloque, comprueba todas las pistas antes de elegir un orden. Pide que identifique qué pista descarta cada opción.
 
 ## Próximo repaso
 
-Abre el miniexamen desde **Repaso** o desde la lección. Las primeras tres entregas usan series distintas de la misma dificultad. Compara el tiempo y los aciertos con su intento anterior. Revisa ambos datos juntos.
+Abre el miniexamen desde **Repaso** o desde la lección. Los primeros tres intentos alternan las preguntas. Compara el tiempo y los aciertos con su intento anterior de 15 preguntas.
 
 Las páginas 2–3 de la práctica oficial muestran el tipo de pregunta que se trabaja en esta clase. [Prueba de práctica PIENSE II](https://www.cetys.mx/wp-content/uploads/2024/03/PRUEBA-DE-PRACTICA-PIENSE-II-corregido.pdf#page=2)

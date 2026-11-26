@@ -42,6 +42,19 @@
         "explanation": "Didn’t lleva la marca del pasado. Usa send en su forma base.",
         "hint": "Mira qué forma del verbo sigue a didn’t.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Which question correctly asks whether Iris sends a report every week?",
+        "options": [
+          "Do Iris sends a report every week?",
+          "Does Iris send a report every week?",
+          "Does Iris sends a report every week?",
+          "Sends Iris a report every week?"
+        ],
+        "answer": 1,
+        "explanation": "La pregunta usa does antes del sujeto y send después de Iris. Solo el auxiliar lleva la marca de tercera persona.",
+        "hint": "El sujeto Iris equivale a she. Después del auxiliar, el verbo principal toma su forma base.",
+        "difficulty": "base"
       }
     },
     {
@@ -85,6 +98,19 @@
         "answer": 1,
         "explanation": "En la parte indirecta, the store precede a opens.",
         "hint": "Después de when, busca el orden de una afirmación.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Complete the indirect question. “Could you explain ____?”",
+        "options": [
+          "why did the lights go out",
+          "why go out the lights",
+          "why went out the lights",
+          "why the lights went out"
+        ],
+        "answer": 3,
+        "explanation": "La pregunta indirecta usa «why the lights went out». El sujeto the lights va antes de went out.",
+        "hint": "Ordena el sujeto y el verbo como en una afirmación después de why.",
         "difficulty": "base"
       }
     },
@@ -130,6 +156,19 @@
         "explanation": "Damp aparece después de seemed y describe a the jackets.",
         "hint": "Busca un adjetivo después de un verbo como seem.",
         "difficulty": "exam"
+      },
+      "followUp": {
+        "prompt": "Which sentence uses the imperative to give a direct instruction?",
+        "options": [
+          "Place the labels beside the boxes.",
+          "Could you place the labels beside the boxes?",
+          "The labels are beside the boxes.",
+          "Where are the labels?"
+        ],
+        "answer": 0,
+        "explanation": "Place abre la instrucción en imperativo. El sujeto you se sobreentiende. La segunda opción presenta una petición en forma de pregunta.",
+        "hint": "Busca una instrucción que empiece con el verbo en su forma base.",
+        "difficulty": "base"
       }
     }
   ],
@@ -176,6 +215,19 @@
         "explanation": "Will drop expresa una predicción sobre mañana.",
         "hint": "Busca will seguido del verbo base.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Complete the sentence about an action in progress. “Right now, two technicians ____ the cables.”",
+        "options": [
+          "check every Friday",
+          "will check tomorrow",
+          "are checking",
+          "checked yesterday"
+        ],
+        "answer": 2,
+        "explanation": "Are checking usa el presente continuo para una acción en curso. Two technicians es un sujeto plural, por eso se usa are.",
+        "hint": "Right now indica que la acción ocurre en este momento.",
+        "difficulty": "base"
       }
     },
     {
@@ -219,6 +271,19 @@
         "answer": 2,
         "explanation": "The tables recibe la acción. Were moved es la forma pasiva en pasado.",
         "hint": "Identifica la opción con were y un participio.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Which sentence changes “The volunteers painted the fence” to passive voice?",
+        "options": [
+          "The fence painted the volunteers.",
+          "The fence was painted by the volunteers.",
+          "The volunteers were painted by the fence.",
+          "The volunteers were painting the fence."
+        ],
+        "answer": 1,
+        "explanation": "The fence recibe la acción y pasa a ser sujeto. Was painted expresa la voz pasiva en pasado. By the volunteers identifica quién pintó.",
+        "hint": "Pon al principio lo que recibió la acción. Usa el pasado de be y el participio.",
         "difficulty": "base"
       }
     },
@@ -264,6 +329,19 @@
         "explanation": "Would have avoided expresa el resultado imaginario de un hecho pasado que no ocurrió.",
         "hint": "Busca la forma de resultado con would have.",
         "difficulty": "exam"
+      },
+      "followUp": {
+        "prompt": "Tara forgot her pass, so she did not enter the pool. Complete the sentence. “If Tara had remembered her pass, she ____ the pool.”",
+        "options": [
+          "had entered",
+          "entered",
+          "would enter",
+          "would have entered"
+        ],
+        "answer": 3,
+        "explanation": "Had remembered presenta la condición que no ocurrió. Would have entered indica el resultado imaginario de esa condición.",
+        "hint": "La condición se refiere al pasado. El resultado también describe algo imaginario en el pasado.",
+        "difficulty": "base"
       }
     }
   ],
@@ -310,6 +388,19 @@
         "explanation": "Children es plural y no termina en s. Añade ’s para indicar posesión.",
         "hint": "Comprueba si la palabra children termina en s.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Which phrase means that the nest belongs to two birds?",
+        "options": [
+          "the birds’ nest",
+          "the bird’s nest",
+          "the birds nest",
+          "the birds’ nests"
+        ],
+        "answer": 0,
+        "explanation": "Birds es plural. El apóstrofo va después de la s. Nest está en singular porque se menciona un solo nido.",
+        "hint": "Usa el plural birds para los dueños e indica que hay un solo nido.",
+        "difficulty": "base"
       }
     },
     {
@@ -354,6 +445,19 @@
         "explanation": "The best destaca una taza frente al grupo. Best es el superlativo irregular de good.",
         "hint": "La comparación incluye seis tazas.",
         "difficulty": "exam"
+      },
+      "followUp": {
+        "prompt": "Complete the comparison. “The red bag weighs five kilograms. The green bag weighs three. The red bag is ____ the green bag.”",
+        "options": [
+          "heavy than",
+          "heaviest than",
+          "heavier than",
+          "more heavier than"
+        ],
+        "answer": 2,
+        "explanation": "Heavier es el comparativo de heavy. Than introduce el segundo elemento de la comparación.",
+        "hint": "Compara dos bolsas. Cambia la y final de heavy antes de añadir la terminación.",
+        "difficulty": "base"
       }
     },
     {
@@ -397,6 +501,19 @@
         "answer": 3,
         "explanation": "Politely describe de qué manera respondió. Outside indica lugar y yesterday indica tiempo.",
         "hint": "Busca la palabra que describe el modo de responder.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Choose the words that describe the audience’s feeling and how they listened. “The audience was ____ and listened ____ to the guide.”",
+        "options": [
+          "interesting / careful",
+          "interested / carefully",
+          "interested / careful",
+          "interesting / carefully"
+        ],
+        "answer": 1,
+        "explanation": "Interested describe el interés que sentía el público. Carefully es un adverbio que modifica la acción de escuchar.",
+        "hint": "El primer espacio describe cómo se sentía el público. El segundo describe cómo escuchó.",
         "difficulty": "base"
       }
     }
@@ -444,6 +561,19 @@
         "explanation": "Usa on con Saturday y con la superficie del mostrador.",
         "hint": "Identifica el día y la superficie.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Complete the sentence. “The train leaves ____ 7:30. Meet me ____ the ticket counter.”",
+        "options": [
+          "on / at",
+          "in / at",
+          "at / in",
+          "at / at"
+        ],
+        "answer": 3,
+        "explanation": "At 7:30 marca la hora exacta. At the ticket counter indica el punto de encuentro junto a la taquilla.",
+        "hint": "El primer espacio va antes de una hora exacta. El segundo indica un punto de encuentro.",
+        "difficulty": "base"
       }
     },
     {
@@ -487,6 +617,19 @@
         "answer": 0,
         "explanation": "My acompaña a notebook. Mine reemplaza a my notebook en la segunda oración.",
         "hint": "Comprueba si hay un sustantivo después del espacio.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Choose the correct pronouns. “Leo gave the book to Rita. Rita was grateful. ____ thanked ____.”",
+        "options": [
+          "She / him",
+          "Her / he",
+          "He / she",
+          "He / him"
+        ],
+        "answer": 0,
+        "explanation": "She reemplaza a Rita como sujeto. Him reemplaza a Leo como complemento de thanked.",
+        "hint": "Rita es quien agradece. Leo es quien recibe el agradecimiento.",
         "difficulty": "base"
       }
     },
@@ -532,6 +675,19 @@
         "explanation": "These acompaña a jars en plural. But contrapone los frascos limpios con las tapas sucias.",
         "hint": "La primera palabra debe concordar con jars. La segunda indica contraste.",
         "difficulty": "exam"
+      },
+      "followUp": {
+        "prompt": "Choose the words that show a small number and give the reason. “We packed ____ extra batteries ____ the trip will last three days.”",
+        "options": [
+          "a little / but",
+          "much / because",
+          "a few / because",
+          "a few / although"
+        ],
+        "answer": 2,
+        "explanation": "A few indica una pequeña cantidad con un sustantivo plural contable. Because presenta la duración del viaje como motivo.",
+        "hint": "Batteries se puede contar. El segundo espacio explica el motivo de llevar más.",
+        "difficulty": "base"
       }
     }
   ],
@@ -579,6 +735,19 @@
         "explanation": "Before wrapping it indica que puso la nota antes de envolver la caja.",
         "hint": "Ordena las acciones mediante before y after.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "A sign at the bike shop says that repairs must be booked online. Customers leave their bikes at the side door on the day of the appointment. A worker calls when each bike is ready.\n\nWhere should customers leave their bikes?",
+        "options": [
+          "Beside the front window",
+          "At the side door",
+          "Next to the online booking desk",
+          "At the repair worker’s home"
+        ],
+        "answer": 1,
+        "explanation": "La segunda oración dice «Customers leave their bikes at the side door».",
+        "hint": "Busca el lugar que aparece en la oración con leave.",
+        "difficulty": "base"
       }
     },
     {
@@ -624,6 +793,19 @@
         "explanation": "El cambio de hora de salida respalda esta conclusión. El texto no dice que todos cambiasen de autobús.",
         "hint": "Relaciona el nuevo horario con las horas de salida.",
         "difficulty": "exam"
+      },
+      "followUp": {
+        "prompt": "Several students missed the morning announcements because the speaker in the gym was too quiet. After the school installed a louder speaker, the students began arriving at the meetings on time.\n\nWhat can the reader infer?",
+        "options": [
+          "The students arrived earlier because the meetings moved outdoors.",
+          "The school no longer makes announcements in the morning.",
+          "The meetings started later after the installation.",
+          "The louder speaker probably helped students hear when to attend."
+        ],
+        "answer": 3,
+        "explanation": "El texto indica que el bajo volumen dificultaba oír los avisos. La llegada puntual tras el cambio apoya la inferencia.",
+        "hint": "Relaciona el problema de volumen con lo que ocurrió después del cambio.",
+        "difficulty": "base"
       }
     },
     {
@@ -668,6 +850,19 @@
         "answer": 2,
         "explanation": "El título menciona el tema, rain boots, y el enfoque, su préstamo en la escuela.",
         "hint": "Elige un título que cubra las dos oraciones.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "“In April, volunteers painted two benches in the park. They used four cans of paint. The new benches are the prettiest seats in town.” Which statement expresses an opinion?",
+        "options": [
+          "The benches are the prettiest seats in town.",
+          "The volunteers used four cans of paint.",
+          "Two benches were painted.",
+          "The work took place in April."
+        ],
+        "answer": 0,
+        "explanation": "Prettiest expresa una valoración. Las fechas y cantidades del pasaje se pueden comprobar.",
+        "hint": "Busca una valoración personal, como una preferencia sobre el aspecto de algo.",
         "difficulty": "base"
       }
     }
@@ -716,6 +911,19 @@
         "explanation": "I held muestra que quien cuenta la escena también participa en ella.",
         "hint": "Busca un pronombre que identifique a quien relata.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "“Before class, I slid the seed tray onto a shelf inside the greenhouse. Drops of water clung to the glass walls above the rows of plants.” Where is the narrator?",
+        "options": [
+          "Inside a classroom",
+          "On a bus",
+          "Inside a greenhouse",
+          "At an outdoor market"
+        ],
+        "answer": 2,
+        "explanation": "El narrador coloca la bandeja inside the greenhouse. Las plantas y las paredes de vidrio son características del invernadero.",
+        "hint": "Busca el lugar que menciona la primera oración. Comprueba los detalles de la segunda.",
+        "difficulty": "base"
       }
     },
     {
@@ -761,6 +969,19 @@
         "explanation": "El árbol es el obstáculo externo que impide seguir por el camino.",
         "hint": "Busca una dificultad que existe fuera del personaje.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "“Nico knew that speaking up could help his friend. Yet each time he raised his hand, he worried that the class would laugh. He lowered it again.” What is Nico’s main conflict?",
+        "options": [
+          "He cannot see his friend from his seat.",
+          "He wants to help but is afraid to speak.",
+          "The teacher forbids him to raise his hand.",
+          "Classmates are already laughing at his friend."
+        ],
+        "answer": 1,
+        "explanation": "Nico quiere defender a su amigo. Su temor a las burlas lo detiene. El conflicto está entre dos impulsos internos.",
+        "hint": "Identifica qué desea Nico y qué preocupación lo detiene.",
+        "difficulty": "base"
       }
     },
     {
@@ -805,6 +1026,19 @@
         "explanation": "Should presenta una propuesta. La necesidad de un lugar fresco aporta la razón.",
         "hint": "Busca una postura y su justificación.",
         "difficulty": "exam"
+      },
+      "followUp": {
+        "prompt": "“The wind rattled the thin windows like a drummer practicing in the hall.” What does the comparison help the reader imagine?",
+        "options": [
+          "The color of the windows",
+          "The size of the hall",
+          "The temperature of the wind",
+          "The repeated noise of the windows"
+        ],
+        "answer": 3,
+        "explanation": "El símil compara el ruido repetido de las ventanas con el de un baterista que practica.",
+        "hint": "Piensa qué sentido se usa para percibir un tambor y una ventana que traquetea.",
+        "difficulty": "base"
       }
     }
   ],
@@ -852,6 +1086,19 @@
         "explanation": "El mapa habla del estanque, pero no describe ningún paso de la limpieza.",
         "hint": "Comprueba cuál oración no explica la limpieza.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Choose the best opening for the details that follow. “____. On Monday, students collected used pencils. The next day, they sorted the pencils and delivered them to the art room.”",
+        "options": [
+          "Our class gathered used pencils for the art room.",
+          "The art room walls were recently painted blue.",
+          "Tuesday is the middle day of our project.",
+          "Art supplies can come in several colors."
+        ],
+        "answer": 0,
+        "explanation": "La opción correcta presenta el proyecto de reunir lápices para el salón de arte. Los detalles explican cómo se realizó.",
+        "hint": "La primera oración debe anunciar una idea que reúna la recolección y la entrega.",
+        "difficulty": "base"
       }
     },
     {
@@ -895,6 +1142,19 @@
         "answer": 2,
         "explanation": "El frasco aparece primero. Después se limpia su borde. Finally indica que colocar la tapa es el último paso.",
         "hint": "Encuentra qué oración presenta el objeto antes de its.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Which order makes both the steps and the pronoun references clear? (1) She waited for the glue to dry. (2) Mei placed a photo in the center of the card. (3) She glued it there.",
+        "options": [
+          "3, 2, 1",
+          "1, 2, 3",
+          "2, 3, 1",
+          "3, 1, 2"
+        ],
+        "answer": 2,
+        "explanation": "La oración 2 presenta a Mei, la foto y el centro de la tarjeta. En la 3, she, it y there ya tienen referentes. La 1 explica qué hace después.",
+        "hint": "Presenta primero a Mei, la foto y el lugar. Después comprueba cuándo debe secarse el pegamento.",
         "difficulty": "base"
       }
     },
@@ -940,6 +1200,19 @@
         "explanation": "La llave es un ejemplo de las herramientas que contiene el kit.",
         "hint": "Comprueba si la segunda oración presenta un caso de la primera.",
         "difficulty": "exam"
+      },
+      "followUp": {
+        "prompt": "Choose a transition that introduces a result. “The second copy had no spelling errors. ____, the editor sent it to the printer.”",
+        "options": [
+          "For example",
+          "Therefore",
+          "However",
+          "In contrast"
+        ],
+        "answer": 1,
+        "explanation": "Therefore equivale a «por lo tanto». Presenta el envío como resultado de que la segunda copia estaba lista.",
+        "hint": "La decisión de enviar la copia ocurrió como consecuencia de la revisión.",
+        "difficulty": "base"
       }
     }
   ],
@@ -986,6 +1259,19 @@
         "explanation": "Las comas marcan ambos extremos de la aclaración which is 80 years old.",
         "hint": "Quita por un momento la aclaración para ubicar sus límites.",
         "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Choose the sentence that places a comma after the introductory clause.",
+        "options": [
+          "When the bell, rang the dancers stopped.",
+          "When the bell rang the dancers, stopped.",
+          "When the bell rang the dancers stopped.",
+          "When the bell rang, the dancers stopped."
+        ],
+        "answer": 3,
+        "explanation": "When the bell rang es la cláusula introductoria. La coma va después de rang, antes de la oración principal.",
+        "hint": "Encuentra dónde termina el grupo que empieza con when.",
+        "difficulty": "base"
       }
     },
     {
@@ -1030,6 +1316,19 @@
         "explanation": "La coma y so unen dos oraciones completas y presentan el cierre como consecuencia de la inundación.",
         "hint": "Busca la combinación que marca consecuencia y separa ambas oraciones.",
         "difficulty": "exam"
+      },
+      "followUp": {
+        "prompt": "Which revision correctly uses a semicolon to join two complete clauses?",
+        "options": [
+          "The studio was full; we met in the hall.",
+          "The studio; was full, so we met in the hall.",
+          "The studio was full; because we met in the hall.",
+          "The studio was; full and we met in the hall."
+        ],
+        "answer": 0,
+        "explanation": "«The studio was full» y «we met in the hall» son oraciones completas. El punto y coma puede unir estas dos ideas relacionadas.",
+        "hint": "Comprueba que cada parte pueda funcionar como oración completa.",
+        "difficulty": "base"
       }
     },
     {
@@ -1073,6 +1372,19 @@
         "answer": 2,
         "explanation": "La oración conserva after class, by the sink y el orden de las acciones. It reemplaza a the brush en la segunda parte.",
         "hint": "Verifica el momento, el orden y el lugar.",
+        "difficulty": "base"
+      },
+      "followUp": {
+        "prompt": "Which edit expresses the same information without repeating an idea? “We postponed the meeting until a later time on the same day, at 4 p.m.”",
+        "options": [
+          "We held the meeting before 4 p.m.",
+          "We postponed the meeting until another day.",
+          "We postponed the meeting until 4 p.m. that day.",
+          "We changed the meeting time that day."
+        ],
+        "answer": 2,
+        "explanation": "La opción correcta conserva la hora y el día. Elimina «until a later time» porque la hora nueva ya indica cuándo será la reunión.",
+        "hint": "Conserva la hora exacta y el día. El verbo postponed ya indica que será más tarde.",
         "difficulty": "base"
       }
     }

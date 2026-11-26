@@ -241,7 +241,7 @@
         "difficulty": "exam"
       }
     ],
-    "miniQuestionCount": 10,
+    "legacyMiniQuestionCount": 10,
     "miniFormCount": 3
   },
   {
@@ -369,6 +369,19 @@
         "explanation": "Ribera significa «orilla». Después de «antes de que» usamos haga, el subjuntivo de hacer. Halla es una forma del verbo hallar.",
         "hint": "Busca la palabra que significa «orilla». Después comprueba qué forma de hacer va después de «antes de que».",
         "difficulty": "exam"
+      },
+      {
+        "prompt": "En «Habrá que rehacer la maqueta», ¿qué aporta re- al verbo?",
+        "options": [
+          "Indica que no se hará.",
+          "Indica que se hará al mismo tiempo.",
+          "Indica que se hará antes.",
+          "Indica que se hará de nuevo."
+        ],
+        "answer": 3,
+        "explanation": "El prefijo re- expresa repetición. Rehacer es hacer otra vez.",
+        "hint": "Separa la palabra en re- y hacer.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -494,6 +507,19 @@
         "answer": 3,
         "explanation": "Los resultados reciben la acción. El participio publicados concuerda con resultados, y «por el jurado» indica quién publicó.",
         "hint": "Pon «los resultados» como sujeto. Usa ser y un participio que concuerde.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Cuál es la forma correcta de conducir en «La semana pasada yo ____ el autobús de la escuela»?",
+        "options": [
+          "conduje",
+          "conducí",
+          "condujo",
+          "conduce"
+        ],
+        "answer": 0,
+        "explanation": "El pretérito de conducir usa la raíz conduj-. Con yo se escribe conduje.",
+        "hint": "Usa la primera persona del pretérito de un verbo irregular.",
         "difficulty": "exam"
       }
     ]
@@ -623,6 +649,19 @@
         "explanation": "«Los materiales» es el complemento directo masculino plural. Se sustituye por los. «A su grupo» conserva el destinatario.",
         "hint": "Localiza el complemento directo. El pronombre debe conservar su género y su número.",
         "difficulty": "exam"
+      },
+      {
+        "prompt": "En «La entrenadora les explicó la jugada a los porteros», ¿qué grupo dice qué explicó?",
+        "options": [
+          "La entrenadora",
+          "a los porteros",
+          "la jugada",
+          "les"
+        ],
+        "answer": 2,
+        "explanation": "La jugada es el complemento directo. Les y a los porteros indican a quiénes se la explicó.",
+        "hint": "Pregunta qué explicó la entrenadora.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -748,6 +787,19 @@
         "answer": 1,
         "explanation": "La edición de las 17:00 tuvo más inscripciones y luego el centro eligió la tarde para otros talleres. El texto permite vincular los dos hechos sin afirmar que el horario fue la única causa.",
         "hint": "Relaciona la decisión final con el dato que cambió de un taller a otro.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Durante un mes, la oficina abrió una hora más el sábado. Pocas personas llegaron en esa hora. La oficina decidió cerrar a la hora habitual y probar una hora extra el miércoles.\n\n¿Por qué es razonable pensar que el cambio del sábado no cumplió su objetivo?",
+        "options": [
+          "La oficina cerró los miércoles.",
+          "La hora extra del sábado recibió pocas visitas.",
+          "La mayoría de las personas llegó después del cierre.",
+          "La oficina cambió de edificio en el mes de prueba."
+        ],
+        "answer": 1,
+        "explanation": "Hubo poca asistencia durante la hora adicional. La decisión de probar otro día se entiende a partir de ese resultado.",
+        "hint": "Relaciona el número de visitas con la decisión de modificar el horario.",
         "difficulty": "exam"
       }
     ]
@@ -1018,6 +1070,19 @@
         "explanation": "Primero dobla la carta. Después colócala dentro del sobre, ciérralo y deposítalo cerrado en el buzón.",
         "hint": "Busca las acciones previas que indican «carta doblada» y «sobre cerrado».",
         "difficulty": "exam"
+      },
+      {
+        "prompt": "Elige el par de conectores que presenta primero una causa y después un resultado. «La feria se movió al patio cubierto ____ pronosticaron lluvia. ____, todos pudieron celebrar el evento bajo techo».",
+        "options": [
+          "aunque / Por ejemplo",
+          "mientras / Al contrario",
+          "si / Sin embargo",
+          "porque / Por eso"
+        ],
+        "answer": 3,
+        "explanation": "Porque presenta el pronóstico como causa del traslado. Por eso introduce el resultado: la feria pudo celebrarse bajo techo.",
+        "hint": "Primero busca qué motivó el cambio. Luego busca qué permitió ese cambio.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -1145,6 +1210,19 @@
         "answer": 0,
         "explanation": "«Cuyo plano estaba incompleto» añade una explicación sobre Omar. Una coma abre el inciso y otra lo cierra.",
         "hint": "Identifica qué palabras puedes quitar y aún leer «Omar pidió otra copia».",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Elige la oración que sustituye «puso algo sobre el vidrio» por una descripción precisa. Berta usó un atomizador con un líquido para limpiar.",
+        "options": [
+          "Berta roció limpiador sobre el vidrio.",
+          "Berta dejó un aparato junto al vidrio.",
+          "Berta guardó el líquido lejos del vidrio.",
+          "Berta puso algo en el lugar de siempre."
+        ],
+        "answer": 0,
+        "explanation": "Roció indica cómo aplicó el líquido. Limpiador dice qué sustancia usó.",
+        "hint": "Busca un verbo y un sustantivo que indiquen qué hizo Berta y con qué material.",
         "difficulty": "exam"
       }
     ]

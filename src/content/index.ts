@@ -32,14 +32,12 @@ export function expectedMiniFormCount(lesson: Lesson) {
 }
 
 const originalMiniQuestionCount = 5;
-
-export function miniQuestionCount(lesson: Lesson) {
-  return lesson.miniQuestionCount ?? originalMiniQuestionCount;
-}
+export const miniQuestionCount = 15;
 
 export function acceptsMiniQuestionCount(lesson: Lesson, form: unknown, count: number) {
-  // Expanded quizzes had five questions only in their original form.
-  return count === miniQuestionCount(lesson) || (form === 0 && count === originalMiniQuestionCount);
+  const previousCount = lesson.legacyMiniQuestionCount ?? originalMiniQuestionCount;
+  // Orthography originally had five questions in form zero before it expanded to ten.
+  return count === miniQuestionCount || count === previousCount || (form === 0 && count === originalMiniQuestionCount);
 }
 
 export const resourceLinks = [
