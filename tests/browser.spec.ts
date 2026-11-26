@@ -224,7 +224,7 @@ test("times five fresh cognitive questions and compares with the next form", asy
   const firstStart = new Date("2026-11-23T20:00:00Z");
   await page.clock.setFixedTime(firstStart);
   await page.goto("/#/clase/hc-orden");
-  await expect(page.locator(".question-details")).toHaveCount(7);
+  await expect(page.locator(".question-details")).toHaveCount(9);
   await page.getByRole("link", { name: "Hacer miniexamen", exact: true }).first().click();
   await page.getByRole("button", { name: "Empezar miniexamen" }).click();
   const fill = async (startAt: number) => {
@@ -294,8 +294,15 @@ test("the orthography lesson interleaves examples and exercises before the trial
   await page.clock.setFixedTime(new Date("2026-11-24T20:00:00Z"));
   await page.goto("/#/clase/es-ortografia");
   const exercises = page.getByRole("region", { name: "Ejercicios de prueba", exact: true });
-  await expect(exercises.getByText("14 preguntas", { exact: true })).toBeVisible();
-  await expect(exercises.locator("details.question-details")).toHaveCount(14);
+  await expect(exercises.getByText("16 preguntas", { exact: true })).toBeVisible();
+  await expect(exercises.locator("details.question-details")).toHaveCount(16);
+  const addedExercise = exercises.locator("details.question-details").last();
+  await addedExercise.locator("summary").click();
+  await addedExercise.getByRole("button", { name: "Ver pista", exact: true }).click();
+  await expect(addedExercise.locator(".hint")).toBeVisible();
+  await addedExercise.getByRole("radio", { name: "aún / aun", exact: true }).check();
+  await addedExercise.getByRole("button", { name: "Comprobar", exact: true }).click();
+  await expect(addedExercise.getByText("Correcto", { exact: true })).toBeVisible();
   const rules = page.getByRole("region", { name: "Explicación", exact: true });
   const titles = ["Nombre común y nombre propio", "Hiato y diptongo", "Por qué, porque, porqué y por que",
     "Agudas, graves y esdrújulas", "Tildes que distinguen funciones"];
@@ -329,7 +336,7 @@ test("the orthography lesson interleaves examples and exercises before the trial
   await page.getByRole("link", { name: "Ver progreso", exact: true }).click();
   await page.reload();
   await expect(page.getByRole("region", { name: "Miniexámenes", exact: true }).getByRole("link", { name: "Mayúsculas y acentuación", exact: true })).toHaveAttribute("href", "#/mini/es-ortografia");
-  await expect(page.getByText("Español", { exact: true }).locator("..")).toContainText("de 10");
+  await expect(page.getByText("Español", { exact: true }).locator("..")).toContainText("2 de 11");
 
   await page.clock.setFixedTime(new Date("2026-11-25T20:00:00Z"));
   await page.goto("/#/repaso");

@@ -213,6 +213,32 @@
         "explanation": "La primera oración indica un rasgo de la prueba. Se distingue por algo. La segunda explica la causa de la elección y usa porque.",
         "hint": "Prueba «se distingue por eso» en la primera oración y «ya que» en la segunda.",
         "difficulty": "exam"
+      },
+      {
+        "prompt": "¿Cuál es la forma correcta del plural de «joven»?",
+        "options": [
+          "jovenés",
+          "jóvenes",
+          "jovenes",
+          "jovénes"
+        ],
+        "answer": 1,
+        "explanation": "La sílaba tónica es jó, la antepenúltima. La palabra es esdrújula y lleva tilde.",
+        "hint": "Separa jo-ve-nes y localiza la sílaba que se pronuncia con más fuerza.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Elige las formas correctas. «El autobús ____ no llega. Abriremos el taller ____ si llega tarde».",
+        "options": [
+          "aun / aun",
+          "aun / aún",
+          "aún / aún",
+          "aún / aun"
+        ],
+        "answer": 3,
+        "explanation": "En la primera frase, aún significa «todavía» y lleva tilde. En la segunda, aun significa «incluso» en la expresión «aun si» y se escribe sin tilde.",
+        "hint": "Prueba si cada espacio admite «todavía» o «incluso».",
+        "difficulty": "exam"
       }
     ],
     "miniQuestionCount": 10,
@@ -317,6 +343,32 @@
         "explanation": "Porque introduce la causa de la cancelación. Porqué funciona como sustantivo y significa motivo, como indica el artículo el.",
         "hint": "Observa cuál espacio tiene un artículo delante.",
         "difficulty": "challenge"
+      },
+      {
+        "prompt": "¿Qué indica el sufijo -ería en «zapatería» cuando se habla de una tienda?",
+        "options": [
+          "Un lugar donde se venden zapatos",
+          "Una persona que fabrica zapatos",
+          "Un zapato muy pequeño",
+          "Una forma de caminar"
+        ],
+        "answer": 0,
+        "explanation": "En este uso, -ería indica un establecimiento. Una zapatería es una tienda donde se venden zapatos.",
+        "hint": "Separa la palabra en la raíz zapat- y la terminación -ería.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Elige las palabras que completan la oración. «Nos sentamos en la ____ del río antes de que ____ demasiado calor».",
+        "options": [
+          "rivera / haga",
+          "ribera / halla",
+          "ribera / haga",
+          "rivera / halla"
+        ],
+        "answer": 2,
+        "explanation": "Ribera significa «orilla». Después de «antes de que» usamos haga, el subjuntivo de hacer. Halla es una forma del verbo hallar.",
+        "hint": "Busca la palabra que significa «orilla». Después comprueba qué forma de hacer va después de «antes de que».",
+        "difficulty": "exam"
       }
     ]
   },
@@ -417,6 +469,32 @@
         "explanation": "Imprimir admite impreso e imprimido en los tiempos compuestos. Con han, ambos participios conservan su forma invariable.",
         "hint": "Revisa qué efecto tiene el verbo haber sobre el número del participio.",
         "difficulty": "challenge"
+      },
+      {
+        "prompt": "Completa con una forma de traer. «Ayer mis vecinos ____ sillas al patio».",
+        "options": [
+          "traen",
+          "trajeron",
+          "trajimos",
+          "traieron"
+        ],
+        "answer": 1,
+        "explanation": "Trajeron es la forma de traer para ellos o ellas en el pretérito. El relato presenta la acción como concluida.",
+        "hint": "Usa el pasado para una acción que terminó. El sujeto es plural.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Qué oración transforma «El jurado publicó los resultados» a voz pasiva y conserva quién hizo la acción?",
+        "options": [
+          "El jurado fue publicado por los resultados.",
+          "Los resultados los publicó el jurado.",
+          "Los resultados se publicaron ayer.",
+          "Los resultados fueron publicados por el jurado."
+        ],
+        "answer": 3,
+        "explanation": "Los resultados reciben la acción. El participio publicados concuerda con resultados, y «por el jurado» indica quién publicó.",
+        "hint": "Pon «los resultados» como sujeto. Usa ser y un participio que concuerde.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -519,6 +597,32 @@
         "explanation": "Alumnado es un sustantivo colectivo singular. Estaba y listo concuerdan con ese sujeto.",
         "hint": "Cuenta el número gramatical del núcleo, que puede ser singular aunque nombre un grupo.",
         "difficulty": "challenge"
+      },
+      {
+        "prompt": "¿Cuál es el sujeto de «Detrás del edificio crecen tres pinos»?",
+        "options": [
+          "tres pinos",
+          "el edificio",
+          "detrás del edificio",
+          "crecen"
+        ],
+        "answer": 0,
+        "explanation": "Los tres pinos son los seres que crecen. El verbo crecen está en plural porque concuerda con «tres pinos».",
+        "hint": "Pregunta qué seres crecen y comprueba si concuerdan con el verbo.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Qué opción sustituye a «los materiales» por un pronombre sin cambiar el sentido de «La profesora entregó los materiales a su grupo»?",
+        "options": [
+          "La profesora les entregó a su grupo.",
+          "La profesora la entregó a su grupo.",
+          "La profesora los entregó a su grupo.",
+          "La profesora se entregó a su grupo."
+        ],
+        "answer": 2,
+        "explanation": "«Los materiales» es el complemento directo masculino plural. Se sustituye por los. «A su grupo» conserva el destinatario.",
+        "hint": "Localiza el complemento directo. El pronombre debe conservar su género y su número.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -619,6 +723,32 @@
         "explanation": "En A hubo un crecimiento similar y en B hubo menor crecimiento con goteo. Los textos no aíslan la causa de la diferencia.",
         "hint": "Compara lo que cada texto afirma y detecta qué posibles causas faltó controlar.",
         "difficulty": "challenge"
+      },
+      {
+        "prompt": "Durante una semana, Abril eligió una mesa cerca de la ventana para dibujar. El viernes, alguien cerró las cortinas. Abril movió su libreta a una mesa bajo una lámpara encendida.\n\n¿Qué hizo Abril después de que cerraran las cortinas?",
+        "options": [
+          "Cerró la ventana",
+          "Se cambió a una mesa con lámpara",
+          "Encendió una lámpara junto a la ventana",
+          "Guardó su libreta y salió"
+        ],
+        "answer": 1,
+        "explanation": "La última oración dice que llevó su libreta a una mesa bajo una lámpara encendida.",
+        "hint": "Busca qué hizo Abril justo después del cambio de luz.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "En mayo, el centro juvenil ofreció un taller de cerámica a las 10:00. Recibió tres inscripciones. En junio repitió el taller a las 17:00, con el mismo precio y en el mismo salón. Se inscribieron doce personas. El centro decidió ofrecer otros talleres por la tarde.\n\n¿Qué inferencia tiene más apoyo en el texto?",
+        "options": [
+          "Las personas inscritas en junio ya sabían trabajar con arcilla.",
+          "El centro decidió cobrar más por todos los talleres.",
+          "El horario de la mañana impidió que todos los interesados se inscribieran.",
+          "La mayor inscripción pudo influir en la decisión de usar el horario de tarde."
+        ],
+        "answer": 3,
+        "explanation": "La edición de las 17:00 tuvo más inscripciones y luego el centro eligió la tarde para otros talleres. El texto permite vincular los dos hechos sin afirmar que el horario fue la única causa.",
+        "hint": "Relaciona la decisión final con el dato que cambió de un taller a otro.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -734,6 +864,32 @@
         "explanation": "Una tonelada exagera el peso para expresar que la mochila se sentía muy pesada.",
         "hint": "Compara el peso real con el peso que afirma la frase.",
         "difficulty": "base"
+      },
+      {
+        "prompt": "«Abrí la puerta del teatro y busqué mi asiento. Desde allí, vi que mi hermano me saludaba». ¿Quién narra?",
+        "options": [
+          "Una persona que participa en la historia",
+          "El hermano que saluda",
+          "Un narrador que conoce los pensamientos de todos",
+          "Una persona que solo da instrucciones"
+        ],
+        "answer": 0,
+        "explanation": "Los verbos están en primera persona. Narra la misma persona que entra al teatro y busca su asiento.",
+        "hint": "Identifica quién realiza las acciones de «abrí», «busqué» y «vi».",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Lee. «El huerto durmió bajo la nieve. En marzo despertó cubierto de brotes verdes». ¿Qué recurso une las dos oraciones?",
+        "options": [
+          "Hipérbole, porque exagera el tamaño del huerto",
+          "Símil, porque usa «como» para comparar",
+          "Personificación, porque el huerto duerme y despierta",
+          "Onomatopeya, porque imita un sonido"
+        ],
+        "answer": 2,
+        "explanation": "Dormir y despertar presentan al huerto como un ser que duerme y luego se levanta. Es una personificación del cambio entre invierno y primavera.",
+        "hint": "Identifica qué acciones humanas se atribuyen al huerto.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -836,6 +992,32 @@
         "explanation": "Si presenta la entrega como condición para la revisión al día siguiente.",
         "hint": "Busca el conector que equivale a «con la condición de que».",
         "difficulty": "challenge"
+      },
+      {
+        "prompt": "Elige el conector de contraste. «El primer ensayo falló. ____, el grupo siguió con el proyecto».",
+        "options": [
+          "Además",
+          "Sin embargo",
+          "Por lo tanto",
+          "Por ejemplo"
+        ],
+        "answer": 1,
+        "explanation": "Sin embargo une dos ideas en contraste. El grupo decidió continuar pese al fallo.",
+        "hint": "La segunda idea presenta algo que puede sorprender después de la primera.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Ordena las instrucciones para preparar un sobre.\n\n(1) Cierra el sobre. (2) Dobla la carta hasta que quepa. (3) Deposita el sobre cerrado en el buzón. (4) Coloca la carta doblada dentro del sobre.",
+        "options": [
+          "4, 2, 1, 3",
+          "2, 1, 4, 3",
+          "2, 4, 3, 1",
+          "2, 4, 1, 3"
+        ],
+        "answer": 3,
+        "explanation": "Primero dobla la carta. Después colócala dentro del sobre, ciérralo y deposítalo cerrado en el buzón.",
+        "hint": "Busca las acciones previas que indican «carta doblada» y «sobre cerrado».",
+        "difficulty": "exam"
       }
     ]
   },
@@ -938,6 +1120,32 @@
         "explanation": "Porque conserva el orden de causa y resultado. La pista mojada es la causa de la suspensión.",
         "hint": "Identifica la causa y comprueba que la versión final la presenta como tal.",
         "difficulty": "challenge"
+      },
+      {
+        "prompt": "Elige la oración que elimina una repetición sin perder información. «Los estudiantes subieron arriba al segundo piso después del recreo».",
+        "options": [
+          "Los estudiantes subieron al segundo piso después del recreo.",
+          "Los estudiantes subieron arriba después del recreo.",
+          "Los estudiantes fueron al recreo en el segundo piso.",
+          "Los estudiantes subieron al segundo piso antes del recreo."
+        ],
+        "answer": 0,
+        "explanation": "Subieron ya indica movimiento hacia arriba. El resto de la oración conserva el destino y el momento.",
+        "hint": "Se puede quitar una palabra que repite la dirección del verbo.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Qué opción presenta una explicación adicional entre comas? El plano pertenece a Omar.",
+        "options": [
+          "Omar cuyo plano estaba incompleto, pidió otra copia.",
+          "Omar, cuyo plano estaba incompleto pidió otra copia.",
+          "Omar, cuyo plano estaba incompleto, pidió otra copia.",
+          "Omar cuyo plano, estaba incompleto, pidió otra copia."
+        ],
+        "answer": 2,
+        "explanation": "«Cuyo plano estaba incompleto» añade una explicación sobre Omar. Una coma abre el inciso y otra lo cierra.",
+        "hint": "Identifica qué palabras puedes quitar y aún leer «Omar pidió otra copia».",
+        "difficulty": "exam"
       }
     ]
   }

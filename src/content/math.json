@@ -96,6 +96,32 @@
         "explanation": "−2 < −0.4 < 0 y 1/3 es positivo.",
         "hint": "Ubica primero los negativos, luego cero y luego los positivos.",
         "difficulty": "challenge"
+      },
+      {
+        "prompt": "En la recta numérica, ¿cuántas unidades separan −7 de 4?",
+        "options": [
+          "3",
+          "11",
+          "−11",
+          "−3"
+        ],
+        "answer": 1,
+        "explanation": "De −7 a 0 hay 7 unidades. De 0 a 4 hay 4. La distancia total es 11.",
+        "hint": "Cuenta la distancia de −7 a cero y luego de cero a 4.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "A las 6:00 la temperatura era de −4 °C. Subió 3 °C cada hora durante dos horas. Después bajó 5 °C. ¿Cuál fue la temperatura final?",
+        "options": [
+          "−9 °C",
+          "1 °C",
+          "7 °C",
+          "−3 °C"
+        ],
+        "answer": 3,
+        "explanation": "La temperatura subió 2 × 3 = 6 °C. Luego bajó 5 °C. El resultado es −4 + 6 − 5 = −3 °C.",
+        "hint": "Calcula primero el aumento total durante las dos horas.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -224,6 +250,32 @@
         "explanation": "36 es el primer múltiplo positivo de 12 que también es múltiplo de 18.",
         "hint": "Busca el mínimo común múltiplo. Un divisor común no indica cuándo se repite un evento.",
         "difficulty": "challenge"
+      },
+      {
+        "prompt": "¿Qué fracción equivale a 35 %?",
+        "options": [
+          "7/20",
+          "7/10",
+          "3/5",
+          "35/10"
+        ],
+        "answer": 0,
+        "explanation": "35 % = 35/100. Al dividir el numerador y el denominador entre 5, queda 7/20.",
+        "hint": "Escribe el porcentaje como una fracción con denominador 100.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "En el taller hay 18 estudiantes. Dos tercios trajeron regla y la mitad de quienes trajeron regla también trajeron compás. ¿Cuántos trajeron las dos cosas?",
+        "options": [
+          "3",
+          "9",
+          "6",
+          "12"
+        ],
+        "answer": 2,
+        "explanation": "Dos tercios de 18 son 12. La mitad de 12 es 6. Esos seis estudiantes trajeron regla y compás.",
+        "hint": "Encuentra cuántos trajeron regla antes de calcular la mitad.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -326,6 +378,32 @@
         "explanation": "Sustituye s por 40. Entonces t = √49 ÷ 2 = 7 ÷ 2 = 3.5.",
         "hint": "Resuelve lo que está dentro de la raíz antes de dividir.",
         "difficulty": "challenge"
+      },
+      {
+        "prompt": "¿Cuánto vale (−2)³?",
+        "options": [
+          "8",
+          "−8",
+          "−6",
+          "6"
+        ],
+        "answer": 1,
+        "explanation": "(−2)(−2) = 4. Después, 4(−2) = −8.",
+        "hint": "Multiplica tres factores iguales a −2.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Qué expresión con una sola potencia de 3 equivale a 3² × 3⁴ ÷ 3³?",
+        "options": [
+          "3²",
+          "3⁶",
+          "3⁹",
+          "3³"
+        ],
+        "answer": 3,
+        "explanation": "Todas las potencias tienen base 3. El exponente resultante es 2 + 4 − 3 = 3. La expresión equivale a 3³.",
+        "hint": "Suma los exponentes al multiplicar y resta el exponente del divisor.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -429,6 +507,32 @@
         "explanation": "El símbolo < excluye −2 y ≤ incluye 4. Los valores solución están entre los extremos.",
         "hint": "Revisa por separado si se admite cada extremo.",
         "difficulty": "challenge"
+      },
+      {
+        "prompt": "Tres cuadernos del mismo precio cuestan $84. Si c es el precio de un cuaderno, ¿qué ecuación representa la compra?",
+        "options": [
+          "3c = 84",
+          "c + 3 = 84",
+          "c/3 = 84",
+          "84c = 3"
+        ],
+        "answer": 0,
+        "explanation": "Tres cuadernos cuestan 3c. Como el pago fue de $84, la ecuación es 3c = 84.",
+        "hint": "Representa el precio total como c + c + c.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Para un viaje se necesitan al menos $240. Ya hay $100 y se ahorran $35 por semana. Si s es el número de semanas de ahorro, ¿qué valores de s cumplen la meta?",
+        "options": [
+          "s ≤ 4",
+          "s ≥ 7",
+          "s ≥ 4",
+          "s > 4"
+        ],
+        "answer": 2,
+        "explanation": "La condición es 100 + 35s ≥ 240. Al restar 100 y dividir entre 35, se obtiene s ≥ 4. Cuatro semanas dan exactamente $240.",
+        "hint": "Escribe 100 + 35s y usa el símbolo que incluye la igualdad.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -531,6 +635,32 @@
         "explanation": "Multiplica (x − 4)(x − 4). Los dos productos cruzados aportan −4x cada uno.",
         "hint": "Escribe la potencia como producto de dos binomios iguales.",
         "difficulty": "challenge"
+      },
+      {
+        "prompt": "Reduce los términos semejantes de 4a² + 3a − a² + 2a.",
+        "options": [
+          "3a² + a",
+          "3a² + 5a",
+          "5a² + 5a",
+          "8a²"
+        ],
+        "answer": 1,
+        "explanation": "Los términos en a² dan 4a² − a² = 3a². Los términos en a dan 3a + 2a = 5a.",
+        "hint": "Agrupa los términos en a² y los términos en a.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "¿Qué expresión factoriza 6x² + 15x con el mayor factor común?",
+        "options": [
+          "3x(2x + 15)",
+          "3(2x² + 15x)",
+          "x(6x + 5)",
+          "3x(2x + 5)"
+        ],
+        "answer": 3,
+        "explanation": "El mayor factor común es 3x. Al dividir 6x² entre 3x queda 2x. Al dividir 15x entre 3x queda 5.",
+        "hint": "Busca el máximo divisor común de 6 y 15. Después considera la x común.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -635,6 +765,32 @@
         "explanation": "Para x ≠ 4, el lado izquierdo vale 1. La ecuación 1 = x − 3 da x = 4, que está excluido.",
         "hint": "Las soluciones deben pertenecer al dominio original.",
         "difficulty": "challenge"
+      },
+      {
+        "prompt": "¿Para qué valor de x no está definida la expresión 8/(2x − 6)?",
+        "options": [
+          "3",
+          "−3",
+          "6",
+          "0"
+        ],
+        "answer": 0,
+        "explanation": "El denominador 2x − 6 vale cero cuando x = 3. La división entre cero no está definida.",
+        "hint": "Iguala el denominador a cero.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Simplifica (x² − 16)/(x − 4) e indica la restricción original.",
+        "options": [
+          "x − 4, con x ≠ 4",
+          "x + 4, con x ≠ −4",
+          "x + 4, con x ≠ 4",
+          "x + 4, para todo x real"
+        ],
+        "answer": 2,
+        "explanation": "x² − 16 = (x − 4)(x + 4). Se cancela x − 4 cuando x ≠ 4. La restricción del denominador original se conserva.",
+        "hint": "Factoriza el numerador como una diferencia de cuadrados.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -738,6 +894,32 @@
         "explanation": "Para que D sea cero, 36 − 4k = 0. Entonces k = 9.",
         "hint": "La raíz es única cuando el discriminante vale cero.",
         "difficulty": "challenge"
+      },
+      {
+        "prompt": "¿Qué valores de x satisfacen x² − 36 = 0?",
+        "options": [
+          "Solo 6",
+          "−6 y 6",
+          "−18 y 18",
+          "−36 y 36"
+        ],
+        "answer": 1,
+        "explanation": "La ecuación equivale a x² = 36. Tanto 6 como −6 tienen cuadrado 36.",
+        "hint": "Aísla x² y busca los dos números cuyo cuadrado vale 36.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Si 3 es una raíz de x² − 7x + k = 0, ¿cuánto vale k?",
+        "options": [
+          "−12",
+          "6",
+          "21",
+          "12"
+        ],
+        "answer": 3,
+        "explanation": "Con x = 3 se obtiene 9 − 21 + k = 0. Entonces −12 + k = 0 y k = 12.",
+        "hint": "Sustituye x por 3 y despeja k.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -867,6 +1049,32 @@
         "explanation": "Las entradas 0, 1 y 2 tienen una sola salida cada una. Las salidas pueden repetirse.",
         "hint": "Busca una entrada que aparezca con dos salidas distintas.",
         "difficulty": "challenge"
+      },
+      {
+        "prompt": "Si g(x) = 3x − 2, ¿cuánto vale g(4)?",
+        "options": [
+          "10",
+          "6",
+          "12",
+          "14"
+        ],
+        "answer": 0,
+        "explanation": "g(4) = 3(4) − 2 = 12 − 2 = 10.",
+        "hint": "Sustituye x por 4 y multiplica antes de restar.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Una recta pasa por los puntos (−2, 7) y (2, 1). ¿En qué punto corta el eje y?",
+        "options": [
+          "(0, 3)",
+          "(4, 0)",
+          "(0, 4)",
+          "(0, 8)"
+        ],
+        "answer": 2,
+        "explanation": "Entre x = −2 y x = 2, y disminuye de 7 a 1. En el punto medio toma el valor (7 + 1)/2 = 4. El corte es (0, 4).",
+        "hint": "x = 0 está a la mitad entre −2 y 2. Considera qué ocurre con y en una recta.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -970,6 +1178,32 @@
         "explanation": "La segunda ecuación es el doble de la primera. Ambas representan la misma recta.",
         "hint": "Divide todos los términos de la segunda ecuación entre 2.",
         "difficulty": "challenge"
+      },
+      {
+        "prompt": "¿Qué par (x, y) cumple 2x + y = 10?",
+        "options": [
+          "(1, 7)",
+          "(3, 4)",
+          "(4, 1)",
+          "(5, 1)"
+        ],
+        "answer": 1,
+        "explanation": "Para (3, 4), la expresión vale 2(3) + 4 = 10. Los otros pares dan 9, 9 y 11.",
+        "hint": "Multiplica el primer número de cada par por 2 y suma el segundo.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Compras cuatro boletos y pagas $270. Los boletos de adulto cuestan $90 y los de estudiante cuestan $45. ¿Cuántos boletos de cada tipo compraste?",
+        "options": [
+          "1 de adulto y 3 de estudiante",
+          "3 de adulto y 1 de estudiante",
+          "4 de adulto y 0 de estudiante",
+          "2 de adulto y 2 de estudiante"
+        ],
+        "answer": 3,
+        "explanation": "Se cumple a + e = 4 y 90a + 45e = 270. Al dividir la segunda ecuación entre 45 queda 2a + e = 6. La diferencia da a = 2 y por eso e = 2.",
+        "hint": "Llama a y e a las cantidades. Escribe una ecuación para los boletos y otra para el costo.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -1085,6 +1319,32 @@
         "explanation": "Las medidas son iguales. De 3x + 10 = 5x − 22 resulta x = 16. Al sustituir, cada ángulo mide 58°.",
         "hint": "Iguala las dos expresiones. Luego calcula la medida con el valor de x.",
         "difficulty": "challenge"
+      },
+      {
+        "prompt": "Dos ángulos interiores de un triángulo miden 47° y 68°. ¿Cuánto mide el tercer ángulo?",
+        "options": [
+          "65°",
+          "55°",
+          "75°",
+          "115°"
+        ],
+        "answer": 0,
+        "explanation": "La suma es 180°. El ángulo que falta mide 180° − 47° − 68° = 65°.",
+        "hint": "Usa la suma de los tres ángulos interiores.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Dos rectas paralelas cortadas por una secante forman dos ángulos correspondientes. Uno mide (2x + 15)° y el otro (5x − 30)°. ¿Cuánto mide cada ángulo?",
+        "options": [
+          "15°",
+          "30°",
+          "45°",
+          "60°"
+        ],
+        "answer": 2,
+        "explanation": "Al resolver 2x + 15 = 5x − 30 se obtiene x = 15. Cada ángulo mide 2(15) + 15 = 45°.",
+        "hint": "Los ángulos correspondientes tienen la misma medida.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -1189,6 +1449,32 @@
         "explanation": "Todos los lados se multiplican por 3/2. La suma también. Entonces 22 × 3/2 = 33 cm.",
         "hint": "Un perímetro es una suma de longitudes.",
         "difficulty": "challenge"
+      },
+      {
+        "prompt": "El triángulo ABC es semejante al triángulo DEF. Los vértices se nombran en orden correspondiente. ¿Qué vértice corresponde a B?",
+        "options": [
+          "D",
+          "E",
+          "F",
+          "A"
+        ],
+        "answer": 1,
+        "explanation": "B y E ocupan la segunda posición en sus respectivos nombres. Por eso son vértices correspondientes.",
+        "hint": "Empareja las letras según la posición que ocupan en cada nombre.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "La diagonal de una pantalla rectangular mide 25 cm y su altura mide 15 cm. ¿Cuánto mide su ancho?",
+        "options": [
+          "10 cm",
+          "16 cm",
+          "40 cm",
+          "20 cm"
+        ],
+        "answer": 3,
+        "explanation": "Si a es el ancho, a² = 25² − 15² = 625 − 225 = 400. Como a es una longitud, a = 20 cm.",
+        "hint": "La diagonal es la hipotenusa del triángulo que forman la altura y el ancho.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -1332,6 +1618,32 @@
         "explanation": "Resta el área del círculo interior de la del exterior. π[(r + 2)² − r²] = π(4r + 4).",
         "hint": "Dibuja mentalmente el círculo exterior y el hueco. Resta sus áreas.",
         "difficulty": "challenge"
+      },
+      {
+        "prompt": "Un jardín rectangular mide 8 m de largo y 3 m de ancho. ¿Cuánto mide todo su borde?",
+        "options": [
+          "22 m",
+          "11 m",
+          "24 m",
+          "48 m"
+        ],
+        "answer": 0,
+        "explanation": "El borde mide 8 + 3 + 8 + 3 = 22 m.",
+        "hint": "Suma los cuatro lados del rectángulo.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Un jardín rectangular de 10 m por 8 m tiene una fuente circular de 4 m de diámetro. ¿Cuál es el área del jardín que queda fuera de la fuente?",
+        "options": [
+          "(80 − 16π) m²",
+          "(80 − 2π) m²",
+          "(80 − 4π) m²",
+          "(80 + 4π) m²"
+        ],
+        "answer": 2,
+        "explanation": "El área rectangular mide 80 m². El radio de la fuente es 2 m y su área mide 4π m². La diferencia es (80 − 4π) m².",
+        "hint": "Halla el radio de la fuente antes de calcular el área del círculo.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -1434,6 +1746,32 @@
         "explanation": "El largo, el ancho y la altura se multiplican por 2. Por eso el volumen se multiplica por 2³ = 8.",
         "hint": "Escribe el volumen como producto de tres longitudes.",
         "difficulty": "challenge"
+      },
+      {
+        "prompt": "¿Qué sólido tiene una base circular, una superficie curva y un vértice?",
+        "options": [
+          "Cilindro",
+          "Cono",
+          "Esfera",
+          "Prisma triangular"
+        ],
+        "answer": 1,
+        "explanation": "Un cono tiene una base circular y su superficie lateral curva llega a un solo vértice.",
+        "hint": "Imagina un sólido como el de un gorro de fiesta.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Una pecera rectangular tiene base interior de 35 cm por 20 cm y altura interior de 18 cm. El agua queda 3 cm por debajo del borde. ¿Qué volumen ocupa el agua?",
+        "options": [
+          "2,100 cm³",
+          "12,600 cm³",
+          "14,700 cm³",
+          "10,500 cm³"
+        ],
+        "answer": 3,
+        "explanation": "El agua alcanza 18 − 3 = 15 cm. Su volumen es 35 × 20 × 15 = 10,500 cm³.",
+        "hint": "Calcula la altura que alcanza el agua y usa esa altura en el volumen.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -1563,6 +1901,32 @@
         "explanation": "96° equivale a 96/360 = 4/15 del círculo. Si 4/15 del total es 24, el total es 24 × 15/4 = 90.",
         "hint": "Relaciona las 24 personas con el sector que ocupan y despeja el total.",
         "difficulty": "challenge"
+      },
+      {
+        "prompt": "Luz anotó 12, 15 y 18 minutos de lectura en tres días. ¿Cuál fue la media diaria?",
+        "options": [
+          "15 minutos",
+          "12 minutos",
+          "16 minutos",
+          "45 minutos"
+        ],
+        "answer": 0,
+        "explanation": "Los tres tiempos suman 45 minutos. Al dividir entre 3, la media es de 15 minutos.",
+        "hint": "Suma los tiempos y divide entre el número de días.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "La mediana de los datos ordenados 4, 7, x, 13, 16 y 20 es 12. ¿Cuánto vale x?",
+        "options": [
+          "9",
+          "10",
+          "11",
+          "12"
+        ],
+        "answer": 2,
+        "explanation": "Los datos centrales son x y 13. Si (x + 13)/2 = 12, entonces x + 13 = 24 y x = 11.",
+        "hint": "Como hay seis datos, usa los valores que ocupan el tercer y cuarto lugar.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -1679,6 +2043,32 @@
         "explanation": "Los números que cumplen al menos una condición son 2, 4, 6, 7 y 8. Hay cinco de ocho resultados posibles.",
         "hint": "Enumera la unión de los dos grupos. Cada número se cuenta una sola vez.",
         "difficulty": "challenge"
+      },
+      {
+        "prompt": "Lanzas un dado justo de seis caras. ¿Cuál es la probabilidad de obtener un número mayor que 4?",
+        "options": [
+          "1/6",
+          "1/3",
+          "1/2",
+          "2/3"
+        ],
+        "answer": 1,
+        "explanation": "Solo 5 y 6 son mayores que 4. Hay dos resultados favorables de seis posibles. La probabilidad es 2/6 = 1/3.",
+        "hint": "Enumera las caras que cumplen la condición.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Una caja contiene dos fichas verdes y tres amarillas. Sacas una ficha sin devolverla y luego sacas otra. ¿Cuál es la probabilidad de sacar primero una verde y después una amarilla?",
+        "options": [
+          "6/25",
+          "1/5",
+          "1/2",
+          "3/10"
+        ],
+        "answer": 3,
+        "explanation": "La probabilidad de sacar una verde es 2/5. Si sale verde, quedan 3 amarillas entre 4 fichas. El producto (2/5)(3/4) es 3/10.",
+        "hint": "Después de sacar una verde, cuenta las fichas totales y las amarillas que quedan.",
+        "difficulty": "exam"
       }
     ]
   }

@@ -96,6 +96,32 @@
         "explanation": "The coach realiza la acción. Maya es quien recibe el horario y a schedule nombra el objeto entregado.",
         "hint": "Busca quién entrega algo, quién lo recibe y qué se entrega.",
         "difficulty": "challenge"
+      },
+      {
+        "prompt": "Choose the correct word order for a question about where Mia lives.",
+        "options": [
+          "Where Mia does live?",
+          "Where does Mia live?",
+          "Where does live Mia?",
+          "Where do Mia lives?"
+        ],
+        "answer": 1,
+        "explanation": "El orden es where, does, Mia y live. El verbo principal usa la forma base después de does.",
+        "hint": "En una pregunta con where, coloca el auxiliar antes del sujeto.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Complete the polite request. “Would you mind ____ the window?”",
+        "options": [
+          "close",
+          "to close",
+          "you close",
+          "closing"
+        ],
+        "answer": 3,
+        "explanation": "Después de Would you mind se usa la forma en -ing. La petición completa es «Would you mind closing the window?»",
+        "hint": "Busca la forma verbal que sigue a mind en esta petición.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -198,6 +224,32 @@
         "explanation": "Had planted expresa la condición imaginaria sobre una acción pasada. Would have seen expresa el resultado imaginado.",
         "hint": "Busca el auxiliar had y el participio para la condición anterior.",
         "difficulty": "challenge"
+      },
+      {
+        "prompt": "Complete the negative sentence. “Yesterday, Jules ____ take the bus.”",
+        "options": [
+          "did not",
+          "does not",
+          "was not",
+          "is not"
+        ],
+        "answer": 0,
+        "explanation": "Did not forma la negación del pasado simple. El verbo take conserva su forma base.",
+        "hint": "Yesterday indica que la acción se sitúa en el pasado.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Complete the report about a repair finished yesterday. “The broken lamps ____ by the electrician.”",
+        "options": [
+          "were replacing",
+          "are replaced",
+          "were replaced",
+          "was replaced"
+        ],
+        "answer": 2,
+        "explanation": "Lamps recibe la acción. Se usa were con el sujeto plural y replaced como participio.",
+        "hint": "Usa voz pasiva en pasado. El sujeto lamps es plural.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -300,6 +352,32 @@
         "explanation": "Softly explica cómo habló Ken. After lunch indica cuándo ocurrió.",
         "hint": "Busca una expresión de tiempo y otra de modo en la misma oración.",
         "difficulty": "challenge"
+      },
+      {
+        "prompt": "Complete the sentence. “Two ____ were asleep in the barn.”",
+        "options": [
+          "mouses",
+          "mice",
+          "mouse",
+          "mices"
+        ],
+        "answer": 1,
+        "explanation": "El plural de mouse es mice. Two indica que se necesita un sustantivo plural.",
+        "hint": "Mouse tiene un plural irregular.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Which sentence says that only three students came to class because there was a storm?",
+        "options": [
+          "Nearly three students missed class during the storm.",
+          "Three students nearly missed class during the storm.",
+          "The storm started when three students left class.",
+          "Because of the storm, only three students came to class."
+        ],
+        "answer": 3,
+        "explanation": "Only modifica a three students y limita a tres el número de asistentes. Because of the storm da la causa.",
+        "hint": "Busca only junto a la cantidad que se quiere limitar.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -402,6 +480,32 @@
         "explanation": "Because presenta el viento fuerte como la causa de trasladar la clase.",
         "hint": "Haz que la segunda parte responda a «why?».",
         "difficulty": "challenge"
+      },
+      {
+        "prompt": "Complete the sentence. “The science fair takes place ____ Friday.”",
+        "options": [
+          "on",
+          "in",
+          "at",
+          "to"
+        ],
+        "answer": 0,
+        "explanation": "En inglés se usa on con días de la semana. La expresión correcta es on Friday.",
+        "hint": "Identifica si Friday es un día, un mes o una hora.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Complete the sentence. “We have enough flour, but we need ____ eggs to make the cake.”",
+        "options": [
+          "a little more",
+          "much more of",
+          "a few more",
+          "any more of"
+        ],
+        "answer": 2,
+        "explanation": "A few more expresa una pequeña cantidad adicional con un sustantivo plural contable. A little more se usa con sustancias como flour.",
+        "hint": "Eggs es un sustantivo plural que se puede contar.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -514,6 +618,32 @@
         "answer": 2,
         "explanation": "Most enjoyable expresa un juicio sobre lo que se disfruta. Las otras opciones se pueden comprobar con el relato.",
         "hint": "Busca una valoración personal.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Mina wanted to return a borrowed jacket. She folded it at home, carried it to school in a tote bag, and handed it to Eli before lunch.\n\nWhere did Mina fold the jacket?",
+        "options": [
+          "At school",
+          "At home",
+          "In the cafeteria",
+          "At Eli’s home"
+        ],
+        "answer": 1,
+        "explanation": "El texto dice «She folded it at home». Mina dobló la chaqueta en casa.",
+        "hint": "Busca la expresión de lugar que aparece justo después de folded it.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "The community center lent out umbrellas on rainy days. At first, visitors left them in a bin after turning them in. Several wet umbrellas stayed in the bin overnight. The center then added a drying rack next to the returns counter.\n\nWhy did the center most likely add the drying rack?",
+        "options": [
+          "To collect money for more umbrellas",
+          "To give visitors a place to buy umbrellas",
+          "To stop visitors from returning umbrellas",
+          "To give returned umbrellas a place to dry"
+        ],
+        "answer": 3,
+        "explanation": "Las sombrillas seguían mojadas en el contenedor. El nuevo soporte permite dejar abiertas las sombrillas devueltas para que se sequen.",
+        "hint": "Relaciona el problema de las sombrillas mojadas con el uso de un drying rack.",
         "difficulty": "exam"
       }
     ]
@@ -630,6 +760,32 @@
         "explanation": "El texto propone instalar un refugio y apoya la propuesta con la lluvia y la distancia al lugar cubierto más cercano.",
         "hint": "Identifica una propuesta y las razones que la apoyan.",
         "difficulty": "challenge"
+      },
+      {
+        "prompt": "Read the lines. “The empty station was silent. Rain ran down the glass roof, and water dripped onto the platform.”\n\nWhere does the scene take place?",
+        "options": [
+          "At a station",
+          "On a crowded bus",
+          "Inside a classroom",
+          "In a kitchen"
+        ],
+        "answer": 0,
+        "explanation": "El pasaje menciona una estación y su andén. Ambos detalles sitúan la escena en una estación.",
+        "hint": "Busca las palabras que indican el lugar antes de identificar el ambiente.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Read the passage. “I held the letter for a full minute before opening it. My hands shook. When I saw the word ACCEPTED, I ran downstairs to tell my sister.”\n\nHow does the narrator’s mood change?",
+        "options": [
+          "From excited to bored",
+          "From angry to confused",
+          "From nervous to excited",
+          "From amused to worried"
+        ],
+        "answer": 2,
+        "explanation": "La espera y el temblor muestran nervios al inicio. La noticia de la aceptación hace que la narradora corra a compartirla con su hermana.",
+        "hint": "Compara las manos temblorosas con la reacción después de leer la carta.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -733,6 +889,32 @@
         "explanation": "El título presenta la actividad principal, el lugar y la duración. Las especies de aves son detalles de la observación.",
         "hint": "Busca un título que cubra todo el texto y conserve su duración.",
         "difficulty": "challenge"
+      },
+      {
+        "prompt": "Choose the best transition. “First, wash the apples. ____, cut them into thin slices.”",
+        "options": [
+          "For example",
+          "Next",
+          "However",
+          "Instead"
+        ],
+        "answer": 1,
+        "explanation": "Next indica el paso que sigue. Aquí se cortan las manzanas después de lavarlas.",
+        "hint": "La segunda instrucción sigue a la primera en el tiempo.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "A draft has four sentences. Which one should the writer remove to keep the paragraph focused on the new reading corner?\n\n(1) The class set up a reading corner by the window. (2) Students brought cushions and a floor lamp. (3) They sorted donated books into baskets. (4) The school’s soccer team won a match on Friday.",
+        "options": [
+          "Sentence 1",
+          "Sentence 2",
+          "Sentence 3",
+          "Sentence 4"
+        ],
+        "answer": 3,
+        "explanation": "Las primeras tres oraciones describen el lugar y su preparación. La cuarta cambia de tema a un partido de fútbol.",
+        "hint": "Identifica la oración que no explica cómo prepararon el rincón de lectura.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -835,6 +1017,32 @@
         "explanation": "La coma va antes de so, que une dos oraciones completas y expresa un resultado.",
         "hint": "Localiza los dos sujetos y el conector que une las ideas.",
         "difficulty": "challenge"
+      },
+      {
+        "prompt": "Choose the sentence with the correct punctuation for a direct question.",
+        "options": [
+          "Where did you leave the keys?",
+          "Where did you leave the keys.",
+          "Where, did you leave the keys?",
+          "Where did you leave the keys,"
+        ],
+        "answer": 0,
+        "explanation": "El signo de interrogación va al final. No se pone una coma entre where y did.",
+        "hint": "Una pregunta directa termina con un signo de interrogación en inglés.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Choose the edit that keeps both actions and avoids unnecessary repetition. “Sana labeled the jars. Sana placed the jars on the shelf.”",
+        "options": [
+          "Sana labeled the shelf and the jars.",
+          "Sana placed the jars on the shelf and never labeled them.",
+          "Sana labeled the jars and placed them on the shelf.",
+          "She placed the labels on the shelf with Sana."
+        ],
+        "answer": 2,
+        "explanation": "Sana realiza las dos acciones. Them sustituye a the jars después de placed y conserva el sentido.",
+        "hint": "Conserva un solo sujeto y usa un pronombre para la segunda mención de the jars.",
+        "difficulty": "exam"
       }
     ]
   }

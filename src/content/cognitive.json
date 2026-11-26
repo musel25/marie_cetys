@@ -122,6 +122,32 @@
         "explanation": "Como 8 va después de 4 y 4 va entre 8 y 2, queda 2–4–8. Las pistas también fijan 2–7–6. La posición de 4 y 8 frente al bloque 7–6 puede cambiar.",
         "hint": "Escribe dos órdenes válidos. Busca la afirmación que se cumple en ambos.",
         "difficulty": "challenge"
+      },
+      {
+        "prompt": "La tarjeta J va inmediatamente después de la tarjeta N. La tarjeta K va antes de N. ¿Cuál es el orden correcto?",
+        "options": [
+          "N, K, J",
+          "K, N, J",
+          "J, K, N",
+          "K, J, N"
+        ],
+        "answer": 1,
+        "explanation": "El bloque es N–J y K tiene que ir antes de N. El orden es K, N, J.",
+        "hint": "Trata a N y J como un bloque de dos tarjetas.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "En una fila de cinco lugares, H va en el centro. Z va inmediatamente antes de H. Y va después de G y W va antes de Z. ¿Qué letra ocupa el cuarto lugar?",
+        "options": [
+          "W",
+          "Z",
+          "Y",
+          "G"
+        ],
+        "answer": 3,
+        "explanation": "H va en la tercera casilla, Z va en la segunda y W va en la primera. Quedan G e Y. Como Y va después de G, G ocupa el cuarto lugar.",
+        "hint": "Coloca a H y a Z. Después comprueba qué lugar queda libre antes de Z.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -234,6 +260,32 @@
         "answer": 1,
         "explanation": "Una puerta da acceso a un lugar. Las vasijas dan acceso a información sobre la vida en el pasado.",
         "hint": "Identifica qué permite conocer el museo con ayuda de las vasijas.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "En «La luna era una lámpara sobre el camino», ¿qué característica comparten la luna y la lámpara?",
+        "options": [
+          "Iluminan lo que está cerca",
+          "Producen calor intenso",
+          "Se conectan a la corriente",
+          "Cambian de tamaño cada noche"
+        ],
+        "answer": 0,
+        "explanation": "La luna alumbra el camino como lo haría una lámpara.",
+        "hint": "Piensa en qué podía ver la persona al caminar de noche.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "El director entregó un plano del edificio a los visitantes. Dijo «Este plano es una brújula entre los pasillos». ¿Qué quiso decir?",
+        "options": [
+          "El plano señala el norte en todos los salones",
+          "Los pasillos cambian de lugar",
+          "El plano ayuda a encontrar el camino",
+          "Solo se puede entrar con brújula"
+        ],
+        "answer": 2,
+        "explanation": "Un plano y una brújula ayudan a orientarse. El director dice que el plano sirve de guía por el edificio.",
+        "hint": "Compara para qué sirven un plano y una brújula.",
         "difficulty": "exam"
       }
     ]
@@ -348,6 +400,32 @@
         "explanation": "Un retrato representa un rostro. Un plano puede representar un edificio. La segunda palabra indica lo que se representa.",
         "hint": "Usa la frase «representa un» para leer cada pareja.",
         "difficulty": "exam"
+      },
+      {
+        "prompt": "Anillo es a dedo como pulsera es a ___.",
+        "options": [
+          "mano",
+          "muñeca",
+          "cuello",
+          "metal"
+        ],
+        "answer": 1,
+        "explanation": "Un anillo se pone en un dedo. Una pulsera se pone en la muñeca.",
+        "hint": "Busca la parte del cuerpo donde se pone cada objeto.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "«Vendaval es a brisa» expresa la misma relación y el mismo orden que ___.",
+        "options": [
+          "llovizna es a aguacero",
+          "trueno es a tormenta",
+          "invierno es a verano",
+          "grito es a susurro"
+        ],
+        "answer": 3,
+        "explanation": "Un vendaval es viento intenso y una brisa es viento suave. Un grito es intenso y un susurro es suave. Llovizna y aguacero siguen el orden inverso.",
+        "hint": "Compara la intensidad de las dos palabras en el orden dado.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -460,6 +538,32 @@
         "answer": 2,
         "explanation": "Los primeros saltos son +2, +3 y +4. Sigue +5, que lleva de 16 a 21. El siguiente salto es +6 y lleva a 27.",
         "hint": "Escribe cuánto aumenta cada par de números vecinos.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Completa la secuencia 72, 63, 54, ___, 36.",
+        "options": [
+          "45",
+          "46",
+          "48",
+          "49"
+        ],
+        "answer": 0,
+        "explanation": "Cada término disminuye en 9. Después de 54 viene 54 − 9 = 45.",
+        "hint": "Resta 63 a 72. Comprueba la diferencia con el siguiente par.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Completa la secuencia 4, 7, 14, 17, 34, ___, ___.",
+        "options": [
+          "37, 40",
+          "68, 71",
+          "37, 74",
+          "40, 80"
+        ],
+        "answer": 2,
+        "explanation": "La regla alterna sumar 3 y multiplicar por 2. Después de 34 siguen 34 + 3 = 37 y 37 × 2 = 74.",
+        "hint": "Busca dos operaciones que se alternan.",
         "difficulty": "exam"
       }
     ]
@@ -576,6 +680,32 @@
         "explanation": "En cada fila, resta el primer número del segundo. En la última fila, 17 − 8 = 9.",
         "hint": "Prueba 9 − 2 en la primera fila. Repite con la segunda fila.",
         "difficulty": "base"
+      },
+      {
+        "prompt": "¿Qué número completa la última fila?\n18 | 5 | 13\n22 | 9 | 13\n27 | 4 | ___",
+        "options": [
+          "21",
+          "23",
+          "24",
+          "31"
+        ],
+        "answer": 1,
+        "explanation": "En cada fila, resta el segundo número al primero. En la última fila, 27 − 4 = 23.",
+        "hint": "Usa las dos primeras columnas para obtener la tercera.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "La última columna sigue la misma regla en cada fila. ¿Qué número falta?\n4 | 3 | 2 | 10\n5 | 6 | 4 | 26\n7 | 4 | 9 | ___",
+        "options": [
+          "20",
+          "28",
+          "37",
+          "19"
+        ],
+        "answer": 3,
+        "explanation": "En cada fila, multiplica los dos primeros números y resta el tercero. En la última fila, 7 × 4 − 9 = 19.",
+        "hint": "Multiplica los dos primeros datos. Luego compara el resultado con el dato de la última columna.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -689,6 +819,32 @@
         "explanation": "Los sectores 2 y 5 están dentro de A y B. Suma sus cantidades. Hay 3 + 4 = 7 sobres.",
         "hint": "Comprueba si tener sello cambia el hecho de que el sobre tenga ventana y sea acolchado.",
         "difficulty": "base"
+      },
+      {
+        "prompt": "Sectores del diagrama. 1 solo A · 2 A y B sin C · 3 solo B · 4 A y C sin B · 5 A, B y C · 6 B y C sin A · 7 solo C.\nA = carpetas rojas. B = carpetas con etiqueta. C = carpetas con broche. ¿En qué sector va una carpeta roja con broche y sin etiqueta?",
+        "options": [
+          "Sector 4",
+          "Sector 2",
+          "Sector 5",
+          "Sector 6"
+        ],
+        "answer": 0,
+        "explanation": "La carpeta cumple A y C. Queda fuera de B porque no tiene etiqueta. El sector 4 reúne esas condiciones.",
+        "hint": "Marca qué características corresponden a A, B y C.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Sectores del diagrama. 1 solo A · 2 A y B sin C · 3 solo B · 4 A y C sin B · 5 A, B y C · 6 B y C sin A · 7 solo C.\nA = carteles impresos a color. B = carteles plastificados. C = carteles con fecha. ¿Qué sectores contienen carteles que tienen fecha y cumplen exactamente una de las otras dos condiciones?",
+        "options": [
+          "Sectores 2 y 4",
+          "Sectores 5 y 7",
+          "Sectores 4 y 6",
+          "Sectores 4, 5 y 6"
+        ],
+        "answer": 2,
+        "explanation": "En el sector 4 se cumplen A y C. En el 6 se cumplen B y C. El sector 5 cumple las tres condiciones y el 7 solo cumple C.",
+        "hint": "Empieza con los sectores que tienen C. Comprueba qué pasa con A y B en cada uno.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -804,6 +960,32 @@
         "explanation": "La regla dice qué sucede cuando un paquete sale. Para usarla al revés, haría falta saber que solo la salida cambia el estado.",
         "hint": "Lee la regla en el orden en que aparece. Comprueba si también habla del orden inverso.",
         "difficulty": "exam"
+      },
+      {
+        "prompt": "Todas las fotos del concurso se imprimen en papel mate. La foto de Inés está en el concurso. ¿Qué conclusión es obligatoria?",
+        "options": [
+          "Inés imprimió la foto en casa",
+          "La foto de Inés está en papel mate",
+          "Inés ganó el concurso",
+          "Todas las fotos en papel mate están en el concurso"
+        ],
+        "answer": 1,
+        "explanation": "La foto de Inés pertenece al conjunto de fotos del concurso. Por la regla, está impresa en papel mate.",
+        "hint": "Aplica la regla a una foto que pertenece al concurso.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Si una pieza supera la revisión, recibe un código. Las piezas con código se guardan en el armario. La pieza R está en el armario. ¿Qué conclusión se puede sacar sobre la revisión de R?",
+        "options": [
+          "R superó la revisión",
+          "R no superó la revisión",
+          "R fue la primera pieza revisada",
+          "Los datos no bastan para saber si R superó la revisión"
+        ],
+        "answer": 3,
+        "explanation": "Las reglas indican qué pasa si una pieza supera la revisión. No indican que todas las piezas del armario la hayan superado.",
+        "hint": "Comprueba si la regla dice que solo se guardan piezas que superaron la revisión.",
+        "difficulty": "exam"
       }
     ]
   },
@@ -916,6 +1098,32 @@
         "answer": 2,
         "explanation": "La caja de 30 × 20 × 12 cm tiene las medidas mínimas y cuesta $90. Cada una de las otras cajas falla en una medida o en el precio.",
         "hint": "Compara cada medida con su mínimo. Después revisa el precio.",
+        "difficulty": "exam"
+      },
+      {
+        "prompt": "Para un proyecto necesitas 9 cartulinas. Cada paquete contiene 4 cartulinas y solo venden paquetes completos. ¿Cuántos paquetes debes comprar como mínimo?",
+        "options": [
+          "3 paquetes",
+          "2 paquetes",
+          "4 paquetes",
+          "9 paquetes"
+        ],
+        "answer": 0,
+        "explanation": "Dos paquetes dan 8 cartulinas. Tres paquetes dan 12 y alcanzan para el proyecto.",
+        "hint": "Cuenta cuántas cartulinas tendrías con dos paquetes.",
+        "difficulty": "base"
+      },
+      {
+        "prompt": "Puedes reservar una sala entre las 16:00 y las 17:00. Necesitas 25 minutos seguidos. La sala ya está ocupada de 16:20 a 16:35. ¿Cuál horario puedes reservar?",
+        "options": [
+          "16:00 a 16:25",
+          "16:10 a 16:35",
+          "16:35 a 17:00",
+          "16:30 a 16:55"
+        ],
+        "answer": 2,
+        "explanation": "Antes de la reserva hay 20 minutos libres. Después hay 25 minutos, de 16:35 a 17:00.",
+        "hint": "Identifica los dos periodos libres y compara su duración.",
         "difficulty": "exam"
       }
     ]
