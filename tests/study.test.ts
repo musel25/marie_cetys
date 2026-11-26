@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { blankState, classPlan, miniHistory, nextMiniForm, nextQuestion, parseBackup, periodStart, reviewCards, studyMinutes, summary } from "../src/study";
+import { blankState, classPlan, longReviewQuestions, miniHistory, nextMiniForm, nextQuestion, parseBackup, periodStart, reviewCards, studyMinutes, summary } from "../src/study";
 import type { Attempt, Lesson, MiniResult } from "../src/types";
 const lesson = (id: string): Lesson => ({
   id, area: "hc", title: id, objective: "goal", source: "source",
@@ -73,6 +73,24 @@ test("a missed skill returns next day and the review prefers an unseen variant",
   const cards = reviewCards([attempt]);
   assert.equal(cards.get("hc-order")?.due, "2026-11-28");
   assert.equal(nextQuestion(lesson("hc-order"), [attempt])?.id, "hc-order:1");
+});
+
+test("long review alternates topics, prefers unseen questions and stops when the bank runs out", () => {
+  const first = lesson("hc-first");
+  const second = lesson("hc-second");
+  const seen: Attempt = { id: "seen", at: 1, day: "2026-11-23", skill: first.id, item: "hc-first:0", correct: false, help: false, seconds: 20, mode: "practice" };
+  const batch = longReviewQuestions([first, second], [seen]);
+  assert.deepEqual(batch.map(question => question.id), ["hc-first:1", "hc-second:0", "hc-first:0", "hc-second:1"]);
+  assert.deepEqual(longReviewQuestions([first], [seen]).map(question => question.id), ["hc-first:1", "hc-first:0"]);
+  assert.deepEqual(longReviewQuestions([], []), []);
+});
+
+test("long review stops at fifteen distinct questions when more are available", () => {
+  const topics = Array.from({ length: 10 }, (_, index) => lesson(`hc-${index}`));
+  const batch = longReviewQuestions(topics, []);
+  assert.equal(batch.length, 15);
+  assert.equal(new Set(batch.map(question => question.id)).size, 15);
+  assert.deepEqual(batch.slice(0, 10).map(question => question.skill), topics.map(topic => topic.id));
 });
 
 test("calendar periods use local Monday weeks and calendar months", () => {

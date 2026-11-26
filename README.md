@@ -8,6 +8,7 @@ The default plan includes sixty minutes per day from Monday through Friday. The 
 
 - Abre **Clase de hoy** para ver la lección sugerida. En una lección, elige **Fijar como clase de hoy** o copia el enlace para compartirla.
 - Abre **Guía para la clase** para ver los tiempos, las variantes y la pregunta de salida de la primera sesión.
+- En **Repaso**, elige el repaso diario para practicar una pregunta por tema pendiente. Elige **Empezar repaso largo** para practicar hasta 15 preguntas de temas que ya estudiaste, incluso si estás al día.
 - En **Plan**, selecciona los días, minutos por sesión, fecha de inicio, fecha del examen y días libres.
 - En **Progreso**, selecciona **Día**, **Semana** o **Mes**. Las respuestas del modo de clase cuentan en los resultados. Registra los minutos de la clase una vez.
 - El progreso se guarda en el navegador. En **Plan**, conecta la sincronización con la clave para tener el mismo progreso en otro dispositivo. También puedes descargar un respaldo.

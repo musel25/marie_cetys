@@ -1,7 +1,7 @@
 import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { areas, areaOrder, byArea, curriculum, lessonById, resourceLinks } from "./content";
 import { Exam } from "./Exam";
-import { addDays, classPlan, dateLabel, loadState, periodStart, reviewCards, reviewQuestion, saveState, studyDay, studyMinutes, summary } from "./study";
+import { addDays, classPlan, dateLabel, loadState, longReviewLimit, longReviewQuestions, periodStart, reviewCards, reviewQuestion, saveState, studyDay, studyMinutes, summary } from "./study";
 import type { Area, Attempt, ClassRecord, Lesson, MiniResult, Question, StudyState } from "./types";
 import { AreaTag, duration, elapsedTime, Icon, lessonHref, miniHref, PageHeading, type IconName } from "./ui";
 import { OrderDiagram, QuestionCard } from "./QuestionCard";
@@ -24,7 +24,7 @@ const Progress = lazy(() => import("./Progress"));
 const Planner = lazy(() => import("./Planner"));
 function readRoute() { return location.hash.replace(/^#\/?/, "").split("/").slice(0, 3); }
 
-function Home({ state, today, dueCount }: { state: StudyState; today: string; dueCount: number }) {
+function Home({ state, today, dueCount, hasStudied }: { state: StudyState; today: string; dueCount: number; hasStudied: boolean }) {
   const plan = classPlan(curriculum, state, today);
   const slot = plan.slots[0];
   const lesson = lessonById.get(state.pinned) ?? (slot ? lessonById.get(slot.lessons[0]) : undefined);
@@ -60,7 +60,8 @@ function Home({ state, today, dueCount }: { state: StudyState; today: string; du
         <section className="panel review-preview">
           <div className="panel-icon"><Icon name="repeat"/></div>
           <h2>Repaso opcional</h2>
-          <p>{dueCount ? `${dueCount} ${dueCount === 1 ? "tema disponible" : "temas disponibles"}` : "Tus temas aparecerán aquí cuando toque practicarlos."}</p>
+          <p>{dueCount ? `${dueCount} ${dueCount === 1 ? "tema disponible" : "temas disponibles"}`
+            : hasStudied ? "Puedes hacer un repaso largo con los temas que ya estudiaste." : "Tus temas aparecerán aquí cuando toque practicarlos."}</p>
           <a className="button secondary" href="#/repaso">{dueCount ? "Empezar repaso" : "Ver repaso"}</a>
         </section>
         <section className="panel week-summary">
@@ -115,44 +116,78 @@ function Curriculum({ filter, state }: { filter: Area | undefined; state: StudyS
   </>;
 }
 
-function Review({ due, state, onAttempt, onFlag }: {
-  due: Lesson[]; state: StudyState; onAttempt: (item: Attempt) => void; onFlag: (id: string) => void;
+function Review({ due, studied, state, onAttempt, onFlag }: {
+  due: Lesson[]; studied: Lesson[]; state: StudyState; onAttempt: (item: Attempt) => void; onFlag: (id: string) => void;
 }) {
   const [batch, setBatch] = useState<Question[]>([]);
   const [index, setIndex] = useState(0);
   const [answered, setAnswered] = useState(false);
-  const [started, setStarted] = useState(false);
+  const heading = useRef<HTMLHeadingElement>(null);
+  const started = batch.length > 0;
   const question = batch[index];
   const lesson = question && lessonById.get(question.skill);
   const minis = new Map([...state.miniResults].sort((a, b) => a.at - b.at).map(entry => [entry.skill, entry]));
-  const available = curriculum.filter(item => minis.has(item.id) && !due.some(lesson => lesson.id === item.id));
-  function start() {
-    setBatch(due.slice(0, 8).flatMap(item => {
-      const fresh = reviewQuestion(item, state.attempts);
-      return fresh ? [fresh] : [];
-    }));
-    setIndex(0); setAnswered(false); setStarted(true);
+  const available = curriculum.filter(item => minis.has(item.id) && !due.includes(item));
+
+  function move(next: number) {
+    setIndex(next);
+    setAnswered(false);
+    requestAnimationFrame(() => heading.current?.focus());
   }
+
+  function start(long: boolean) {
+    const next = long
+      ? longReviewQuestions([...due, ...studied.filter(item => !due.includes(item))], state.attempts)
+      : due.slice(0, 8).flatMap(item => {
+        const fresh = reviewQuestion(item, state.attempts);
+        return fresh ? [fresh] : [];
+      });
+    setBatch(next);
+    move(0);
+  }
+
+  function finish() {
+    setBatch(batch.slice(0, index + 1));
+    move(index + 1);
+  }
+
   return <>
-    <PageHeading title="Repaso opcional" description="Intenta una pregunta nueva antes de volver a la explicación." />
+    <PageHeading title="Repaso opcional" />
     {!started && <section className="panel review-state">
       <div className="panel-icon"><Icon name="repeat" /></div>
       <h2>{due.length ? `${due.length} ${due.length === 1 ? "tema para repasar" : "temas para repasar"}` : "Estás al día"}</h2>
-      <p>{due.length ? "Empieza una ronda de hasta ocho preguntas." : "Después de practicar un tema, el sitio te sugerirá cuándo retomarlo."}</p>
-      {due.length ? <button className="button primary" onClick={start}>Empezar repaso</button> : <a className="button secondary" href="#/temario">Ver temario</a>}
+      {due.length > 0 && <p>El repaso diario usa una pregunta por tema pendiente, hasta ocho.</p>}
+      <p>{studied.length ? `Una ronda larga usa hasta ${longReviewLimit} preguntas de los temas que ya estudiaste.` : "Practica un tema para empezar a repasarlo aquí."}</p>
+      <div className="row">
+        {due.length > 0 && <button className="button primary" onClick={() => start(false)}>Empezar repaso</button>}
+        {studied.length > 0
+          ? <button className={`button ${due.length ? "secondary" : "primary"}`} onClick={() => start(true)}>Empezar repaso largo</button>
+          : <a className="button secondary" href="#/temario">Ver temario</a>}
+      </div>
     </section>}
     {started && lesson && question && <section className="worksheet review-work">
       <div className="section-title"><AreaTag area={lesson.area}/><span>{index + 1} de {batch.length}</span></div>
-      <h2>{lesson.title}</h2>
+      <h2 ref={heading} tabIndex={-1}>{lesson.title}</h2>
       <QuestionCard key={question.id} question={question} mode="review" area={lesson.area} flagged={state.flagged.includes(question.id)} onFlag={() => onFlag(question.id)} onAttempt={item => { onAttempt(item); setAnswered(true); }} />
       <div className="row review-actions">
         <a className="button secondary" href={lessonHref(lesson.id)}>Abrir explicación</a>
         <a className="button secondary" href={miniHref(lesson.id)}>Hacer miniexamen</a>
-        {answered && <button className="button primary" onClick={() => { setIndex(index + 1); setAnswered(false); }}>{index === batch.length - 1 ? "Terminar repaso" : "Siguiente pregunta"}</button>}
+        {answered && (index === batch.length - 1
+          ? <button className="button primary" onClick={finish}>Terminar repaso</button>
+          : <>
+            <button className="button primary" onClick={() => move(index + 1)}>Siguiente pregunta</button>
+            <button className="button quiet" onClick={finish}>Terminar ahora</button>
+          </>)}
       </div>
     </section>}
-    {started && !question && <section className="panel review-state"><h2>Ronda terminada</h2><p>Repasaste {batch.length} temas.</p>
-      {due.length ? <button className="button primary" onClick={start}>Repasar más temas</button> : <a className="button secondary" href="#/progreso">Ver progreso</a>}
+    {started && !question && <section className="panel review-state">
+      <h2 ref={heading} tabIndex={-1}>Ronda terminada</h2>
+      <p>Respondiste {batch.length} {batch.length === 1 ? "pregunta" : "preguntas"}.</p>
+      <div className="row">
+        {due.length > 0 && <button className="button primary" onClick={() => start(false)}>Repasar más temas</button>}
+        {studied.length > 0 && <button className={`button ${due.length ? "secondary" : "primary"}`} onClick={() => start(true)}>Otra ronda larga</button>}
+        <a className="button secondary" href="#/progreso">Ver progreso</a>
+      </div>
     </section>}
     {!started && due.length > 0 && <section className="panel due-topics">
       <h2>Temas disponibles</h2>
@@ -188,6 +223,10 @@ function StudyApp() {
   const cards = useMemo(() => reviewCards(state.attempts, state.miniResults), [state.attempts, state.miniResults]);
   const due = useMemo(() => curriculum.filter(item => (cards.get(item.id)?.due ?? "9999") <= today)
     .sort((a, b) => (cards.get(a.id)?.due ?? "").localeCompare(cards.get(b.id)?.due ?? "")), [cards, today]);
+  const studied = useMemo(() => {
+    const completed = new Set(state.classes.filter(record => record.complete).map(record => record.skill));
+    return curriculum.filter(item => cards.has(item.id) || completed.has(item.id));
+  }, [cards, state.classes]);
 
   useEffect(() => {
     function navigate() {
@@ -278,7 +317,7 @@ function StudyApp() {
   const syncPanel = { ...sync, importPrevious: location.origin === primaryOrigin ? importPrevious : undefined };
   const lesson = id ? lessonById.get(id) : undefined;
   const active = page === "clase" || page === "mini" ? "temario" : page;
-  const content = page === "" ? <Home state={state} today={today} dueCount={due.length}/>
+  const content = page === "" ? <Home state={state} today={today} dueCount={due.length} hasStudied={studied.length > 0}/>
     : page === "temario" ? <Curriculum state={state} filter={areaOrder.find(area => area === id)}/>
     : page === "clase" && lesson ? <Suspense fallback={<p>Cargando la lección…</p>}>
       <Workbook key={lesson.id + (target ?? "")} lesson={lesson} target={target} state={state} onAttempt={item => addAttempts([item])} onClass={recordClass}
@@ -287,7 +326,7 @@ function StudyApp() {
     : page === "mini" && lesson ? <Suspense fallback={<p>Cargando miniexamen…</p>}>
       <MiniExam key={lesson.id} lesson={lesson} results={state.miniResults} onFinish={addMini} />
     </Suspense>
-    : page === "repaso" ? <Review due={due} state={state} onAttempt={item => addAttempts([item])} onFlag={toggleFlag}/>
+    : page === "repaso" ? <Review due={due} studied={studied} state={state} onAttempt={item => addAttempts([item])} onFlag={toggleFlag}/>
     : page === "simulacro" ? <Exam state={state} onAttempts={addAttempts}/>
     : page === "progreso" ? <Suspense fallback={<p>Cargando el progreso…</p>}>
       <Progress state={state} today={today} onFlag={toggleFlag}/>

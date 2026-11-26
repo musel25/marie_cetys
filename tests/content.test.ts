@@ -28,7 +28,8 @@ test("each exam area has enough original questions for a timed section and order
         assert.ok(Number.isInteger(step.answer) && step.answer >= 0 && step.answer < step.options.length, section.id);
       }
     }
-    assert.ok(lesson.exercises.length >= 7, lesson.id);
+    assert.ok(lesson.exercises.filter(exercise => exercise.difficulty === "base").length >= 3, lesson.id);
+    assert.ok(lesson.exercises.filter(exercise => exercise.difficulty === "exam").length >= 4, lesson.id);
     assert.ok(lesson.exercises.some(exercise => exercise.difficulty === "challenge"), lesson.id);
     lessons.add(lesson.id);
     for (const item of [...questions(lesson), ...guidedSections(lesson).map(section => section.question)]) {
@@ -52,7 +53,7 @@ test("every lesson has independent mini-exam questions", () => {
   const prompts = new Set(curriculum.flatMap(lesson => [...questions(lesson), ...guidedSections(lesson).map(section => section.question)].map(item => item.prompt)));
   for (const lesson of curriculum) {
     if (lesson.area === "hc") {
-      assert.equal(lesson.exercises.filter(item => item.difficulty !== "challenge").length, 7, lesson.id);
+      assert.equal(lesson.exercises.filter(item => item.difficulty !== "challenge").length, 9, lesson.id);
     }
     const formCount = miniFormCount(lesson.id);
     assert.equal(formCount, expectedMiniFormCount(lesson), lesson.id);

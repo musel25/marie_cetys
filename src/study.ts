@@ -212,11 +212,30 @@ export function nextQuestion(lesson: Lesson, attempts: Attempt[], excluded = new
   })[0];
 }
 
-export function reviewQuestion(lesson: Lesson, attempts: Attempt[]) {
+export function reviewQuestion(lesson: Lesson, attempts: Attempt[], excluded = new Set<string>()) {
   const last = attempts.filter(item => item.skill === lesson.id && item.selection !== -1).at(-1);
   const difficulty = questions(lesson).find(item => item.id === last?.item)?.difficulty ?? "base";
   const preferred = last?.correct && !last.help && difficulty === "base" ? "exam" : difficulty;
-  return nextQuestion(lesson, attempts, new Set(), preferred);
+  return nextQuestion(lesson, attempts, excluded, preferred);
+}
+
+export const longReviewLimit = 15;
+
+export function longReviewQuestions(topics: Lesson[], attempts: Attempt[]) {
+  const batch: Question[] = [];
+  const selected = new Set<string>();
+  while (batch.length < longReviewLimit) {
+    const previousSize = batch.length;
+    for (const topic of topics) {
+      const question = reviewQuestion(topic, attempts, selected);
+      if (!question) continue;
+      batch.push(question);
+      selected.add(question.id);
+      if (batch.length === longReviewLimit) break;
+    }
+    if (batch.length === previousSize) break;
+  }
+  return batch;
 }
 
 function compareEventTime(a: StudyEvent, b: StudyEvent) {

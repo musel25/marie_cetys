@@ -144,6 +144,43 @@ test("brings back a missed skill with a fresh question on the following day", as
   await expect(page.getByRole("heading", { name: "Ronda terminada" })).toBeVisible();
 });
 
+test("starts a long review before the next due date and lets the learner finish early", async ({ page }) => {
+  await page.setViewportSize({ width: 360, height: 800 });
+  await page.clock.setFixedTime(new Date("2026-11-23T20:00:00Z"));
+  await page.goto("/#/plan");
+  await page.getByLabel("Minutos al día").fill("15");
+  await page.getByRole("button", { name: "Guardar plan", exact: true }).click();
+
+  await page.goto("/#/clase/hc-orden");
+  const practice = page.getByRole("region", { name: "Ejercicios de prueba", exact: true });
+  await practice.getByRole("radio", { name: "A, B, C", exact: true }).check();
+  await practice.getByRole("button", { name: "Comprobar", exact: true }).click();
+  await expect(practice.getByText("Respuesta correcta: B", { exact: true })).toBeVisible();
+
+  await page.getByRole("link", { name: "Clase de hoy", exact: true }).click();
+  await expect(page.getByText("Puedes hacer un repaso largo con los temas que ya estudiaste.", { exact: true })).toBeVisible();
+  await page.getByRole("link", { name: "Ver repaso", exact: true }).click();
+  await expect(page.getByRole("heading", { name: "Estás al día" })).toBeVisible();
+  await page.getByRole("button", { name: "Empezar repaso largo", exact: true }).press("Enter");
+  const heading = page.getByRole("heading", { name: "Ordenar con pistas", exact: true });
+  const prompts = new Set<string>();
+  for (let index = 1; index <= 3; index++) {
+    await expect(page.getByText(`${index} de 11`, { exact: true })).toBeVisible();
+    await expect(heading).toBeFocused();
+    prompts.add(await page.locator("legend").innerText());
+    await page.getByRole("radio").first().check();
+    await page.getByRole("button", { name: "Comprobar", exact: true }).click();
+    if (index < 3) await page.getByRole("button", { name: "Siguiente pregunta", exact: true }).click();
+  }
+  expect(prompts.size).toBe(3);
+  await page.getByRole("button", { name: "Terminar ahora", exact: true }).click();
+  await expect(page.getByRole("heading", { name: "Ronda terminada" })).toBeFocused();
+  await expect(page.getByText("Respondiste 3 preguntas.", { exact: true })).toBeVisible();
+  await page.getByRole("button", { name: "Otra ronda larga", exact: true }).click();
+  await expect(page.getByText("1 de 11", { exact: true })).toBeVisible();
+  expect(prompts.has(await page.locator("legend").innerText())).toBe(false);
+});
+
 test("keeps the shortcut to trial exercises and shows the order while checking example steps", async ({ page }) => {
   await page.goto("/#/clase/hc-orden");
   await page.getByRole("button", { name: "Probar el primer ejercicio" }).click();
@@ -224,7 +261,7 @@ test("times five fresh cognitive questions and compares with the next form", asy
   const firstStart = new Date("2026-11-23T20:00:00Z");
   await page.clock.setFixedTime(firstStart);
   await page.goto("/#/clase/hc-orden");
-  await expect(page.locator(".question-details")).toHaveCount(7);
+  await expect(page.locator(".question-details")).toHaveCount(9);
   await page.getByRole("link", { name: "Hacer miniexamen", exact: true }).first().click();
   await page.getByRole("button", { name: "Empezar miniexamen" }).click();
   const fill = async (startAt: number) => {
@@ -294,8 +331,15 @@ test("the orthography lesson interleaves examples and exercises before the trial
   await page.clock.setFixedTime(new Date("2026-11-24T20:00:00Z"));
   await page.goto("/#/clase/es-ortografia");
   const exercises = page.getByRole("region", { name: "Ejercicios de prueba", exact: true });
-  await expect(exercises.getByText("14 preguntas", { exact: true })).toBeVisible();
-  await expect(exercises.locator("details.question-details")).toHaveCount(14);
+  await expect(exercises.getByText("16 preguntas", { exact: true })).toBeVisible();
+  await expect(exercises.locator("details.question-details")).toHaveCount(16);
+  const addedExercise = exercises.locator("details.question-details").last();
+  await addedExercise.locator("summary").click();
+  await addedExercise.getByRole("button", { name: "Ver pista", exact: true }).click();
+  await expect(addedExercise.locator(".hint")).toBeVisible();
+  await addedExercise.getByRole("radio", { name: "aún / aun", exact: true }).check();
+  await addedExercise.getByRole("button", { name: "Comprobar", exact: true }).click();
+  await expect(addedExercise.getByText("Correcto", { exact: true })).toBeVisible();
   const rules = page.getByRole("region", { name: "Explicación", exact: true });
   const titles = ["Nombre común y nombre propio", "Hiato y diptongo", "Por qué, porque, porqué y por que",
     "Agudas, graves y esdrújulas", "Tildes que distinguen funciones"];
@@ -329,7 +373,7 @@ test("the orthography lesson interleaves examples and exercises before the trial
   await page.getByRole("link", { name: "Ver progreso", exact: true }).click();
   await page.reload();
   await expect(page.getByRole("region", { name: "Miniexámenes", exact: true }).getByRole("link", { name: "Mayúsculas y acentuación", exact: true })).toHaveAttribute("href", "#/mini/es-ortografia");
-  await expect(page.getByText("Español", { exact: true }).locator("..")).toContainText("de 10");
+  await expect(page.getByText("Español", { exact: true }).locator("..")).toContainText("2 de 11");
 
   await page.clock.setFixedTime(new Date("2026-11-25T20:00:00Z"));
   await page.goto("/#/repaso");
