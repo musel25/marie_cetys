@@ -274,7 +274,7 @@ progress::-webkit-progress-value { background: var(--forest); }
 .plan-notice > p { margin-block-end: .55rem; }
 .calendar-list li { display: grid; grid-template-columns: minmax(5rem, .8fr) minmax(0, 1fr) auto; padding-block: .7rem; gap: .55rem; font-size: .87rem; }
 .calendar-list a { display: block; font-weight: 650; }
-.calendar-day { color: var(--muted); }
+.date-edit { align-self: start; justify-self: start; min-block-size: 2.7rem; border: 0; background: transparent; color: var(--forest); padding-inline: 0; text-align: start; text-decoration: underline; text-underline-offset: .2em; }
 .announcement, .notice { background: var(--forest); color: white; padding: .7rem .9rem; border-radius: .65rem; }
 .announcement { position: fixed; z-index: 5; inset: auto 1rem 1rem auto; inline-size: fit-content; max-inline-size: min(32rem, calc(100% - 2rem)); box-shadow: 0 3px 20px #13291f44; }
 .announcement button { color: white; background: transparent; border: 0; margin-inline-start: .45rem; padding: .28rem .4rem; }

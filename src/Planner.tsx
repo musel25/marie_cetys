@@ -22,6 +22,7 @@ export default function Planner({ state, today, onSettings, onImport, mergeBacku
   const [more, setMore] = useState(false);
   const [pending, setPending] = useState<StudyState>();
   const input = useRef<HTMLInputElement>(null);
+  const dateMinutesInput = useRef<HTMLInputElement>(null);
   const planNotice = useRef<HTMLParagraphElement>(null);
   const forecast = classPlan(curriculum, state, today);
   const slots = more ? forecast.slots : forecast.slots.slice(0, 10);
@@ -56,15 +57,24 @@ export default function Planner({ state, today, onSettings, onImport, mergeBacku
     return adjusted;
   }
 
+  function selectStudyDate(day: string) {
+    setStudyDate(day);
+    setDateMinutes(day ? String(draft.minutesByDate[day] ?? draft.minutes) : "");
+    setPlanMessage("");
+  }
+
+  function editDateMinutes(day: string) {
+    selectStudyDate(day);
+    dateMinutesInput.current?.focus();
+  }
+
   function addDateMinutes() {
     setDraft({
       ...draft,
       minutesByDate: { ...draft.minutesByDate, [studyDate]: scheduledMinutes },
       exceptions: draft.exceptions.filter(day => day !== studyDate),
     });
-    setStudyDate("");
-    setDateMinutes("");
-    setPlanMessage("");
+    selectStudyDate("");
   }
 
   function download() {
@@ -128,10 +138,10 @@ export default function Planner({ state, today, onSettings, onImport, mergeBacku
           <div className="field-grid">
             <label>Fecha de estudio
               <input name="study-date" type="date" min="2000-01-01" max="2099-12-31" value={studyDate}
-                onChange={event => setStudyDate(event.target.value)} />
+                onChange={event => selectStudyDate(event.target.value)} />
             </label>
             <label>Minutos para esa fecha
-              <input name="date-minutes" type="number" min="15" max="180" inputMode="numeric" value={dateMinutes}
+              <input ref={dateMinutesInput} name="date-minutes" type="number" min="15" max="180" inputMode="numeric" value={dateMinutes}
                 onChange={event => setDateMinutes(event.target.value)} />
             </label>
           </div>
@@ -141,11 +151,13 @@ export default function Planner({ state, today, onSettings, onImport, mergeBacku
           {Object.keys(draft.minutesByDate).length > 0 && <ul className="plain-list">
             {Object.entries(draft.minutesByDate).sort(([first], [second]) => first.localeCompare(second)).map(([day, minutes]) =>
               <li key={day}>
-                <span><time dateTime={day}>{dateLabel(day, "long")}</time> · {minutes} min</span>
+                <button type="button" className="date-edit" aria-label={`Cambiar tiempo del ${dateLabel(day, "long")} · ${minutes} min`}
+                  onClick={() => editDateMinutes(day)}><time dateTime={day}>{dateLabel(day, "long")}</time> · {minutes} min</button>
                 <button type="button" className="button quiet" aria-label={`Quitar tiempo del ${dateLabel(day, "long")}`}
                   onClick={() => {
                     setDraft({ ...draft, minutesByDate: withoutDateMinutes(day) });
-                    setPlanMessage("");
+                    if (studyDate === day) selectStudyDate("");
+                    else setPlanMessage("");
                   }}>Quitar</button>
               </li>,
             )}
@@ -165,13 +177,17 @@ export default function Planner({ state, today, onSettings, onImport, mergeBacku
                 ? ` La propuesta agrupa temas y requiere ${duration(forecast.requiredPerDay)} por día habitual.` : "")
               : `Hay ${duration(forecast.available)} disponibles para ${duration(forecast.required)} de clase pendiente.`}
         </p>}
-        {slots.length ? <ol className="calendar-list">{slots.map(slot =>
-          <li key={slot.day}>
-            <span className="calendar-day">{dateLabel(slot.day, "long")}</span>
-            <div>{slot.lessons.map(id => <a key={id} href={lessonHref(id)}>{lessonById.get(id)?.title}</a>)}</div>
-            <span className="muted">{slot.minutes} min</span>
-          </li>,
-        )}</ol> : <p className="muted">El temario sigue disponible para practicar.</p>}
+        {slots.length ? <>
+          <p className="muted">Pulsa una fecha para cambiar sus minutos.</p>
+          <ol className="calendar-list">{slots.map(slot =>
+            <li key={slot.day}>
+              <button type="button" className="date-edit" aria-label={`Cambiar tiempo del ${dateLabel(slot.day, "long")}`}
+                onClick={() => editDateMinutes(slot.day)}><time dateTime={slot.day}>{dateLabel(slot.day, "long")}</time></button>
+              <div>{slot.lessons.map(id => <a key={id} href={lessonHref(id)}>{lessonById.get(id)?.title}</a>)}</div>
+              <span className="muted">{slot.minutes} min</span>
+            </li>,
+          )}</ol>
+        </> : <p className="muted">El temario sigue disponible para practicar.</p>}
         {forecast.slots.length > 10 && <button className="button secondary" onClick={() => setMore(!more)}>{more ? "Mostrar menos" : "Ver el plan completo"}</button>}
       </section>
     </div>
