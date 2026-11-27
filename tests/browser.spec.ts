@@ -608,13 +608,22 @@ test("sets more study time for one date and keeps the normal weekday duration", 
   await page.clock.setFixedTime(new Date("2026-11-27T20:00:00Z"));
   await page.goto("/#/plan");
   const adjusted = page.getByRole("group", { name: "Tiempo por fecha" });
+  const studyDate = adjusted.getByLabel("Fecha de estudio", { exact: true });
+  const dateMinutes = adjusted.getByLabel("Minutos para esa fecha", { exact: true });
   const saturday = /sábado,? 28 de noviembre/i;
   const upcoming = page.getByRole("heading", { name: "Próximas clases" }).locator("..");
   const saturdaySlot = upcoming.getByRole("listitem").filter({ hasText: saturday });
   await expect(saturdaySlot).toHaveCount(0);
 
-  await adjusted.getByLabel("Fecha de estudio", { exact: true }).fill("2026-11-28");
-  await adjusted.getByLabel("Minutos para esa fecha", { exact: true }).fill("90");
+  const fridayButton = upcoming.getByRole("button", { name: /Cambiar tiempo del viernes,? 27 de noviembre/i });
+  await expect(fridayButton).toBeVisible();
+  await fridayButton.press("Enter");
+  await expect(studyDate).toHaveValue("2026-11-27");
+  await expect(dateMinutes).toHaveValue("60");
+  await expect(dateMinutes).toBeFocused();
+
+  await studyDate.fill("2026-11-28");
+  await dateMinutes.fill("90");
   await adjusted.getByRole("button", { name: "Añadir tiempo", exact: true }).click();
   await page.getByRole("button", { name: "Guardar plan", exact: true }).click();
 
@@ -622,11 +631,19 @@ test("sets more study time for one date and keeps the normal weekday duration", 
   await expect(upcoming.getByRole("listitem").filter({ hasText: /viernes,? 27 de noviembre/i })).toContainText("60 min");
   await page.reload();
   await expect(adjusted.getByRole("listitem").filter({ hasText: saturday })).toContainText("90 min");
+  await adjusted.getByRole("button", { name: /Cambiar tiempo del sábado,? 28 de noviembre/i }).click();
+  await expect(studyDate).toHaveValue("2026-11-28");
+  await expect(dateMinutes).toHaveValue("90");
+  await expect(dateMinutes).toBeFocused();
+  await dateMinutes.fill("105");
+  await adjusted.getByRole("button", { name: "Actualizar tiempo", exact: true }).click();
+  await page.getByRole("button", { name: "Guardar plan", exact: true }).click();
+  await expect(saturdaySlot).toContainText("105 min");
   await expect(page.getByLabel("Minutos al día", { exact: true })).toHaveValue("60");
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(375);
 
   await page.getByRole("link", { name: "Clase de hoy", exact: true }).click();
-  await expect(page.getByRole("progressbar", { name: "Tiempo de estudio esta semana" })).toHaveAttribute("max", "150");
+  await expect(page.getByRole("progressbar", { name: "Tiempo de estudio esta semana" })).toHaveAttribute("max", "165");
 
   await page.getByRole("link", { name: "Plan", exact: true }).click();
   await adjusted.getByRole("button", { name: /Quitar tiempo del sábado/i }).click();

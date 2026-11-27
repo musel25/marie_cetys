@@ -13,6 +13,7 @@ The default plan includes sixty minutes per day from Monday through Friday. The 
 - Abre **Guía para la clase** para ver la secuencia de la sesión.
 - En **Repaso**, elige el repaso diario para practicar una pregunta por tema pendiente. Como práctica adicional, elige **Empezar repaso largo** para resolver hasta 15 preguntas de temas que ya estudiaste, incluso si estás al día.
 - En **Plan**, selecciona los días, minutos por sesión, fecha de inicio, fecha del examen y días libres.
+- En **Próximas clases**, pulsa una fecha para cambiar sus minutos. Si el día no aparece en la lista, selecciónalo en **Tiempo por fecha**.
 - En **Progreso**, selecciona **Día**, **Semana** o **Mes**. El tiempo del miniexamen que coincide con la clase cuenta una sola vez. Los registros anteriores conservan los minutos anotados.
 - El progreso se guarda en el navegador. En **Plan**, conecta la sincronización con la clave para tener el mismo progreso en otro dispositivo. También puedes descargar un respaldo.
 
